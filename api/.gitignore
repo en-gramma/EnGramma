@@ -1,0 +1,20 @@
+# Environnement
+.env
+
+# Base de données
+/database
+
+# Dossiers sensibles 
+/secrets
+
+# Compilation
+/dist
+
+# Dépendances
+/node_modules
+
+# Fichiers de log
+*.log
+
+# OS temporaires
+/tmp
