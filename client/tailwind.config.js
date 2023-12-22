@@ -9,6 +9,10 @@ module.exports = {
       'custom': ['Engramma', 'sans-serif'],
     },
     extend: {
+        colors: {
+          'Engramma':'#88b4bd',
+        },
+
       height: {
         '50': '12.5rem',
         '60': '15rem',

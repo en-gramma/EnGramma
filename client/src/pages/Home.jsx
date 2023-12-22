@@ -15,9 +15,9 @@ export const Home = () => {
   return (
     <div style={divStyle} className="p-5 bg-no-repeat bg-center bg-cover h-screen shadow-xl flex bg-black bg-opacity-40 justify-center items-center">
       <div style={logoStyle} className="absolute inset-0 scale-90"></div>
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-white">
+      <div className="absolute inset-0 flex flex-col justify-center items-center ">
         <h1 className="text-5xl md:text-7xl">
-          <span className="font-custom">EN GRAMMA</span>
+          <span className="font-custom text-Engramma dropshadow-xl">EN GRAMMA</span>
         </h1>
       </div>
     </div>

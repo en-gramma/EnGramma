@@ -60,19 +60,20 @@ export const Navbar = () => {
     
 
     return (
-      <nav
-      //condition: sur mobile la barre de navigation sera opaque/ en desktop elle sera transparente onTop et opaque quand on scrollera
-      className={`${
-      isMobile ? 'bg-transparent opacity-95' :
-      //bg-transparent
-      isOnTop  ? 'bg-transparent text-xl' : 'bg-stone-800 opacity-95 text-xl'
-      } text-yellow-300  border-gray-200 w-full z-20  fixed transition-all duration-300`} 
-    >
-        <div className=" flex flex-wrap items-center justify-between mx-auto p-4">
+<nav
+  className={`${
+    isMobile ? 'bg-transparent opacity-95' :
+    isOnTop ? 'bg-transparent text-xl' : 'bg-stone-800 opacity-95 text-xl'
+  } text-white border-gray-200 w-full z-20 fixed transition-all duration-300`}
+  style={{
+    backgroundColor: location.pathname === '/dashboard' ? '#2c2c2c' : ''
+  }}
+>    <div className=" flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="/" className="flex items-center">
-          <p className={`font-custom text-4xl text-white ${location.pathname === '/' ? 'hidden' : ''}`}>
-  EN GRAMMA
-</p>
+
+            <p className={`font-custom text-4xl text-Engramma  md:block md:absolute ${location.pathname === '/' ? 'text-transparent' : ''}`}>
+              EN GRAMMA
+            </p>
           </a>
           <div className="flex md:order-3">
 
@@ -104,7 +105,7 @@ export const Navbar = () => {
             <ul className="flex flex-col space-y-3 p-4  ml-auto md:space-y-0  md:p-0 mt-4 border border-stone-700  rounded-md  md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/' ? 'text-orange-500' : ''}`}
+                  className={`font-semibold ${location.pathname === '/' ? 'text-yellow-200' : ''}`}
                   to="/"
                   onClick={handleLinkClick}
                 > ACCUEIL
@@ -112,7 +113,7 @@ export const Navbar = () => {
               </li>
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/music' ? 'text-orange-600' : ''}`}
+                  className={`font-semibold ${location.pathname === '/music' ? 'text-yellow-200' : ''}`}
                   to="/music"
                   onClick={handleLinkClick}
                 > MUSIQUE
@@ -120,7 +121,7 @@ export const Navbar = () => {
               </li>
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/media' ? 'text-orange-600' : ''}`}
+                  className={`font-semibold ${location.pathname === '/media' ? 'text-yellow-200' : ''}`}
                   to="/media"
                   onClick={handleLinkClick}
                 > MEDIA
@@ -128,7 +129,7 @@ export const Navbar = () => {
               </li>
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/bio' ? 'text-orange-600' : ''}`}
+                  className={`font-semibold ${location.pathname === '/bio' ? 'text-yellow-200' : ''}`}
                   to="/bio"
                   onClick={handleLinkClick}
                 > BIOGRAPHIE
@@ -136,7 +137,7 @@ export const Navbar = () => {
               </li>
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/tour' ? 'text-orange-600' : ''}`}
+                  className={`font-semibold ${location.pathname === '/tour' ? 'text-yellow-200' : ''}`}
                   to="/tour"
                   onClick={handleLinkClick}
                 > DATES
@@ -144,48 +145,48 @@ export const Navbar = () => {
               </li>
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/contact' ? 'text-orange-600' : ''}`}
+                  className={`font-semibold ${location.pathname === '/contact' ? 'text-yellow-200' : ''}`}
                   to="/contact"
                   onClick={handleLinkClick}
                 > CONTACT/PRO
                 </Link>
               </li>
-              <li>
-                {currentUser &&              <Link
-                  className={`font-semibold ${location.pathname === '/dashboard' ? 'text-orange-600' : ''}`}
-                  to="/dashboard"
-                  onClick={handleLinkClick}
-                > Tableau de bord
-                </Link>}
-              </li>
               <div className="mb-2 mt-2 border-b border-gray-300"></div>
               <li className="md:absolute md:top-2 md:right-10">
-              {currentUser &&
-            <div className="flex items-center cursor-pointer" onClick={toggleMenu}>
-              {users.map(user => (
-                <img
-                  className="w-[45px] h-[45px] rounded-full mr-2"
-                  src={user?.img ? user.img.replace('http://', 'https://') : DefaultUserImage}
-                  alt="User avatar"
-                />
-              ))}
-              <div className="grid grid-rows-2">
-                <span className="mr-2 text-base text-white">{currentUser?.username}</span>
-               ```jsx
-              </div>
-              {isMenuOpen && (
-                <div className="rounded menu text-base mx-auto md:shadow-md md:bg-stone-800 md:absolute md:top-[75px] md:p-4 md:px-10 md:right-0">
-                  <ul>
-                    <li className="flex items-center">
-                      <CiLogout className="mr-2" />
-                      <button onClick={logout}>Déconnexion</button>
-                    </li>
-                  </ul>
+                  {currentUser &&
+                <div className="flex items-center cursor-pointer" onClick={toggleMenu}>
+                  {users.map(user => (
+                    <img
+                      className="w-[45px] h-[45px] rounded-full mr-2"
+                      src={user?.img ? user.img.replace('http://', 'https://') : DefaultUserImage}
+                      alt="User avatar"
+                    />
+                  ))}
+                  <div className="grid grid-rows-2">
+                    <span className="mr-2 text-base text-white">{currentUser?.username}</span>
+                    <span className="text-gray-200 text-sm">{currentUser?.role}</span>
+                  </div>
+                  {isMenuOpen && (
+                    <div className=" flex items-center text-white w-[230px] rounded menu text-base mx-auto md:shadow-md md:bg-stone-800 md:absolute md:top-[75px] md:p-4 md:px-10 md:right-0">
+                      <ul>
+                      <li>
+                    {currentUser &&              <Link
+                      className={`font-semibold ${location.pathname === '/dashboard' ? 'text-yellow-200' : ''}`}
+                      to="/dashboard"
+                      onClick={handleLinkClick}
+                    > Tableau de bord
+                    </Link>}
+                  </li>
+                        <li className="flex items-center pt-4">
+                          <CiLogout className="mr-2" />
+                          <button onClick={logout}>Déconnexion</button>
+                        </li>              
+                      </ul>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          }
-        </li>
+              }
+            </li>
             </ul>
           </div>
         </div>
