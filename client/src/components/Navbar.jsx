@@ -42,6 +42,7 @@ export const Navbar = () => {
       setIsMenuOpen(false);
     };
 
+
     // state qui verifira quand l'ecran est en haut
     useEffect(() => {
       const handleScroll = () => {
@@ -62,8 +63,9 @@ export const Navbar = () => {
     return (
 <nav
   className={`${
-    isMobile ? 'bg-transparent opacity-95' :
-    isOnTop ? 'bg-transparent text-xl' : 'bg-stone-800 opacity-95 text-xl'
+    // eslint-disable-next-line
+    isMobile ? 'bg-transparent opacity-90' :'bg-stone-800 opacity-90 text-xl ',
+    isOnTop ? 'bg-transparent text-xl' : 'bg-stone-800 opacity-90 text-xl '
   } text-white border-gray-200 w-full z-20 fixed transition-all duration-300`}
   style={{
     backgroundColor: location.pathname === '/dashboard' ? '#2c2c2c' : ''
@@ -71,7 +73,7 @@ export const Navbar = () => {
 >    <div className=" flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="/" className="flex items-center">
 
-            <p className={`font-custom text-4xl text-Engramma  md:block md:absolute ${location.pathname === '/' ? 'text-transparent' : ''}`}>
+            <p className={`font-custom text-4xl text-Engramma  md:block md:absolute ${location.pathname === '/' ? 'text-transparent' : ''} ${isOnTop ? '' :'text-cyan-200'}`}>
               EN GRAMMA
             </p>
           </a>
@@ -102,7 +104,7 @@ export const Navbar = () => {
             </button>
           </div>
           <div className={`${isMenuOpen ? 'block' : 'hidden'} w-full md:flex md:w-auto md:order-1`}>
-            <ul className="flex flex-col space-y-3 p-4  ml-auto md:space-y-0  md:p-0 mt-4 border border-stone-700  rounded-md  md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
+            <ul className="flex flex-col bg-stone-800 md:bg-transparent space-y-3 p-4  ml-auto md:space-y-0  md:p-0 mt-4 border border-stone-700  rounded-md  md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
               <li>
               <Link
                   className={`font-semibold ${location.pathname === '/' ? 'text-yellow-200' : ''}`}
@@ -167,10 +169,11 @@ export const Navbar = () => {
                     <span className="text-gray-200 text-sm">{currentUser?.role}</span>
                   </div>
                   {isMenuOpen && (
-                    <div className=" flex items-center text-white w-[230px] rounded menu text-base mx-auto md:shadow-md md:bg-stone-800 md:absolute md:top-[75px] md:p-4 md:px-10 md:right-0">
+                    <div className=" flex items-center text-white w-[230px] rounded menu text-base ml-10 md:shadow-md md:bg-neutral-800 md:opacity-95 md:absolute md:top-[75px] md:p-4 md:px-10 md:right-0">
                       <ul>
                       <li>
-                    {currentUser &&              <Link
+                    {currentUser &&              
+                    <Link
                       className={`font-semibold ${location.pathname === '/dashboard' ? 'text-yellow-200' : ''}`}
                       to="/dashboard"
                       onClick={handleLinkClick}

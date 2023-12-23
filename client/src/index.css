@@ -8,7 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
-  background-color: #f0efef;
+  background-color: #222222;
   color: rgb(46, 40, 55);
   font-family: Arial, sans-serif; 
 }

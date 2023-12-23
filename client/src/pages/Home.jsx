@@ -1,7 +1,11 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import spaceImage from '../assets/spaceimage.jpg';
 import logo from '../assets/logo.png';
+import { Social } from '../components/Social';
+import trioHome from '../assets/trio-home.jpg';
+import cover from '../assets/cover.jpg';
 export const Home = () => {
+  const [isMobile, setIsMobile] = useState(false);
   const divStyle = {
     backgroundImage: `url(${spaceImage})`,
     backgroundAttachment: 'fixed',
@@ -12,7 +16,23 @@ export const Home = () => {
     opacity: 0.05,
   };
 
+    // Fonction pour vérifier si la vue est en mode mobile
+    const checkIsMobile = () => {
+      // Logique de détection du mode mobile ici
+      const mobileWidth = 768; // Largeur à partir de laquelle vous considérez que c'est une vue mobile
+      const isMobile = window.innerWidth < mobileWidth;
+      setIsMobile(isMobile);
+    };
+  
+    // Appeler la fonction checkIsMobile à l'initialisation
+    useEffect(() => {
+      checkIsMobile();
+      window.addEventListener('resize', checkIsMobile);
+      return () => window.removeEventListener('resize', checkIsMobile);
+    }, []);
+
   return (
+    <>
     <div style={divStyle} className="p-5 bg-no-repeat bg-center bg-cover h-screen shadow-xl flex bg-black bg-opacity-40 justify-center items-center">
       <div style={logoStyle} className="absolute inset-0 scale-90"></div>
       <div className="absolute inset-0 flex flex-col justify-center items-center ">
@@ -20,6 +40,43 @@ export const Home = () => {
           <span className="font-custom text-Engramma dropshadow-xl">EN GRAMMA</span>
         </h1>
       </div>
+      <div className='mt-auto'>
+        <Social />
+        </div>
     </div>
+    <div className="relative flex py-3 items-center p-5 pt-10">
+      <div className="flex-grow border-t border-white mr-1"></div>
+        <img src={logo} className="h-[70px] pb-3" alt="logo en gramma" />
+      <div className="flex-grow border-t border-white"></div>
+    </div>
+    <div className="flex flex-col items-center justify-center sm:flex-row">
+  {isMobile ? (
+    <div className="mt-4 sm:mt-0 mx-3">
+      <img src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[380px] mb-8" />
+    </div>
+  ) : null}
+  <div className="max-w-[500px] sm:mr-4">
+    <p className="text-sm text-white text-justify mx-3">
+      <b>EN GRAMMA</b> ('ène gramma') est un trio Transe Rock formé en 2021 et basé à Rennes. Issu du grec ancien, son nom évoque la marque que la mémoire laisse en nous à travers le temps.<br /><br />
+      Le trio joue un mélange puissant de blues afro-dionysiaque et de rock acoustique, tout en chantant en trois langues (français, anglais et grec ancien). <br /><br />Beau Brûlis est leur premier album.
+      Il s'agit d'une collection d'histoires, enracinées dans le mystère et racontées à travers des mélodies vocales chaleureuses et des rythmes tribaux entraînants.<br /><br />
+      EN GRAMMA est un groupe unique et musicalement éclectique, qui occupe l'espace entre le primitif et le moderne, l'acoustique et l'électrique.<br /><br />
+      EN GRAMMA est formé par le chanteur Gautier Degandt qui a tourné à travers l'Europe avec son duo hard-folk <b>BÂTON BLEU</b> (Dixiefrog records/ PIAS), le guitariste afro/rock Oscar Philéas (<b>MAMADOU KOITA</b>), et le percussionniste Pierre-Yves Dubois.
+    </p>
+  </div>
+  {!isMobile ? (
+    <div className="mt-4 sm:mt-0 mx-3">
+      <img src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[380px]" />
+    </div>
+  ) : null}
+</div>
+
+
+<div className="mt-4 sm:mt-0 mx-3">
+  <div className="flex-grow border-t border-white my-3 mx-2"></div>
+
+      <img src={cover} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-w-[380px]" />
+    </div>
+    </>
   );
 };
