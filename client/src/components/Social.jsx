@@ -3,9 +3,9 @@ import { FaFacebook, FaInstagram, FaBandcamp, FaYoutube, FaDeezer, FaSpotify } f
 
 export const Social = () => {
   return (
-<div className="flex items-center">
+<div className="flex items-center ">
   <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-    <FaFacebook className="social-media-icon text-3xl text-white mr-4" />
+    <FaFacebook className="social-media-icon text-3xl text-white mr-4 " />
   </a>
   <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
     <FaInstagram className="social-media-icon text-3xl text-white mr-4" />
