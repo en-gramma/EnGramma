@@ -13,6 +13,7 @@ import {Tour} from './pages/Tour';
 import {ResetPasswordPage }from './pages/ResetPasswordPage';
 import { ForgotPassword } from './pages/ForgotPassword';
 import { Unauthorized } from './pages/Unauthorized';
+import { Footer } from './components/Footer';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
                 <Route element={<Unauthorized/>} path="/unauthorized"/>
               </Routes>
             </div>
+            <Footer />
         </div>
       </Router>
   );

@@ -3,7 +3,7 @@ import spaceImage from '../assets/spaceimage.jpg';
 import logo from '../assets/logo.png';
 import { Social } from '../components/Social';
 import trioHome from '../assets/trio-home.jpg';
-import cover from '../assets/cover.jpg';
+
 export const Home = () => {
   const [isMobile, setIsMobile] = useState(false);
   const divStyle = {
@@ -34,13 +34,13 @@ export const Home = () => {
   return (
     <>
     <div style={divStyle} className="p-5 bg-no-repeat bg-center bg-cover h-screen shadow-xl flex bg-black bg-opacity-40 justify-center items-center">
-      <div style={logoStyle} className="absolute inset-0 scale-90"></div>
+
       <div className="absolute inset-0 flex flex-col justify-center items-center ">
         <h1 className="text-5xl md:text-7xl">
           <span className="font-custom text-Engramma dropshadow-xl">EN GRAMMA</span>
         </h1>
       </div>
-      <div className='mt-auto'>
+      <div className='mt-auto z-20'>
         <Social />
         </div>
     </div>
@@ -51,32 +51,30 @@ export const Home = () => {
     </div>
     <div className="flex flex-col items-center justify-center sm:flex-row">
   {isMobile ? (
-    <div className="mt-4 sm:mt-0 mx-3">
-      <img src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[380px] mb-8" />
-    </div>
+    <div className="relative mt-4 sm:mt-0 mx-3">
+    <img src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[380px] shadow-lg" />
+    <p className="absolute bottom-0 right-0 text-white  px-2 py-1 text-sm">&copy; Antoine Chevillé</p>
+  </div>
+
   ) : null}
-  <div className="max-w-[500px] sm:mr-4">
-    <p className="text-sm text-white text-justify mx-3">
+  <div className="max-w-[500px] sm:mr-4 mt-5">
+    <p className="text-sm text-white text-justify mx-3 mb-9">
       <b>EN GRAMMA</b> ('ène gramma') est un trio Transe Rock formé en 2021 et basé à Rennes. Issu du grec ancien, son nom évoque la marque que la mémoire laisse en nous à travers le temps.<br /><br />
-      Le trio joue un mélange puissant de blues afro-dionysiaque et de rock acoustique, tout en chantant en trois langues (français, anglais et grec ancien). <br /><br />Beau Brûlis est leur premier album.
+      Le trio joue un mélange puissant de blues afro-dionysiaque et de rock acoustique, tout en chantant en trois langues (français, anglais et grec ancien). <br /><br /><a className='text-orange-600 underline'href='/music'>Beau brûlis</a> est leur premier album.
       Il s'agit d'une collection d'histoires, enracinées dans le mystère et racontées à travers des mélodies vocales chaleureuses et des rythmes tribaux entraînants.<br /><br />
       EN GRAMMA est un groupe unique et musicalement éclectique, qui occupe l'espace entre le primitif et le moderne, l'acoustique et l'électrique.<br /><br />
       EN GRAMMA est formé par le chanteur Gautier Degandt qui a tourné à travers l'Europe avec son duo hard-folk <b>BÂTON BLEU</b> (Dixiefrog records/ PIAS), le guitariste afro/rock Oscar Philéas (<b>MAMADOU KOITA</b>), et le percussionniste Pierre-Yves Dubois.
     </p>
   </div>
   {!isMobile ? (
-    <div className="mt-4 sm:mt-0 mx-3">
-      <img src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[380px]" />
-    </div>
+    <div className="relative mt-4 sm:mt-0 mx-3">
+  <img src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[380px] shadow-lg" />
+  <p className="absolute bottom-0 right-0 text-white  px-2 py-1 text-sm">&copy; Antoine Chevillé</p>
+</div>
+
   ) : null}
 </div>
 
-
-<div className="mt-4 sm:mt-0 mx-3">
-  <div className="flex-grow border-t border-white my-3 mx-2"></div>
-
-      <img src={cover} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-w-[380px]" />
-    </div>
     </>
   );
 };
