@@ -11,10 +11,6 @@ export const Home = () => {
     backgroundAttachment: 'fixed',
   };
 
-  const logoStyle = {
-    background: `url(${logo}) center center / contain no-repeat`,
-    opacity: 0.05,
-  };
 
     // Fonction pour vérifier si la vue est en mode mobile
     const checkIsMobile = () => {
