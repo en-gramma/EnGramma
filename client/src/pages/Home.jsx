@@ -33,10 +33,10 @@ export const Home = () => {
 
       <div className="absolute inset-0 flex flex-col justify-center items-center ">
         <h1 className="text-5xl md:text-7xl">
-          <span className="font-custom text-Engramma dropshadow-xl">EN GRAMMA</span>
+          <span className="font-custom text-Engramma dropshadow-xl animate-fade-up animate-duration-[2500ms]">EN GRAMMA</span>
         </h1>
       </div>
-      <div className='mt-auto z-20'>
+      <div className='mt-auto z-20 animate-pulse animate-duration-1000 animate-once'>
         <Social />
         </div>
     </div>
@@ -48,13 +48,13 @@ export const Home = () => {
     <div className="flex flex-col items-center justify-center sm:flex-row">
   {isMobile ? (
     <div className="relative mt-4 sm:mt-0 mx-3">
-    <img src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[380px] shadow-lg" />
+    <img src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[380px] shadow-lg " />
     <p className="absolute bottom-0 right-0 text-white  px-2 py-1 text-sm">&copy; Antoine Chevillé</p>
   </div>
 
   ) : null}
   <div className="max-w-[500px] sm:mr-4 mt-5">
-    <p className="text-sm text-white text-justify mx-3 mb-9">
+    <p className="text-sm text-white text-justify mx-3 mb-9 animate-fade-right">
       <b>EN GRAMMA</b> ('ène gramma') est un trio Transe Rock formé en 2021 et basé à Rennes. Issu du grec ancien, son nom évoque la marque que la mémoire laisse en nous à travers le temps.<br /><br />
       Le trio joue un mélange puissant de blues afro-dionysiaque et de rock acoustique, tout en chantant en trois langues (français, anglais et grec ancien). <br /><br /><a className='text-orange-600 underline'href='/music'>Beau brûlis</a> est leur premier album.
       Il s'agit d'une collection d'histoires, enracinées dans le mystère et racontées à travers des mélodies vocales chaleureuses et des rythmes tribaux entraînants.<br /><br />
@@ -64,7 +64,7 @@ export const Home = () => {
   </div>
   {!isMobile ? (
     <div className="relative mt-4 sm:mt-0 mx-3">
-  <img src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[380px] shadow-lg" />
+  <img src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[380px] shadow-lg " />
   <p className="absolute bottom-0 right-0 text-white  px-2 py-1 text-sm">&copy; Antoine Chevillé</p>
 </div>
 

@@ -39,7 +39,7 @@ export const Music = () => {
   return (
     <div className="h-screen relative">
       <img src={scene} alt="Music Background" className="object-cover w-full h-full" />
-      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}></div>
+      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}></div>
       <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center overflow-hidden">
         {/* Votre contenu musical peut être ajouté ici */}
         {loading ? (
@@ -54,7 +54,7 @@ export const Music = () => {
                   <iframe
                     title={`Bandcamp ${album.title}`}
                     style={{ border: 10, width: '350px', height: '470px' }}
-                    className='mx-auto lg:mx-0'
+                    className='mx-auto lg:mx-0 shadow-xl rounded-lg'
                     src={extractBandcampLink(album.bandcamp)}
                     seamless
                   >
@@ -62,17 +62,17 @@ export const Music = () => {
                   </iframe>
                 </div>
                 <div className='lg:flex lg:flex-col lg:items-center lg:ml-8'>
-                  <p className='text-sm mb-4 text-center lg:text-left max-w-[600px] md:mt-[200px]'>{album.description}</p>
+                  <p className='text-sm mb-4 text-justify mx-4 bg-black bg-opacity-50 md:bg-transparent lg:text-left max-w-[600px] md:mt-[200px] animate-fade-left'>{album.description}</p>
                   <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-4">
                     <a
                       href={album.albumLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-2 lg:mb-0"
+                      className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-2 lg:mb-0 mx-3 text-center animate-fade-up shadow-md"
                     >
                       Trouver l'album
                     </a>
-                    <a href="/media" className='text-orange-600 underline mt-1'>voir les avis presse</a>
+                    <a href="/media" className='text-orange-600 underline mt-1 mx-3 text-center animate-fade-up'>voir les avis presse</a>
                   </div>
                 </div>
               </div>
