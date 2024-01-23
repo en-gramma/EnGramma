@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import scene from '../assets/scene.jpg';
 import axios from 'axios';
+import '../index.css';
 
 export const Music = () => {
   const [albums, setAlbums] = useState([]);
@@ -38,13 +39,13 @@ export const Music = () => {
   return (
     <div className="h-screen relative">
       <img src={scene} alt="Music Background" className="object-cover w-full h-full" />
-      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}></div>
+      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}></div>
       <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center overflow-hidden">
         {/* Votre contenu musical peut être ajouté ici */}
         {loading ? (
           <p>Chargement...</p>
         ) : (
-          <div className="flex flex-col items-center text-lg text-white z-10 mt-[100px] overflow-y-auto  max-h-[80vh]">
+          <div className="flex flex-col items-center text-lg text-white z-10 mt-[75px] overflow-y-auto  max-h-[80vh] no-scrollbar">
             {albums.map((album) => (
               <div key={album.id} className="mb-4 flex flex-col lg:flex-row">
                 <div className="lg:mb-0 mb-4 ">
