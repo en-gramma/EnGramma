@@ -11,6 +11,7 @@ module.exports = {
     extend: {
         colors: {
           'Engramma':'#88b4bd',
+          'orange2':'#FF5733',
         },
 
       height: {

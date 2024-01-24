@@ -46,7 +46,7 @@ export const Music = () => {
         ) : (
           <div className="flex flex-col items-center text-lg text-white z-10 mt-[75px] overflow-y-auto  max-h-[80vh] no-scrollbar">
             {albums.map((album) => (
-              <div key={album.id} className="mb-4 flex flex-col lg:flex-row">
+              <div key={album.id} className="mb-[100px] flex flex-col lg:flex-row">
                 <div className="lg:mb-0 mb-4 ">
                   <h1 className='text-3xl font-bold uppercase mb-4 text-center lg:text-left'>{album.title}</h1>
                   <iframe
@@ -60,17 +60,17 @@ export const Music = () => {
                   </iframe>
                 </div>
                 <div className='lg:flex lg:flex-col lg:items-center lg:ml-8'>
-                  <p className='text-sm mb-4 text-justify mx-4 bg-black bg-opacity-50 md:bg-transparent lg:text-left max-w-[600px] lg:mt-[200px] animate-fade-left'>{album.description}</p>
+                  <p className='text-sm mb-4 text-justify mx-4 bg-black bg-opacity-50 md:bg-transparent lg:text-left sm:w-[400px] md:w-[600px] lg:mt-[200px] animate-fade-left'>{album.description}</p>
                   <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-4 md:mt-9">
                     <a
                       href={album.albumLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-2 lg:mb-0 mx-3 text-center animate-fade-up shadow-md"
+                      className="bg-orange2 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-2 lg:mb-0 mx-3 text-center animate-fade-up shadow-md"
                     >
                       Trouver l'album
                     </a>
-                    <a href="/media" className='text-orange-600 underline mt-1 mx-3 text-center animate-fade-up animate-delay-500 '>voir les avis presse</a>
+                    <a href="/media" className='text-orange2 underline mt-1 mx-3 text-center animate-fade-up animate-delay-500 '>voir les avis presse</a>
                   </div>
                 </div>
               </div>

@@ -179,7 +179,7 @@ const handleRecaptchaChange = (value) => {
       />
         <button
           type="submit"
-          className="bg-orange-600 text-white py-2 px-4 mb-4 mt-2 rounded  hover:bg-orange-700 w-full">
+          className="bg-orange2 text-white py-2 px-4 mb-4 mt-2 rounded  hover:bg-orange-700 w-full">
           Envoyer
         </button>
       </form>
@@ -189,10 +189,10 @@ const handleRecaptchaChange = (value) => {
         <div className="border rounded p-4 mb-4 text-white bg-slate-100 bg-opacity-20 md:ml-9 ml-0">
           <div className="flex items-center mb-2">
             
-            <h2 className="text-2xl font-bold mb-5">Documents Pro</h2>
+            <h2 className="text-2xl font-bold mb-4">Documents Pro</h2>
           </div>
-            <p><a href="url_to_dossier_de_presse" className='text-orange-600 hover:text-orange-700 pb-3 underline font-semibold'>Dossier de presse</a></p>
-            <p><a href="url_to_fiche_technique" className='text-orange-600 hover:text-orange-700 underline font-semibold'>Fiche technique</a></p>
+            <p><a href="url_to_dossier_de_presse" className='text-orange2 hover:text-orange-700 pb-3 underline font-semibold'>Dossier de presse</a></p>
+            <p><a href="url_to_fiche_technique" className='text-orange2 hover:text-orange-700 underline font-semibold'>Fiche technique</a></p>
         </div>
         </div>
       </div>

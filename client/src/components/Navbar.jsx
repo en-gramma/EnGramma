@@ -73,7 +73,7 @@ export const Navbar = () => {
 >    <div className=" flex flex-wrap items-center justify-between mx-auto p-4 ">
           <a href="/" className="flex items-center">
 
-            <p className={`font-custom text-4xl text-Engramma  md:hidden lg:block md:absolute ${location.pathname === '/' ? 'text-transparent' : ''} ${isOnTop ? '' :'text-cyan-200'}`}>
+            <p className={`font-custom text-4xl text-Engramma  md:hidden lg:block md:absolute ${location.pathname === '/' ? 'text-transparent' : ''} ${isOnTop ? '' :'text-Engramma'}`}>
               EN GRAMMA
             </p>
           </a>
@@ -107,7 +107,7 @@ export const Navbar = () => {
             <ul className="flex flex-col bg-stone-900 md:bg-transparent space-y-3 p-4  ml-auto md:space-y-0  md:p-0 mt-4 border border-stone-700  rounded-md  md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/' ? 'text-yellow-200' : ''}`}
+                  className={`font-semibold ${location.pathname === '/' ? 'text-yellow-300' : ''}`}
                   to="/"
                   onClick={handleLinkClick}
                 > ACCUEIL
@@ -115,7 +115,7 @@ export const Navbar = () => {
               </li>
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/music' ? 'text-yellow-200' : ''}`}
+                  className={`font-semibold ${location.pathname === '/music' ? 'text-yellow-300' : ''}`}
                   to="/music"
                   onClick={handleLinkClick}
                 > MUSIQUE
@@ -123,7 +123,7 @@ export const Navbar = () => {
               </li>
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/media' ? 'text-yellow-200' : ''}`}
+                  className={`font-semibold ${location.pathname === '/media' ? 'text-yellow-300' : ''}`}
                   to="/media"
                   onClick={handleLinkClick}
                 > MEDIA
@@ -131,7 +131,7 @@ export const Navbar = () => {
               </li>
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/bio' ? 'text-yellow-200' : ''}`}
+                  className={`font-semibold ${location.pathname === '/bio' ? 'text-yellow-300' : ''}`}
                   to="/bio"
                   onClick={handleLinkClick}
                 > BIOGRAPHIE
@@ -139,7 +139,7 @@ export const Navbar = () => {
               </li>
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/tour' ? 'text-yellow-200' : ''}`}
+                  className={`font-semibold ${location.pathname === '/tour' ? 'text-yellow-300' : ''}`}
                   to="/tour"
                   onClick={handleLinkClick}
                 > DATES
@@ -147,7 +147,7 @@ export const Navbar = () => {
               </li>
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/contact' ? 'text-yellow-200' : ''}`}
+                  className={`font-semibold ${location.pathname === '/contact' ? 'text-yellow-300' : ''}`}
                   to="/contact"
                   onClick={handleLinkClick}
                 > CONTACT/PRO

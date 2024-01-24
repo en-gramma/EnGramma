@@ -24,7 +24,7 @@ export const Footer = () => {
               {/* Contact Text */}
               <p className="font-custom dropshadow-xl text-2xl mt-2">CONTACT</p>
               {/* Email */}
-              <p className='text-orange-600 my-4'>univergram.asso@gmail.com</p>
+              <p className='text-orange2 my-4'>univergram.asso@gmail.com</p>
                 {/* Social Media Icons */}
                 <Social />
                 <p className='text-xs md:hidden mt-2'>&copy; En Gramma</p>

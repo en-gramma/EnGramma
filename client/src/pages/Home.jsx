@@ -56,7 +56,7 @@ export const Home = () => {
   <div className="max-w-[500px] sm:mr-4 mt-5">
     <p className="text-sm text-white text-justify mx-3 mb-9 animate-fade-right">
       <b>EN GRAMMA</b> ('ène gramma') est un trio Transe Rock formé en 2021 et basé à Rennes. Issu du grec ancien, son nom évoque la marque que la mémoire laisse en nous à travers le temps.<br /><br />
-      Le trio joue un mélange puissant de blues afro-dionysiaque et de rock acoustique, tout en chantant en trois langues (français, anglais et grec ancien). <br /><br /><a className='text-orange-600 underline'href='/music'>Beau brûlis</a> est leur premier album.
+      Le trio joue un mélange puissant de blues afro-dionysiaque et de rock acoustique, tout en chantant en trois langues (français, anglais et grec ancien). <br /><br /><a className='text-orange2 underline'href='/music'>Beau brûlis</a> est leur premier album.
       Il s'agit d'une collection d'histoires, enracinées dans le mystère et racontées à travers des mélodies vocales chaleureuses et des rythmes tribaux entraînants.<br /><br />
       EN GRAMMA est un groupe unique et musicalement éclectique, qui occupe l'espace entre le primitif et le moderne, l'acoustique et l'électrique.<br /><br />
       EN GRAMMA est formé par le chanteur Gautier Degandt qui a tourné à travers l'Europe avec son duo hard-folk <b>BÂTON BLEU</b> (Dixiefrog records/ PIAS), le guitariste afro/rock Oscar Philéas (<b>MAMADOU KOITA</b>), et le percussionniste Pierre-Yves Dubois.

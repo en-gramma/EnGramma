@@ -1,14 +1,13 @@
 import React from 'react';
 import {UserList} from '../admin/UserList';
-import {AddCar} from '../cars/AddCar';
+import {AddAlbum} from '../albums/AddAlbum';
 import {Messages} from '../customers/Messages';
 import {ScheduleEditor} from '../admin/ScheduleEditor';
 import {ServiceEditor} from '../admin/ServiceEditor';
 import {TestimonialsValidation} from '../customers/testimonial/TestimonialsValidation';
 import { TestimonialAdd } from '../customers/testimonial/TestimonialAdd';
-import { UpdateCar } from '../cars/UpdateCar';
 import { UserSettings } from '../userPref/UserSettings';
-
+import { DeleteAlbum } from '../albums/DeleteAlbum';
 
 export const Content = ({ selectedMenuItem }) => {
   //espace réservé au contenu du dashboard
@@ -20,12 +19,12 @@ export const Content = ({ selectedMenuItem }) => {
         return <div><Messages /></div>;
       case 'changer-parametres':
         return <div><UserSettings /></div>;
-      case 'ajouter-voiture':
-        return <div><AddCar/></div>;
-      case 'ajouter-temoignage':
+      case 'ajouter-album':
+        return <div><AddAlbum/></div>;
+      case 'effacer-album':
+        return <div><DeleteAlbum/></div>;
+        case 'ajouter-temoignage':
         return <div><TestimonialAdd /></div>;
-      case 'modifier-voiture':
-        return <div><UpdateCar /></div>;
       case 'valider-temoignage':
         return <div><TestimonialsValidation /></div>;
       case 'modifier-services':
