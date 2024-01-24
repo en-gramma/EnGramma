@@ -15,11 +15,11 @@ export const Bio = () => {
   <h1 className=" text-white dropshadow-xl animate-fade animate-duration-[2500ms] text-center text-2xl">Bio du projet <span className='font-custom'>EN GRAMMA</span></h1>
   <div className="flex flex-col items-center justify-center sm:flex-row">
   <div className="relative  my-9 ">
-    <img src={livre} alt="EN GRAMMA" className="object-cover w-full rounded-lg flex justify-center h-auto max-w-[575px] shadow-xl md:px-0 px-3" />
+    <img src={livre} alt="EN GRAMMA" className="object-cover w-full rounded-lg flex justify-center h-auto max-w-[675px] shadow-xl md:px-0 px-3" />
     <p className="absolute bottom-0 right-0 text-white  px-3 py-1 text-xs">&copy; Antoine Chevillé</p>
   </div>
   </div>
-  <div className='max-w-[600px] mx-auto'>
+  <div className='max-w-[700px] mx-auto'>
   <p className="text-sm text-white text-justify  mx-3 mb-9 animate-fade-right">
       <b>EN GRAMMA</b> ('ène gramma') est un trio Transe Rock formé en 2021 et basé à Rennes. Issu du grec ancien, son nom évoque la marque que la mémoire laisse en nous à travers le temps.<br /><br />
       Le trio joue un mélange puissant de blues afro-dionysiaque et de rock acoustique, tout en chantant en trois langues (français, anglais et grec ancien). <br /><br /><a className='text-orange-600 underline'href='/music'>Beau brûlis</a> est leur premier album.
@@ -42,11 +42,11 @@ export const Bio = () => {
 
   <div className="flex flex-col items-center justify-center sm:flex-row">
   <div className="relative  my-9 ">
-    <img src={symballes} alt="EN GRAMMA" className="object-cover w-full rounded-lg flex justify-center h-auto max-w-[575px] shadow-xl md:px-0 px-3" />
+    <img src={symballes} alt="EN GRAMMA" className="object-cover w-full rounded-lg flex justify-center h-auto max-w-[675px] shadow-xl md:px-0 px-3" />
     <p className="absolute bottom-0 right-0 text-white  px-3 py-1 text-xs">&copy; Antoine Chevillé</p>
   </div>
   </div>
-  <div className='max-w-[600px] mx-auto'>
+  <div className='max-w-[700px] mx-auto'>
   <p className="text-sm text-white text-justify  mx-3 mb-9 animate-fade-right">
       <b>EN GRAMMA</b> ('ène gramma') est un trio Transe Rock formé en 2021 et basé à Rennes. Issu du grec ancien, son nom évoque la marque que la mémoire laisse en nous à travers le temps.<br /><br />
       Le trio joue un mélange puissant de blues afro-dionysiaque et de rock acoustique, tout en chantant en trois langues (français, anglais et grec ancien). <br /><br /><a className='text-orange-600 underline'href='/music'>Beau brûlis</a> est leur premier album.

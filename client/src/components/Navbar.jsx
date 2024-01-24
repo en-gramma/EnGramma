@@ -73,7 +73,7 @@ export const Navbar = () => {
 >    <div className=" flex flex-wrap items-center justify-between mx-auto p-4 ">
           <a href="/" className="flex items-center">
 
-            <p className={`font-custom text-4xl text-Engramma  md:block md:absolute ${location.pathname === '/' ? 'text-transparent' : ''} ${isOnTop ? '' :'text-cyan-200'}`}>
+            <p className={`font-custom text-4xl text-Engramma  md:hidden lg:block md:absolute ${location.pathname === '/' ? 'text-transparent' : ''} ${isOnTop ? '' :'text-cyan-200'}`}>
               EN GRAMMA
             </p>
           </a>
