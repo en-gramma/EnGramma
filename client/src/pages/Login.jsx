@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import Logo from'../logo.svg'
+import Logo from'../assets/logo.png'
 import axios from 'axios'
 import DOMPurify from 'isomorphic-dompurify';
 
@@ -58,7 +58,7 @@ export const Login = () => {
 <div className="flex flex-col items-center justify-center h-screen">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img className="mx-auto h-10 w-auto" src={Logo} alt="Your Company"/>
-        <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Connexion au compte</h2>
+        <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-white">Connexion au compte</h2>
       </div>
 
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
