@@ -8,8 +8,8 @@ export const Footer = () => {
     <>
       <div>
         <div className="flex-grow border-t border-white mr-1"></div>
-        <footer className="relative text-white " style={{ backgroundImage: `url(${spaceImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-          <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}></div>
+        <footer className="relative text-white bg-black bg-opacity-40" style={{ backgroundImage: `url(${spaceImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+          <div className="absolute inset-0" ></div>
           <div className="relative flex items-center justify-between px-4 h-[150px]">
             {/* Left Section */}
             <div className="space-x-4 hidden my-2 md:flex flex-col items-center">
