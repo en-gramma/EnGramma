@@ -59,6 +59,9 @@ export const Navbar = () => {
     //mediaquerie
     const isMobile = useWindowWidth() < 965; 
     
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [location]);
 
     return (
 <nav

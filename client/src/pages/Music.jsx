@@ -45,7 +45,7 @@ export const Music = () => {
           <p>Chargement...</p>
         ) : (
           <div className="flex flex-col items-center text-lg text-white z-10 mt-[75px] overflow-y-auto  max-h-[80vh] no-scrollbar">
-            {albums.map((album) => (
+             {albums.slice().reverse().map((album) => (
               <div key={album.id} className="mb-[100px] flex flex-col lg:flex-row">
                 <div className="lg:mb-0 mb-4 ">
                   <h1 className='text-3xl font-bold uppercase mb-4 text-center lg:text-left'>{album.title}</h1>
