@@ -46,7 +46,7 @@ const showThreeDates = () => {
         ) : (
   <div className='overflow-auto no-scrollbar'>
 
-{dates.slice().reverse().slice(-datesToShow).map((date) => (
+{dates.slice().reverse().slice(0, datesToShow).map((date) => (
       <div key={date.id} className="mb-4 border-b border-white flex  items-start md:items-center md:justify-between w-full sm:w-[700px] last:mb-0 last:border-0  ">
         <div className="flex flex-row  w-full text-center mx-4 md:mx-0">
           <div className="text-column text-left mb-2 md:mb-0 w-1/2 mx-2">

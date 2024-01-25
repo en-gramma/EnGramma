@@ -52,8 +52,9 @@ export function DeleteAlbum() {
       {status && <p>{status}</p>}
       {albums.map(album => (
         
-        <div key={album.id} className='mb-3 mx-auto md:border md:border-gray-300 md:w-[375px] p-2 rounded shadow-md'>
+        <div key={album.id} className='mb-3  md:border md:border-gray-300 md:w-[375px] p-2 rounded shadow-md '>
             <h2 className='mb-2 font-semibold'>{album.title}</h2>
+            <button className='bg-red-500 py-1 px-2 rounded text-white w-full mt-2 mb-2' onClick={() => deleteAlbum(album.id)}>Effacer l'album</button>
                               <iframe
                     title={`Bandcamp ${album.title}`}
                     style={{ border: 10, width: '350px', height: '470px' }}
@@ -64,7 +65,7 @@ export function DeleteAlbum() {
                     <a href={album.bandcamp}>{album.title} sur Bandcamp</a>
                   </iframe>
           
-          <button className='bg-red-500 py-1 px-2 rounded text-white w-full mt-2' onClick={() => deleteAlbum(album.id)}>Effacer l'album</button>
+          
         </div>
       ))}
     </div>

@@ -62,19 +62,19 @@ export const AddAlbum = () => {
         <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto">
           <label className="block mb-4">
             <span className="text-gray-700">Titre de l'album:</span>
-            <input type="text" name="title" value={formData.title} onChange={handleChange} className="mt-1 block w-full rounded border-gray-300 border shadow-sm" />
+            <input type="text" name="title" value={formData.title} onChange={handleChange} className="mt-1 block w-full rounded border-gray-300 border shadow-sm p-1" />
           </label>
           <label className="block mb-4">
             <span className="text-gray-700">Intégrer lecteur Bandcamp:</span>
-            <input type="text" name="bandcamp" value={formData.bandcamp} onChange={handleChange} className="mt-1 block w-full rounded border-gray-300 border shadow-sm" />
+            <input type="text" name="bandcamp" value={formData.bandcamp} onChange={handleChange} className="mt-1 block w-full rounded border-gray-300 border shadow-sm p-1" />
           </label>
           <label className="block mb-4">
             <span className="text-gray-700">Description de l'album:</span>
-            <textarea name="description" value={formData.description} onChange={handleChange} className="mt-1 block w-full rounded border-gray-300 border shadow-sm" />
+            <textarea name="description" value={formData.description} onChange={handleChange} className="mt-1 block w-full rounded border-gray-300 border shadow-sm p-1" />
           </label>
           <label className="block mb-4">
             <span className="text-gray-700">Lien Bfan:</span>
-            <input type="text" name="albumLink" value={formData.albumLink} onChange={handleChange} className="mt-1 block w-full rounded border-gray-300 border shadow-sm" />
+            <input type="text" name="albumLink" value={formData.albumLink} onChange={handleChange} className="mt-1 block w-full rounded border-gray-300 border shadow-sm p-1" />
           </label>
           {formStatus === 'success' && <div className="text-green-500">Album ajouté avec succès!</div>}
           {formStatus === 'error' && <div className="text-red-500">Erreur lors de l'ajout de l'album.</div>}

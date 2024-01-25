@@ -36,7 +36,7 @@ export const RegisterModal = ({ isOpen, onClose, onRegister }) => {
       return;
     }
 
-    if (!/^[a-zA-Z0-9_-]+$/.test(formData.username)) {
+    if (!/^[a-zA-Z0-9_-éèêàâùûôç]+$/u.test(formData.username)) {
       setStatus('error');
       setStatusMessage('Le nom d\'utilisateur ne doit contenir que des lettres, des chiffres, des tirets et des underscores.');
       return;

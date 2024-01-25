@@ -219,7 +219,7 @@ export const deleteUser = (req, res, next) => {
             next(err);
             return;
           }
-          return res.status(200).json('La voiture a été supprimée avec succès.');
+          return res.status(200).json('L\'utilisateur a été supprimée avec succès.');
         });
         return;
 }

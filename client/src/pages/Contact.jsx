@@ -8,19 +8,15 @@ import ReCAPTCHA from 'react-google-recaptcha';
 
 export function Contact() {
  
-  const currentDate = new Date();
   const [submissionStatus, setSubmissionStatus] = useState('');
   const [submissionStatusErr, setSubmissionStatusErr] = useState('');
   const sitekey = process.env.REACT_APP_SITE_KEY;
 
   const initialFormData = {
-    lastName: DOMPurify.sanitize(''),
-    firstName: DOMPurify.sanitize(''),
+    fullName: DOMPurify.sanitize(''),
     email: DOMPurify.sanitize(''),
-    phone: DOMPurify.sanitize(''),
     message: DOMPurify.sanitize(''),
     object: DOMPurify.sanitize(''),
-    date: currentDate,
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -39,20 +35,15 @@ export function Contact() {
   
     // vérification des regex
     const userRegex = /^[A-Za-zÀ-ÿ\s-]+$/;
-    const phoneRegex = /^[\d\s\-+]+$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const objectRegex = /^[a-zA-Z0-9À-ÿ\s-]+$/;
     const messageRegex = /^[A-Za-zÀ-ÿ0-9\s.,\-!?'’()]+$/;
   
-    if (!userRegex.test(formData.lastName) || !userRegex.test(formData.firstName)) {
+    if (!userRegex.test(formData.fullName)) {
       setSubmissionStatusErr('Le nom ne doit contenir que des lettres, des tirets et des espaces.');
       return;
     }
   
-    if (!phoneRegex.test(formData.phone)) {
-      setSubmissionStatusErr('Le numéro ne doit contenir que des chiffres, des espaces et des tirets.');
-      return;
-    }
   
     if (!emailRegex.test(formData.email)) {
       setSubmissionStatusErr('Veuillez entrer une adresse e-mail valide.');
@@ -84,13 +75,10 @@ export function Contact() {
         });
         // réinitialisez le formulaire après l'envoi réussi
         setFormData({
-          lastName: '',
-          firstName: '',
+          fullName: '',
           email: '',
-          phone: '',
           message: '',
           object: '',
-          date: '',
           recaptcha: '', 
         });
         setSubmissionStatus('Le message a été envoyé avec succès!');
@@ -123,10 +111,10 @@ const handleRecaptchaChange = (value) => {
         <div className="mb-4">
           <input
             type="text"
-            id="lastName"
-            name="lastName"
+            id="fullName"
+            name="fullName"
             placeholder='Nom'
-            value={formData.lastName}
+            value={formData.fullName}
             onChange={handleChange}
             className="w-full border px-3 p-1"
             required />
