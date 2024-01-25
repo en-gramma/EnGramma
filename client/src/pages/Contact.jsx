@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import spaceimage from '../assets/spaceimage.jpg';
 import logo2 from '../assets/logo.png';
@@ -10,6 +10,7 @@ export function Contact() {
  
   const [submissionStatus, setSubmissionStatus] = useState('');
   const [submissionStatusErr, setSubmissionStatusErr] = useState('');
+  const [links, setLinks] = useState([]);
   const sitekey = process.env.REACT_APP_SITE_KEY;
 
   const initialFormData = {
@@ -20,6 +21,20 @@ export function Contact() {
   };
 
   const [formData, setFormData] = useState(initialFormData);
+
+  useEffect(() => {
+    const fetchLinks = async () => {
+      try {
+        const apiUrl = process.env.REACT_APP_API_URL;
+        const response = await axios.get(`${apiUrl}/api/links`, { withCredentials: true });
+        setLinks(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchLinks();
+  }, []);
 
   // gestion des changements dans le formulaire
   const handleChange = (e) => {
@@ -101,7 +116,7 @@ const handleRecaptchaChange = (value) => {
     <>
   <div className="h-screen relative overflow-hidden">
     <img src={spaceimage} alt="Music Background" className="object-cover w-full h-full bg-black bg-opacity-40 " />
-    <img src={logo2} alt="En Gramma logo" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-[600px]  opacity-5 hidden md:block" />
+    <img src={logo2} alt="En Gramma logo" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-[600px]  opacity-3 hidden md:block" />
     
     <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center overflow-auto no-scrollbar">
     <h2 className="text-3xl font-bold mb-4 text-white font-custom text-center pt-[200px] md:pt-[100px]">CONTACT</h2>
@@ -179,8 +194,12 @@ const handleRecaptchaChange = (value) => {
             
             <h2 className="text-2xl font-bold mb-4">Documents Pro</h2>
           </div>
-            <p><a href="url_to_dossier_de_presse" className='text-orange2 hover:text-orange-700 pb-3 underline font-semibold'>Dossier de presse</a></p>
-            <p><a href="url_to_fiche_technique" className='text-orange2 hover:text-orange-700 underline font-semibold'>Fiche technique</a></p>
+          {links.map((link, index) => (
+        <div key={index}>
+            <p><a href={link.dossier} className='text-orange2 hover:text-orange-700 pb-3 underline font-semibold' target="_blank" rel="noopener noreferrer">Dossier de presse</a></p>
+            <p><a href={link.fiche} className='text-orange2 hover:text-orange-700 underline font-semibold' target="_blank" rel="noopener noreferrer">Fiche technique</a></p>
+            </div>
+      ))}
         </div>
         </div>
       </div>

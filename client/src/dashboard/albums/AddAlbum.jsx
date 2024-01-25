@@ -78,7 +78,7 @@ export const AddAlbum = () => {
           </label>
           {formStatus === 'success' && <div className="text-green-500">Album ajouté avec succès!</div>}
           {formStatus === 'error' && <div className="text-red-500">Erreur lors de l'ajout de l'album.</div>}
-          <button type="submit" className="w-full py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700">Ajouter l'album</button>
+          <button type="submit" className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Ajouter l'album</button>
         </form>
     </div>
   );

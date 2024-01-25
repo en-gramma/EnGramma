@@ -7,7 +7,7 @@ const router = express.Router();
 
 // routes pour les voitures
 router.get("/", getLinks);
-router.put("/", updateLinks);
+router.put("/:id", updateLinks);
 
 
 export default router;

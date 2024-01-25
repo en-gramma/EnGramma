@@ -71,6 +71,7 @@ export const AddDate = () => {
 
     <div className="mb-5 mt-2 border-b border-gray-300 "></div>
     <h3 className='font-semibold mb-3'>Effacer une date</h3>
+    <div className="overflow-x-auto">
         <table className="table-auto w-full">
         <thead>
             <tr className='text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400'>
@@ -97,6 +98,7 @@ export const AddDate = () => {
             ))}
         </tbody>
         </table>
+        </div>
     </div>
   );
 };

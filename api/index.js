@@ -59,7 +59,7 @@ app.use("/api/passwordrecovery",passRecRoutes)
 app.use("/api/albums", albumRoutes);
 app.use("/api/dates", dateRoutes);
 app.use("/api/messages", messageRoutes);
-app.use('/api/links', linkRoutes);
+app.use("/api/links", linkRoutes);
 
 //gestion des erreurs, les erreurs seront retournées avec ce message générique
 app.use((err, req, res, next) => {

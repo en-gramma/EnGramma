@@ -20,7 +20,7 @@ export const updateLinks =  (req, res, next) => {
       if (err) return res.status(403).json("Le token n'est pas valide.");
   
       const q = 
-      "UPDATE cars SET `dossier`=?, `fiche=? WHERE `id`=?";
+      "UPDATE links SET `dossier`=?, `fiche`=? WHERE `id`=?";
 
       const values = [
         req.body.dossier,

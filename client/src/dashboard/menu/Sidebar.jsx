@@ -47,6 +47,13 @@ export const Sidebar = ({ onSelectMenuItem }) => {
           </div>
         </li>
         <div className="mb-4 border-b border-gray-300"></div>
+        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('update-lien')}>
+          <div className="flex items-center">
+            <AiOutlineEdit className="mr-2" />
+            Mise à jour des liens Pro
+          </div>
+        </li>
+        <div className="mb-4 border-b border-gray-300"></div>
 
         {currentUser && currentUser.role === 'admin' && (
           <>
