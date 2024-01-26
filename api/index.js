@@ -5,6 +5,7 @@ import albumRoutes from "./routes/albums.js";
 import dateRoutes from "./routes/dates.js";
 import messageRoutes from "./routes/messages.js";
 import linkRoutes from "./routes/links.js";
+import imageRoutes from "./routes/images.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -60,6 +61,7 @@ app.use("/api/albums", albumRoutes);
 app.use("/api/dates", dateRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/links", linkRoutes);
+app.use("/api/images", imageRoutes);
 
 //gestion des erreurs, les erreurs seront retournées avec ce message générique
 app.use((err, req, res, next) => {

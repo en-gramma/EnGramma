@@ -5,6 +5,7 @@ import { UserSettings } from '../userPref/UserSettings';
 import { DeleteAlbum } from '../albums/DeleteAlbum';
 import { AddDate } from '../dates/AddDate';
 import { UpdateLinks } from '../links/UpdateLinks';
+import { UploadImage } from '../images/UploadImage';
 
 export const Content = ({ selectedMenuItem }) => {
   //espace réservé au contenu du dashboard
@@ -14,6 +15,8 @@ export const Content = ({ selectedMenuItem }) => {
         return <div><UserList /></div>;
       case 'changer-parametres':
         return <div><UserSettings /></div>;
+      case 'ajouter-image':
+        return <div><UploadImage/></div>;
       case 'ajouter-album':
         return <div><AddAlbum/></div>;
       case 'effacer-album':

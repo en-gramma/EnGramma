@@ -21,7 +21,7 @@ export const sendMessage = async (req, res) => {
     to: user, 
     subject: object, 
     text: message, 
-    html: `<b>${fullName} Vous a envoyé:</b><br>${message}`, // html body
+    html: `<b>${fullName} Vous a envoyé un message via le formulaire de contact:</b><br>${message}`, // html body
   });
 
   res.json({ status: 'Message sent', messageId: info.messageId });

@@ -13,6 +13,8 @@
     "install": "^0.13.0",
     "isomorphic-dompurify": "^1.9.0",
     "js-cookie": "^3.0.5",
+    "lucas-silbernagel-smoke-effect-react": "^2.1.0",
+    "masonry-layout": "^4.2.2",
     "npm": "^10.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -48,7 +48,7 @@ export const forgotPassword = async (req, res, next) => {
         from: "votre-email@gmail.com",
         to: email,
         subject: "Réinitialisation du mot de passe",
-        text: `Vous avez demandé la réinitialisation de votre mot de passe. Veuillez cliquer sur le lien suivant pour réinitialiser votre mot de passe : ${resetPasswordUrl}`,
+        text: `Vous avez demandé la réinitialisation de votre mot de passe sur le site En Gramma. Veuillez cliquer sur le lien suivant pour réinitialiser votre mot de passe : ${resetPasswordUrl}`,
       };
 
       transporter.sendMail(mailOptions, (err) => {
