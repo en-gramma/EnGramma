@@ -60,6 +60,10 @@ export const UploadImage = () => {
       return;
     }
 
+    if (!formData.author) {
+        formData.author = 'En Gramma';
+      }
+
     const {url, filename} = await uploadImage(formData.file);
 
     try {
@@ -92,10 +96,12 @@ export const UploadImage = () => {
 <div className="w-full shadow-md rounded-md p-2 md:p-3 bg-white md:m-3 ">
     <h2 className="text-xl font-bold  px-2 py-2 w-full">Ajouter un album</h2>
     <div className="mb-5 mt-2 border-b border-gray-300"></div>
-    <form onSubmit={handleSubmit} className="w-full max-w-md  px-8 pt-2 pb-8 mb-4">
+    <form onSubmit={handleSubmit} className="w-full max-w-lg  px-8 pt-2 pb-8 mb-4">
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
-          Titre
+        <label className="block " htmlFor="title">
+        <p className='text-gray-700 text-sm font-bold mb-2'>Titre</p>
+          <p className='text-sm mb-2'>Pour un meilleur référencement utiliser 'En Gramma' dans le titre. </p>
+          <p className='text-sm mb-2 italic'>Ex: En Gramma - Concert Noktambule </p>
         </label>
         <input
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -108,8 +114,10 @@ export const UploadImage = () => {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="author">
-          Auteur
+        <label className="block " htmlFor="author">
+        <p className='text-gray-700 text-sm font-bold mb-2'>Auteur</p>
+          <p className='text-sm mb-2'>Apparaîtra dans le Copyright. </p>
+
         </label>
         <input
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -122,8 +130,9 @@ export const UploadImage = () => {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="file">
-          Image
+        <label className="block " htmlFor="file">
+          <p className='text-gray-700 text-sm font-bold mb-2'>Image</p>
+          <p className='text-sm mb-2'>Taille maximale 5mb, compresser une image : <a href="https://imagecompressor.com/fr/" className='underline text-blue-600'>Ici</a></p>
         </label>
         <input
           className=" appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
