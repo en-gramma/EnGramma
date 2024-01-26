@@ -5,6 +5,7 @@ import DOMPurify from 'isomorphic-dompurify';
 export const UploadImage = () => {
 
   const [status, setStatus] = useState(''); 
+  const [formStatus, setFormStatus] = useState(null);
 
   //dompurify assaini les données
   const [formData, setFormData] = useState({
@@ -34,10 +35,11 @@ export const UploadImage = () => {
       formData.append("file", file);
       formData.append("upload_preset", process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET);
   
-      const response = await axios.post("https://api.cloudinary.com/v1_1/doz6ojndh/image/upload", formData, {
+      const response = await axios.post("https://api.cloudinary.com/v1_1/dvfel75pw/image/upload", formData, {
         headers: { "X-Requested-With": "XMLHttpRequest" },
       });
       // récupération de l'url et du nom du fichier
+      setFormStatus('success');
       return {
         url: response.data.url, 
         filename: file.name
@@ -45,6 +47,7 @@ export const UploadImage = () => {
       
     } catch (error) {
       console.error(error);
+      setFormStatus('error');
     }
   };
 
@@ -71,7 +74,7 @@ export const UploadImage = () => {
       setStatus('success');
     } catch (err) {
       setStatus('error');
-      console.error('Erreur lors de l\'ajout de la voiture :', err.response ? err.response.data : err.message);
+      console.error('Erreur lors de l\'ajout de l image :', err.response ? err.response.data : err.message);
     }
   };
 
@@ -130,6 +133,8 @@ export const UploadImage = () => {
           onChange={handleChange}
         />
       </div>
+            {formStatus === 'success' && <div className="text-green-500 mb-2">Image ajoutée avec succès!</div>}
+          {formStatus === 'error' && <div className="text-red-500">Erreur lors de l'ajout de l'image.</div>}
       <div className="flex items-center justify-between">
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
           Ajouter

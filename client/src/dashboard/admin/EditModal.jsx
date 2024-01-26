@@ -42,7 +42,7 @@ export const EditModal = ({ isOpen, onClose, onUpdate, user}) => {
           formData.append("file", file);
           formData.append("upload_preset", process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET);
       
-          const response = await axios.post("https://api.cloudinary.com/v1_1/doz6ojndh/image/upload", formData, {
+          const response = await axios.post("https://api.cloudinary.com/v1_1/dvfel75pw/image/upload", formData, {
             headers: { "X-Requested-With": "XMLHttpRequest" },
           });
           // récupération de l'url et du nom du fichier

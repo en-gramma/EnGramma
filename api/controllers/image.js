@@ -52,7 +52,7 @@ export const deleteImage = (req, res, next) => {
         // Efface l'image de cloudinary
         cloudinary.uploader.destroy(imagePublicId)
           .then(() => {
-            const deleteQuery = 'DELETE FROM image WHERE id = ?';
+            const deleteQuery = 'DELETE FROM images WHERE id = ?';
             db.query(deleteQuery, [imageId], (err) => {
               if (err) {
                 next(err);
@@ -81,12 +81,13 @@ export const addImage = (req, res, next) => {
       }
   
       const q =
-        "INSERT INTO images (`title`, `image`, `author`) VALUES (?)";
+        "INSERT INTO images (`title`, `author`, `image` ) VALUES (?)";
   
       const values = [
         DOMPurify.sanitize(req.body.title),
-        DOMPurify.sanitize(req.body.image),
         DOMPurify.sanitize(req.body.author),
+        DOMPurify.sanitize(req.body.image),
+        
       ];
   
       db.query(q, [values], (err, data) => {

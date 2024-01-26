@@ -28,7 +28,7 @@ export const Sidebar = ({ onSelectMenuItem }) => {
       <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-image')}>
           <div className="flex items-center">
             <AiOutlineCar className="mr-2" />
-            Ajouter une image
+            Ajouter une photo
           </div>
         </li>
         <div className="mb-4 border-b border-gray-300"></div>
