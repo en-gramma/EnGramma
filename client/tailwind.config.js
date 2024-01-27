@@ -20,6 +20,10 @@ module.exports = {
           'orange2':'#FF5733',
         },
 
+        fontSize: {
+          'xxs': '0.6rem', 
+        },
+  
       height: {
         '50': '12.5rem',
         '60': '15rem',
