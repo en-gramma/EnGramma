@@ -81,14 +81,15 @@ export const addImage = (req, res, next) => {
       }
   
       const q =
-        "INSERT INTO images (`title`, `author`, `image` ) VALUES (?)";
-  
-      const values = [
-        DOMPurify.sanitize(req.body.title),
-        DOMPurify.sanitize(req.body.author),
-        DOMPurify.sanitize(req.body.image),
-        
-      ];
+      "INSERT INTO images (`title`, `author`, `image`, `width`, `height`) VALUES (?)";
+    
+    const values = [
+      DOMPurify.sanitize(req.body.title),
+      DOMPurify.sanitize(req.body.author),
+      DOMPurify.sanitize(req.body.image),
+      DOMPurify.sanitize(req.body.width),
+      DOMPurify.sanitize(req.body.height)
+    ];
   
       db.query(q, [values], (err, data) => {
         if (err) {

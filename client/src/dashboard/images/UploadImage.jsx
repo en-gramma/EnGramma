@@ -19,9 +19,14 @@ export const UploadImage = () => {
     const { name, value, type, files } = e.target;
     setFormData({
       ...formData,
-      [name]: type === 'file' ? files[0] : value,});
+      [name]: type === 'file' ? files[0] : value,
+    });
+  
+    if (name === 'file') {
+      setFormStatus(null);
+    }
   };
-
+  
   // upload de l'image avec restriction de taille
   const uploadImage = async (file) => {
     const maxSize = 5 * 1024 * 1024;
@@ -42,7 +47,9 @@ export const UploadImage = () => {
       setFormStatus('success');
       return {
         url: response.data.url, 
-        filename: file.name
+        filename: file.name,
+        width: response.data.width,
+        height: response.data.height
       }
       
     } catch (error) {
@@ -64,14 +71,16 @@ export const UploadImage = () => {
         formData.author = 'En Gramma';
       }
 
-    const {url, filename} = await uploadImage(formData.file);
+    const {url, filename, width, height} = await uploadImage(formData.file);
 
     try {
       const apiUrl = process.env.REACT_APP_API_URL;
       await axios.post(`${apiUrl}/api/images/`, {
         ...formData,
         image: url,
-        filename: filename
+        filename: filename,
+        width: width,
+        height: height
       }, {
         withCredentials: true,
       });
