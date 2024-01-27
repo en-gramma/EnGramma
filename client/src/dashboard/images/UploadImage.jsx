@@ -103,7 +103,7 @@ export const UploadImage = () => {
     }, [status]) 
   return (
 <div className="w-full shadow-md rounded-md p-2 md:p-3 bg-white md:m-3 ">
-    <h2 className="text-xl font-bold  px-2 py-2 w-full">Ajouter un album</h2>
+    <h2 className="text-xl font-bold  px-2 py-2 w-full">Ajouter une image</h2>
     <div className="mb-5 mt-2 border-b border-gray-300"></div>
     <form onSubmit={handleSubmit} className="w-full max-w-lg  px-8 pt-2 pb-8 mb-4">
       <div className="mb-4">

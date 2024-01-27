@@ -38,10 +38,10 @@ export const Navbar = () => {
     const toggleMenu = () => {
       setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen);
     };
-    const handleLinkClick = () => {
-      setIsMenuOpen(false);
-    };
-
+  const handleLinkClick = async () => {
+  await new Promise(resolve => setTimeout(resolve, 0));
+  setIsMenuOpen(false);
+};
 
     // state qui verifira quand l'ecran est en haut
     useEffect(() => {
@@ -110,7 +110,7 @@ export const Navbar = () => {
             <ul className="flex flex-col bg-stone-900 md:bg-transparent space-y-3 p-4  ml-auto md:space-y-0  md:p-0 mt-4 border border-stone-700  rounded-md  md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/' ? 'text-yellow-300' : ''}`}
+                  className={`font-semibold ${location.pathname === '/' ? 'text-yellow-300' : ''} hover:text-yellow-300 `}
                   to="/"
                   onClick={handleLinkClick}
                 > ACCUEIL
@@ -118,7 +118,7 @@ export const Navbar = () => {
               </li>
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/music' ? 'text-yellow-300' : ''}`}
+                  className={`font-semibold ${location.pathname === '/music' ? 'text-yellow-300' : ''} hover:text-yellow-300`}
                   to="/music"
                   onClick={handleLinkClick}
                 > MUSIQUE
@@ -126,7 +126,7 @@ export const Navbar = () => {
               </li>
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/media' ? 'text-yellow-300' : ''}`}
+                  className={`font-semibold ${location.pathname === '/media' ? 'text-yellow-300' : ''} hover:text-yellow-300`}
                   to="/media"
                   onClick={handleLinkClick}
                 > MEDIA
@@ -134,7 +134,7 @@ export const Navbar = () => {
               </li>
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/bio' ? 'text-yellow-300' : ''}`}
+                  className={`font-semibold ${location.pathname === '/bio' ? 'text-yellow-300' : ''} hover:text-yellow-300`}
                   to="/bio"
                   onClick={handleLinkClick}
                 > BIOGRAPHIE
@@ -142,7 +142,7 @@ export const Navbar = () => {
               </li>
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/tour' ? 'text-yellow-300' : ''}`}
+                  className={`font-semibold ${location.pathname === '/tour' ? 'text-yellow-300' : ''} hover:text-yellow-300`}
                   to="/tour"
                   onClick={handleLinkClick}
                 > DATES
@@ -150,7 +150,7 @@ export const Navbar = () => {
               </li>
               <li>
               <Link
-                  className={`font-semibold ${location.pathname === '/contact' ? 'text-yellow-300' : ''}`}
+                  className={`font-semibold ${location.pathname === '/contact' ? 'text-yellow-300' : ''} hover:text-yellow-300`}
                   to="/contact"
                   onClick={handleLinkClick}
                 > CONTACT/PRO
@@ -177,7 +177,7 @@ export const Navbar = () => {
                       <li>
                     {currentUser &&              
                     <Link
-                      className={`font-semibold ${location.pathname === '/dashboard' ? 'text-yellow-200' : ''}`}
+                    className={`font-semibold ${location.pathname === '/dashboard' ? 'text-yellow-300' : ''} hover:text-yellow-300`}
                       to="/dashboard"
                       onClick={handleLinkClick}
                     > Tableau de bord

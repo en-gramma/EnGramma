@@ -6,6 +6,7 @@ import { DeleteAlbum } from '../albums/DeleteAlbum';
 import { AddDate } from '../dates/AddDate';
 import { UpdateLinks } from '../links/UpdateLinks';
 import { UploadImage } from '../images/UploadImage';
+import { DeleteImage } from '../images/DeleteImage';
 
 export const Content = ({ selectedMenuItem }) => {
   //espace réservé au contenu du dashboard
@@ -25,6 +26,8 @@ export const Content = ({ selectedMenuItem }) => {
         return <div><AddDate/></div>;
       case 'update-lien':
         return <div><UpdateLinks/></div>;
+      case 'delete-image':
+        return <div><DeleteImage/></div>;
       default:
         return <div><UserSettings /></div>;
     }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import 'photoswipe/style.css';
 
 const ImageGallery = () => {
   const [images, setImages] = useState([]);
@@ -20,17 +21,21 @@ const ImageGallery = () => {
   }, []);
 
   useEffect(() => {
-    const options = {
+    let lightbox = new PhotoSwipeLightbox({
       gallery: '#my-gallery',
       children: 'a',
-      pswpModule: () => import('photoswipe')
-    };
-    const lightbox = new PhotoSwipeLightbox(options);
+      pswpModule: () => import('photoswipe'),
+    });
     lightbox.init();
+
+    return () => {
+      lightbox.destroy();
+      lightbox = null;
+    };
   }, [images]);
 
   return (
-    <div id="my-gallery" className="grid md:grid-cols-3 md:gap-4 grid-cols-1 mx-2 gap-2 max-w-[1000px]">
+    <div id="my-gallery" className="grid md:grid-cols-4 md:gap-4 grid-cols-1 mx-2 gap-2 max-w-[1000px]">
       {images.sort((a, b) => b.height + a.height).map((image, index) => {
         return (
           <div key={image.id} className="relative ">
