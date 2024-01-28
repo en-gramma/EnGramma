@@ -25,16 +25,22 @@ export const Sidebar = ({ onSelectMenuItem }) => {
         </span>
       <div className="mb-4 border-b border-gray-300"></div>
       <ul>
-      <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('delete-image')}>
+      <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-image')}>
+          <div className="flex items-center">
+            <AiOutlineCar className="mr-2" />
+            Ajouter une photo
+          </div>
+        </li>
+        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('delete-image')}>
           <div className="flex items-center">
             <AiOutlineCar className="mr-2" />
             Effacer une photo
           </div>
         </li>
-      <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-image')}>
+        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('editer-article')}>
           <div className="flex items-center">
             <AiOutlineCar className="mr-2" />
-            Ajouter une photo
+            Editeur presse
           </div>
         </li>
         <div className="mb-4 border-b border-gray-300"></div>

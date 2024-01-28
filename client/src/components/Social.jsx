@@ -7,7 +7,7 @@ export const Social = () => {
       <a href="https://www.facebook.com/engrammaofficial/" target="_blank" rel="noopener noreferrer">
         <FaFacebook className="social-media-icon text-3xl text-white mr-4 hover:text-orange2 transform hover:scale-125 transition-all" />
       </a>
-      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.instagram.com/en_gramma/" target="_blank" rel="noopener noreferrer">
         <FaInstagram className="social-media-icon text-3xl text-white mr-4 hover:text-orange2 transform hover:scale-125 transition-all" />
       </a>
       <a href="https://engramma.bandcamp.com/" target="_blank" rel="noopener noreferrer">

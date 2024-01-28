@@ -7,6 +7,7 @@ import { AddDate } from '../dates/AddDate';
 import { UpdateLinks } from '../links/UpdateLinks';
 import { UploadImage } from '../images/UploadImage';
 import { DeleteImage } from '../images/DeleteImage';
+import { AddArticle } from '../articles/AddArticle';
 
 export const Content = ({ selectedMenuItem }) => {
   //espace réservé au contenu du dashboard
@@ -18,6 +19,8 @@ export const Content = ({ selectedMenuItem }) => {
         return <div><UserSettings /></div>;
       case 'ajouter-image':
         return <div><UploadImage/></div>;
+      case 'editer-article':
+        return <div><AddArticle /></div>
       case 'ajouter-album':
         return <div><AddAlbum/></div>;
       case 'effacer-album':

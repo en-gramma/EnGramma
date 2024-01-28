@@ -26,18 +26,21 @@ export const AddDate = () => {
       await axios.post(`${apiUrl}/api/dates`, formData, 
       { withCredentials: true });
       setStatusMessage('success');
+      fetchDates(); // Refresh the dates after adding a new one
     } catch (error) {
       setStatusMessage('error');
     }
   };
 
   const handleDelete = async (id) => {
-    try {
-      const apiUrl = process.env.REACT_APP_API_URL;
-      await axios.delete(`${apiUrl}/api/dates/${id}`, { withCredentials: true });
-      fetchDates(); // Refresh the dates after deleting one
-    } catch (error) {
-      console.error('Error deleting date:', error);
+    if (window.confirm('Êtes-vous sûr de vouloir supprimer cette date ?')) {
+      try {
+        const apiUrl = process.env.REACT_APP_API_URL;
+        await axios.delete(`${apiUrl}/api/dates/${id}`, { withCredentials: true });
+        fetchDates(); // Refresh the dates after deleting one
+      } catch (error) {
+        console.error('Error deleting date:', error);
+      }
     }
   };
 

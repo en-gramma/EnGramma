@@ -9,6 +9,9 @@ module.exports = {
       'custom': ['Engramma', 'sans-serif'],
     },
     extend: {
+      textShadow: {
+        '3d': '0 2px 3px rgba(0,0,0,0.3)'
+      },
       opacity: {
         '1': '0.01',
         '2': '0.02',
@@ -59,9 +62,12 @@ module.exports = {
     },
     
   },
+  variants: {},
   
   plugins: [
-    require('tailwindcss-animated')
+    require('tailwindcss-animated'),
+    require('tailwindcss-textshadow')
   ],
+  
 }
 

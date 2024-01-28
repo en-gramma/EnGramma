@@ -141,7 +141,7 @@ export const UploadImage = () => {
       <div className="mb-4">
         <label className="block " htmlFor="file">
           <p className='text-gray-700 text-sm font-bold mb-2'>Image</p>
-          <p className='text-sm mb-2'>Taille maximale 5mb, compresser une image : <a href="https://imagecompressor.com/fr/" className='underline text-blue-600'>Ici</a></p>
+          <p className='text-sm mb-2'>Taille maximale 5mb, compresser une image : <a href="https://imagecompressor.com/fr/" target="_blank" rel="noopener noreferrer" className='underline text-blue-600'>Ici</a></p>
         </label>
         <input
           className=" appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

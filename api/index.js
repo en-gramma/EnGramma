@@ -6,6 +6,7 @@ import dateRoutes from "./routes/dates.js";
 import messageRoutes from "./routes/messages.js";
 import linkRoutes from "./routes/links.js";
 import imageRoutes from "./routes/images.js";
+import articleRoutes from "./routes/articles.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -62,6 +63,7 @@ app.use("/api/dates", dateRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/links", linkRoutes);
 app.use("/api/images", imageRoutes);
+app.use("/api/articles", articleRoutes);
 
 //gestion des erreurs, les erreurs seront retournées avec ce message générique
 app.use((err, req, res, next) => {

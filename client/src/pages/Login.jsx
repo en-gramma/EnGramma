@@ -64,7 +64,7 @@ export const Login = () => {
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="space-y-6" action="#" method="POST">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">Email</label>
+            <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">Email</label>
             <div className="mt-2">
               <input onChange={handleChange} id="email"
                 name="email"
@@ -77,7 +77,7 @@ export const Login = () => {
           <div>
             <div className="flex items-center justify-between">
               <label htmlFor="password"
-               className="block text-sm font-medium leading-6 text-gray-900">Mot de passe</label>
+               className="block text-sm font-medium leading-6 text-white">Mot de passe</label>
             </div>
             <div className="mt-2">
               <input onChange={handleChange} 
