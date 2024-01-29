@@ -36,7 +36,7 @@ export const deleteArticle = (req, res, next) => {
     const articleId = req.params.id;
     const q = 'SELECT image FROM articles WHERE id = ?';
 
-    db.query(q, [carId], (err, data) => {
+    db.query(q, [articleId], (err, data) => {
       if (err) {
         next(err);
         return;

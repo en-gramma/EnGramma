@@ -161,16 +161,18 @@ export const AddArticle = () => {
       <h2 className="text-lg font-bold  px-2 py-2 w-full mb-4">Effacer un article</h2>
         {formStatus === 'success' && <div className="text-green-500">L'article a été effacé avec succès!</div>}
         {formStatus === 'error' && <div className="text-red-500">Erreur lors de l'effacement de l'article</div>}
+        <div className="grid md:grid-cols-3 gap-4">
         {articles.map(article => (
-        <div key={article.id} className="p-4">
+        <div key={article.id} className="p-4 flex flex-col items-center">
             <img src={article.image} alt={article.name} className="w-auto h-[75px] object-cover mb-4 rounded" />
             <h2 className="mb-2"><span className='text-md font-bold '>{article.name}</span> <span className='italic'>({article.country})</span></h2>
             <p className='text-gray-700 font-semibold'>{article.header}</p>
-            <p className="text-gray-700">{article.text}</p>
-
+            <p className="text-gray-700 text-center">{article.text}</p>
             <button onClick={() => deleteArticle(article.id)} className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Effacer</button>
+            <div className="mb-5 mt-2 border-b border-gray-300 "></div>
         </div>
         ))}
+        </div>
     </div>
   );
 };
