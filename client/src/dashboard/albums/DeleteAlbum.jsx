@@ -19,7 +19,7 @@ export function DeleteAlbum() {
   }, []);
 
   const deleteAlbum= async (albumId) => {
-    const confirmDelete = window.confirm('Êtes-vous sûr de vouloir supprimer cette voiture ?');
+    const confirmDelete = window.confirm('Êtes-vous sûr de vouloir supprimer cet album ?');
     if (confirmDelete) {
       try {
         const apiUrl = process.env.REACT_APP_API_URL;

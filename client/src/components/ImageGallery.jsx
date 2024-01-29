@@ -7,7 +7,6 @@ import 'photoswipe/style.css';
 const ImageGallery = () => {
   const [images, setImages] = useState([]);
 
-
   useEffect(() => {
     const fetchImages = async () => {
       try {
@@ -36,12 +35,16 @@ const ImageGallery = () => {
     };
   }, [images]);
 
+  const divStyle = {
+    backgroundImage: `url(${spaceimage})`,
+    backgroundAttachment: 'fixed',
+  };
+
   return (
-    <div className="h-screen md:h-screen-110 relative overflow-hidden">
-      <img src={spaceimage} alt="Music Background" className="object-cover w-full h-full bg-black bg-opacity-40  " />
-      <div className=" absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center overflow-auto no-scrollbar">
+    <div style={divStyle} className="h-screen-110  bg-no-repeat bg-center bg-cover shadow-xl flex bg-black bg-opacity-40 items-center">
+      <div className=" absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center  overflow-auto no-scrollbar">
         <div className="text-2xl font-bold mb-4 text-white font-custom text-center  pt-[100px] ">PHOTOS</div>
-        <div className="overflow-auto no-scrollbar max-h-[100vh] mb-9 ">
+        <div className="overflow-auto no-scrollbar max-h-[100vh] ">
           <div id="my-gallery" className="grid md:grid-cols-3 md:gap-4 grid-cols-1 mx-2 gap-2 max-w-[1000px]">
             {images.sort((a, b) => b.height + a.height).map((image, index) => {
               return (

@@ -8,6 +8,7 @@ import { UpdateLinks } from '../links/UpdateLinks';
 import { UploadImage } from '../images/UploadImage';
 import { DeleteImage } from '../images/DeleteImage';
 import { AddArticle } from '../articles/AddArticle';
+import { AddVideo } from '../videos/AddVideo';
 
 export const Content = ({ selectedMenuItem }) => {
   //espace réservé au contenu du dashboard
@@ -31,6 +32,8 @@ export const Content = ({ selectedMenuItem }) => {
         return <div><UpdateLinks/></div>;
       case 'delete-image':
         return <div><DeleteImage/></div>;
+      case 'ajouter-video':
+        return <div><AddVideo/></div>;
       default:
         return <div><UserSettings /></div>;
     }
