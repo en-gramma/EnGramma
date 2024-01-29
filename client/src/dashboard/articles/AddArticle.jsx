@@ -4,12 +4,14 @@ import DOMPurify from 'isomorphic-dompurify';
 
 export const AddArticle = () => {
   const [status, setStatus] = useState('');
+  const [formStatus, setFormStatus] = useState(null);
   const [articles, setArticles] = useState([]);
 
   const [formData, setFormData] = useState({
     text: DOMPurify.sanitize(''),
     name: DOMPurify.sanitize(''),
     country: DOMPurify.sanitize(''),
+    header: DOMPurify.sanitize(''),
     file: null,
 
   });
@@ -80,6 +82,7 @@ export const AddArticle = () => {
         text: '',
         name: '',
         country: '',
+        header: '',
         file: null,
       })
     }
@@ -87,11 +90,18 @@ export const AddArticle = () => {
 
   const deleteArticle = (id) => {
     const apiUrl = process.env.REACT_APP_API_URL;
+    setFormStatus('loading');
     axios.delete(`${apiUrl}/api/articles/${id}`, {
         withCredentials: true,
       })
-      .then(response => setArticles(articles.filter(article => article.id !== id)))
-      .catch(error => console.error(error));
+      .then(response => {
+        setArticles(articles.filter(article => article.id !== id));
+        setFormStatus('success');
+      })
+      .catch(error => {
+        console.error(error);
+        setFormStatus('error');
+      });
   };
 
   useEffect(() => {
@@ -110,38 +120,54 @@ export const AddArticle = () => {
 
   return (
     <div className="w-full shadow-md rounded-md p-1 md:p-5 bg-white md:m-4">
-      <h2 className="text-xl font-bold  px-2 py-2 w-full">Editeur press</h2>
+      <h2 className="text-xl font-bold  px-2 py-2 w-full">Editeur presse</h2>
       <div className="mb-5 mt-2 border-b border-gray-300 "></div>
 
       <h2 className="text-lg font-bold  px-2 py-2 w-full">Ajouter un article</h2>
       <form onSubmit={handleSubmit}>
-        <div className="p-4">
-          <div className="mb-4">
-          <div className="mb-4">
-          <label htmlFor="file" className="block mb-2">Logo du média</label>
-          <input
+      <div className="p-4">
+        <div className="mb-4">
+            <label htmlFor="file" className="block mb-2">Logo du média</label>
+            <p className='italic text-md mb-2'>Idéalement de taille 100x100px et au format .png transparent</p>
+            <input
             required
             type="file"
             id="file"
             name="file"
             onChange={handleChange}
             className="border border-gray-400 w-full"
-          />
+            />
         </div>
-            <textarea className="border p-2 mr-2" placeholder="Text" name="text" value={formData.text} onChange={handleChange} />
-            <input className="border p-2 mr-2" placeholder="Name" name="name" value={formData.name} onChange={handleChange} />
-            <input className="border p-2 mr-2" placeholder="Country" name="country" value={formData.country} onChange={handleChange} />
-            <button className="bg-blue-500 text-white p-2" type="submit">Add Article</button>
-          </div>
+
+        <div className="mb-4">
+            <input className="border p-2 w-full" placeholder="Nom du média" name="name" value={formData.name} onChange={handleChange} />
+        </div>
+        <div className="mb-4">
+            <input className="border p-2 w-full" placeholder="Pays, exemple: FR" name="country" value={formData.country} onChange={handleChange} />
+        </div>
+        <div className="mb-4">
+            <input className="border p-2 w-full" placeholder="En-tête (optionnelle) Exemple:'Album du mois'" name="header" value={formData.name} onChange={handleChange} />
+        </div>
+        <div className="mb-4">
+            <textarea className="border p-2 w-full" placeholder="Description" name="text" value={formData.text} onChange={handleChange} />
+        </div>
+        {setStatus === 'success' && <div className="text-green-500">L'article a été ajouté avec succès!</div>}
+        {setStatus === 'error' && <div className="text-red-500">Erreur lors de l'ajout de l'article</div>}
+        <button className="bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>
         </div>
       </form>
+
       <div className="mb-5 mt-2 border-b border-gray-300 "></div>
       <h2 className="text-lg font-bold  px-2 py-2 w-full mb-4">Effacer un article</h2>
+        {formStatus === 'success' && <div className="text-green-500">L'article a été effacé avec succès!</div>}
+        {formStatus === 'error' && <div className="text-red-500">Erreur lors de l'effacement de l'article</div>}
         {articles.map(article => (
-        <div key={article.id} className="">
+        <div key={article.id} className="p-4">
             <img src={article.image} alt={article.name} className="w-auto h-[75px] object-cover mb-4 rounded" />
             <h2 className="mb-2"><span className='text-md font-bold '>{article.name}</span> <span className='italic'>({article.country})</span></h2>
+            <p className='text-gray-700 font-semibold'>{article.header}</p>
             <p className="text-gray-700">{article.text}</p>
+
             <button onClick={() => deleteArticle(article.id)} className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Effacer</button>
         </div>
         ))}

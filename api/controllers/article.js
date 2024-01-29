@@ -82,14 +82,14 @@ export const deleteArticle = (req, res, next) => {
       }
   
       const q =
-        "INSERT INTO articles ( `image`, `text`, `name`, `country`) VALUES (?)";
+        "INSERT INTO articles ( `image`, `text`, `name`, `country`, `header`) VALUES (?)";
   
       const values = [
         DOMPurify.sanitize(req.body.image),
         DOMPurify.sanitize(req.body.text),
         DOMPurify.sanitize(req.body.name),
         DOMPurify.sanitize(req.body.country),
-   
+        DOMPurify.sanitize(req.body.header),
       ];
   
       db.query(q, [values], (err, data) => {
@@ -117,13 +117,14 @@ export const updateArticle =  (req, res, next) => {
       if (err) return res.status(403).json("Le token n'est pas valide.");
   
       const q = 
-      "UPDATE articles SET  `image`=?, `text`=?, `name`=?, `country`=?  WHERE `id`=?";
+      "UPDATE articles SET  `image`=?, `text`=?, `name`=?, `country`=?, `header`=?  WHERE `id`=?";
 
       const values = [
         DOMPurify.sanitize(req.body.image),
         DOMPurify.sanitize(req.body.text),
         DOMPurify.sanitize(req.body.name),
         DOMPurify.sanitize(req.body.country),
+        DOMPurify.sanitize(req.body.header),
         req.params.id
       ];
   
