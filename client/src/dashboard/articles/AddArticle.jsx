@@ -70,6 +70,7 @@ export const AddArticle = () => {
           withCredentials: true,
         });
         setStatus('success');
+        fetchArticles();
       } catch (err) {
         setStatus('error');
         console.error('Erreur lors de l\'ajout de la voiture :', err.response ? err.response.data : err.message);
@@ -104,17 +105,17 @@ export const AddArticle = () => {
       });
   };
 
-  useEffect(() => {
-    async function fetchArticles() {
-      try {
-        const apiUrl = process.env.REACT_APP_API_URL;
-        const response = await axios.get(`${apiUrl}/api/articles`);
-        setArticles(response.data);
-
-      } catch (error) {
-        console.error('Erreur lors de la récupération des données :', error);
-      }
+  const fetchArticles = async () => {
+    try {
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await axios.get(`${apiUrl}/api/articles`);
+      setArticles(response.data);
+    } catch (error) {
+      console.error('Erreur lors de la récupération des données :', error);
     }
+  };
+  
+  useEffect(() => {
     fetchArticles();
   }, []);
 
@@ -146,7 +147,7 @@ export const AddArticle = () => {
             <input className="border p-2 w-full" placeholder="Pays, exemple: FR" name="country" value={formData.country} onChange={handleChange} />
         </div>
         <div className="mb-4">
-            <input className="border p-2 w-full" placeholder="En-tête (optionnelle) Exemple:'Album du mois'" name="header" value={formData.name} onChange={handleChange} />
+            <input className="border p-2 w-full" placeholder="En-tête (optionnelle) Exemple:'Album du mois'" name="header" value={formData.header} onChange={handleChange} />
         </div>
         <div className="mb-4">
             <textarea className="border p-2 w-full" placeholder="Description" name="text" value={formData.text} onChange={handleChange} />
