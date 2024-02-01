@@ -46,14 +46,14 @@ export const Dashboard = () => {
           <Sidebar onSelectMenuItem={onSelectMenuItem} />
         </div>
         {/* gestion des espaces de la sidebar/content */}
-          <div className={`w-full md:w-3/4 ${isSidebarOpen ? 'ml-1/4' : ''}
+          <div className={`w-full  md:w-3/4 ${isSidebarOpen ? 'ml-1/4' : ''}
            p-1  ${isMobile ? 'pt-[70px]' : ''}`} onClick={() => setIsSidebarOpen(false)}>
           <Content selectedMenuItem={selectedMenuItem} className="h-full " />
       </div>
       </div>
 
       <button
-        className={`fixed top-[70px] left-0 p-3 mt-4 rounded w-full md:hidden bg-white  border-neutral-300 border text-black flex items-center`}
+        className={`fixed top-[70px] left-0 p-3 mt-4  rounded w-full md:hidden bg-white  border-neutral-300 border text-black flex items-center`}
         onClick={toggleSidebar}
       >
         <CgMenuGridR className="mr-1" /> Menu
