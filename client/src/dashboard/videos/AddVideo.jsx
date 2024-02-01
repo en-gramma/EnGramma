@@ -3,36 +3,22 @@ import axios from 'axios';
 
 export const AddVideo = () => {
   const [link, setLink] = useState('');
+  const [title, setTitle] = useState(''); // Ajouter un état pour le titre
+
   const [videos, setVideos] = useState([]);
   const [formStatus, setFormStatus] = useState(null);
 
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
+  const fetchVideos = async () => {
     try {
-    const apiUrl = process.env.REACT_APP_API_URL;
-      await axios.post(`${apiUrl}/api/videos`, { link }, 
-      {withCredentials: true});
-      setLink('');
-        setFormStatus('success');
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await axios.get(`${apiUrl}/api/videos`);
+      setVideos(response.data);
     } catch (err) {
       console.error(err);
-      setFormStatus('error');
     }
   };
 
   useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        const apiUrl = process.env.REACT_APP_API_URL;
-        const response = await axios.get(`${apiUrl}/api/videos`);
-        setVideos(response.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
     fetchVideos();
   }, []);
 
@@ -49,7 +35,7 @@ export const AddVideo = () => {
     }
   };
 
-  const extractBandcampLink = (iframeHtml) => {
+  const extractVideo = (iframeHtml) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(iframeHtml, 'text/html');
     const iframe = doc.querySelector('iframe');
@@ -57,6 +43,23 @@ export const AddVideo = () => {
       return iframe.getAttribute('src');
     }
     return null;
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const apiUrl = process.env.REACT_APP_API_URL;
+      await axios.post(`${apiUrl}/api/videos`, { link, title }, 
+      {withCredentials: true});
+      setLink('');
+      setTitle('');
+      setFormStatus('success');
+      fetchVideos(); // Rafraîchir les vidéos
+    } catch (err) {
+      console.error(err);
+      setFormStatus('error');
+    }
   };
  
 
@@ -66,6 +69,10 @@ export const AddVideo = () => {
       <h2 className="text-xl font-bold  px-2 py-2 w-full">Ajouter une vidéo</h2>
       <div className="mb-5 mt-2 border-b border-gray-300"></div>
     <form onSubmit={handleSubmit}>
+    <label className='block mb-4'>
+      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Nom de la vidéo" 
+      required className='border p-2 w-full' />
+      </label>
         <label className='block mb-4'>
       <input type="text" value={link} onChange={(e) => setLink(e.target.value)} placeholder="Lien de la vidéo" 
       required className='border p-2 w-full' />
@@ -74,16 +81,18 @@ export const AddVideo = () => {
         {formStatus === 'error' && <div className="text-red-500 mb-2">Erreur lors de l'ajout de la vidéo</div>}
       <button className="bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>
     </form>
+
     <div className="mb-5 mt-2 border-b border-gray-300"></div>
     <h2 className="text-lg font-bold  px-2 py-2 w-full">Effacer une vidéo</h2>
       <div className="mb-5 mt-2 border-b border-gray-300"></div>
     <div className='mt-4'>
     {videos.map((video) => {
-    const videoUrl = extractBandcampLink(video.link);
+    const videoUrl = extractVideo(video.link);
     return (
         <div key={video.id}>
+          <p className='font-bold my-2'>{video.title}</p>
         <iframe
-            className='mx-auto lg:mx-0  rounded-lg'
+            className=' lg:mx-0  rounded-lg'
             src={videoUrl}
             title="YouTube video player"
             frameBorder="0"

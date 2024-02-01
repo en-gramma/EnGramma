@@ -34,7 +34,7 @@ export const updateLinks =  (req, res, next) => {
           return;
         }
   
-        return res.json("La voiture a été modifiée avec succès.");
+        return res.json("Les liens ont été modifiés avec succès.");
       });
     });
 }; 

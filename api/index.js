@@ -8,6 +8,7 @@ import linkRoutes from "./routes/links.js";
 import imageRoutes from "./routes/images.js";
 import articleRoutes from "./routes/articles.js";
 import videoRoutes from "./routes/videos.js";
+import radioRoutes from "./routes/radios.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -66,6 +67,7 @@ app.use("/api/links", linkRoutes);
 app.use("/api/images", imageRoutes);
 app.use("/api/articles", articleRoutes);
 app.use("/api/videos", videoRoutes);
+app.use("/api/radios", radioRoutes);
 
 //gestion des erreurs, les erreurs seront retournées avec ce message générique
 app.use((err, req, res, next) => {

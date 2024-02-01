@@ -49,6 +49,12 @@ export const Sidebar = ({ onSelectMenuItem }) => {
             Editeur de vidéo
           </div>
         </li>
+        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-radio')}>
+          <div className="flex items-center">
+            <AiOutlineCar className="mr-2" />
+            Editeur de radio
+          </div>
+        </li>
         <div className="mb-4 border-b border-gray-300"></div>
         <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-album')}>
           <div className="flex items-center">

@@ -6,9 +6,9 @@ import {v2 as cloudinary} from 'cloudinary'
 
 dotenv.config();
  
-//récupération des voitures
-export const getArticles=  (req, res, next) => {
-    const q = 'SELECT * FROM articles';
+//récupération des radios
+export const getRadios=  (req, res, next) => {
+    const q = 'SELECT * FROM radios';
     db.query(q, (err, result) => {
         if (err) 
         return res.status(500).send(err);
@@ -25,53 +25,53 @@ cloudinary.config({
   secure : true
 });
 
-//effacer une voiture par son id avec comparaison du token
-export const deleteArticle = (req, res, next) => {
+//effacer une radio par son id avec comparaison du token
+export const deleteRadio = (req, res, next) => {
   const token = req.cookies.access_token;
-  if (!token) return res.status(401).json("Vous devez être connecté pour supprimer un article.");
+  if (!token) return res.status(401).json("Vous devez être connecté pour supprimer cette radio.");
 
   jwt.verify(token, process.env.JWT_SECRET, (err) => {
-    if (err) return res.status(403).json("Vous n'êtes pas autorisé à supprimer cet article.");
+    if (err) return res.status(403).json("Vous n'êtes pas autorisé à supprimer cette radio.");
     
-    const articleId = req.params.id;
-    const q = 'SELECT image FROM articles WHERE id = ?';
+    const radioId = req.params.id;
+    const q = 'SELECT image FROM radios WHERE id = ?';
 
-    db.query(q, [articleId], (err, data) => {
+    db.query(q, [radioId], (err, data) => {
       if (err) {
         next(err);
         return;
       }
       
-      const article = data[0];
-      if (!article) {
-        return res.status(404).json("L\'article n'a pas été trouvé.");
+      const radio = data[0];
+      if (!radio) {
+        return res.status(404).json("La radio n'a pas été trouvé.");
       }
 
-      const imageURL = article.image;
+      const imageURL = radio.image;
       const imagePublicId = imageURL.split('/').pop().split('.')[0];
 
       // Efface l'image de cloudinary
       cloudinary.uploader.destroy(imagePublicId)
         .then(() => {
-          const deleteQuery = 'DELETE FROM articles WHERE id = ?';
-          db.query(deleteQuery, [articleId], (err) => {
+          const deleteQuery = 'DELETE FROM radios WHERE id = ?';
+          db.query(deleteQuery, [radioId], (err) => {
             if (err) {
               next(err);
               return;
             }
-            return res.status(200).json('L\'article a été supprimée avec succès.');
+            return res.status(200).json('La radio été supprimée avec succès.');
           });
         })
         .catch((error) => {
           console.error('Erreur lors de la suppression de l\'image sur Cloudinary:', error);
-          return res.status(500).json('Une erreur s\'est produite lors de la suppression de l\'article.');
+          return res.status(500).json('Une erreur s\'est produite lors de la suppression de la radio.');
         });
     });
   });
 };
  
-// ajouter une voiture
-  export const addArticle= (req, res, next) => {
+// ajouter une radio
+  export const addRadio = (req, res, next) => {
     const token = req.cookies.access_token;
     if (!token) return res.status(401).json("Pas de token trouvé.");
   
@@ -82,14 +82,14 @@ export const deleteArticle = (req, res, next) => {
       }
   
       const q =
-        "INSERT INTO articles ( `image`, `text`, `name`, `country`, `header`) VALUES (?)";
+        "INSERT INTO radios ( `image`, `description`, `country`, `name`) VALUES (?)";
   
       const values = [
         DOMPurify.sanitize(req.body.image),
-        DOMPurify.sanitize(req.body.text),
-        DOMPurify.sanitize(req.body.name),
+        DOMPurify.sanitize(req.body.description),
         DOMPurify.sanitize(req.body.country),
-        DOMPurify.sanitize(req.body.header),
+        DOMPurify.sanitize(req.body.name),
+       
       ];
   
       db.query(q, [values], (err, data) => {
@@ -103,13 +103,13 @@ export const deleteArticle = (req, res, next) => {
             return res.status(500).json("Une erreur s'est produite lors de l'ajout de l'article.");
           }
         }
-        return res.json("L'article a été ajouté avec succès.");
+        return res.json("La radio a été ajoutée avec succès.");
       });
     });
   };
 
-// modifier une voiture
-export const updateArticle =  (req, res, next) => {
+// modifier une radio
+export const updateRadio =  (req, res, next) => {
        const token = req.cookies.access_token;
     if (!token) return res.status(401).json("Pas de token trouvé.");
   
@@ -117,14 +117,13 @@ export const updateArticle =  (req, res, next) => {
       if (err) return res.status(403).json("Le token n'est pas valide.");
   
       const q = 
-      "UPDATE articles SET  `image`=?, `text`=?, `name`=?, `country`=?, `header`=?  WHERE `id`=?";
+      "UPDATE radios SET  `image`=?, `description`=?, `country`=?, `name`=?  WHERE `id`=?";
 
       const values = [
         DOMPurify.sanitize(req.body.image),
-        DOMPurify.sanitize(req.body.text),
-        DOMPurify.sanitize(req.body.name),
+        DOMPurify.sanitize(req.body.description),
         DOMPurify.sanitize(req.body.country),
-        DOMPurify.sanitize(req.body.header),
+        DOMPurify.sanitize(req.body.name),
         req.params.id
       ];
   
@@ -134,7 +133,7 @@ export const updateArticle =  (req, res, next) => {
           return;
         }
   
-        return res.json("L'article a été modifié avec succès.");
+        return res.json("La radio a été modifiée avec succès.");
       });
     });
 }; 

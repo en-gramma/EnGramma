@@ -36,7 +36,7 @@ export const deleteVideo = (req, res, next) => {
     });
 };
 
-// ajouter un album
+// ajouter une video
 export const addVideo= (req, res, next) => {
     const token = req.cookies.access_token;
     if (!token) return res.status(401).json("Pas de token trouvé.");
@@ -48,9 +48,12 @@ export const addVideo= (req, res, next) => {
       }
   
       const q =
-        "INSERT INTO videos (`link`) VALUES (?)";
+        "INSERT INTO videos (`link`, `title` ) VALUES (?)";
   
-        const values = req.body.link;
+        const values = [
+          req.body.link,
+          DOMPurify.sanitize(req.body.title)
+        ]
 
       db.query(q, [values], (err, data) => {
         if (err) {

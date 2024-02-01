@@ -9,6 +9,7 @@ import { UploadImage } from '../images/UploadImage';
 import { DeleteImage } from '../images/DeleteImage';
 import { AddArticle } from '../articles/AddArticle';
 import { AddVideo } from '../videos/AddVideo';
+import { AddRadio } from '../radios/AddRadio';
 
 export const Content = ({ selectedMenuItem }) => {
   //espace réservé au contenu du dashboard
@@ -34,6 +35,8 @@ export const Content = ({ selectedMenuItem }) => {
         return <div><DeleteImage/></div>;
       case 'ajouter-video':
         return <div><AddVideo/></div>;
+      case 'ajouter-radio':
+        return <div><AddRadio/></div>;
       default:
         return <div><UserSettings /></div>;
     }
