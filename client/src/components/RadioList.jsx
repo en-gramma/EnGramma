@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import logo from '../assets/logo.png';
+import { RadioListFr } from './RadioListFr';
 
 export const RadioList = () => {
   const [radios, setRadios] = useState([]);
@@ -19,7 +20,7 @@ export const RadioList = () => {
   return (
     <>
  <div className="relative my-9 md:mx-[100px]">
-  <img src={logo} alt="Logo En Gramma" className='md:h-full md:w-auto h-auto w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-2' />
+  <img src={logo} alt="Logo En Gramma" className='md:max-h-[750px] md:w-auto h-auto w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-2' />
   <div className="text-4xl font-bold mb-4 text-white font-custom text-center md:mb-9 pt-9">RADIOS</div>
 
   <div className='flex justify-center text-lg '>
@@ -27,7 +28,7 @@ export const RadioList = () => {
   </div>
   <div className="grid md:grid-cols-3 gap-4 ">
     {radios.map(radio => (
-       <div key={radio.id} className="p-4 flex flex-col items-center">
+       <div key={radio.id} className="p-4 flex flex-col items-center ">
        <div className='bg-gray-100 border w-[300px] text-center px-4 rounded'>
        <img src={radio.image} alt={radio.name} className="w-auto mx-auto h-[75px] object-cover mb-4 rounded pt-1" />
        <div className="my-1 border-b border-gray-300 "></div>
@@ -37,6 +38,7 @@ export const RadioList = () => {
    </div>
     ))}
   </div>
+  <RadioListFr />
 </div>
 </>
   );
