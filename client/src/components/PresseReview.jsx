@@ -20,7 +20,7 @@ export const PressReview = () => {
     <>
  <div className="relative pb-9 my-9">
   <img src={logo} alt="Logo En Gramma" className='md:h-full md:w-auto h-auto w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-2' />
-  <div className="text-4xl font-bold mb-4 text-white font-custom text-center pt-9 mb-9">PRESSE</div>
+  <div className="text-4xl  mb-4 text-white font-custom text-center pt-9 mb-9">PRESSE</div>
   <div className="grid md:grid-cols-3 gap-4 ">
     {articles.map(article => (
       <div key={article.id} className="p-4 flex flex-col items-center text-lg">

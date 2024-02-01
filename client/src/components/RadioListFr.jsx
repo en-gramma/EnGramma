@@ -17,7 +17,7 @@ export const RadioListFr = () => {
 
   return (
     <>
-  <div className='flex justify-center text-lg mt-5'>
+  <div className='flex justify-center text-xl mt-5'>
     <p className='text-white my-4'>En france :</p>
   </div>
   <div className="grid md:grid-cols-4 gap-4 ">

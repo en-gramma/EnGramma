@@ -37,13 +37,13 @@ const ImageGallery = () => {
 
   const divStyle = {
     backgroundImage: `url(${spaceimage})`,
-    backgroundAttachment: 'fixed',
+    // backgroundAttachment: 'fixed',
   };
 
   return (
     <div style={divStyle} className="h-screen-110  bg-no-repeat bg-center bg-cover shadow-xl flex bg-black bg-opacity-40 items-center">
-      <div className=" absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center  overflow-auto no-scrollbar">
-        <div className="text-4xl font-bold text-white font-custom text-center mb-9  pt-[100px] ">PHOTOS</div>
+      <div className=" absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center  ">
+        <div className="text-4xl  text-white font-custom text-center mb-9  pt-[100px] ">PHOTOS</div>
         <div className="overflow-auto no-scrollbar max-h-[100vh] ">
           <div id="my-gallery" className="grid md:grid-cols-3 md:gap-4 grid-cols-1 mx-2 gap-2 md:mx-[200px] ">
             {images.sort((a, b) => b.height + a.height).map((image, index) => {

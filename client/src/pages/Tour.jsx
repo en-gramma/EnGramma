@@ -41,7 +41,7 @@ const showThreeDates = () => {
       <p className="absolute bottom-0 right-0 text-white px-3 py-1 text-xs">&copy; Antoine Chevillé</p>
     <div>
       <div className="absolute top-0 left-0 right-0 bottom-0 overflow-hidden flex flex-col items-center justify-center">
-      <h1 className={`font-custom text-white z-10 text-3xl mb-8 ${datesToShow >= 6 ? 'pt-[100px]' : ''}`}>DATES</h1>
+      <h1 className={`font-custom text-white z-10 text-4xl mb-8 ${datesToShow >= 6 ? 'pt-[100px]' : ''}`}>DATES</h1>
 
         {loading ? (
           <p>Loading dates...</p>
@@ -59,7 +59,7 @@ const showThreeDates = () => {
           <p className="text-white mb-4 md:mb-4 animate-fade-right"><span className='text-3xl font-semibold mr-3 text-Engramma'>{day}</span> <span className='text-xl'>{`${date.month.substring(0, 4)}`}</span></p>
         </div>
         <div className="text-column md:flex md:flex-row  md:items-center  md:justify-between mb-2 md:mb-0  w-full">
-          <p className="text-white font-semibold  text-2xl md:mb-4 animate-pulse animate-once"><span className=''>{`${date.place}`}</span></p>
+          <p className="text-white font-semibold  text-2xl md:mb-4"><span className=''>{`${date.place}`}</span></p>
           <p className="text-white  text-2xl mb-4 md:mb-4 animate-fade-left"><span className=''>{`${date.city}`}</span></p>
         </div>
       </div>

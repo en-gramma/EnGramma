@@ -4,11 +4,12 @@ import logo from '../assets/logo.png';
 import { Social } from '../components/Social';
 import trioHome from '../assets/trio-home.jpg';
 
+
 export const Home = () => {
   const [isMobile, setIsMobile] = useState(false);
   const divStyle = {
     backgroundImage: `url(${spaceImage})`,
-    backgroundAttachment: 'fixed',
+    // backgroundAttachment: 'fixed',
   };
 
 
@@ -54,7 +55,7 @@ export const Home = () => {
 
   ) : null}
   <div className="max-w-[500px] sm:mr-4 mt-5">
-    <p className="text-sm text-white text-justify mx-3 mb-9 animate-fade-right">
+    <p className="text-md text-white text-justify mx-3 mb-9 animate-fade-right">
       <b>EN GRAMMA</b> ('ène gramma') est un trio Transe Rock formé en 2021 et basé à Rennes. Issu du grec ancien, son nom évoque la marque que la mémoire laisse en nous à travers le temps.<br /><br />
       Le trio joue un mélange puissant de blues afro-dionysiaque et de rock acoustique, tout en chantant en trois langues (français, anglais et grec ancien). <br /><br /><a className='text-orange2 underline'href='/music'>Beau brûlis</a> est leur premier album.
       Il s'agit d'une collection d'histoires, enracinées dans le mystère et racontées à travers des mélodies vocales chaleureuses et des rythmes tribaux entraînants.<br /><br />
@@ -64,7 +65,7 @@ export const Home = () => {
   </div>
   {!isMobile ? (
     <div className="relative mt-4 sm:mt-0 mx-3">
-  <img src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[380px] shadow-lg " />
+  <img src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[460px] shadow-lg " />
   <p className="absolute bottom-0 right-0 text-white  px-2 py-1 text-sm">&copy; Antoine Chevillé</p>
 </div>
 

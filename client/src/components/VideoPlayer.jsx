@@ -8,7 +8,7 @@ const VideoPlayer = () => {
     const [videos, setVideos] = useState([]);
     const divStyle = {
         backgroundImage: `url(${spaceimage})`,
-        backgroundAttachment: 'fixed',
+        // backgroundAttachment: 'fixed',
       };
 
 
@@ -41,7 +41,7 @@ const VideoPlayer = () => {
    
    <div style={divStyle} className=" py-9 bg-no-repeat bg-center bg-cover shadow-xl flex bg-black bg-opacity-40 items-center flex-col">
 
-  <div className="text-4xl font-bold mb-4 text-white font-custom text-center pt-9 mb-9">VIDEOS</div>
+  <div className="text-4xl  mb-4 text-white font-custom text-center pt-9 mb-9">VIDEOS</div>
 
   <div id="my-gallery" className="flex flex-col md:flex-row justify-evenly w-full mt-4  ">
     {videos.map((video) => {

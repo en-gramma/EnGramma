@@ -20,7 +20,7 @@ export const Bio = () => {
   </div>
   </div>
   <div className='max-w-[700px] mx-auto'>
-  <p className="text-sm text-white text-justify  mx-3 mb-9 animate-fade-right">
+  <p className="text-md text-white text-justify  mx-3 mb-9 animate-fade-right">
   <div>
     <p>Il y a un peu plus d&#39;une d&eacute;cennie, Gautier Degandt, musicien autodidacte install&eacute; &agrave; Rennes, fonde le groupe <strong>heraclite</strong> qui chante les fragments du philosophe H&eacute;raclite en grec ancien sur une musique post punk tribale enfi&eacute;vr&eacute;e.</p><br/>
     <p>Rep&eacute;r&eacute; par <strong>Stevo Pearce </strong>(manager du groupe <strong>Soft Cell</strong>) du label culte <strong>Some Bizarre Records</strong> (les 1ers albums de <strong>Depeche Mode, Soft Cell, Einst&uuml;rzende Neubauten</strong>...), le groupe sort un single sur ce label puis son 1er album avec les suisses d&#39;<strong>U</strong><strong>rgence disk</strong> et marque les esprits avec des concerts explosifs.</p><br/>
@@ -53,7 +53,7 @@ export const Bio = () => {
   </div>
   </div>
   <div className='max-w-[700px] mx-auto'>
-  <p className="text-sm text-white text-justify  mx-3 mb-9 animate-fade-right">
+  <p className="text-md text-white text-justify  mx-3 mb-9 animate-fade-right">
       <p><strong>Le premier album de EN GRAMMA &quot;Beau Br&ucirc;lis&quot; aborde le th&egrave;me du renouveau, de la vie apr&egrave;s la destruction. Le br&ucirc;lis du titre &eacute;voque &quot;la culture sur br&ucirc;lis&quot;, une technique agricole o&ugrave; l&#39;on br&ucirc;le le sol pour le fertiliser.</strong></p><br/>
       <p>La production immersive et intimiste, apporte une exp&eacute;rience &eacute;motionnellegr&acirc;ce au voix chaudes et englobantes accompagn&eacute;es par des percussions vibrantes telles que le Bombo (percussion sud-am&eacute;ricaine) qui remplace la grosse caisse, la calebasse ou l&#39;utilisation de claps et de shekere ou encore le daf iranien. Les passages entre la guitare acoustique et la guitare &eacute;lectrique abrasive y ajoutent une grande dynamique.</p><br/>
       <p>L&#39;album a &eacute;t&eacute; produit et mix&eacute; par Gautier Degandt qui, comme pour l&#39;album <strong>Weird and Wonderful Tales </strong>de<strong>B&acirc;ton Bleu</strong>, en a &eacute;t&eacute; le r&eacute;alisateur artistique.</p><br/>
