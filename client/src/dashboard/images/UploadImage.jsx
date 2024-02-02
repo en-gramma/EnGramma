@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DOMPurify from 'isomorphic-dompurify';
+import { DeleteImage } from './DeleteImage';
 
 export const UploadImage = () => {
 
@@ -102,9 +103,10 @@ export const UploadImage = () => {
       }
     }, [status]) 
   return (
-<div className="w-full shadow-md rounded-md p-2 md:p-3 bg-white md:m-3 ">
-    <h2 className="text-xl font-bold  px-2 py-2 w-full">Ajouter une image</h2>
-    <div className="mb-5 mt-2 border-b border-gray-300"></div>
+    <div className="w-full shadow-md rounded-md p-1 md:p-5 bg-white md:m-4">
+      <h2 className="text-xl font-bold  px-2 py-2 w-full">Editeur de photo</h2>
+      <div className="mb-5 mt-2 border-b border-gray-300"></div>
+      <h2 className="text-lg font-bold mb-4  px-2 py-2 w-full">Ajouter une photo</h2>
     <form onSubmit={handleSubmit} className="w-full max-w-lg  px-8 pt-2 pb-8 mb-4">
       <div className="mb-4">
         <label className="block " htmlFor="title">
@@ -159,6 +161,8 @@ export const UploadImage = () => {
         </button>
       </div>
     </form>
+
+    <DeleteImage />
   </div>
   )
 }

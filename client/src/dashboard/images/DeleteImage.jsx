@@ -34,10 +34,11 @@ export function DeleteImage() {
   };
 
   return (
-    <div className="w-full shadow-md rounded-md p-2 md:p-3 bg-white md:m-3 ">
-      <h2 className="text-xl font-bold  px-2 py-2 w-full">Effacer une image</h2>
-      <div className="mb-5 mt-2 border-b border-gray-300"></div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  <>
+    <div className="mb-5 mt-2 border-b border-gray-300"></div>
+      <h2 className="text-lg font-bold  px-2 py-2 w-full">Effacer une photo</h2>
+
+      <div className="grid grid-cols-1 -z-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {images.map(image => (
           <div key={image.id} className="relative">
             <img src={image.image} alt={image.title} className="w-full h-64 object-cover" />
@@ -45,6 +46,6 @@ export function DeleteImage() {
           </div>
         ))}
       </div>
-    </div>
+  </>
   );
 }

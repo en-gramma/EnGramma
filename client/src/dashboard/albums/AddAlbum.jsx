@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import DOMPurify from 'dompurify';
+import { DeleteAlbum } from './DeleteAlbum';
 
 export const AddAlbum = () => {
   const [formData, setFormData] = useState({
@@ -56,10 +57,11 @@ export const AddAlbum = () => {
   };
 
   return (
-    <div className="w-full shadow-md rounded-md p-2 md:p-3 bg-white md:m-3 ">
-      <h2 className="text-xl font-bold  px-2 py-2 w-full">Ajouter un album</h2>
+    <div className="w-full shadow-md rounded-md p-1 md:p-5 bg-white md:m-4">
+      <h2 className="text-xl font-bold  px-2 py-2 w-full">Editeur d'album</h2>
       <div className="mb-5 mt-2 border-b border-gray-300"></div>
-        <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto">
+      <h2 className="text-lg font-bold mb-4  px-2 py-2 w-full">Ajouter un album</h2>
+        <form onSubmit={handleSubmit} className="w-full">
           <label className="block mb-4">
             <span className="text-gray-700">Titre de l'album:</span>
             <input type="text" name="title" value={formData.title} onChange={handleChange} className="mt-1 block w-full rounded border-gray-300 border shadow-sm p-1" />
@@ -80,6 +82,9 @@ export const AddAlbum = () => {
           {formStatus === 'error' && <div className="text-red-500">Erreur lors de l'ajout de l'album.</div>}
           <button type="submit" className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Ajouter l'album</button>
         </form>
+
+        <div className="mb-3 mt-9 border-b border-gray-300"></div>
+        <DeleteAlbum />
     </div>
   );
 };

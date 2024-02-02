@@ -65,9 +65,10 @@ export const AddVideo = () => {
 
   return (
     <>
-<div className="w-full shadow-md rounded-md p-2 md:p-3 bg-white md:m-3 ">
-      <h2 className="text-xl font-bold  px-2 py-2 w-full">Ajouter une vidéo</h2>
+    <div className="w-full shadow-md rounded-md p-1 md:p-5 bg-white md:m-4">
+      <h2 className="text-xl font-bold  px-2 py-2 w-full">Editeur de vidéo</h2>
       <div className="mb-5 mt-2 border-b border-gray-300"></div>
+      <h2 className="text-lg font-bold mb-4  px-2 py-2 w-full">Ajouter une vidéo</h2>
     <form onSubmit={handleSubmit}>
     <label className='block mb-4'>
       <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Nom de la vidéo" 
@@ -82,9 +83,9 @@ export const AddVideo = () => {
       <button className="bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>
     </form>
 
-    <div className="mb-5 mt-2 border-b border-gray-300"></div>
-    <h2 className="text-lg font-bold  px-2 py-2 w-full">Effacer une vidéo</h2>
-      <div className="mb-5 mt-2 border-b border-gray-300"></div>
+    <div className="mb-5 mt-9 border-b border-gray-300"></div>
+    <h2 className="text-lg font-bold mb-4 px-2 py-2 w-full">Effacer une vidéo</h2>
+ 
     <div className='mt-4'>
     {videos.map((video) => {
     const videoUrl = extractVideo(video.link);

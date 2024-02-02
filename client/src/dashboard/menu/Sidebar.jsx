@@ -25,16 +25,18 @@ export const Sidebar = ({ onSelectMenuItem }) => {
         </span>
       <div className="mb-4 border-b border-gray-300"></div>
       <ul>
+
+        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-album')}>
+          <div className="flex items-center">
+            <AiOutlineCar className="mr-2" />
+            Editeur d'album
+          </div>
+        </li>
+        <div className="mb-4 border-b border-gray-300"></div>
       <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-image')}>
           <div className="flex items-center">
             <AiOutlineCar className="mr-2" />
-            Ajouter une photo
-          </div>
-        </li>
-        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('delete-image')}>
-          <div className="flex items-center">
-            <AiOutlineCar className="mr-2" />
-            Effacer une photo
+           Editeur de photo
           </div>
         </li>
         <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('editer-article')}>
@@ -55,20 +57,6 @@ export const Sidebar = ({ onSelectMenuItem }) => {
             Editeur de radio
           </div>
         </li>
-        <div className="mb-4 border-b border-gray-300"></div>
-        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-album')}>
-          <div className="flex items-center">
-            <AiOutlineCar className="mr-2" />
-            Ajouter un album
-          </div>
-        </li>
-        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('effacer-album')}>
-          <div className="flex items-center">
-            <AiOutlineEdit className="mr-2" />
-            Effacer un album
-          </div>
-        </li>
-
         <div className="mb-4 border-b border-gray-300"></div>
         <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-date')}>
           <div className="flex items-center">

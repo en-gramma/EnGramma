@@ -14,7 +14,7 @@ const ImageGallery = () => {
         const response = await axios.get(`${apiUrl}/api/images/`);
         setImages(response.data);
       } catch (err) {
-        console.error('Erreur lors de la récupération des images :', err.response ? err.response.data : err.message);
+        console.error('Erreur lors de la récupération des images ');
       }
     };
 

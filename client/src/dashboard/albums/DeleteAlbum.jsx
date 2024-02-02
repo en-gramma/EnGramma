@@ -46,9 +46,9 @@ export function DeleteAlbum() {
   };
 
   return (
-    <div className='w-full shadow-md rounded-md p-1 md:p-5 bg-white md:m-4'>
-        <h2 className="text-xl font-bold  px-2 py-2 w-full">Effacer un album</h2>
-        <div className="mb-5 mt-2 border-b border-gray-300"></div>
+ <>
+        <h2 className="text-xl font-bold  px-2 py-5 w-full">Effacer un album</h2>
+
       {status && <p>{status}</p>}
       {albums.map(album => (
         
@@ -68,7 +68,7 @@ export function DeleteAlbum() {
           
         </div>
       ))}
-    </div>
+      </>
   );
 }
 

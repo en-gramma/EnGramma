@@ -113,7 +113,7 @@ export const AddRadioFr = () => {
   }, []);
 
   return (
-    <div className="w-full shadow-md rounded-md p-1 md:p-5 bg-white md:m-4">
+    <div className="">
 
       <h2 className="text-lg font-bold  px-2 py-2 w-full">Ajouter une radio française</h2>
       <form onSubmit={handleSubmit}>

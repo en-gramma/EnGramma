@@ -40,9 +40,10 @@ const handleSubmit = async (event) => {
     }
   };
   return (
-    <div className="w-full shadow-md rounded-md p-2 md:p-3 bg-white md:m-3 ">
-      <h2 className="text-xl font-bold px-2 py-2 w-full">Mise à jour des liens Pro</h2>
+    <div className="w-full shadow-md rounded-md p-1 md:p-5 bg-white md:m-4">
+      <h2 className="text-xl font-bold  px-2 py-2 w-full">Mise à jour des liens pro.</h2>
       <div className="mb-5 mt-2 border-b border-gray-300"></div>
+      <h2 className="text-lg font-bold mb-4  px-2 py-2 w-full">Modifier le lien</h2>
       {links.map((link, index) => (
         <div key={index}>
           <p className="text-gray-500">Lien du Dossier de presse actuel: <span className='text-blue-600'>{link.dossier}</span></p>
