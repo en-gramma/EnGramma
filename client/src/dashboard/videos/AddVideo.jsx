@@ -82,7 +82,7 @@ export const AddVideo = () => {
       </label>
         {formStatus === 'success' && <div className="text-green-500 mb-2">La vidéo a été ajoutée avec succès!</div>}
         {formStatus === 'error' && <div className="text-red-500 mb-2">Erreur lors de l'ajout de la vidéo</div>}
-      <button className="bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>
+      <button className="w-full bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>
     </form>
 
     <div className="mb-5 mt-9 border-b border-gray-300"></div>

@@ -59,17 +59,17 @@ export const AddDate = () => {
   }, []);
   return (
     <div className="w-full shadow-md rounded-md p-1 md:p-5 bg-white md:m-4">
-  <h2 className="text-xl font-bold  px-2 py-2 w-full">Editeur de date</h2>
-  <div className="mb-5 mt-2 border-b border-gray-300 "></div>
-  <h3 className='font-semibold mb-3'>Ajouter une nouvelle date</h3>
+      <h2 className="text-xl font-bold  px-2 py-2 w-full">Editeur de date</h2>
+      <div className="mb-5 mt-2 border-b border-gray-300"></div>
+      <h2 className="text-lg font-bold mb-4  px-2 py-2 w-full">Ajouter une nouvelle date</h2>
       <form onSubmit={handleSubmit} className="">
         <input type="text" name="day" placeholder="Jour (numérique)" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
         <input type="text" name="month" placeholder="Mois (alphabétique)" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
         <input type="text" name="place" placeholder="Lieu" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
         <input type="text" name="city" placeholder="Ville" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
-        <button type="submit" className="mb-4 py-1 px-2 bg-blue-500 text-white rounded">Ajouer une date</button>
+        <button type="submit" className="mb-4 p-2 bg-blue-500 text-white rounded">Ajouter une date</button>
       </form>
-        {statusMessage === 'success' && <div className="text-green-500">La date a été ajouté avec succès!</div>}
+        {statusMessage === 'success' && <div className="text-green-500">La date a été ajoutée avec succès!</div>}
         {statusMessage === 'error' && <div className="text-red-500">Erreur lors de l'ajout de la date</div>}
 
     <div className="mb-5 mt-2 border-b border-gray-300 "></div>

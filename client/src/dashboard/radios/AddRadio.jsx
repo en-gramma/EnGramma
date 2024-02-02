@@ -147,7 +147,7 @@ export const AddRadio = () => {
         </div>
         {setStatus === 'success' && <div className="text-green-500">La radio a été ajouté avec succès!</div>}
         {setStatus === 'error' && <div className="text-red-500">Erreur lors de l'ajout de la radio</div>}
-        <button className="bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>
+        <button className="w-full bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>
         </div>
       </form>
 

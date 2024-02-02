@@ -3,7 +3,6 @@ import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { IoIosRadio } from "react-icons/io";
 import { AiOutlineTeam } from 'react-icons/ai';
-import { AiOutlineEdit } from 'react-icons/ai';
 import { GoGear } from "react-icons/go";
 import { BiPhotoAlbum } from "react-icons/bi";
 import { BiAlbum } from "react-icons/bi";
@@ -29,25 +28,26 @@ export const Sidebar = ({ onSelectMenuItem }) => {
           </div>
         </span>
         {currentUser && currentUser.role === 'admin' && (
-          <>
+          <div className='mb-4'>
         <span className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-employe')}>
           <div className="flex items-center">
             <AiOutlineTeam className="mr-2" />
             Ajouter un membre
           </div>
         </span>
-        </>
+        </div>
         )}
-      <div className="mb-4  mt-2 border-b border-gray-300"></div>
+      <div className=" mt-2 border-b border-gray-300"></div>
       <ul>
-
-        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-album')}>
+      <div className='bg-gray-100 p-1 font-semibold shadow mb-2'>Musique</div>
+        <li className=" mb-4 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-album')}>
           <div className="flex items-center">
             <BiAlbum className="mr-2" />
             Editeur d'album
           </div>
         </li>
-        <div className="mb-4 border-b border-gray-300"></div>
+        <div className=" border-b border-gray-300"></div>
+        <div className='bg-gray-100 p-1 font-semibold shadow mb-2'>Média</div>
       <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-image')}>
           <div className="flex items-center">
             <BiPhotoAlbum className="mr-2" />
@@ -66,20 +66,22 @@ export const Sidebar = ({ onSelectMenuItem }) => {
             Editeur de vidéo
           </div>
         </li>
-        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-radio')}>
+        <li className="mb-4 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-radio')}>
           <div className="flex items-center">
             <IoIosRadio className="mr-2" />
             Editeur de radio
           </div>
         </li>
-        <div className="mb-4 border-b border-gray-300"></div>
-        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-date')}>
+        <div className=" border-b border-gray-300"></div>
+        <div className='bg-gray-100 p-1 font-semibold shadow mb-2'>Dates</div>
+        <li className="mb-4 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-date')}>
           <div className="flex items-center">
             <BsCalendar2Date className="mr-2" />
             Editeur de date
           </div>
         </li>
-        <div className="mb-4 border-b border-gray-300"></div>
+        <div className="border-b border-gray-300"></div>
+        <div className='bg-gray-100 p-1 font-semibold shadow mb-2'>Contact</div>
         <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('update-lien')}>
           <div className="flex items-center">
             <CiLink className="mr-2" />

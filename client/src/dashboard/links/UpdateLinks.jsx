@@ -75,7 +75,7 @@ const handleSubmit = async (event) => {
         {statusMessage.text && (
         <p className={`text-${statusMessage.isError ? 'red' : 'green'}-500`}>{statusMessage.text}</p>
       )}
-        <button type="submit" className="w-[150px] py-2 px-4 mt-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 =">Mettre à jour</button>
+        <button type="submit" className="w-full py-2 px-4 mt-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 =">Mettre à jour</button>
       </form>
     </div>
   );

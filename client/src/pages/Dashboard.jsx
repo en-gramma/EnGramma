@@ -39,7 +39,7 @@ export const Dashboard = () => {
 
       <div className="flex flex-col md:flex-row pt-[80px]">
         <div
-          className={` w-screen md:w-1/5 fixed md:relative top-[130px] border z-20  shadow-md md:m-4 md:top-0 left-0 md:left-auto bg-white  overflow-auto rounded-lg  ${
+          className={` w-screen md:w-1/5 fixed md:relative top-[115px] border z-20  shadow-md md:m-4 md:top-0 left-0 md:left-auto bg-white  overflow-auto rounded-lg  ${
             isSidebarOpen ? '' : 'hidden md:block'
           }`}
         >

@@ -154,7 +154,7 @@ export const AddArticle = () => {
         </div>
         {setStatus === 'success' && <div className="text-green-500">L'article a été ajouté avec succès!</div>}
         {setStatus === 'error' && <div className="text-red-500">Erreur lors de l'ajout de l'article</div>}
-        <button className="bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>
+        <button className="w-full bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>
         </div>
       </form>
 
