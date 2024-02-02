@@ -61,14 +61,14 @@ export const AddAlbum = () => {
       <h2 className="text-xl font-bold  px-2 py-2 w-full">Editeur d'album</h2>
       <div className="mb-5 mt-2 border-b border-gray-300"></div>
       <h2 className="text-lg font-bold mb-4  px-2 py-2 w-full">Ajouter un album</h2>
-        <form onSubmit={handleSubmit} className="w-full">
+        <form onSubmit={handleSubmit} className="w-full max-w-lg md:mx-2">
           <label className="block mb-4">
             <span className="text-gray-700">Titre de l'album:</span>
             <input type="text" name="title" value={formData.title} onChange={handleChange} className="mt-1 block w-full rounded border-gray-300 border shadow-sm p-1" />
           </label>
           <label className="block mb-4">
-            <span className="text-gray-700">Intégrer lecteur Bandcamp:</span>
-            <input type="text" name="bandcamp" value={formData.bandcamp} onChange={handleChange} className="mt-1 block w-full rounded border-gray-300 border shadow-sm p-1" />
+            <span className="text-gray-700">Intégrer lecteur Bandcamp (iframe):</span>
+            <input type="text" name="bandcamp"  value={formData.bandcamp} onChange={handleChange} className="mt-1 block w-full rounded border-gray-300 border shadow-sm p-1" />
           </label>
           <label className="block mb-4">
             <span className="text-gray-700">Description de l'album:</span>

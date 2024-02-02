@@ -121,7 +121,7 @@ export const AddRadio = () => {
       <div className="mb-5 mt-2 border-b border-gray-300 "></div>
 
       <h2 className="text-lg font-bold  px-2 py-2 w-full">Ajouter une radio internationale</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='w-full max-w-lg md:mx-2'>
       <div className="p-4">
         <div className="mb-4">
             <label htmlFor="file" className="block mb-2">Logo de la radio</label>

@@ -107,10 +107,10 @@ export const UploadImage = () => {
       <h2 className="text-xl font-bold  px-2 py-2 w-full">Editeur de photo</h2>
       <div className="mb-5 mt-2 border-b border-gray-300"></div>
       <h2 className="text-lg font-bold mb-4  px-2 py-2 w-full">Ajouter une photo</h2>
-    <form onSubmit={handleSubmit} className="w-full max-w-lg  px-8 pt-2 pb-8 mb-4">
+    <form onSubmit={handleSubmit} className="w-full max-w-lg  md:mx-2 pt-2 pb-8 mb-4">
       <div className="mb-4">
         <label className="block " htmlFor="title">
-        <p className='text-gray-700 text-sm font-bold mb-2'>Titre</p>
+        <p className='text-gray-700 text-md mb-2'>Titre</p>
           <p className='text-sm mb-2'>Pour un meilleur référencement utiliser 'En Gramma' dans le titre. </p>
           <p className='text-sm mb-2 italic'>Ex: En Gramma - Concert Noktambule </p>
         </label>

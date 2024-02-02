@@ -69,13 +69,15 @@ export const AddVideo = () => {
       <h2 className="text-xl font-bold  px-2 py-2 w-full">Editeur de vidéo</h2>
       <div className="mb-5 mt-2 border-b border-gray-300"></div>
       <h2 className="text-lg font-bold mb-4  px-2 py-2 w-full">Ajouter une vidéo</h2>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='w-full max-w-lg md:mx-2'>
     <label className='block mb-4'>
-      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Nom de la vidéo" 
+    <span className="text-gray-700">Titre de la vidéo</span>
+      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} 
       required className='border p-2 w-full' />
       </label>
         <label className='block mb-4'>
-      <input type="text" value={link} onChange={(e) => setLink(e.target.value)} placeholder="Lien de la vidéo" 
+        <span className="text-gray-700">Lien au format iframe, sur Youtube, Partager - Intégrer</span>
+      <input type="text" value={link} onChange={(e) => setLink(e.target.value)}  
       required className='border p-2 w-full' />
       </label>
         {formStatus === 'success' && <div className="text-green-500 mb-2">La vidéo a été ajoutée avec succès!</div>}
@@ -86,7 +88,7 @@ export const AddVideo = () => {
     <div className="mb-5 mt-9 border-b border-gray-300"></div>
     <h2 className="text-lg font-bold mb-4 px-2 py-2 w-full">Effacer une vidéo</h2>
  
-    <div className='mt-4'>
+    <div className='mt-4 md:mx-2'>
     {videos.map((video) => {
     const videoUrl = extractVideo(video.link);
     return (

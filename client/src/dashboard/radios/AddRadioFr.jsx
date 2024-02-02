@@ -116,7 +116,7 @@ export const AddRadioFr = () => {
     <div className="">
 
       <h2 className="text-lg font-bold  px-2 py-2 w-full">Ajouter une radio française</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='w-full max-w-lg md:mx-2'>
       <div className="p-4">
         <div className="mb-4">
             <label htmlFor="file" className="block mb-2">Logo de la radio</label>

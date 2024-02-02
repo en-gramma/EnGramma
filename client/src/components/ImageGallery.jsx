@@ -50,7 +50,7 @@ const ImageGallery = () => {
               return (
                 <div key={image.id} className="relative ">
                   <a href={image.image} data-pswp-width={image.width} data-pswp-height={image.height}>
-                    <img src={image.image} alt={image.title} className="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer" />
+                    <img src={image.image} alt={image.title} className="w-full h-full object-cover rounded-lg  cursor-pointer" />
                   </a>
                   <p className="absolute bottom-0 right-0 text-gray-300 px-2 py-1 text-xxs bg-black bg-opacity-10">&copy; {image.author}</p>
                 </div>

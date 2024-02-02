@@ -1,11 +1,16 @@
 import React from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
-import { AiOutlineCar } from 'react-icons/ai';
+import { IoIosRadio } from "react-icons/io";
 import { AiOutlineTeam } from 'react-icons/ai';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { GoGear } from "react-icons/go";
-
+import { BiPhotoAlbum } from "react-icons/bi";
+import { BiAlbum } from "react-icons/bi";
+import { GrArticle } from "react-icons/gr";
+import { CiYoutube } from "react-icons/ci";
+import { BsCalendar2Date } from "react-icons/bs";
+import { CiLink } from "react-icons/ci";
 
 export const Sidebar = ({ onSelectMenuItem }) => {
 
@@ -17,72 +22,71 @@ export const Sidebar = ({ onSelectMenuItem }) => {
       <h2 className="text-lg font-bold mb-4 text-neutral-700">
           {currentUser?.username} - {currentUser?.role === 'admin' ? 'Administrateur': 
           currentUser?.role === 'staff' ? 'Employé' : currentUser?.role}</h2>
-            <span className="mb-2 cursor-pointer" onClick={() => onSelectMenuItem('changer-parametres')}>
-          <div className="flex items-center mb-4 hover:font-semibold">
+            <span className=" cursor-pointer" onClick={() => onSelectMenuItem('changer-parametres')}>
+          <div className="flex items-center mb-2 hover:font-semibold">
             <GoGear className="mr-2" />
             Paramètres
           </div>
         </span>
-      <div className="mb-4 border-b border-gray-300"></div>
+        {currentUser && currentUser.role === 'admin' && (
+          <>
+        <span className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-employe')}>
+          <div className="flex items-center">
+            <AiOutlineTeam className="mr-2" />
+            Ajouter un membre
+          </div>
+        </span>
+        </>
+        )}
+      <div className="mb-4  mt-2 border-b border-gray-300"></div>
       <ul>
 
         <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-album')}>
           <div className="flex items-center">
-            <AiOutlineCar className="mr-2" />
+            <BiAlbum className="mr-2" />
             Editeur d'album
           </div>
         </li>
         <div className="mb-4 border-b border-gray-300"></div>
       <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-image')}>
           <div className="flex items-center">
-            <AiOutlineCar className="mr-2" />
+            <BiPhotoAlbum className="mr-2" />
            Editeur de photo
           </div>
         </li>
         <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('editer-article')}>
           <div className="flex items-center">
-            <AiOutlineCar className="mr-2" />
+            <GrArticle className="mr-2" />
             Editeur presse
           </div>
         </li>
         <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-video')}>
           <div className="flex items-center">
-            <AiOutlineCar className="mr-2" />
+            <CiYoutube className="mr-2" />
             Editeur de vidéo
           </div>
         </li>
         <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-radio')}>
           <div className="flex items-center">
-            <AiOutlineCar className="mr-2" />
+            <IoIosRadio className="mr-2" />
             Editeur de radio
           </div>
         </li>
         <div className="mb-4 border-b border-gray-300"></div>
         <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-date')}>
           <div className="flex items-center">
-            <AiOutlineEdit className="mr-2" />
+            <BsCalendar2Date className="mr-2" />
             Editeur de date
           </div>
         </li>
         <div className="mb-4 border-b border-gray-300"></div>
         <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('update-lien')}>
           <div className="flex items-center">
-            <AiOutlineEdit className="mr-2" />
+            <CiLink className="mr-2" />
             Mise à jour des liens Pro
           </div>
         </li>
-        <div className="mb-4 border-b border-gray-300"></div>
 
-        {currentUser && currentUser.role === 'admin' && (
-          <>
-        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-employe')}>
-          <div className="flex items-center">
-            <AiOutlineTeam className="mr-2" />
-            Ajouter un membre
-          </div>
-        </li>
-        </>
-        )}
       </ul>
     </div>
   );

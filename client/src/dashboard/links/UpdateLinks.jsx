@@ -45,25 +45,25 @@ const handleSubmit = async (event) => {
       <div className="mb-5 mt-2 border-b border-gray-300"></div>
       <h2 className="text-lg font-bold mb-4  px-2 py-2 w-full">Modifier le lien</h2>
       {links.map((link, index) => (
-        <div key={index}>
+        <div key={index} className='md:mx-2'>
           <p className="text-gray-500">Lien du Dossier de presse actuel: <span className='text-blue-600'>{link.dossier}</span></p>
           <p className="text-gray-500">Lien de la Fiche technique actuel: <span className='text-blue-600'>{link.fiche}</span></p>
         </div>
       ))}
       <div className="mb-5 mt-2 border-b border-gray-300"></div>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className='w-full max-w-lg  md:mx-2'>
         <label className="block">
-          <span className="text-gray-700 font-semibold">Lien du dossier de presse:</span>
+          <span className="text-gray-700 ">Lien du dossier de presse:</span>
           <input
             type="text"
             placeholder='Laisser ce champs vide pour ne pas changer'
             value={dossier}
             onChange={(e) => setDossier(e.target.value)}
-            className="mt-1 block w-full rounded border-gray-300 border shadow-sm p-1"
+            className="mt-1 block w-full rounded border-gray-300 border shadow-sm p-1 mb-2"
           />
         </label>
         <label className="block">
-          <span className="text-gray-700 font-semibold">Lien de la fiche technique:</span>
+          <span className="text-gray-700 ">Lien de la fiche technique:</span>
           <input
             type="text"
             placeholder='Laisser ce champs vide pour ne pas changer'
@@ -75,7 +75,7 @@ const handleSubmit = async (event) => {
         {statusMessage.text && (
         <p className={`text-${statusMessage.isError ? 'red' : 'green'}-500`}>{statusMessage.text}</p>
       )}
-        <button type="submit" className="w-[150px] py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 =">Mettre à jour</button>
+        <button type="submit" className="w-[150px] py-2 px-4 mt-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 =">Mettre à jour</button>
       </form>
     </div>
   );
