@@ -54,7 +54,7 @@ export const Dashboard = () => {
 
       <button
         className={`fixed top-[50px] left-0 p-3 mt-4  rounded w-full 
-         md:hidden bg-Engramma  border-neutral-300 border text-black flex items-center`}
+         md:hidden bg-gray-300 border-neutral-300 border text-black flex items-center`}
         onClick={toggleSidebar}
       >
         <CgMenuGridR className="mr-1" /> Menu

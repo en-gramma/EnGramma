@@ -20,7 +20,7 @@ export const RadioList = () => {
   return (
     <>
  <div className="relative my-9 md:mx-[100px]">
-  <img src={logo} alt="Logo En Gramma" className='md:max-h-[750px] md:w-auto h-auto w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-2' />
+  <img src={logo} alt="Logo En Gramma" className='md:max-h-[500px] md:w-auto h-auto w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-2' />
   <div className="text-4xl  mb-4 text-white font-custom text-center md:mb-9 pt-9">RADIOS</div>
 
   <div className='flex justify-center text-xl '>

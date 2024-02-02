@@ -18,7 +18,8 @@ export const Sidebar = ({ onSelectMenuItem }) => {
 
   return (
     <div className=" bg-white rounded-md p-5 z-0  shadow pt-5 h-full md:bgwhite md:rounded-sm">
-      <h2 className="text-lg font-bold mb-4 text-neutral-700">
+      <div className=" border-b border-gray-300"></div>
+      <h2 className="bg-gray-100 text-lg p-1 font-semibold shadow mb-2">
           {currentUser?.username} - {currentUser?.role === 'admin' ? 'Administrateur': 
           currentUser?.role === 'staff' ? 'Employé' : currentUser?.role}</h2>
             <span className=" cursor-pointer" onClick={() => onSelectMenuItem('changer-parametres')}>

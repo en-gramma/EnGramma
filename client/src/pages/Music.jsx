@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import scene from '../assets/scene.jpg';
 import axios from 'axios';
+import {Loader} from '../components/Loader';
 
 import '../index.css';
 
@@ -43,7 +44,7 @@ export const Music = () => {
       <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}></div>
       <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center overflow-hidden">
         {loading ? (
-          <p>Chargement...</p>
+          <Loader />
         ) : (
           <div className={`flex flex-col items-center text-lg text-white z-10 mt-[75px] ${albums.length > 1 ? 'md:overflow-y-auto' : ''} overflow-y-auto max-h-[80vh] no-scrollbar`}>
              {albums.slice().reverse().map((album) => (
