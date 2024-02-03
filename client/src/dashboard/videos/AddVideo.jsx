@@ -102,7 +102,7 @@ export const AddVideo = () => {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
         />
-        <button onClick={() => handleDelete(video.id)} className='bg-red-500 py-1 px-2 rounded text-white  mt-2 mb-2'>Supprimer</button>
+        <button onClick={() => handleDelete(video.id)} className='bg-red-500 py-1 px-2 rounded text-white mt-2 mb-2'>Supprimer</button>
         <div className="mb-5 mt-2 border-b border-gray-300"></div>
        </div>
     );

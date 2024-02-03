@@ -126,7 +126,7 @@ export const UploadImage = () => {
       </div>
       <div className="mb-4">
         <label className="block " htmlFor="author">
-        <p className='text-gray-700 text-sm font-bold mb-2'>Auteur</p>
+        <p className='text-gray-700 text-md  mb-2'>Auteur</p>
           <p className='text-sm mb-2'>Apparaîtra dans le Copyright. </p>
 
         </label>
@@ -142,7 +142,7 @@ export const UploadImage = () => {
       </div>
       <div className="mb-4">
         <label className="block " htmlFor="file">
-          <p className='text-gray-700 text-sm font-bold mb-2'>Image</p>
+          <p className='text-gray-700 text-md mb-2'>Image</p>
           <p className='text-sm mb-2'>Taille maximale 5mb, compresser une image : <a href="https://imagecompressor.com/fr/" target="_blank" rel="noopener noreferrer" className='underline text-blue-600'>Ici</a></p>
         </label>
         <input

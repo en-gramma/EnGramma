@@ -137,7 +137,7 @@ export const AddRadio = () => {
         </div>
 
         <div className="mb-4">
-            <input required className="border p-2 w-full" placeholder="Non de la radio" name="name" value={formData.name} onChange={handleChange} />
+            <input required className="border p-2 w-full" placeholder="Nom de la radio" name="name" value={formData.name} onChange={handleChange} />
         </div>
         <div className="mb-4">
             <input required className="border p-2 w-full" placeholder="Pays" name="country" value={formData.country} onChange={handleChange} />
