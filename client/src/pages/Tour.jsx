@@ -69,7 +69,7 @@ const showThreeDates = () => {
     </div>
   );
 })}
-          <div className='flex flex-col sm:flex-row items-center '>
+          <div className='flex flex-col sm:flex-row items-center mb-5'>
             <button className='text-Engramma mt-4 flex items-start mr-5 ' onClick={loadMoreDates}>Afficher plus de dates</button>
             {datesToShow >= 6 && 
             <button className='text-Engramma mt-4 flex items-start ' onClick={showThreeDates}>Cacher les anciennes dates</button>

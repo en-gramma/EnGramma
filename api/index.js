@@ -10,6 +10,7 @@ import articleRoutes from "./routes/articles.js";
 import videoRoutes from "./routes/videos.js";
 import radioRoutes from "./routes/radios.js";
 import radiofrRoutes from "./routes/radiofrs.js";
+import bioRoutes from "./routes/bios.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -70,6 +71,7 @@ app.use("/api/articles", articleRoutes);
 app.use("/api/videos", videoRoutes);
 app.use("/api/radios", radioRoutes);
 app.use("/api/radiofrs", radiofrRoutes);
+app.use("/api/bios", bioRoutes);
 
 //gestion des erreurs, les erreurs seront retournées avec ce message générique
 app.use((err, req, res, next) => {

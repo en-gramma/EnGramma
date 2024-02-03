@@ -62,7 +62,7 @@ export const Music = () => {
                   </iframe>
                 </div>
                 <div className='lg:flex lg:flex-col lg:items-center lg:ml-8'>
-                  <p className='text-md mb-4 text-justify mx-4 bg-black bg-opacity-50 md:bg-transparent lg:text-left sm:w-[400px] md:w-[600px] lg:mt-[200px] animate-fade-left'>{album.description}</p>
+                  <p className='text-sm mb-4 text-justify mx-4 bg-black bg-opacity-50 md:bg-transparent lg:text-left sm:w-[400px] md:w-[600px] lg:mt-[200px] animate-fade-left'>{album.description}</p>
                   <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-4 md:mt-9">
                     <a
                       href={album.albumLink}
