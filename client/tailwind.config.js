@@ -28,6 +28,7 @@ module.exports = {
         },
   
       height: {
+        'screen-105': '105vh',
         'screen-110': '110vh',
         'screen-120': '120vh',
         '50': '12.5rem',
@@ -68,7 +69,8 @@ module.exports = {
   
   plugins: [
     require('tailwindcss-animated'),
-    require('tailwindcss-textshadow')
+    require('tailwindcss-textshadow'),
+    require('tailwind-scrollbar')({ nocompatible: true }),
   ],
   
 }

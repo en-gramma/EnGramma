@@ -8,9 +8,9 @@ import { RadioList } from '../components/RadioList';
 export const Media = () => {
   return (
     <>
+          <VideoPlayer />
+          <PressReview />
       <ImageGallery />
-      <PressReview />
-      <VideoPlayer />
       <RadioList />
     </>
   )

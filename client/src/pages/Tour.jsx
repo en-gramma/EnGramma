@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import scene2 from '../assets/scene2.jpg';
 import axios from 'axios';
+import { Loader } from '../components/Loader';
 
 export const Tour = () => {
   const [dates, setDates] = useState([]);
@@ -44,7 +45,9 @@ const showThreeDates = () => {
       <h1 className={`font-custom text-white z-10 text-4xl mb-8 ${datesToShow >= 6 ? 'pt-[100px]' : ''}`}>DATES</h1>
 
         {loading ? (
-          <p>Loading dates...</p>
+                <div className='flex justify-center items-center '>
+                <Loader />
+              </div>
         ) : (
   <div className='overflow-auto no-scrollbar'>
 

@@ -46,15 +46,16 @@ const ImageGallery = () => {
   };
 
   return (
-<div style={divStyle} className="h-screen-110 bg-no-repeat bg-center bg-cover shadow-xl flex bg-black bg-opacity-40 items-center">
-  <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center">
-    <div className="text-4xl text-white font-custom text-center mb-9 pt-[100px]">PHOTOS</div>
+
+<div style={divStyle} className="h-screen-110 py-9 bg-no-repeat bg-center bg-cover shadow-xl flex bg-black bg-opacity-40 items-center flex-col">
+
+    <div className="text-4xl  mb-4 text-white font-custom text-center pt-7 mb-9">PHOTOS</div>
     {isLoading ? (
       <div className='flex justify-center items-center h-full w-full'>
         <Loader />
       </div>
     ) : (
-      <div className="overflow-auto no-scrollbar max-h-[100vh]">
+      <div className="overflow-auto scrollbar scrollbar-thumb-gray-400 scrollbar-track-gray-900 scrollbar-thin scrollbar-corner-20 max-h-[100vh]">
         <div id="my-gallery" className="grid md:grid-cols-3 md:gap-4 grid-cols-1 mx-2 gap-2 md:mx-[200px]">
         {images.sort((a, b) => b.height + a.height).map((image, index) => (
             <div key={image.id} className="relative">
@@ -68,7 +69,7 @@ const ImageGallery = () => {
       </div>
     )}
   </div>
-</div>
+
     
   );
 };
