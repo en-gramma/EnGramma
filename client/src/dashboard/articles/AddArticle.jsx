@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import DOMPurify from 'isomorphic-dompurify';
 
@@ -6,6 +6,7 @@ export const AddArticle = () => {
   const [status, setStatus] = useState('');
   const [formStatus, setFormStatus] = useState(null);
   const [articles, setArticles] = useState([]);
+  const formRef = useRef();
 
   const [formData, setFormData] = useState({
     text: DOMPurify.sanitize(''),
@@ -52,6 +53,27 @@ export const AddArticle = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Regex pour la validation
+    const frenchTextRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
+
+    // Validation
+    if (!frenchTextRegex.test(formData.text)) {
+      alert('Le texte contient des caractères non valides.');
+      return;
+    }
+    if (!frenchTextRegex.test(formData.name)) {
+      alert('Le nom contient des caractères non valides.');
+      return;
+    }
+    if (!frenchTextRegex.test(formData.country)) {
+      alert('Le pays contient des caractères non valides.');
+      return;
+    }
+    if (!frenchTextRegex.test(formData.header)) {
+      alert('L\'en-tête contient des caractères non valides.');
+      return;
+    }
+
     // empeche l'envoi du formulaire si le fichier est trop lourd
     if (formData.file && formData.file.size > 5 * 1024 * 1024) {
         alert("Le fichier dépasse 5 Mo");
@@ -79,6 +101,7 @@ export const AddArticle = () => {
 
   useEffect(() => {
     if(status === 'success') {
+      formRef.current.reset();
       setFormData({
         text: '',
         name: '',
@@ -125,7 +148,7 @@ export const AddArticle = () => {
       <div className="mb-5 mt-2 border-b border-gray-300 "></div>
 
       <h2 className="text-lg font-bold  px-2 py-2 w-full">Ajouter un article</h2>
-      <form onSubmit={handleSubmit} className='w-full max-w-lg md:mx-2'>
+      <form ref={formRef} onSubmit={handleSubmit} className='w-full max-w-lg md:mx-2'>
       <div className="p-4">
         <div className="mb-4">
             <label htmlFor="file" className="block mb-2">Logo du média</label>

@@ -48,6 +48,20 @@ export const AddVideo = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    // URL validation regex
+    const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+
+    if (link !== '' && !urlRegex.test(link)) {
+      alert('Veuillez entrer un lien valide. Exemple: https://www.example.com.');
+      return;
+    }
+
+    const frenchTextRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
+      if (!frenchTextRegex.test(title)) {
+        alert('Erreur : Le champs titre contien des caractères non valides');
+        return;
+      }
+
     try {
       const apiUrl = process.env.REACT_APP_API_URL;
       await axios.post(`${apiUrl}/api/videos`, { link, title }, 

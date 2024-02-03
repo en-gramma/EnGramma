@@ -23,6 +23,15 @@ export const UpdateLinks = () => {
 
 const handleSubmit = async (event) => {
     event.preventDefault();
+
+      // URL validation regex
+  const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+
+  // Validate the inputs
+  if ((dossier !== '' && !urlRegex.test(dossier)) || (fiche !== '' && !urlRegex.test(fiche))) {
+    alert('Veuillez entrer un lien valide. Exemple: https://www.example.com.');
+    return;
+  }
     
     try {
       const apiUrl = process.env.REACT_APP_API_URL;

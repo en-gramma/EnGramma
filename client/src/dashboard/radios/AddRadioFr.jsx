@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 
@@ -6,6 +6,7 @@ export const AddRadioFr = () => {
   const [status, setStatus] = useState('');
   const [formStatus, setFormStatus] = useState(null);
   const [radios, setRadios] = useState([]);
+  const formRef = useRef();
 
   const [formData, setFormData] = useState({
 
@@ -75,6 +76,7 @@ export const AddRadioFr = () => {
 
   useEffect(() => {
     if(status === 'success') {
+      formRef.current.reset();
       setFormData({
 
         file: null,
@@ -116,7 +118,7 @@ export const AddRadioFr = () => {
     <div className="">
 
       <h2 className="text-lg font-bold  px-2 py-2 w-full">Ajouter une radio française</h2>
-      <form onSubmit={handleSubmit} className='w-full max-w-lg md:mx-2'>
+      <form ref={formRef} onSubmit={handleSubmit} className='w-full max-w-lg md:mx-2'>
       <div className="p-4">
         <div className="mb-4">
             <label htmlFor="file" className="block mb-2">Logo de la radio</label>
@@ -131,8 +133,8 @@ export const AddRadioFr = () => {
             />
         </div>
 
-        {setStatus === 'success' && <div className="text-green-500">La radio a été ajouté avec succès!</div>}
-        {setStatus === 'error' && <div className="text-red-500">Erreur lors de l'ajout de la radio</div>}
+        {status === 'success' && <div className="text-green-500">La radio a été ajouté avec succès!</div>}
+        {status === 'error' && <div className="text-red-500">Erreur lors de l'ajout de la radio</div>}
         <button className="w-full bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>
         </div>
       </form>

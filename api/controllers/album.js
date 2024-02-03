@@ -48,34 +48,45 @@ export const deleteAlbum = (req, res, next) => {
 
 // ajouter un album
 export const addAlbum= (req, res, next) => {
-    const token = req.cookies.access_token;
-    if (!token) return res.status(401).json("Pas de token trouvé.");
+  const token = req.cookies.access_token;
+  if (!token) return res.status(401).json("Pas de token trouvé.");
+
+  jwt.verify(token, process.env.JWT_SECRET, (err) => {
+    if (err) {
+      next(err);
+      return;
+    }
+
+    const frenchTitleRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
+    const descriptionRegex = /^[\w\W\s]*$/;
   
-    jwt.verify(token, process.env.JWT_SECRET, (err) => {
+    // Validation
+    if (!frenchTitleRegex.test(req.body.title)) {
+      return res.status(400).json({ error: 'Erreur : Le titre contient des caractères non valides' });
+    }
+    if (!descriptionRegex.test(req.body.description)) {
+      return res.status(400).json({ error: 'Erreur : La description contient des caractères non valides.' });
+    }
+
+    const q =
+      "INSERT INTO albums (`title`, `bandcamp`, `description`, `albumLink`) VALUES (?)";
+
+    const values = [
+      DOMPurify.sanitize(req.body.title),
+      req.body.bandcamp,
+      DOMPurify.sanitize(req.body.description),
+      req.body.albumLink
+    ];
+
+    db.query(q, [values], (err, data) => {
       if (err) {
         next(err);
         return;
       }
-  
-      const q =
-        "INSERT INTO albums (`title`, `bandcamp`, `description`, `albumLink`) VALUES (?)";
-  
-      const values = [
-        DOMPurify.sanitize(req.body.title),
-        req.body.bandcamp,
-        DOMPurify.sanitize(req.body.description),
-        req.body.albumLink
-      ];
-  
-      db.query(q, [values], (err, data) => {
-        if (err) {
-          next(err);
-          return;
-        }
-        return res.json("L'album' a été ajoutée avec succès.");
-      });
+      return res.json("L'album' a été ajoutée avec succès.");
     });
-  };
+  });
+};
 
   export const updateAlbum =  (req, res, next) => {
     const token = req.cookies.access_token;

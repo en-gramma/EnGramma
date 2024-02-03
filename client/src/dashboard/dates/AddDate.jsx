@@ -21,12 +21,25 @@ export const AddDate = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const { day, month, place, city } = formData;
+
+    // Input validation
+    const dayRegex = /^(3[01]|[12][0-9]|0?[1-9])$/;
+    const wordRegex = /^[a-zA-Z\u00C0-\u017F\s]+$/;
+  
+    if (!dayRegex.test(day) || !wordRegex.test(month) || 
+        !wordRegex.test(place) || !wordRegex.test(city)) {
+      alert('Caractère non valide dans un des champs');
+      return;
+    }
+
     try {
       const apiUrl = process.env.REACT_APP_API_URL;
       await axios.post(`${apiUrl}/api/dates`, formData, 
       { withCredentials: true });
       setStatusMessage('success');
-      fetchDates(); // Refresh the dates after adding a new one
+      fetchDates(); 
     } catch (error) {
       setStatusMessage('error');
     }

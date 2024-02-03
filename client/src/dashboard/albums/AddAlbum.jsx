@@ -31,6 +31,19 @@ export const AddAlbum = () => {
       description: DOMPurify.sanitize(formData.description),
       albumLink: formData.albumLink,
     };
+    
+    const frenchTitleRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
+    const descriptionRegex = /^[\w\W\s]*$/;
+  
+    // Validation
+    if (!frenchTitleRegex.test(formData.title)) {
+      alert('Erreur : Le titre contient des caractères non valides');
+      return;
+    }
+    if (!descriptionRegex.test(formData.description)) {
+      alert('Erreur : La description contient des caractères non valides.');
+      return;
+    }  
 
     try {
       const apiUrl = process.env.REACT_APP_API_URL;
@@ -51,7 +64,7 @@ export const AddAlbum = () => {
       setFormStatus('success');
 
     } catch (error) {
-      console.error('Erreur lors de l\'ajout de l\'album :', error.response ? error.response.data : error.message);
+      console.error("Erreur lors de l'ajout de l'album ");
       setFormStatus('error');
     }
   };

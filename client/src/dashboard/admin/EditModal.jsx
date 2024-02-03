@@ -64,6 +64,14 @@ export const EditModal = ({ isOpen, onClose, onUpdate, user}) => {
         await axios.delete(`${apiUrl}/api/auth/deleteImage/${user.id}`, {
             withCredentials: true,
           });
+
+          //regex username
+        const usernameRegex = /^[a-zA-Z0-9_-]+$/;
+        if (!usernameRegex.test(formData.username)) {
+          setStatus('error');
+          setStatusMessage('Le nom d\'utilisateur ne peut contenir que des lettres, des chiffres, des tirets et des underscores.');
+          return;
+  }
     
         //regex email
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

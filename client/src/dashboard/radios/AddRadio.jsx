@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import DOMPurify from 'isomorphic-dompurify';
 import { AddRadioFr } from './AddRadioFr';
@@ -7,6 +7,7 @@ export const AddRadio = () => {
   const [status, setStatus] = useState('');
   const [formStatus, setFormStatus] = useState(null);
   const [radios, setRadios] = useState([]);
+  const formRef = useRef();
 
   const [formData, setFormData] = useState({
     description: DOMPurify.sanitize(''),
@@ -50,6 +51,15 @@ export const AddRadio = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Regex pour la validation
+    const frenchTextRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
+
+    // Validation
+    if (!frenchTextRegex.test(formData.description) || !frenchTextRegex.test(formData.country)) {
+      alert('Erreur : Les champs contiennent des caractères non valides');
+      return;
+    }
+
     // empeche l'envoi du formulaire si le fichier est trop lourd
     if (formData.file && formData.file.size > 5 * 1024 * 1024) {
         alert("Le fichier dépasse 5 Mo");
@@ -77,6 +87,7 @@ export const AddRadio = () => {
 
   useEffect(() => {
     if(status === 'success') {
+      formRef.current.reset();
       setFormData({
         description: '',
         country: '',
@@ -121,7 +132,7 @@ export const AddRadio = () => {
       <div className="mb-5 mt-2 border-b border-gray-300 "></div>
 
       <h2 className="text-lg font-bold  px-2 py-2 w-full">Ajouter une radio internationale</h2>
-      <form onSubmit={handleSubmit} className='w-full max-w-lg md:mx-2'>
+      <form ref={formRef} onSubmit={handleSubmit} className='w-full max-w-lg md:mx-2'>
       <div className="p-4">
         <div className="mb-4">
             <label htmlFor="file" className="block mb-2">Logo de la radio</label>
@@ -145,8 +156,8 @@ export const AddRadio = () => {
         <div className="mb-4">
             <input className="border p-2 w-full" placeholder="Brève description de la radio" name="description" value={formData.description} onChange={handleChange} />
         </div>
-        {setStatus === 'success' && <div className="text-green-500">La radio a été ajouté avec succès!</div>}
-        {setStatus === 'error' && <div className="text-red-500">Erreur lors de l'ajout de la radio</div>}
+        {status === 'success' && <div className="text-green-500">La radio a été ajouté avec succès!</div>}
+        {status === 'error' && <div className="text-red-500">Erreur lors de l'ajout de la radio</div>}
         <button className="w-full bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>
         </div>
       </form>
