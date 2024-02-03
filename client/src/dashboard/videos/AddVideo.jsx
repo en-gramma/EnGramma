@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import DOMPurify from 'dompurify';
 
 export const AddVideo = () => {
   const [link, setLink] = useState('');
@@ -40,21 +41,14 @@ export const AddVideo = () => {
     const doc = parser.parseFromString(iframeHtml, 'text/html');
     const iframe = doc.querySelector('iframe');
     if (iframe) {
-      return iframe.getAttribute('src');
+      const sanitizedSrc = DOMPurify.sanitize(iframe.getAttribute('src'), { ADD_ATTR: ['allowfullscreen', 'scrolling'] });
+      return sanitizedSrc;
     }
     return null;
-  };
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // URL validation regex
-    const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
-
-    if (link !== '' && !urlRegex.test(link)) {
-      alert('Veuillez entrer un lien valide. Exemple: https://www.example.com.');
-      return;
-    }
 
     const frenchTextRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
       if (!frenchTextRegex.test(title)) {

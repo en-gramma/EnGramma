@@ -98,12 +98,18 @@ export const addAlbum= (req, res, next) => {
    const q = 
    "UPDATE albums SET `title`=?, `bandcamp`=?, `description`=?, `albumLink`=?, WHERE `id`=?";
 
+  req.body.title = DOMPurify.sanitize(req.body.title);
+  req.body.bandcamp = DOMPurify.sanitize(req.body.bandcamp,  { ADD_TAGS: ["iframe"], ADD_ATTR: ['allowfullscreen', 'scrolling'] });
+  req.body.description = DOMPurify.sanitize(req.body.description);
+  req.body.albumLink = DOMPurify.sanitize(req.body.albumLink);
+
+
    const values = [
-    DOMPurify.sanitize(req.body.title),
-    req.body.bandcamp,
-    DOMPurify.sanitize(req.body.description),
-    req.body.albumLink,
-     req.params.id
+      req.body.title,
+      req.body.bandcamp,
+      req.body.description,
+      req.body.albumLink,
+      req.params.id
    ];
 
    db.query(q, values, (err, data) => {

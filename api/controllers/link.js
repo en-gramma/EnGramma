@@ -18,6 +18,14 @@ export const updateLinks =  (req, res, next) => {
   
     jwt.verify(token, process.env.JWT_SECRET, (err) => {
       if (err) return res.status(403).json("Le token n'est pas valide.");
+
+    // URL validation regex
+    const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+
+    if ((req.body.dossier !== '' && !urlRegex.test(req.body.dossier)) || (req.body.fiche !== '' && !urlRegex.test(req.body.fiche))) {
+        return res.status(400).json("L'URL n'est pas valide.");
+    }
+  
   
       const q = 
       "UPDATE links SET `dossier`=?, `fiche`=? WHERE `id`=?";

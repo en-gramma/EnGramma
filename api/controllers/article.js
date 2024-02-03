@@ -115,6 +115,27 @@ export const updateArticle =  (req, res, next) => {
   
     jwt.verify(token, process.env.JWT_SECRET, (err) => {
       if (err) return res.status(403).json("Le token n'est pas valide.");
+
+          // Regex pour la validation
+    const frenchTextRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
+
+    // Validation
+    if (!frenchTextRegex.test(req.body.text)) {
+      return res.status(400).json({ error: 'Erreur : La description contient des caractères non valides' });
+
+    }
+    if (!frenchTextRegex.test(req.body.name)) {
+      return res.status(400).json({ error: 'Erreur : Le nom contient des caractères non valides' });
+
+    }
+    if (!frenchTextRegex.test(req.body.country)) {
+      return res.status(400).json({ error: 'Erreur : Le pays contient des caractères non valides' });
+
+    }
+    if (!frenchTextRegex.test(req.body.header)) {
+      return res.status(400).json({ error: 'Erreur : Le titre contient des caractères non valides' });
+
+    }
   
       const q = 
       "UPDATE articles SET  `image`=?, `text`=?, `name`=?, `country`=?, `header`=?  WHERE `id`=?";

@@ -44,29 +44,31 @@ const VideoPlayer = () => {
         <>
 <div style={divStyle} className="md:h-screen h-screen-105 bg-no-repeat bg-center bg-cover shadow-xl flex bg-black bg-opacity-40 items-center">
   <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center">
-                <div className="text-4xl text-white font-custom text-center mb-6 md:mb-[75px] pt-[100px] md:pt-[140px]">VIDEOS</div>
+  <div className={`text-4xl text-white font-custom text-center mb-6 ${videos.length >= 3 ? 'md:mb-25' : 'md:mb-[75px]'} pt-[100px] md:pt-[140px]`}>VIDEOS</div>
                 {isLoading ? (
                     <div className='flex justify-center items-center '>
                         <Loader />
                     </div>
                 ) : (
-                    <div id="my-gallery" className="flex flex-col md:flex-row justify-evenly w-full mt-4  ">
-                        {videos.map((video) => {
-                            const videoUrl = extractVideo(video.link);
-                            return (
-                                <div key={video.id} className="aspect-w-16 aspect-h-9 overflow-hidden m-2 mb-6  ">
-                                    <iframe
-                                        className=' md:w-[560px] md:h-[315px] w-[400px] h-[225px] rounded-lg'
-                                        src={videoUrl}
-                                        title="YouTube video player"
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    />
-                                </div>
-                            );
-                        })}
-                    </div>
+                <div className="overflow-auto scrollbar scrollbar-thumb-gray-400 scrollbar-track-transparent scrollbar-thin scrollbar-corner-20 max-h-[500px]">
+                <div id="my-gallery" className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    {videos.map((video) => {
+                    const videoUrl = extractVideo(video.link);
+                    return (
+                        <div key={video.id} className="aspect-w-16 aspect-h-9 overflow-hidden m-2 mb-6">
+                        <iframe
+                            className=' md:w-[560px] md:h-[315px] w-[400px] h-[225px] rounded-lg'
+                            src={videoUrl}
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        />
+                        </div>
+                    );
+                    })}
+                </div>
+                </div>
                 )}
             </div>
         </div>

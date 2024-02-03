@@ -23,7 +23,7 @@ export const RadioListFr = () => {
   <div className="grid md:grid-cols-4 gap-4 ">
     {radiofrs.map(radio => (
        <div key={radio.id} className="p-4 flex flex-col items-center">
-       <img src={radio.image} alt={radio.name} className="w-auto mx-auto h-[125px] object-cover mb-4 rounded pt-1" />
+       <img src={radio.image} alt={radio.name} className="w-auto mx-auto h-[100px] object-cover mb-4 rounded pt-1" />
        </div>
     ))}
   </div>

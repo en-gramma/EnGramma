@@ -85,7 +85,7 @@ export const login = async (req, res, next) => {
 
   //verification du regex password
   if (!/^(?=.*[A-Za-zÀ-ÿ])(?=.*\d)(?=.*[@$!%*?&])[A-Za-zÀ-ÿ\d@$!%*?&]{8,}$/.test(password)) {
-    return res.status(400).json('Le mot de passe doit contenir au moins 8 caractères, y compris au moins une lettre et un chiffre.');
+    return res.status(400).json('Le format du mot de passe ne correspond pas.');
   }
 
   //verification du regex email

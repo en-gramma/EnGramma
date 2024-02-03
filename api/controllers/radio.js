@@ -80,6 +80,14 @@ export const deleteRadio = (req, res, next) => {
         next(err);
         return;
       }
+
+    // Regex pour la validation
+    const frenchTextRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
+
+    // Validation
+    if (!frenchTextRegex.test(req.body.description) || !frenchTextRegex.test(req.body.country)) {
+      return res.status(400).json('Erreur : La description ou le pays contient des caractères non valides' );
+    }
   
       const q =
         "INSERT INTO radios ( `image`, `description`, `country`, `name`) VALUES (?)";
@@ -94,12 +102,12 @@ export const deleteRadio = (req, res, next) => {
   
       db.query(q, [values], (err, data) => {
         if (err) {
-          console.error(err); // Log the error to the console
+          console.error(err); 
           if (process.env.NODE_ENV === 'development') {
-            // In development mode, send the error details to the client
+
             return res.status(500).json(err);
           } else {
-            // In production mode, send a generic error message
+ 
             return res.status(500).json("Une erreur s'est produite lors de l'ajout de l'article.");
           }
         }

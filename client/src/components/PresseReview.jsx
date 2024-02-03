@@ -31,7 +31,7 @@ export const PressReview = () => {
     <Loader />
     </div>
   ) : (
-    <div className="grid md:grid-cols-3 gap-4 ">
+    <div className="grid md:grid-cols-3 gap-4 justify-center">
       {articles.map(article => (
         <div key={article.id} className="p-4 flex flex-col items-center text-lg">
           <img src={article.image} alt={article.name} className="w-auto h-[75px] object-cover mb-4 rounded" />
