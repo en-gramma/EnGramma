@@ -64,17 +64,23 @@ export const addBio= (req, res, next) => {
     if (!frenchTitleRegex.test(req.body.title)) {
       return res.status(400).json({ error: 'Erreur : Le titre contient des caractères non valides' });
     }
+
+    if (!descriptionRegex.test(req.body.engramma)) {
+      return res.status(400).json({ error: 'Erreur : Le titre secondaire contient des caractères non valides.' });
+    }
     if (!descriptionRegex.test(req.body.text)) {
       return res.status(400).json({ error: 'Erreur : La description contient des caractères non valides.' });
     }
 
     const q =
-      "INSERT INTO albums (`title`, `description`, `image`) VALUES (?)";
+      "INSERT INTO bios (`title`, `text`, `image`, `engramma`, `copyright`) VALUES (?)";
 
     const values = [
       DOMPurify.sanitize(req.body.title),
-      DOMPurify.sanitize(req.body.description),
+      DOMPurify.sanitize(req.body.text),
       DOMPurify.sanitize(req.body.image),
+      DOMPurify.sanitize(req.body.engramma),
+      DOMPurify.sanitize(req.body.copyrigth)
     ];
 
     db.query(q, [values], (err, data) => {
@@ -95,17 +101,21 @@ export const addBio= (req, res, next) => {
    if (err) return res.status(403).json("Le token n'est pas valide.");
 
    const q = 
-   "UPDATE albums SET `title`=?, `description`=?, `image`=?, WHERE `id`=?";
+   "UPDATE albums SET `title`=?, `text`=?, `image`=?, `engramma`=?, `copyright`=? WHERE `id`=?";
 
   req.body.title = DOMPurify.sanitize(req.body.title);
-  req.body.description = DOMPurify.sanitize(req.body.description);
+  req.body.description = DOMPurify.sanitize(req.body.text);
   req.body.albumLink = DOMPurify.sanitize(req.body.image);
+  req.body.engramma = DOMPurify.sanitize(req.body.engramma);
+  req.body.id = DOMPurify.sanitize(req.body.copyrigth);
 
 
    const values = [
       req.body.title,
-      req.body.description,
+      req.body.text,
       req.body.image,
+      req.body.engramma,
+      req.body.copyrigth,
       req.params.id
    ];
 

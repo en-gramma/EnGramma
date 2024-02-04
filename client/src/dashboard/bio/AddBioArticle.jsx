@@ -11,8 +11,9 @@ export const AddBioArticle = () => {
   const formRef = useRef();
 
   const [formData, setFormData] = useState({
-    text: DOMPurify.sanitize(''),
+    title: DOMPurify.sanitize(''),
     description: DOMPurify.sanitize(''),
+    engramma: DOMPurify.sanitize(''),
     file: null,
   });
 
@@ -54,13 +55,13 @@ export const AddBioArticle = () => {
 
     // Regex pour la validation
     const frenchTextRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
-    if (!frenchTextRegex.test(formData.text)) {
+    if (!frenchTextRegex.test(formData.title)) {
       alert('Le texte contient des caractères non valides.');
       return;
     }
 
     const descriptionRegex = /^[\w\W\s]*$/;
-    if (!descriptionRegex.test(formData.description)) {
+    if (!descriptionRegex.test(formData.text)) {
         alert('La description contient des caractères non valides.');
         return;
     }
@@ -94,8 +95,9 @@ export const AddBioArticle = () => {
     if(status === 'success') {
       formRef.current.reset();
       setFormData({
-        text: '',
+        title: '',
         description: '',
+        engramma: '',
         file: null,
       })
     }
@@ -131,15 +133,16 @@ export const AddBioArticle = () => {
     fetchBios();
   }, []);
 
+  
   return (
     <div className="w-full shadow-md rounded-md p-1 md:p-5 bg-white md:m-4">
       <h2 className="text-xl font-bold  px-2 py-2 w-full">Editeur d'article (bio)</h2>
       <div className="mb-5 mt-2 border-b border-gray-300 "></div>
 
       <h2 className="text-lg font-bold  px-2 py-2 w-full">Ajouter un article</h2>
-      <form ref={formRef} onSubmit={handleSubmit} className='w-full max-w-lg md:mx-2'>
+      <form ref={formRef} onSubmit={handleSubmit} className='w-full  md:mx-2'>
       <div className="p-4">
-        <div className="mb-4">
+        <div className="mb-4 max-w-lg">
             <label htmlFor="file" className="block mb-2">Image de l'article</label>
             <p className='italic text-md mb-2'>Idéalement de taille 850x450px et au format jpg ou png</p>
             <input
@@ -151,17 +154,23 @@ export const AddBioArticle = () => {
             className="border border-gray-400 w-full"
             />
         </div>
+        <div className="mb-4">
+            <input className="border p-2 w-full" placeholder="Auteur de l'image" name="copyright" value={formData.copyright} onChange={handleChange} />
+        </div>
 
         <div className="mb-4">
-            <input className="border p-2 w-full" placeholder="Nom du média" name="name" value={formData.title} onChange={handleChange} />
+            <input className="border p-2 w-full" placeholder="Titre de l'article" name="title" value={formData.title} onChange={handleChange} />
         </div>
         <div className="mb-4">
-  <ReactQuill className='h-[300px]' value={formData.description} onChange={(value) => setFormData({...formData, description: value})} />
-</div>
+            <input className="border p-2 w-full" placeholder="Texte avec la police En Gramma en fin de phrase (optionel)" name="engramma" value={formData.engramma} onChange={handleChange} />
+        </div>
+        <div className="mb-4">
+            <ReactQuill className='h-[300px] w-full' value={formData.text} onChange={(value) => setFormData({...formData, text: value})} />
+        </div>
 
         {setStatus === 'success' && <div className="text-green-500">L'article a été ajouté avec succès!</div>}
         {setStatus === 'error' && <div className="text-red-500">Erreur lors de l'ajout de l'article</div>}
-        <button className="w-full bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>
+        <button className=" mt-9 w-full bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>
         </div>
       </form>
 
@@ -173,8 +182,9 @@ export const AddBioArticle = () => {
         {bios.map(bio => (
         <div key={bio.id} className="p-4 flex flex-col items-center">
             <img src={bio.image} alt={bio.title} className="w-auto h-[150px] object-cover mb-4 rounded" />
-            <h2 className="mb-2"><span className='text-md font-bold '>{bio.title}</span></h2>
-            <p className="text-gray-700 text-center">{bio.description}</p>
+            <h2 className="mb-2"><span className='text-md font-bold '>{bio.title} <span className='font-custom'>{bio.engramma}</span></span></h2>
+            
+            <div dangerouslySetInnerHTML={{ __html: bio.text.length > 200 ? bio.text.substring(0, 200) + '...' : bio.text }} />
             <button onClick={() => deleteBio(bio.id)} className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Effacer</button>
             <div className="mb-5 mt-2 border-b border-gray-300 "></div>
         </div>
