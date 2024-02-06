@@ -106,7 +106,7 @@ export const AddDate = () => {
                 <td className="border px-4 py-2">{date.place}</td>
                 <td className="border px-4 py-2">{date.city}</td>
                 <td className="border px-4 py-2">
-                <button onClick={() => handleDelete(date.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+                <button onClick={() => handleDelete(date.id)} className="bg-red-500 hover:bg-red-700 text-white  py-1 px-2 rounded">
                     Effacer
                 </button>
                 </td>

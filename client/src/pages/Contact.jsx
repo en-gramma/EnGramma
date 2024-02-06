@@ -51,8 +51,8 @@ export function Contact() {
     // vérification des regex
     const userRegex = /^[A-Za-zÀ-ÿ\s-]+$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const objectRegex = /^[a-zA-Z0-9À-ÿ\s-]+$/;
-    const messageRegex = /^[A-Za-zÀ-ÿ0-9\s.,\-!?'’()]+$/;
+    const objectRegex = /^[\w\W\s]*$/;
+    const messageRegex = /^[\w\W\s]*$/;
   
     if (!userRegex.test(formData.fullName)) {
       setSubmissionStatusErr('Le nom ne doit contenir que des lettres, des tirets et des espaces.');
@@ -66,12 +66,12 @@ export function Contact() {
     }
   
     if (!objectRegex.test(formData.object)) {
-      setSubmissionStatusErr('L\'objet ne doit contenir que des lettres, des chiffres, des espaces et des tirets.');
+      setSubmissionStatusErr('L\'objet contient des caractères non autorisés.');
       return;
     }
   
     if (!messageRegex.test(formData.message)) {
-      setSubmissionStatusErr('Le message contient des caractères non autorisés.');
+      setSubmissionStatusErr('L\'objet contient des caractères non autorisés.');
       return;
     }
   
@@ -82,9 +82,9 @@ export function Contact() {
           response: formData.recaptcha,
         }
       );
-  
+    
       if (captchaResponse.data.success) {
-        // si lee reCAPTCHA est valide, envoi du formulaire
+        // si le reCAPTCHA est valide, envoi du formulaire
         await axios.post(`${apiUrl}/api/messages`, formData, {
           withCredentials: true,
         });
@@ -97,6 +97,7 @@ export function Contact() {
           recaptcha: '', 
         });
         setSubmissionStatus('Le message a été envoyé avec succès!');
+        setSubmissionStatusErr(''); // réinitialisez le message d'erreur
       } else {
         console.error('Le reCAPTCHA est invalide');
       }

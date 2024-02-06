@@ -143,12 +143,15 @@ export const UpdateBioArticle = () => {
       <h2 className="text-lg font-bold  px-2 py-2 w-full mb-4">Editer un article</h2>
         <div className="grid md:grid-cols-3 gap-4">
         {bios.map(bio => (
-        <div key={bio.id} className="p-3 flex flex-col items-center bg-neutral-800 rounded shadow-lg border border-gray-300">
-            <h2 className="mb-2"><span className='text-md font-bold text-white font-custom'>{bio.title}</span></h2>
-            <img src={bio.image} alt={bio.title} className="w-[350px] h-[150px] object-cover mb-4 rounded " />
-            <button onClick={() => editBio(bio)} className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full">Editer</button>
-        </div>
-        ))}
+  <div 
+    key={bio.id} 
+    className={`p-3 flex flex-col items-center bg-neutral-800 rounded shadow-lg border ${bio.id === editingId ? 'border-[4px] border-green-500' : 'border-gray-300'}`}
+  >
+    <h2 className="mb-2"><span className='text-md font-bold text-white font-custom'>{bio.title}</span></h2>
+    <img src={bio.image} alt={bio.title} className="w-[350px] h-[150px] object-cover mb-4 rounded " />
+    <button onClick={() => editBio(bio)} className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full">Editer</button>
+  </div>
+))}
         </div>
 
     <div className="mb-5 mt-5 border-b border-gray-300 "></div>

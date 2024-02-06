@@ -118,16 +118,17 @@ export const UserList = () => {
                 <span>{user.role}</span>
               </td>
               <td className="px-4 py-3">
-
-              <button
-                onClick={() => handleDelete(user.id)}
-                className="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-600 flex items-center"
-              >
-                <AiOutlineDelete className="mr-1" /> Supprimer
-              </button>
-              </td>
-            </tr>
-          ))}
+      {user.undeletable !== 1 && (
+        <button
+          onClick={() => handleDelete(user.id)}
+          className="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-600 flex items-center"
+        >
+          <AiOutlineDelete className="mr-1" /> Supprimer
+        </button>
+      )}
+    </td>
+  </tr>
+))}
         </tbody>
       </table>
     </div>

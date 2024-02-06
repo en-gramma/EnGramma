@@ -157,7 +157,7 @@ export const getUsers =  (req, res, next) => {
   
     jwt.verify(token, process.env.JWT_SECRET, (err) => {
       if (err) return res.status(403).json("Vous n'êtes pas autorisé à supprimer cet utilisteur.");
-    const q = 'SELECT id, username, email, role, img FROM users';
+    const q = 'SELECT id, username, email, role, undeletable, img FROM users';
     db.query(q, (err, result) => {
         if (err) 
         return res.status(500).send(err);

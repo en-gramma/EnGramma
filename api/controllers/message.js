@@ -17,7 +17,8 @@ export const sendMessage = async (req, res) => {
 
   // send mail with defined transport object
   const info = await transporter.sendMail({
-    from: email, 
+    from: user, 
+    replyTo: email,
     to: user, 
     subject: object, 
     text: message, 
