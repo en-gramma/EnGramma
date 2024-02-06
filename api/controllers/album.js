@@ -73,7 +73,7 @@ export const addAlbum= (req, res, next) => {
 
     const values = [
       DOMPurify.sanitize(req.body.title),
-      req.body.bandcamp,
+      DOMPurify.sanitize(req.body.bandcamp,  { ADD_TAGS: ["iframe"], ADD_ATTR: ['allowfullscreen', 'scrolling'] }),
       DOMPurify.sanitize(req.body.description),
       req.body.albumLink
     ];

@@ -3,19 +3,18 @@ import axios from 'axios';
 import DOMPurify from 'isomorphic-dompurify';
 import fr from "../../assets/fr.png";
 import en from "../../assets/en.png";
-import { EditorState, convertToRaw } from 'draft-js';
+import { EditorState, convertToRaw, ContentState, convertFromHTML, } from 'draft-js';
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
 
-
-export const AddBioArticle = () => {
+export const UpdateBioArticle = () => {
   const [status, setStatus] = useState('');
-  const [formStatus, setFormStatus] = useState(null);
   const [bios, setBios] = useState([]);
   const formRef = useRef();
   const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
   const [editorStateEn, setEditorStateEn] = useState(() => EditorState.createEmpty());
+  const [editingId, setEditingId] = useState(null);
 
   const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
@@ -39,40 +38,39 @@ export const AddBioArticle = () => {
     text: DOMPurify.sanitize(''),
     textEn: DOMPurify.sanitize(''),
     copyright: DOMPurify.sanitize(''),
-    file: null,
   });
+
+  const editBio = (bio) => {
+    setEditingId(bio.id);
+    const blocksFromHtmlFr = convertFromHTML(bio.text);
+    const stateFr = ContentState.createFromBlockArray(
+      blocksFromHtmlFr.contentBlocks,
+      blocksFromHtmlFr.entityMap,
+    );
+
+    const blocksFromHtmlEn = convertFromHTML(bio.textEn);
+    const stateEn = ContentState.createFromBlockArray(
+      blocksFromHtmlEn.contentBlocks,
+      blocksFromHtmlEn.entityMap,
+    );
+
+    setEditorState(EditorState.createWithContent(stateFr));
+    setEditorStateEn(EditorState.createWithContent(stateEn));
+
+    setFormData({
+      title: DOMPurify.sanitize(bio.title),
+      titleEn: DOMPurify.sanitize(bio.titleEn),
+      text: draftToHtml(convertToRaw(stateFr)),
+      textEn: draftToHtml(convertToRaw(stateEn)),
+      copyright: DOMPurify.sanitize(bio.copyright),
+    });
+  };
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
     setFormData({
       ...formData,
       [name]: type === 'file' ? files[0] : value,});
-  };
-
-  const uploadImage = async (file) => {
-    const maxSize = 5 * 1024 * 1024;
-    if (file.size > maxSize) {
-      throw new Error('Le fichier dépasse 5Mo');
-    }
- 
-    try {
-      //setup cloudinary
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET);
-  
-      const response = await axios.post("https://api.cloudinary.com/v1_1/dvfel75pw/image/upload", formData, {
-        headers: { "X-Requested-With": "XMLHttpRequest" },
-      });
-      // récupération de l'url et du nom du fichier
-      return {
-        url: response.data.url, 
-        filename: file.name
-      }
-      
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   const handleSubmit = async (e) => {
@@ -90,21 +88,11 @@ export const AddBioArticle = () => {
         alert('Le texte contient des caractères non valides.');
         return;
     }
-  
-    // empeche l'envoi du formulaire si le fichier est trop lourd
-    if (formData.file && formData.file.size > 5 * 1024 * 1024) {
-        alert("Le fichier dépasse 5 Mo");
-        return;
-        }
-
-    const {url, filename} = await uploadImage(formData.file);
 
     try {
         const apiUrl = process.env.REACT_APP_API_URL;
-        await axios.post(`${apiUrl}/api/bios/`, {
+        await axios.put(`${apiUrl}/api/bios/${editingId}`, {
           ...formData,
-          image: url,
-          filename: filename
         }, {
           withCredentials: true,
         });
@@ -112,38 +100,25 @@ export const AddBioArticle = () => {
         fetchBios();
       } catch (err) {
         setStatus('error');
-        console.error('Erreur lors de l\'ajout de l\'article');
+        console.error('Erreur lors de la mise à jour de l\'article');
       }
     };
 
-  useEffect(() => {
-    if(status === 'success') {
-      formRef.current.reset();
-      setFormData({
-        title: '',
-        titleEn: '',
-        text: '',
-        textEn: '',
-        file: null,
-      })
-    }
-  }, [status]) 
-
-  const deleteBio= (id) => {
-    const apiUrl = process.env.REACT_APP_API_URL;
-    setFormStatus('loading');
-    axios.delete(`${apiUrl}/api/bios/${id}`, {
-        withCredentials: true,
-      })
-      .then(response => {
-        setBios(bios.filter(bio=> bio.id !== id));
-        setFormStatus('success');
-      })
-      .catch(error => {
-        console.error(error);
-        setFormStatus('error');
-      });
-  };
+    useEffect(() => {
+      if(status === 'success') {
+        formRef.current.reset();
+        setEditingId(null);
+        setFormData({
+          title: '',
+          titleEn: '',
+          text: '',
+          textEn: '',
+          copyright: '',
+        });
+        setEditorState(EditorState.createWithContent(ContentState.createFromText('')));
+        setEditorStateEn(EditorState.createWithContent(ContentState.createFromText('')));
+      }
+    }, [status])
 
   const fetchBios = async () => {
     try {
@@ -163,27 +138,28 @@ export const AddBioArticle = () => {
   return (
     <div className="w-full shadow-md rounded-md p-1 md:p-5 bg-white md:m-4">
       <h2 className="text-xl font-bold  px-2 py-2 w-full">Editeur d'article (bio)</h2>
-      <div className="mb-5 mt-2 border-b border-gray-300 "></div>
 
-      <h2 className="text-lg font-bold  px-2 py-2 w-full">Ajouter un texte bio</h2>
+      <div className="mb-5 mt-2 border-b border-gray-300 "></div>
+      <h2 className="text-lg font-bold  px-2 py-2 w-full mb-4">Editer un article</h2>
+        <div className="grid md:grid-cols-3 gap-4">
+        {bios.map(bio => (
+        <div key={bio.id} className="p-3 flex flex-col items-center bg-neutral-800 rounded shadow-lg border border-gray-300">
+            <h2 className="mb-2"><span className='text-md font-bold text-white font-custom'>{bio.title}</span></h2>
+            <img src={bio.image} alt={bio.title} className="w-[350px] h-[150px] object-cover mb-4 rounded " />
+            <button onClick={() => editBio(bio)} className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full">Editer</button>
+        </div>
+        ))}
+        </div>
+
+    <div className="mb-5 mt-5 border-b border-gray-300 "></div>
+      <h2 className="text-lg font-bold  px-2 py-2 w-full">Editer un texte bio</h2>
       <form ref={formRef} onSubmit={handleSubmit} className='w-full  md:mx-2'>
       <div className='flex items-center'>
         <h2 className="text-lg px-2" style={{ lineHeight: '1.5' }}>Texte bio en français</h2>
         <img src={fr} alt="" className='h-4 align-middle' />
       </div>
       <div className="p-4">
-        <div className="mb-4 max-w-lg">
-            <label htmlFor="file" className="block mb-2">Image de l'article</label>
-            <p className='italic text-md mb-2'>Idéalement de taille 850x450px et au format jpg ou png</p>
-            <input
-            required
-            type="file"
-            id="file"
-            name="file"
-            onChange={handleChange}
-            className="border border-gray-400 w-full"
-            />
-        </div>
+
         <div className="mb-4">
             <input className="border p-2 w-full" placeholder="Auteur de l'image" name="copyright" value={formData.copyright} onChange={handleChange} />
         </div>
@@ -193,6 +169,7 @@ export const AddBioArticle = () => {
         </div>
         <div className="mb-4 border border-gray-300">
       <Editor
+        key={status}
         editorState={editorState}
         toolbarClassName="toolbarClassName"
         wrapperClassName="wrapperClassName"
@@ -217,8 +194,8 @@ export const AddBioArticle = () => {
             <input className="border p-2 w-full font-custom" placeholder="Titre de l'article en anglais" name="titleEn" value={formData.titleEn} onChange={handleChange} />
         </div>
         <div className="mb-4 border border-gray-300">
-
       <Editor
+        key={status}
         editorState={editorStateEn}
         toolbarClassName="toolbarClassName"
         wrapperClassName="wrapperClassName"
@@ -232,29 +209,14 @@ export const AddBioArticle = () => {
           },
         }}
       />
- 
         </div>
 
-        {setStatus === 'success' && <div className="text-green-500">L'article a été ajouté avec succès!</div>}
-        {setStatus === 'error' && <div className="text-red-500">Erreur lors de l'ajout de l'article</div>}
+        {setStatus === 'success' && <div className="text-green-500">L'article a été édité avec succès!</div>}
+        {setStatus === 'error' && <div className="text-red-500">Erreur lors de l'édition de l'article</div>}
         <button className=" mt-9 w-full bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>
         </div>
       </form>
 
-      <div className="mb-5 mt-2 border-b border-gray-300 "></div>
-      <h2 className="text-lg font-bold  px-2 py-2 w-full mb-4">Effacer un article</h2>
-        {formStatus === 'success' && <div className="text-green-500 mb-2">L'article a été effacé avec succès!</div>}
-        {formStatus === 'error' && <div className="text-red-500 mb-2">Erreur lors de l'effacement de l'article</div>}
-        <div className="grid md:grid-cols-3 gap-4">
-        {bios.map(bio => (
-          <div key={bio.id} className="p-3 flex flex-col items-center bg-neutral-800 rounded shadow-lg border border-gray-300">
-            <h2 className="mb-2"><span className='text-md font-bold text-white font-custom'>{bio.title}</span></h2>
-            <img src={bio.image} alt={bio.title} className="w-[350px] h-[150px] object-cover mb-4 rounded " />
-            <div dangerouslySetInnerHTML={{ __html: bio.text.length > 200 ? bio.text.substring(0, 200) + '...' : bio.text }} className='text-justify text-white mb-5' />
-            <button onClick={() => deleteBio(bio.id)} className="mt-auto  bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 w-full  ">Effacer</button>
-        </div>
-        ))}
-        </div>
     </div>
   );
 };

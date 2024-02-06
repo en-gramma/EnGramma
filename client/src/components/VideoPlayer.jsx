@@ -44,7 +44,7 @@ const VideoPlayer = () => {
         <>
 <div style={divStyle} className="md:h-screen h-screen-105 bg-no-repeat bg-center bg-cover shadow-xl flex bg-black bg-opacity-40 items-center">
   <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center">
-  <div className={`text-4xl text-white font-custom text-center mb-6 ${videos.length >= 3 ? 'md:mb-25' : 'md:mb-[75px]'} pt-[100px] md:pt-[140px]`}>VIDEOS</div>
+  <div className={`text-4xl text-white font-custom text-center mb-6 ${videos.length >= 3 ? 'md:mb-25' : 'md:mb-[50px]'} pt-[100px] md:pt-[140px]`}>VIDEOS</div>
                 {isLoading ? (
                     <div className='flex justify-center items-center '>
                         <Loader />

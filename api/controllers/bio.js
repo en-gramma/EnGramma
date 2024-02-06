@@ -57,30 +57,28 @@ export const addBio= (req, res, next) => {
       return;
     }
 
-    const frenchTitleRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
+    const frenchTitleRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]*$/;
     const descriptionRegex = /^[\w\W\s]*$/;
   
     // Validation
-    if (!frenchTitleRegex.test(req.body.title)) {
+    if (!frenchTitleRegex.test(req.body.title || req.body.titleEn)) {
       return res.status(400).json({ error: 'Erreur : Le titre contient des caractères non valides' });
     }
 
-    if (!descriptionRegex.test(req.body.engramma)) {
-      return res.status(400).json({ error: 'Erreur : Le titre secondaire contient des caractères non valides.' });
-    }
-    if (!descriptionRegex.test(req.body.text)) {
+    if (!descriptionRegex.test(req.body.text || req.body.textEn)) {
       return res.status(400).json({ error: 'Erreur : La description contient des caractères non valides.' });
     }
 
     const q =
-      "INSERT INTO bios (`title`, `text`, `image`, `engramma`, `copyright`) VALUES (?)";
+      "INSERT INTO bios (`title`, `text`, `image`, `titleEn`, `copyright`, `textEn`) VALUES (?)";
 
     const values = [
       DOMPurify.sanitize(req.body.title),
       DOMPurify.sanitize(req.body.text),
       DOMPurify.sanitize(req.body.image),
-      DOMPurify.sanitize(req.body.engramma),
-      DOMPurify.sanitize(req.body.copyrigth)
+      DOMPurify.sanitize(req.body.titleEn),
+      DOMPurify.sanitize(req.body.copyright),
+      DOMPurify.sanitize(req.body.textEn)
     ];
 
     db.query(q, [values], (err, data) => {
@@ -101,31 +99,25 @@ export const addBio= (req, res, next) => {
    if (err) return res.status(403).json("Le token n'est pas valide.");
 
    const q = 
-   "UPDATE albums SET `title`=?, `text`=?, `image`=?, `engramma`=?, `copyright`=? WHERE `id`=?";
-
-  req.body.title = DOMPurify.sanitize(req.body.title);
-  req.body.description = DOMPurify.sanitize(req.body.text);
-  req.body.albumLink = DOMPurify.sanitize(req.body.image);
-  req.body.engramma = DOMPurify.sanitize(req.body.engramma);
-  req.body.id = DOMPurify.sanitize(req.body.copyrigth);
-
+   "UPDATE bios SET `title`=?, `text`=?, `titleEn`=?, `copyright`=?, `textEn`=?  WHERE `id`=?";
 
    const values = [
-      req.body.title,
-      req.body.text,
-      req.body.image,
-      req.body.engramma,
-      req.body.copyrigth,
-      req.params.id
-   ];
+    DOMPurify.sanitize(req.body.title),
+    DOMPurify.sanitize(req.body.text),
+    DOMPurify.sanitize(req.body.titleEn),
+    DOMPurify.sanitize(req.body.copyright),
+    DOMPurify.sanitize(req.body.textEn),
+    req.params.id
+  ];
 
    db.query(q, values, (err, data) => {
      if (err) {
+      console.error(err);
        next(err);
        return;
      }
 
-     return res.json("Le texte a été modifiée avec succès.");
+     return res.json("Le texte a été modifié avec succès.");
    });
  });
 }; 

@@ -96,22 +96,22 @@ export const AddVideo = () => {
     <div className="mb-5 mt-9 border-b border-gray-300"></div>
     <h2 className="text-lg font-bold mb-4 px-2 py-2 w-full">Effacer une vidéo</h2>
  
-    <div className='mt-4 md:mx-2'>
+    <div className='grid md:grid-cols-3 gap-4 mt-4 md:mx-2'>
     {videos.map((video) => {
     const videoUrl = extractVideo(video.link);
     return (
         <div key={video.id}>
           <p className='font-bold my-2'>{video.title}</p>
         <iframe
-            className=' lg:mx-0  rounded-lg'
+            className=' lg:mx-0  rounded-lg w-full h-auto'
             src={videoUrl}
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
         />
-        <button onClick={() => handleDelete(video.id)} className='bg-red-500 py-1 px-2 rounded text-white mt-2 mb-2'>Supprimer</button>
-        <div className="mb-5 mt-2 border-b border-gray-300"></div>
+        <button onClick={() => handleDelete(video.id)} className='bg-red-500 py-1 px-2 rounded text-white mt-2 mb-2 w-full'>Supprimer</button>
+
        </div>
     );
     })}

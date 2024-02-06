@@ -80,6 +80,12 @@ export const Sidebar = ({ onSelectMenuItem }) => {
            Editeur d'article (bio)
           </div>
         </li>
+        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('update-bio')}>
+          <div className="flex items-center">
+            <BiPhotoAlbum className="mr-2" />
+           Modifier un article (bio)
+          </div>
+        </li>
         <div className=" border-b border-gray-300"></div>
         <div className='bg-gray-100 p-1 font-semibold shadow mb-2'>Dates</div>
         <li className="mb-4 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-date')}>
