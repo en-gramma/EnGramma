@@ -37,25 +37,22 @@ export const Dashboard = () => {
   return (
     <>
 
-      <div className="flex flex-col md:flex-row pt-[80px]">
-      <div
-  className={`overflow-y-auto w-screen md:w-1/5 fixed md:relative top-[115px] border z-20  shadow-md md:m-4 md:top-0 left-0 md:left-auto bg-white rounded-lg ${
-    isSidebarOpen ? '' : 'hidden md:block'
-  }`}
-  style={{ maxHeight: 'calc(100vh - 115px)' }}
->
-  <Sidebar onSelectMenuItem={onSelectMenuItem} />
-</div>
-        {/* gestion des espaces de la sidebar/content */}
-          <div className={`w-full  md:w-3/4 ${isSidebarOpen ? 'ml-1/4' : ''}
-           p-1  ${isMobile ? 'pt-[50px]' : ''}`} onClick={() => setIsSidebarOpen(false)}>
+<div className="flex flex-col md:flex-row pt-[80px]">
+        <div
+          className={`h-auto overflow-y-auto md:overflow-visible w-screen md:w-1/5 fixed md:relative top-[115px] border z-20 shadow-md md:m-4 md:top-0 left-0 md:left-auto bg-white  md:rounded-lg ${
+            isSidebarOpen ? '' : 'hidden md:block'
+          } `}
+          style={{ maxHeight: window.matchMedia("(min-width: 768px)").matches ? 'none' : 'calc(100vh - 115px)' }}
+        >
+          <Sidebar onSelectMenuItem={onSelectMenuItem} />
+        </div>
+        <div className={`w-full md:w-3/4 ${isSidebarOpen ? 'ml-1/4' : ''} p-1 ${isMobile ? 'pt-[50px]' : ''}`} onClick={() => setIsSidebarOpen(false)}>
           <Content selectedMenuItem={selectedMenuItem} className="h-full " />
-      </div>
+        </div>
       </div>
 
       <button
-        className={`fixed top-[50px] left-0 p-3 mt-4  rounded w-full 
-         md:hidden bg-gray-300 border-neutral-300 border text-black flex items-center`}
+        className={`fixed top-[50px] left-0 p-3 mt-4  w-full md:hidden bg-gray-300 border-neutral-300 border text-black flex items-center`}
         onClick={toggleSidebar}
       >
         <CgMenuGridR className="mr-1" /> Menu

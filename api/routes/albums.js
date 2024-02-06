@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAlbums, getAlbum, addAlbum, deleteAlbum, updateAlbum } from '../controllers/album.js';
+import { getAlbums, getAlbum, addAlbum, deleteAlbum } from '../controllers/album.js';
 
 
 // creation du router
@@ -10,6 +10,5 @@ router.get("/", getAlbums);
 router.get("/:id", getAlbum);
 router.post("/", addAlbum);
 router.delete("/:id", deleteAlbum);
-router.put("/:id", updateAlbum);
 
 export default router;

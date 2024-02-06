@@ -73,9 +73,9 @@ export const addAlbum= (req, res, next) => {
 
     const values = [
       DOMPurify.sanitize(req.body.title),
-      DOMPurify.sanitize(req.body.bandcamp,  { ADD_TAGS: ["iframe"], ADD_ATTR: ['allowfullscreen', 'scrolling'] }),
+      req.body.bandcamp,
       DOMPurify.sanitize(req.body.description),
-      req.body.albumLink
+      DOMPurify.sanitize(req.body.albumLink, { ADD_TAGS: ["a"], ADD_ATTR: ["href"] }),
     ];
 
     db.query(q, [values], (err, data) => {
@@ -87,38 +87,3 @@ export const addAlbum= (req, res, next) => {
     });
   });
 };
-
-  export const updateAlbum =  (req, res, next) => {
-    const token = req.cookies.access_token;
- if (!token) return res.status(401).json("Pas de token trouvé.");
-
- jwt.verify(token, process.env.JWT_SECRET, (err) => {
-   if (err) return res.status(403).json("Le token n'est pas valide.");
-
-   const q = 
-   "UPDATE albums SET `title`=?, `bandcamp`=?, `description`=?, `albumLink`=?, WHERE `id`=?";
-
-  req.body.title = DOMPurify.sanitize(req.body.title);
-  req.body.bandcamp = DOMPurify.sanitize(req.body.bandcamp,  { ADD_TAGS: ["iframe"], ADD_ATTR: ['allowfullscreen', 'scrolling'] });
-  req.body.description = DOMPurify.sanitize(req.body.description);
-  req.body.albumLink = DOMPurify.sanitize(req.body.albumLink);
-
-
-   const values = [
-      req.body.title,
-      req.body.bandcamp,
-      req.body.description,
-      req.body.albumLink,
-      req.params.id
-   ];
-
-   db.query(q, values, (err, data) => {
-     if (err) {
-       next(err);
-       return;
-     }
-
-     return res.json("L'album a été modifiée avec succès.");
-   });
- });
-}; 

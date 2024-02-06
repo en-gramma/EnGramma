@@ -35,6 +35,7 @@ export const Bio = () => {
 
   {bios.map(bio => (
     <>
+    
     <div>
      <div className="flex items-center">
      <div className="flex-grow border-t border-white mr-1"></div>

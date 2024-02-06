@@ -162,6 +162,7 @@ export const Navbar = () => {
                 <div className="flex items-center cursor-pointer" onClick={toggleMenu}>
                   {users.map(user => (
                     <img
+                      key={user.id} // assuming `id` is a unique property of `user`
                       className="w-[37px] h-[37px] rounded-full mr-2"
                       src={user?.img ? user.img.replace('http://', 'https://') : DefaultUserImage}
                       alt="User avatar"
