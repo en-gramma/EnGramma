@@ -113,6 +113,10 @@ export const AddArticle = () => {
   }, [status]) 
 
   const deleteArticle = (id) => {
+    const confirmation = window.confirm('Êtes-vous sûr de vouloir supprimer cet article ?');
+    if (!confirmation) {
+      return;
+    }
     const apiUrl = process.env.REACT_APP_API_URL;
     setFormStatus('loading');
     axios.delete(`${apiUrl}/api/articles/${id}`, {

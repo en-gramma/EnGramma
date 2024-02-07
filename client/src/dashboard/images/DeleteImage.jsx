@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { IoIosRefresh } from 'react-icons/io';
 
 export function DeleteImage() {
   const [images, setImages] = useState([]);
 
-  useEffect(() => {
+
     const fetchImages = async () => {
       try {
         const apiUrl = process.env.REACT_APP_API_URL;
@@ -15,6 +16,7 @@ export function DeleteImage() {
       }
     };
 
+  useEffect(() => {
     fetchImages();
   }, []);
 
@@ -33,11 +35,20 @@ export function DeleteImage() {
     }
   };
 
+  const refreshImages = async () => {
+    fetchImages();
+  };
+
   return (
   <>
     <div className="mb-5 mt-2 border-b border-gray-300"></div>
       <h2 className="text-lg font-bold  px-2 py-2 w-full">Effacer une photo</h2>
-
+      <button
+      className="mt-7 bg-blue-neutral hover:bg-blue-400 text-gray-800 font-semibold py-1 px-3 border border-gray-400 rounded shadow mb-7 mx-2 flex items-center"
+      onClick={refreshImages}
+    >
+      <IoIosRefresh className="mr-1" /> Rafraîchir
+    </button>
       <div className="grid grid-cols-1 -z-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {images.map(image => (
           <div key={image.id} className="relative">

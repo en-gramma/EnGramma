@@ -91,8 +91,8 @@ export const AddAlbum = () => {
             <span className="text-gray-700">Lien Bfan:</span>
             <input type="text" name="albumLink" value={formData.albumLink} onChange={handleChange} className="mt-1 block w-full rounded border-gray-300 border shadow-sm p-1" />
           </label>
-          {formStatus === 'success' && <div className="text-green-500">Album ajouté avec succès!</div>}
-          {formStatus === 'error' && <div className="text-red-500">Erreur lors de l'ajout de l'album.</div>}
+          {formStatus === 'success' && <div className="text-green-500 mb-3">Album ajouté avec succès!</div>}
+          {formStatus === 'error' && <div className="text-red-500 mb-3">Erreur lors de l'ajout de l'album.</div>}
           <button type="submit" className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Ajouter l'album</button>
         </form>
 

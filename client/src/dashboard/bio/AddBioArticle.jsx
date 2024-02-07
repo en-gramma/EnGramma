@@ -130,6 +130,10 @@ export const AddBioArticle = () => {
   }, [status]) 
 
   const deleteBio= (id) => {
+    const confirmation = window.confirm('Êtes-vous sûr de vouloir supprimer cet article ?');
+    if (!confirmation) {
+      return;
+    }
     const apiUrl = process.env.REACT_APP_API_URL;
     setFormStatus('loading');
     axios.delete(`${apiUrl}/api/bios/${id}`, {

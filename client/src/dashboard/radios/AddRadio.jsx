@@ -97,6 +97,10 @@ export const AddRadio = () => {
   }, [status]) 
 
   const deleteRadio = (id) => {
+    const confirmation = window.confirm('Êtes-vous sûr de vouloir supprimer cette radio?');
+    if (!confirmation) {
+      return;
+    }
     const apiUrl = process.env.REACT_APP_API_URL;
     setFormStatus('loading');
     axios.delete(`${apiUrl}/api/radios/${id}`, {

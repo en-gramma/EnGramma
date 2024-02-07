@@ -4,7 +4,9 @@ import spaceimage from '../assets/spaceimage.jpg';
 import logo2 from '../assets/logo.png';
 import DOMPurify from 'isomorphic-dompurify';
 import ReCAPTCHA from 'react-google-recaptcha';
-
+import { CgMediaPodcast } from 'react-icons/cg';
+import { GrScheduleNew } from 'react-icons/gr';
+import zig from '../assets/zig.jpg';
 
 export function Contact() {
  
@@ -119,9 +121,9 @@ const handleRecaptchaChange = (value) => {
     <img src={spaceimage} alt="Music Background" className="object-cover w-full h-full bg-black bg-opacity-40 " />
     <img src={logo2} alt="En Gramma logo" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-[600px]  opacity-3 hidden md:block" />
     
-    <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center overflow-auto no-scrollbar">
-    <h2 className="text-3xl  mb-4 text-white font-custom text-center pt-[200px] md:pt-[100px]">CONTACT</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mt-5 p-5">
+    <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center overflow-y-auto no-scrollbar">
+    <h2 className="text-3xl  mb-4 text-white font-custom text-center pt-[500px] md:pt-[100px]">CONTACT</h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:w-3/5 mx-auto mt-5 p-5">
       <div>
         <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -183,24 +185,34 @@ const handleRecaptchaChange = (value) => {
       />
         <button
           type="submit"
-          className="bg-orange2 text-white py-2 px-4 mb-4 mt-2 rounded  hover:bg-orange-700 w-full">
+          className="bg-orange2 text-white py-2 px-4 mb-4 mt-2 rounded  hover:bg-orange-800 w-full max-w-[300px]">
           Envoyer
         </button>
       </form>
     </div>
     <div>
     <div>
-        <div className="border rounded p-4 mb-4 text-white bg-slate-100 bg-opacity-20 md:ml-9 ml-0">
+        <div className="border rounded p-4 mb-4 text-white bg-slate-100 bg-opacity-10 md:ml-9 ml-0">
           <div className="flex items-center mb-2">
             
             <h2 className="text-2xl font-bold mb-4">Documents Pro</h2>
           </div>
           {links.map((link, index) => (
-        <div key={index}>
-            <p><a href={link.dossier} className='text-orange2 hover:text-orange-700 pb-3 underline font-semibold' target="_blank" rel="noopener noreferrer">Dossier de presse</a></p>
-            <p><a href={link.fiche} className='text-orange2 hover:text-orange-700 underline font-semibold' target="_blank" rel="noopener noreferrer">Fiche technique</a></p>
+            <>
+        <div key={index} className=''>
+          <div className='flex items-center mb-2 '>
+          <CgMediaPodcast className='text-orange2 '/>
+            <p><a href={link.dossier} className='ml-2 text-orange2 hover:text-orange-700 pb-3 underline font-semibold' target="_blank" rel="noopener noreferrer">Dossier de presse</a></p>
+          </div>
+          <div className='flex items-center mb-2'>
+          <GrScheduleNew className='text-orange2' />
+            <p><a href={link.fiche} className='ml-2 text-orange2 hover:text-orange-700 underline font-semibold' target="_blank" rel="noopener noreferrer">Fiche technique</a></p>
             </div>
+          </div>
+          <img src={zig} alt="" className='shadow-lg rounded-md' />
+          </>
       ))}
+      
         </div>
         </div>
       </div>
