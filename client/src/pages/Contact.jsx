@@ -165,7 +165,7 @@ const handleRecaptchaChange = (value) => {
             placeholder='Message'
             value={formData.message}
             onChange={handleChange}
-            className="w-full border rounded py-2 px-3 p-1"
+            className="w-full border rounded py-5 px-3 p-1"
             rows="4"
             required>
             </textarea>
@@ -193,18 +193,18 @@ const handleRecaptchaChange = (value) => {
     <div>
     <div>
         <div className="border rounded p-4 mb-4 text-white bg-slate-100 bg-opacity-10 md:ml-9 ml-0">
-          <div className="flex items-center mb-2">
+          <div className="flex items-center mb-2 justify-center">
             
-            <h2 className="text-2xl font-bold mb-4">Documents Pro</h2>
+            <h2 className="text-2xl font-bold mb-2">Documents Pro</h2>
           </div>
           {links.map((link, index) => (
             <>
         <div key={index} className=''>
-          <div className='flex items-center mb-2 '>
+          <div className='flex items-center mb-2 justify-center '>
           <CgMediaPodcast className='text-orange2 '/>
             <p><a href={link.dossier} className='ml-2 text-orange2 hover:text-orange-700 pb-3 underline font-semibold' target="_blank" rel="noopener noreferrer">Dossier de presse</a></p>
           </div>
-          <div className='flex items-center mb-2'>
+          <div className='flex items-center mb-4 justify-center'>
           <GrScheduleNew className='text-orange2' />
             <p><a href={link.fiche} className='ml-2 text-orange2 hover:text-orange-700 underline font-semibold' target="_blank" rel="noopener noreferrer">Fiche technique</a></p>
             </div>

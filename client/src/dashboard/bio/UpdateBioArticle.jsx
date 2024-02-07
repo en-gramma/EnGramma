@@ -214,8 +214,8 @@ export const UpdateBioArticle = () => {
       />
         </div>
 
-        {setStatus === 'success' && <div className="text-green-500">L'article a été édité avec succès!</div>}
-        {setStatus === 'error' && <div className="text-red-500">Erreur lors de l'édition de l'article</div>}
+        {status === 'success' && <div className="text-green-500">L'article a été édité avec succès!</div>}
+        {status === 'error' && <div className="text-red-500">Erreur lors de l'édition de l'article</div>}
         <button className=" mt-9 w-full bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>
         </div>
       </form>
