@@ -14,6 +14,7 @@ export const Home = () => {
     // backgroundAttachment: 'fixed',
   };
   const [language, setLanguage] = useState('fr');
+  const [scrollPosition, setScrollPosition] = useState(0);
 
 
     // Fonction pour vérifier si la vue est en mode mobile
@@ -31,14 +32,26 @@ export const Home = () => {
       return () => window.removeEventListener('resize', checkIsMobile);
     }, []);
 
+    useEffect(() => {
+      const handleScroll = () => {
+        setScrollPosition(window.scrollY);
+      };
+    
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
+    const opacity = Math.max(1 - scrollPosition / 200, 0);
+
   return (
     <>
     <div style={divStyle} className="p-5 bg-no-repeat bg-center bg-cover h-screen shadow-xl flex bg-black bg-opacity-40 justify-center items-center">
 
       <div className="absolute inset-0 flex flex-col justify-center items-center ">
-        <h1 className="text-5xl md:text-7xl">
-          <span className="font-custom text-Engramma dropshadow-xl animate-fade-up animate-duration-[2500ms] ">EN GRAMMA</span>
-        </h1>
+      <h1 className="text-5xl md:text-7xl" style={{ opacity }}>
+  <span className="font-custom text-Engramma dropshadow-xl animate-fade-up animate-duration-[2500ms] ">EN GRAMMA</span>
+</h1>
       </div>
       <div className='mt-auto z-20 animate-pulse animate-duration-1000 animate-once'>
         <Social />

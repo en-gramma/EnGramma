@@ -50,7 +50,7 @@ const VideoPlayer = () => {
                         <Loader />
                     </div>
                 ) : (
-                <div className="overflow-auto scrollbar scrollbar-thumb-gray-400 scrollbar-track-transparent scrollbar-thin scrollbar-corner-20 max-h-[500px]">
+                    <div className={`${videos.length > 2 ? "overflow-auto" : ""} scrollbar scrollbar-thumb-gray-400 scrollbar-track-transparent scrollbar-thin scrollbar-corner-20 max-h-[500px]`}>
                 <div id="my-gallery" className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                     {videos.map((video) => {
                     const videoUrl = extractVideo(video.link);

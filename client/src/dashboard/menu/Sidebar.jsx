@@ -14,7 +14,12 @@ import { CiLink } from "react-icons/ci";
 export const Sidebar = ({ onSelectMenuItem }) => {
 
   //on récupère le  nom d'utilisateur qu'on affichera dans le dashboard
-  const {currentUser} = useContext(AuthContext)
+  const {currentUser} = useContext(AuthContext);
+
+  const handleMenuItemClick = (menuItem) => {
+    window.scrollTo(0, 0);
+    onSelectMenuItem(menuItem);
+  };
 
   return (
     <div className=" p-5 z-0  shadow pt-5">
@@ -22,7 +27,7 @@ export const Sidebar = ({ onSelectMenuItem }) => {
       <h2 className="bg-gray-100 text-lg p-1 font-semibold shadow mb-2">
           {currentUser?.username} - {currentUser?.role === 'admin' ? 'Administrateur': 
           currentUser?.role === 'staff' ? 'Employé' : currentUser?.role}</h2>
-            <span className=" cursor-pointer" onClick={() => onSelectMenuItem('changer-parametres')}>
+            <span className=" cursor-pointer" onClick={() => handleMenuItemClick ('changer-parametres')}>
           <div className="flex items-center mb-2 hover:font-semibold">
             <GoGear className="mr-2" />
             Paramètres
@@ -30,7 +35,7 @@ export const Sidebar = ({ onSelectMenuItem }) => {
         </span>
         {currentUser && currentUser.role === 'admin' && (
           <div className='mb-4'>
-        <span className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-employe')}>
+        <span className="mb-2 cursor-pointer hover:font-semibold" onClick={() => handleMenuItemClick('ajouter-employe')}>
           <div className="flex items-center">
             <AiOutlineTeam className="mr-2" />
             Ajouter un membre
@@ -41,7 +46,7 @@ export const Sidebar = ({ onSelectMenuItem }) => {
       <div className=" mt-2 border-b border-gray-300"></div>
       <ul>
       <div className='bg-gray-100 p-1 font-semibold shadow mb-2'>Musique</div>
-        <li className=" mb-4 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-album')}>
+        <li className=" mb-4 cursor-pointer hover:font-semibold" onClick={() => handleMenuItemClick ('ajouter-album')}>
           <div className="flex items-center">
             <BiAlbum className="mr-2" />
             Editeur d'album
@@ -49,38 +54,38 @@ export const Sidebar = ({ onSelectMenuItem }) => {
         </li>
         <div className=" border-b border-gray-300"></div>
         <div className='bg-gray-100 p-1 font-semibold shadow mb-2'>Média</div>
-      <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-image')}>
+      <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => handleMenuItemClick ('ajouter-image')}>
           <div className="flex items-center">
             <BiPhotoAlbum className="mr-2" />
            Editeur de photo
           </div>
         </li>
-        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('editer-article')}>
+        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => handleMenuItemClick ('editer-article')}>
           <div className="flex items-center">
             <GrArticle className="mr-2" />
             Editeur presse
           </div>
         </li>
-        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-video')}>
+        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => handleMenuItemClick ('ajouter-video')}>
           <div className="flex items-center">
             <CiYoutube className="mr-2" />
             Editeur de vidéo
           </div>
         </li>
-        <li className="mb-4 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-radio')}>
+        <li className="mb-4 cursor-pointer hover:font-semibold" onClick={() => handleMenuItemClick ('ajouter-radio')}>
           <div className="flex items-center">
             <IoIosRadio className="mr-2" />
             Editeur de radio
           </div>
         </li>
         <div className='bg-gray-100 p-1 font-semibold shadow mb-2'>Biographie</div>
-      <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-bio')}>
+      <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => handleMenuItemClick ('ajouter-bio')}>
           <div className="flex items-center">
             <BiPhotoAlbum className="mr-2" />
            Editeur d'article (bio)
           </div>
         </li>
-        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('update-bio')}>
+        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => handleMenuItemClick ('update-bio')}>
           <div className="flex items-center">
             <BiPhotoAlbum className="mr-2" />
            Modifier un article (bio)
@@ -88,7 +93,7 @@ export const Sidebar = ({ onSelectMenuItem }) => {
         </li>
         <div className=" border-b border-gray-300"></div>
         <div className='bg-gray-100 p-1 font-semibold shadow mb-2'>Dates</div>
-        <li className="mb-4 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('ajouter-date')}>
+        <li className="mb-4 cursor-pointer hover:font-semibold" onClick={() => handleMenuItemClick ('ajouter-date')}>
           <div className="flex items-center">
             <BsCalendar2Date className="mr-2" />
             Editeur de date
@@ -96,7 +101,7 @@ export const Sidebar = ({ onSelectMenuItem }) => {
         </li>
         <div className="border-b border-gray-300"></div>
         <div className='bg-gray-100 p-1 font-semibold shadow mb-2'>Contact</div>
-        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => onSelectMenuItem('update-lien')}>
+        <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => handleMenuItemClick ('update-lien')}>
           <div className="flex items-center">
             <CiLink className="mr-2" />
             Mise à jour des liens Pro

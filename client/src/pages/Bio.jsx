@@ -58,10 +58,10 @@ export const Bio = () => {
         </div>
       </div>
       <div className='max-w-[800px] mx-auto'>
-      <p className="text-md text-white text-justify  mb-9 animate-fade-right">
-      <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize((language === 'fr' ? bio.text : bio.textEn).replace(/\n/g, '<br />')) }} />
-    </p>
-      </div>
+  <div className="text-md text-white text-justify  mb-9 animate-fade-right">
+    <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize((language === 'fr' ? bio.text : bio.textEn).replace(/\n/g, '<br />')) }} />
+  </div>
+</div>
     </div>
     </div>
     </>

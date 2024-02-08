@@ -61,11 +61,12 @@ export function DeleteAlbum() {
     >
       <IoIosRefresh className="mr-1" /> Rafraîchir
     </button>
+    <div className='mb-9'></div>
 
       {status && <p>{status}</p>}
       {albums.slice().reverse().map((album) => (
-        <>
-              <div key={album.id} className="mb-[100px] ml-3 text-white flex flex-col lg:flex-row bg-neutral-800 p-5 rounded shadow
+        <React.Fragment key={album.id}>
+              <div  className="mb-3 md:ml-3 text-white flex flex-col lg:flex-row bg-neutral-800 p-1 md:p-5 rounded shadow
               ">
                 <div className="lg:mb-0 mb-4 ">
                 <div className='flex items-center mb-4'>
@@ -83,7 +84,7 @@ export function DeleteAlbum() {
                   </iframe>
                 </div>
                 <div className='lg:flex lg:flex-col lg:items-center lg:ml-8'>
-                  <p className='text-sm mb-4 text-justify mx-4 bg-black bg-opacity-50 md:bg-transparent lg:text-left sm:w-[400px] md:w-[600px] lg:mt-[200px] animate-fade-left'>{album.description}</p>
+                  <p className='text-sm mb-4 text-justify mx-4 bg-black bg-opacity-50 md:bg-transparent lg:text-left sm:w-[400px] md:w-[500px] lg:mt-[200px] animate-fade-left'>{album.description}</p>
                   <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-4 md:mt-9">
                     <a
                       href={album.albumLink}
@@ -97,7 +98,7 @@ export function DeleteAlbum() {
                   </div>
                 </div>
               </div>
-              </>
+              </React.Fragment>
             ))}
       </>
   );

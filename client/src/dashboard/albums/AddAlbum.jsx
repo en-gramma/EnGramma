@@ -72,6 +72,7 @@ export const AddAlbum = () => {
   return (
     <div className="w-full shadow-md rounded-md p-1 md:p-5 bg-white md:m-4">
       <h2 className="text-xl font-bold  px-2 py-2 w-full">Editeur d'album</h2>
+      
       <div className="mb-5 mt-2 border-b border-gray-300"></div>
       <h2 className="text-lg font-bold mb-4  px-2 py-2 w-full">Ajouter un album</h2>
         <form onSubmit={handleSubmit} className="w-full max-w-lg md:mx-2">

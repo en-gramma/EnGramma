@@ -42,7 +42,7 @@ export const Music = () => {
     <div className="h-screen relative">
       <img src={scene} alt="Music Background" className="object-cover w-full h-full" />
       <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}></div>
-      <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center overflow-auto md:overflow-hidden">
         {loading ? (
           <Loader />
         ) : (

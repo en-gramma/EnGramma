@@ -16,6 +16,7 @@ export const Navbar = () => {
     const { currentUser, logout } = useContext(AuthContext);
     const location = useLocation();
     const [users, setUsers] = useState([]);
+    const [scrollPosition, setScrollPosition] = useState(0);
 
     useEffect(() => {
       const fetchUsers = async () => {
@@ -43,6 +44,8 @@ export const Navbar = () => {
   setIsMenuOpen(false);
 };
 
+
+
     // state qui verifira quand l'ecran est en haut
     useEffect(() => {
       const handleScroll = () => {
@@ -63,22 +66,32 @@ export const Navbar = () => {
       window.scrollTo(0, 0);
     }, [location]);
 
+    useEffect(() => {
+      const handleScroll = () => {
+        setScrollPosition(window.scrollY);
+      };
+    
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
+    const opacity = location.pathname === '/' ? Math.min(scrollPosition / 200, 1) : 1;
     return (
 <nav
   className={`${
-    // eslint-disable-next-line
-    isMobile ? 'bg-transparent opacity-90' :'bg-stone-900 opacity-95 text-xl z-30 ',
-    isOnTop ? 'bg-transparent text-xl' : 'bg-stone-900 opacity-95 text-xl z-30'
+    isOnTop && !isMobile ? 'bg-transparent text-xl' : 'bg-stone-900 opacity-95 text-xl z-30'
   } text-white border-gray-200 w-full z-20 fixed transition-all duration-300`}
   style={{
     backgroundColor: location.pathname === '/dashboard' ? '#2c2c2c' : ''
   }}
->    <div className=" flex flex-wrap items-center justify-between mx-auto p-4 ">
+>
+    <div className=" flex flex-wrap items-center justify-between mx-auto p-4 ">
           <a href="/" className="flex items-center">
 
-            <p className={`font-custom text-4xl text-Engramma  md:hidden lg:block md:absolute ${location.pathname === '/' ? 'text-transparent' : ''} ${isOnTop ? '' :'text-Engramma'}`}>
-              EN GRAMMA
-            </p>
+          <p className={`font-custom text-4xl text-Engramma  md:hidden lg:block md:absolute  ${isOnTop ? '' :'text-Engramma'}`} style={{ opacity }}>
+  EN GRAMMA
+</p>
           </a>
           <div className="flex md:order-3">
 

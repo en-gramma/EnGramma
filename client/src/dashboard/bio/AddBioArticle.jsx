@@ -71,7 +71,7 @@ export const AddBioArticle = () => {
       }
       
     } catch (error) {
-      console.error(error);
+      console.error('error');
     }
   };
 
@@ -135,7 +135,7 @@ export const AddBioArticle = () => {
       return;
     }
     const apiUrl = process.env.REACT_APP_API_URL;
-    setFormStatus('loading');
+    
     axios.delete(`${apiUrl}/api/bios/${id}`, {
         withCredentials: true,
       })
@@ -144,7 +144,6 @@ export const AddBioArticle = () => {
         setFormStatus('success');
       })
       .catch(error => {
-        console.error(error);
         setFormStatus('error');
       });
   };
@@ -239,8 +238,8 @@ export const AddBioArticle = () => {
  
         </div>
 
-        {setStatus === 'success' && <div className="text-green-500">L'article a été ajouté avec succès!</div>}
-        {setStatus === 'error' && <div className="text-red-500">Erreur lors de l'ajout de l'article</div>}
+        {status === 'success' && <div className="text-green-500">L'article a été ajouté avec succès!</div>}
+        {status === 'error' && <div className="text-red-500">Erreur lors de l'ajout de l'article</div>}
         <button className=" mt-9 w-full bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>
         </div>
       </form>

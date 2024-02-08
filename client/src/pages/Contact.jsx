@@ -183,11 +183,13 @@ const handleRecaptchaChange = (value) => {
         sitekey={sitekey}
         onChange={handleRecaptchaChange}
       />
+
         <button
           type="submit"
-          className="bg-orange2 text-white py-2 px-4 mb-4 mt-2 rounded  hover:bg-orange-800 w-full max-w-[300px]">
+          className="bg-orange2 text-white py-2 px-4 mb-4 mt-2 rounded  hover:bg-orange-800 w-full max-w-[300px] ">
           Envoyer
         </button>
+
       </form>
     </div>
     <div>
@@ -198,19 +200,19 @@ const handleRecaptchaChange = (value) => {
             <h2 className="text-2xl font-bold mb-2">Documents Pro</h2>
           </div>
           {links.map((link, index) => (
-            <>
-        <div key={index} className=''>
-          <div className='flex items-center mb-2 justify-center '>
-          <CgMediaPodcast className='text-orange2 '/>
-            <p><a href={link.dossier} className='ml-2 text-orange2 hover:text-orange-700 pb-3 underline font-semibold' target="_blank" rel="noopener noreferrer">Dossier de presse</a></p>
-          </div>
-          <div className='flex items-center mb-4 justify-center'>
-          <GrScheduleNew className='text-orange2' />
-            <p><a href={link.fiche} className='ml-2 text-orange2 hover:text-orange-700 underline font-semibold' target="_blank" rel="noopener noreferrer">Fiche technique</a></p>
-            </div>
-          </div>
-          <img src={zig} alt="" className='shadow-lg rounded-md' />
-          </>
+     <React.Fragment key={index}>
+     <div className=''>
+       <div className='flex items-center mb-2 justify-center '>
+         <CgMediaPodcast className='text-orange2 '/>
+         <p><a href={link.dossier} className='ml-2 text-orange2 hover:text-orange-700 pb-3 underline font-semibold' target="_blank" rel="noopener noreferrer">Dossier de presse</a></p>
+       </div>
+       <div className='flex items-center mb-4 justify-center'>
+         <GrScheduleNew className='text-orange2' />
+         <p><a href={link.fiche} className='ml-2 text-orange2 hover:text-orange-700 underline font-semibold' target="_blank" rel="noopener noreferrer">Fiche technique</a></p>
+       </div>
+     </div>
+     <img src={zig} alt="" className='shadow-lg rounded-md' />
+   </React.Fragment>
       ))}
       
         </div>
