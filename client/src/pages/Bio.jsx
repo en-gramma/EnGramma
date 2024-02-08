@@ -2,16 +2,14 @@ import React, { useEffect, useState } from 'react';
 import logo from '../assets/logo.png';
 import axios from 'axios';
 import { Loader } from '../components/Loader';
-import fr from "../assets/fr.png";
-import en from "../assets/en.png";
 import DOMPurify from 'isomorphic-dompurify';
-
+import { useTranslation } from 'react-i18next';
 
 export const Bio = () => {
 
   const [bios, setBios] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [language, setLanguage] = useState('fr');
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIsLoading(true);
@@ -26,7 +24,7 @@ export const Bio = () => {
       });
   }, []);
   return (
-    <>
+ 
 <div className="relative flex flex-col py-3 items-center p-5 pt-[100px]">
   {isLoading ? (
     <div className='flex justify-center items-center '>
@@ -43,13 +41,11 @@ export const Bio = () => {
         <img src={logo} className="h-[70px] pb-3" alt="logo en gramma" />
       <div className="flex-grow border-t border-white "></div>
     </div>
-    <div className='flex items-center justify-center mx-auto my-3'>
-  <img src={fr} alt="logo fr" className='h-5 w-7 mr-3 cursor-pointer' onClick={() => setLanguage('fr')} />
-  <img src={en} alt="logo fr" className='h-5 w-7 cursor-pointer' onClick={() => setLanguage('en')} />
-</div>
     <div key={bio.id} className='pt-2'>
     <h1 className=" text-white dropshadow-xl animate-fade animate-duration-[2500ms] text-center text-2xl font-custom">
-    {language === 'fr' ? bio.title : bio.titleEn}
+    {t(bio.title + 'Title')}
+  </h1>
+    <h1 className=" text-white dropshadow-xl animate-fade animate-duration-[2500ms] text-center text-2xl font-custom">
   </h1>
       <div className="flex flex-col items-center justify-center sm:flex-row">
         <div className="relative  my-9 ">
@@ -59,7 +55,7 @@ export const Bio = () => {
       </div>
       <div className='max-w-[800px] mx-auto'>
   <div className="text-md text-white text-justify  mb-9 animate-fade-right">
-    <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize((language === 'fr' ? bio.text : bio.textEn).replace(/\n/g, '<br />')) }} />
+  <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(bio.title).replace(/\n/g, '<br />')) }} />
   </div>
 </div>
     </div>
@@ -67,6 +63,5 @@ export const Bio = () => {
     </>
   ))}
 </div>
-  </>
   )
 }
