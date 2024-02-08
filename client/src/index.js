@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthContextProvider } from './context/AuthContext';
-import '../src/components/i18next';
+import '../src/components/translation/i18next.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

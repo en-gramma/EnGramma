@@ -3,9 +3,8 @@ import spaceImage from '../assets/spaceimage.jpg';
 import logo from '../assets/logo.png';
 import { Social } from '../components/Social';
 import trioHome from '../assets/trio-home.jpg';
-import fr from "../assets/fr.png";
-import en from "../assets/en.png";
-
+import { useTranslation } from 'react-i18next';
+import { Trans } from 'react-i18next'
 
 export const Home = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -14,6 +13,7 @@ export const Home = () => {
     // backgroundAttachment: 'fixed',
   };
   const [scrollPosition, setScrollPosition] = useState(0);
+  const { t } = useTranslation();
 
 
     // Fonction pour vérifier si la vue est en mode mobile
@@ -70,17 +70,13 @@ export const Home = () => {
       </div>
     ) : null}
 
-      <div className="max-w-[580px] sm:mr-4 pt-9 text-white text-justify">
-              <b>EN GRAMMA</b> ('ène gramma') est un trio Transe Rock formé en 2021 et basé à Rennes. Issu du grec ancien, son nom évoque la marque que la mémoire laisse en nous à travers le temps.<br /><br />
-      Le trio joue un mélange puissant de blues afro-dionysiaque et de rock acoustique, tout en chantant en trois langues (français, anglais et grec ancien). <br /><br /><a className='text-orange2 underline'href='/music'>Beau brûlis</a> est leur premier album.
-      Il s'agit d'une collection d'histoires, enracinées dans le mystère et racontées à travers des mélodies vocales chaleureuses et des rythmes tribaux entraînants.<br /><br />
-      EN GRAMMA est un groupe unique et musicalement éclectique, qui occupe l'espace entre le primitif et le moderne, l'acoustique et l'électrique.<br /><br />
-      EN GRAMMA est formé par le chanteur Gautier Degandt qui a tourné à travers l'Europe avec son duo hard-folk <b>BÂTON BLEU</b> (Dixiefrog records/ PIAS), le guitariste afro/rock Oscar Philéas (<b>MAMADOU KOITA</b>), et le percussionniste Pierre-Yves Dubois.
+      <div className="max-w-[580px] sm:mr-4  text-white text-justify">
+      <Trans i18nKey="home.text" />
       </div>
   </div>
 
   {!isMobile ? (
-    <div className="relative mt-4 sm:mt-0 mx-3">
+    <div className="relative mt-4 sm:mt-0 mx-3 mb-9">
       <img src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[27rem] shadow-lg " />
       <p className="absolute bottom-0 right-0 text-white  px-2 py-1 text-sm">&copy; Antoine Chevillé</p>
     </div>

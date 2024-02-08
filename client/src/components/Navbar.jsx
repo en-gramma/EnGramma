@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import i18n from 'i18next';
 import { Link, useLocation  } from 'react-router-dom';
 import  {AuthContext}  from '../context/AuthContext';
 import '../index.css'; 
@@ -17,8 +18,6 @@ export const Navbar = () => {
     const location = useLocation();
     const [users, setUsers] = useState([]);
     const [scrollPosition, setScrollPosition] = useState(0);
-    const { t, i18n } = useTranslation();
-
     const changeLanguage = (lng) => {
       i18n.changeLanguage(lng);
     };
@@ -174,10 +173,12 @@ export const Navbar = () => {
                 > CONTACT/PRO
                 </Link>
               </li>
-              <div>
-                <button onClick={() => changeLanguage('en')}>en</button>
-                <button onClick={() => changeLanguage('fr')}>fr</button>
-              </div>
+              <li>
+                <button onClick={() => changeLanguage('en')}>English</button>
+              </li>
+              <li>
+                <button onClick={() => changeLanguage('fr')}>Français</button>
+              </li>
               <div className="mb-2 mt-2 border-b border-gray-300"></div>
               <li className="md:absolute md:top-2 md:right-10">
                   {currentUser &&
