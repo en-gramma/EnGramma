@@ -13,7 +13,6 @@ export const Home = () => {
     backgroundImage: `url(${spaceImage})`,
     // backgroundAttachment: 'fixed',
   };
-  const [language, setLanguage] = useState('fr');
   const [scrollPosition, setScrollPosition] = useState(0);
 
 
@@ -62,10 +61,6 @@ export const Home = () => {
         <img src={logo} className="h-[70px] pb-3" alt="logo en gramma" />
       <div className="flex-grow border-t border-white"></div>
     </div>
-    <div className='flex items-center justify-center mt-4'>
-    <img src={fr} alt="logo fr" className='h-4 w-6 mr-3 cursor-pointer' onClick={() => setLanguage('fr')} />
-    <img src={en} alt="logo en" className='h-4 w-6 cursor-pointer' onClick={() => setLanguage('en')} />
-    </div>
     <div className="flex flex-col items-center justify-center sm:flex-row sm:flex-row-reverse">
   <div className='flex items-center justify-center  mb-9 flex-col sm:flex-row mx-2'>
     {isMobile ? (
@@ -75,7 +70,6 @@ export const Home = () => {
       </div>
     ) : null}
 
-    {language === 'fr' && (
       <div className="max-w-[580px] sm:mr-4 pt-9 text-white text-justify">
               <b>EN GRAMMA</b> ('ène gramma') est un trio Transe Rock formé en 2021 et basé à Rennes. Issu du grec ancien, son nom évoque la marque que la mémoire laisse en nous à travers le temps.<br /><br />
       Le trio joue un mélange puissant de blues afro-dionysiaque et de rock acoustique, tout en chantant en trois langues (français, anglais et grec ancien). <br /><br /><a className='text-orange2 underline'href='/music'>Beau brûlis</a> est leur premier album.
@@ -83,13 +77,6 @@ export const Home = () => {
       EN GRAMMA est un groupe unique et musicalement éclectique, qui occupe l'espace entre le primitif et le moderne, l'acoustique et l'électrique.<br /><br />
       EN GRAMMA est formé par le chanteur Gautier Degandt qui a tourné à travers l'Europe avec son duo hard-folk <b>BÂTON BLEU</b> (Dixiefrog records/ PIAS), le guitariste afro/rock Oscar Philéas (<b>MAMADOU KOITA</b>), et le percussionniste Pierre-Yves Dubois.
       </div>
-    )}
-
-    {language === 'en' && (
-      <div className="max-w-[500px] sm:mr-4 mt-5 text-white text-justify">
-        {/* Texte en anglais */}
-      </div>
-    )}
   </div>
 
   {!isMobile ? (
