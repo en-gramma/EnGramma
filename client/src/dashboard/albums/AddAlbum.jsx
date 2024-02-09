@@ -117,7 +117,7 @@ export const AddAlbum = () => {
           </label>
           <div className='flex items-center mb-2'>
             <span className="text-gray-700 ">Description en français:</span>
-            <img src={fr} alt="" className='h-4 align-middle' />
+            <img src={fr} alt="" className='w-[25px] h-[15px] align-middle' />
           </div>
           <div className="mb-4 border border-gray-300">
             <Editor
@@ -138,7 +138,7 @@ export const AddAlbum = () => {
         </div>
         <div className='flex items-center mb-2'>
             <span className="text-gray-700 ">Description en anglais:</span>
-            <img src={en} alt="" className='h-4 align-middle' />
+            <img src={en} alt="" className='w-[25px] h-[15px] align-middle' />
           </div>
         <div className="mb-4 border border-gray-300">
             <Editor

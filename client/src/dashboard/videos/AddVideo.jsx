@@ -81,7 +81,8 @@ export const AddVideo = () => {
     <label className='block mb-4'>
     <span className="text-gray-700">Titre de la vidéo</span>
       <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} 
-      required className='border p-2 w-full' />
+      required className='border p-2 w-full'
+      placeholder='Non visible au public' />
       </label>
         <label className='block mb-4'>
         <span className="text-gray-700">Lien au format iframe, sur Youtube, Partager - Intégrer</span>

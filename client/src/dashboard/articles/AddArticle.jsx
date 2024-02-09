@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import DOMPurify from 'isomorphic-dompurify';
+import fr from "../../assets/fr.png";
+import en from "../../assets/en.png";
 
 export const AddArticle = () => {
   const [status, setStatus] = useState('');
@@ -10,9 +12,11 @@ export const AddArticle = () => {
 
   const [formData, setFormData] = useState({
     text: DOMPurify.sanitize(''),
+    textEn: DOMPurify.sanitize(''),
     name: DOMPurify.sanitize(''),
     country: DOMPurify.sanitize(''),
     header: DOMPurify.sanitize(''),
+    headerEn: DOMPurify.sanitize(''),
     file: null,
 
   });
@@ -54,7 +58,7 @@ export const AddArticle = () => {
     e.preventDefault();
 
     // Regex pour la validation
-    const frenchTextRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
+    const frenchTextRegex = /^[\w\W\s]*$/;
 
     // Validation
     if (!frenchTextRegex.test(formData.text)) {
@@ -104,9 +108,11 @@ export const AddArticle = () => {
       formRef.current.reset();
       setFormData({
         text: '',
+        textEn: '',
         name: '',
         country: '',
         header: '',
+        headerEn: '',
         file: null,
       })
     }
@@ -168,17 +174,37 @@ export const AddArticle = () => {
         </div>
 
         <div className="mb-4">
+          <span className='mb-2'>Nom du média</span>
             <input className="border p-2 w-full" placeholder="Nom du média" name="name" value={formData.name} onChange={handleChange} />
         </div>
         <div className="mb-4">
-            <input className="border p-2 w-full" placeholder="Pays, exemple: FR" name="country" value={formData.country} onChange={handleChange} />
+          <span className='mb-2'>Pays</span>
+            <input className="border p-2 w-full" placeholder="Exemple: FR, USA" name="country" value={formData.country} onChange={handleChange} />
         </div>
-        <div className="mb-4">
-            <input className="border p-2 w-full" placeholder="En-tête (optionnelle) Exemple:'Album du mois'" name="header" value={formData.header} onChange={handleChange} />
+          
+        <div className="mb-4 flex items-center">
+           <span className=''>En-tête en français</span>
+            <img src={fr} alt="" className='w-[25px] h-[15px] align-middle ml-2' />   
         </div>
-        <div className="mb-4">
-            <textarea className="border p-2 w-full" placeholder="Description" name="text" value={formData.text} onChange={handleChange} />
+          <input className="border p-2 w-full" placeholder="Optionnel Exemple:'Album du mois'" name="header" value={formData.header} onChange={handleChange} />
+        
+        <div className="mb-4 flex items-center mt-2">
+          <span className=''>Description en français </span>
+          <img src={fr} alt="" className='w-[25px] h-[15px] align-middle ml-2' />
         </div>
+          <textarea className="border p-2 w-full " placeholder="80 à 100 mots max recommandé" name="text" value={formData.text} onChange={handleChange} />
+        
+        <div className="mb-5 mt-2 border-b border-gray-300 "></div>
+          <div className="mb-4 flex items-center">
+          <span className=''>En-tête en anglais</span>
+          <img src={en} alt="" className='w-[25px] h-[15px] align-middle ml-2' /> 
+        </div>
+        <input className="border p-2 w-full" placeholder="Optionnel Exemple:'Music of the month'" name="headerEn" value={formData.headerEn} onChange={handleChange} />
+        <div className="mb-4 flex items-center mt-2">
+          <span className=''>Description en anglais </span>
+          <img src={en} alt="" className='w-[25px] h-[15px] align-middle ml-2' />    
+        </div>
+          <textarea className="border p-2 w-full" placeholder="80 à 100 mots max recommandé" name="textEn" value={formData.textEn} onChange={handleChange} />
         {setStatus === 'success' && <div className="text-green-500">L'article a été ajouté avec succès!</div>}
         {setStatus === 'error' && <div className="text-red-500">Erreur lors de l'ajout de l'article</div>}
         <button className="w-full bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>
