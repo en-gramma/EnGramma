@@ -159,7 +159,7 @@ export const UpdateBioArticle = () => {
       <form ref={formRef} onSubmit={handleSubmit} className='w-full  md:mx-2'>
       <div className='flex items-center'>
         <h2 className="text-lg px-2" style={{ lineHeight: '1.5' }}>Texte bio en français</h2>
-        <img src={fr} alt="" className='h-4 align-middle' />
+        <img src={fr} alt="" className='w-[25px] h-[15px] align-middle' />
       </div>
       <div className="p-4">
 
@@ -190,7 +190,7 @@ export const UpdateBioArticle = () => {
 
         <div className='flex items-center mt-[75px] mb-3'>
           <h2 className="text-lg px-2" style={{ lineHeight: '1.5' }}>Texte bio en anglais</h2>
-          <img src={en} alt="" className='h-4 align-middle' />
+          <img src={en} alt="" className='w-[25px] h-[15px] align-middle' />
         </div>
 
         <div className="mb-4">

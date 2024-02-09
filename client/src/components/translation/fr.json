@@ -38,6 +38,12 @@
     "home": "ACCUEIL",
     "music": "MUSIQUE",
     "biography": "BIOGRAPHIE"
+  },
+
+  "music": {
+    "name": "music",
+    "button": "Trouver l'album",
+    "press": "Voir les avis presse"
   }
 }
 

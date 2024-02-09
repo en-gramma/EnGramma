@@ -38,5 +38,11 @@
         "home": "HOME",
         "music": "MUSIC",
         "biography": "BIOGRAPHY"
+      },
+
+      "music": {
+        "name": "music",
+        "button": "Find the album",
+        "press": "Press review"
       }
   }

@@ -115,8 +115,8 @@ export const AddAlbum = () => {
             <span className="text-gray-700">Intégrer lecteur Bandcamp (iframe):</span>
             <input type="text" name="bandcamp"  value={formData.bandcamp} onChange={handleChange} className="mt-1 block w-full rounded border-gray-300 border shadow-sm p-1" />
           </label>
-          <div className='flex items-center'>
-            <span className="text-gray-700">Description en français:</span>
+          <div className='flex items-center mb-2'>
+            <span className="text-gray-700 ">Description en français:</span>
             <img src={fr} alt="" className='h-4 align-middle' />
           </div>
           <div className="mb-4 border border-gray-300">
@@ -126,6 +126,7 @@ export const AddAlbum = () => {
               wrapperClassName="wrapperClassName"
               editorClassName="editorClassName"
               onEditorStateChange={onEditorStateChange}
+              stripPastedStyles={true}
               toolbar={{
                 options: ['inline'],
                 inline: {
@@ -135,8 +136,8 @@ export const AddAlbum = () => {
               }}
             />
         </div>
-        <div className='flex items-center'>
-            <span className="text-gray-700">Description en anglais:</span>
+        <div className='flex items-center mb-2'>
+            <span className="text-gray-700 ">Description en anglais:</span>
             <img src={en} alt="" className='h-4 align-middle' />
           </div>
         <div className="mb-4 border border-gray-300">
@@ -146,6 +147,7 @@ export const AddAlbum = () => {
               wrapperClassName="wrapperClassName"
               editorClassName="editorClassName"
               onEditorStateChange={onEditorStateChangeEn}
+              stripPastedStyles={true}
               toolbar={{
                 options: ['inline'],
                 inline: {

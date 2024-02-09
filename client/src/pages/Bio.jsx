@@ -9,7 +9,7 @@ export const Bio = () => {
 
   const [bios, setBios] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { t } = useTranslation();
+  const { t} = useTranslation();
 
   useEffect(() => {
     setIsLoading(true);

@@ -82,13 +82,13 @@ export const Sidebar = ({ onSelectMenuItem }) => {
       <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => handleMenuItemClick ('ajouter-bio')}>
           <div className="flex items-center">
             <BiPhotoAlbum className="mr-2" />
-           Editeur d'article (bio)
+           Ajouter/Supprimer un article
           </div>
         </li>
         <li className="mb-2 cursor-pointer hover:font-semibold" onClick={() => handleMenuItemClick ('update-bio')}>
           <div className="flex items-center">
             <BiPhotoAlbum className="mr-2" />
-           Modifier un article (bio)
+           Editer un article
           </div>
         </li>
         <div className=" border-b border-gray-300"></div>
