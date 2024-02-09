@@ -23,7 +23,7 @@
     
     "press": {
       "name": "media",
-      "press": "Presse"
+      "press": "PRESSE"
   },
 
   "radio": {
@@ -31,6 +31,13 @@
     "world": "Dans le monde",
     "france": "En France",
     "title": "L'album est en ce moment diffusé:"
-}
+},
+
+  "navbar": {
+    "name": "navbar",
+    "home": "ACCUEIL",
+    "music": "MUSIQUE",
+    "biography": "BIOGRAPHIE"
+  }
 }
 

@@ -19,6 +19,7 @@ export const Navbar = () => {
     const location = useLocation();
     const [users, setUsers] = useState([]);
     const [scrollPosition, setScrollPosition] = useState(0);
+    const { t } = useTranslation();
     const changeLanguage = (lng) => {
       i18n.changeLanguage(lng);
     };
@@ -131,7 +132,7 @@ export const Navbar = () => {
                   className={`font-semibold ${location.pathname === '/' ? 'text-yellow-300' : ''} hover:text-yellow-300 `}
                   to="/"
                   onClick={handleLinkClick}
-                > ACCUEIL
+                > {t('navbar.home')}
                 </Link>
               </li>
               <li>
@@ -139,7 +140,7 @@ export const Navbar = () => {
                   className={`font-semibold ${location.pathname === '/music' ? 'text-yellow-300' : ''} hover:text-yellow-300`}
                   to="/music"
                   onClick={handleLinkClick}
-                > MUSIQUE
+                > {t('navbar.music')}
                 </Link>
               </li>
               <li>
@@ -155,7 +156,7 @@ export const Navbar = () => {
                   className={`font-semibold ${location.pathname === '/bio' ? 'text-yellow-300' : ''} hover:text-yellow-300`}
                   to="/bio"
                   onClick={handleLinkClick}
-                > BIOGRAPHIE
+                > {t('navbar.biography')}
                 </Link>
               </li>
               <li>

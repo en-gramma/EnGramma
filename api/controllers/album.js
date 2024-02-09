@@ -67,14 +67,18 @@ export const addAlbum= (req, res, next) => {
     if (!descriptionRegex.test(req.body.description)) {
       return res.status(400).json({ error: 'Erreur : La description contient des caractères non valides.' });
     }
+    if (!descriptionRegex.test(req.body.descriptionEn)) {
+      return res.status(400).json({ error: 'Erreur : La description en anglais contient des caractères non valides.' });
+    }
 
     const q =
-      "INSERT INTO albums (`title`, `bandcamp`, `description`, `albumLink`) VALUES (?)";
+      "INSERT INTO albums (`title`, `bandcamp`, `description`, `descriptionEn`, `albumLink`) VALUES (?)";
 
     const values = [
       DOMPurify.sanitize(req.body.title),
       req.body.bandcamp,
       DOMPurify.sanitize(req.body.description),
+      DOMPurify.sanitize(req.body.descriptionEn),
       DOMPurify.sanitize(req.body.albumLink, { ADD_TAGS: ["a"], ADD_ATTR: ["href"] }),
     ];
 

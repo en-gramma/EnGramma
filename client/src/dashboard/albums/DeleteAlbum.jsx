@@ -4,8 +4,6 @@ import { IoIosRefresh } from 'react-icons/io';
 
 export function DeleteAlbum() {
   const [albums, setAlbums] = useState([]);
-  const [status, setStatus] = useState('');
-
 
     async function fetchAlbums() {
       try {
@@ -30,10 +28,8 @@ export function DeleteAlbum() {
           withCredentials: true,
         });
         setAlbums(albums.filter((album) => album.id !== albumId));
-        setStatus('success');
       } catch (error) {
-        console.error('Erreur lors de la suppression de la voiture');
-        setStatus('error');
+        console.error('Erreur lors de la suppression de l\'album');
       }
     }
   };
@@ -63,7 +59,6 @@ export function DeleteAlbum() {
     </button>
     <div className='mb-9'></div>
 
-      {status && <p>{status}</p>}
       {albums.slice().reverse().map((album) => (
         <React.Fragment key={album.id}>
               <div  className="mb-3 md:ml-3 text-white flex flex-col lg:flex-row bg-neutral-800 p-1 md:p-5 rounded shadow

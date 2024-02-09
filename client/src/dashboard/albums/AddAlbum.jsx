@@ -2,13 +2,38 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import DOMPurify from 'dompurify';
 import { DeleteAlbum } from './DeleteAlbum';
+import { EditorState, convertToRaw } from 'draft-js';
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import draftToHtml from "draftjs-to-html";
+import fr from "../../assets/fr.png";
+import en from "../../assets/en.png";
 
 export const AddAlbum = () => {
+  const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
+  const [editorStateEn, setEditorStateEn] = useState(() => EditorState.createEmpty());
+
+  const onEditorStateChange = (editorState) => {
+    setEditorState(editorState);
+    setFormData({
+      ...formData,
+      description: draftToHtml(convertToRaw(editorState.getCurrentContent()))
+    });
+  };
+
+  const onEditorStateChangeEn = (editorStateEn) => {
+    setEditorStateEn(editorStateEn);
+    setFormData({
+      ...formData,
+      descriptionEn: draftToHtml(convertToRaw(editorStateEn.getCurrentContent()))
+    });
+  };
   const [formData, setFormData] = useState({
-    title: '',
+    title: DOMPurify.sanitize(''),
+    description: DOMPurify.sanitize(''),
+    descriptionEn: DOMPurify.sanitize(''),
     bandcamp: '',
-    description: '',
-    albumLink: '',
+    albumLink: DOMPurify.sanitize('', { ADD_TAGS: ["a"], ADD_ATTR: ["href"] }),
   });
 
   const [formStatus, setFormStatus] = useState(null);
@@ -27,9 +52,10 @@ export const AddAlbum = () => {
     // Assainir les données avant l'envoi
     const sanitizedData = {
       title: DOMPurify.sanitize(formData.title),
-      bandcamp: formData.bandcamp,
       description: DOMPurify.sanitize(formData.description),
-      albumLink: formData.albumLink,
+      descriptionEn: DOMPurify.sanitize(formData.descriptionEn),
+      bandcamp: formData.bandcamp,
+      albumLink: DOMPurify.sanitize(formData.albumLink, { ADD_TAGS: ["a"], ADD_ATTR: ["href"] }),
     };
     
     const frenchTitleRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
@@ -43,7 +69,11 @@ export const AddAlbum = () => {
     if (!descriptionRegex.test(formData.description)) {
       alert('Erreur : La description contient des caractères non valides.');
       return;
-    }  
+    }
+    if (!descriptionRegex.test(formData.descriptionEn)) {
+      alert('Erreur : La description contient des caractères non valides.');
+      return;
+    }
 
     try {
       const apiUrl = process.env.REACT_APP_API_URL;
@@ -55,10 +85,11 @@ export const AddAlbum = () => {
 
       // Réinitialiser le formulaire après avoir ajouté l'album avec succès
       setFormData({
-        title: '',
+        title: DOMPurify.sanitize(''),
+        description: DOMPurify.sanitize(''),
+        descriptionEn: DOMPurify.sanitize(''),
         bandcamp: '',
-        description: '',
-        albumLink: '',
+        albumLink: DOMPurify.sanitize('', { ADD_TAGS: ["a"], ADD_ATTR: ["href"] }),
       });
 
       setFormStatus('success');
@@ -84,10 +115,46 @@ export const AddAlbum = () => {
             <span className="text-gray-700">Intégrer lecteur Bandcamp (iframe):</span>
             <input type="text" name="bandcamp"  value={formData.bandcamp} onChange={handleChange} className="mt-1 block w-full rounded border-gray-300 border shadow-sm p-1" />
           </label>
-          <label className="block mb-4">
-            <span className="text-gray-700">Description de l'album:</span>
-            <textarea name="description" value={formData.description} onChange={handleChange} className="mt-1 block w-full rounded border-gray-300 border shadow-sm p-1" />
-          </label>
+          <div className='flex items-center'>
+            <span className="text-gray-700">Description en français:</span>
+            <img src={fr} alt="" className='h-4 align-middle' />
+          </div>
+          <div className="mb-4 border border-gray-300">
+            <Editor
+              editorState={editorState}
+              toolbarClassName="toolbarClassName"
+              wrapperClassName="wrapperClassName"
+              editorClassName="editorClassName"
+              onEditorStateChange={onEditorStateChange}
+              toolbar={{
+                options: ['inline'],
+                inline: {
+                  inDropdown: false,
+                  options: ['bold', 'italic', 'underline']
+                },
+              }}
+            />
+        </div>
+        <div className='flex items-center'>
+            <span className="text-gray-700">Description en anglais:</span>
+            <img src={en} alt="" className='h-4 align-middle' />
+          </div>
+        <div className="mb-4 border border-gray-300">
+            <Editor
+              editorState={editorStateEn}
+              toolbarClassName="toolbarClassName"
+              wrapperClassName="wrapperClassName"
+              editorClassName="editorClassName"
+              onEditorStateChange={onEditorStateChangeEn}
+              toolbar={{
+                options: ['inline'],
+                inline: {
+                  inDropdown: false,
+                  options: ['bold', 'italic', 'underline']
+                },
+              }}
+            />
+        </div>
           <label className="block mb-4">
             <span className="text-gray-700">Lien Bfan:</span>
             <input type="text" name="albumLink" value={formData.albumLink} onChange={handleChange} className="mt-1 block w-full rounded border-gray-300 border shadow-sm p-1" />

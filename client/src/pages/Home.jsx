@@ -3,7 +3,6 @@ import spaceImage from '../assets/spaceimage.jpg';
 import logo from '../assets/logo.png';
 import { Social } from '../components/Social';
 import trioHome from '../assets/trio-home.jpg';
-import { useTranslation } from 'react-i18next';
 import { Trans } from 'react-i18next'
 
 export const Home = () => {
@@ -13,8 +12,6 @@ export const Home = () => {
     // backgroundAttachment: 'fixed',
   };
   const [scrollPosition, setScrollPosition] = useState(0);
-  const { t } = useTranslation();
-
 
     // Fonction pour vérifier si la vue est en mode mobile
     const checkIsMobile = () => {
