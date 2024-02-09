@@ -29,7 +29,8 @@
   "radio": {
     "name": "radio",
     "world": "Dans le monde",
-    "france": "En France"
+    "france": "En France",
+    "title": "L'album est en ce moment diffusé:"
 }
 }
 

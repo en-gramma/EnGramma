@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 export const RadioListFr = () => {
   const [radiofrs, setRadiofrs] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -18,7 +20,7 @@ export const RadioListFr = () => {
   return (
     <>
   <div className='flex justify-center text-xl mt-5'>
-    <p className='text-white my-4'>En france :</p>
+    <p className='text-white my-4'>{t('radio.france')} :</p>
   </div>
   <div className="grid md:grid-cols-4 gap-4 ">
     {radiofrs.map(radio => (
