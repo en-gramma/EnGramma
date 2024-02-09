@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import scene2 from '../assets/scene2.jpg';
 import axios from 'axios';
 import { Loader } from '../components/Loader';
+import { useTranslation } from 'react-i18next';
 
 export const Tour = () => {
   const [dates, setDates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [datesToShow, setDatesToShow] = useState(3);
+  const { t } = useTranslation();
 
 const loadMoreDates = () => {
   setDatesToShow(prev => prev + 3);
@@ -59,7 +61,7 @@ const showThreeDates = () => {
     <div key={date.id} className="mb-4 border-b border-white flex  items-start md:items-center md:justify-between w-full sm:w-[700px] last:mb-0 last:border-0  ">
       <div className="flex flex-row  w-full text-center mx-4 md:mx-0">
         <div className="text-column text-left mb-2 md:mb-0 w-1/2 mx-2">
-          <p className="text-white mb-4 md:mb-4 animate-fade-right"><span className='text-3xl font-semibold mr-3 text-Engramma'>{day}</span> <span className='text-xl'>{`${date.month.substring(0, 4)}`}</span></p>
+          <p className="text-white mb-4 md:mb-4 animate-fade-right"><span className='text-3xl font-semibold mr-3 text-Engramma'>{day}</span> <span className='text-xl'>{`${date.month.substring(0, 3)}`}</span></p>
         </div>
         <div className="text-column md:flex md:flex-row  md:items-center  md:justify-between mb-2 md:mb-0  w-full">
           <p className="text-white font-semibold  text-2xl md:mb-4"><span className=''>{`${date.place}`}</span></p>
@@ -70,9 +72,9 @@ const showThreeDates = () => {
   );
 })}
           <div className='flex flex-col sm:flex-row items-center mb-5'>
-            <button className='text-Engramma mt-4 flex items-start mr-5 ' onClick={loadMoreDates}>Afficher plus de dates</button>
+            <button className='text-Engramma mt-4 flex items-start mr-5 ' onClick={loadMoreDates}>{t('dates.hide')}</button>
             {datesToShow >= 6 && 
-            <button className='text-Engramma mt-4 flex items-start ' onClick={showThreeDates}>Cacher les anciennes dates</button>
+            <button className='text-Engramma mt-4 flex items-start ' onClick={showThreeDates}>{t('dates.show')}</button>
           }
           </div>
         </div>

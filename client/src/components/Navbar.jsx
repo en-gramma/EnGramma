@@ -6,10 +6,11 @@ import { Link, useLocation  } from 'react-router-dom';
 import  {AuthContext}  from '../context/AuthContext';
 import '../index.css'; 
 import { useWindowWidth } from '@react-hook/window-size';
-
 import DefaultUserImage from '../assets/anon.png';
 import axios from 'axios';
 import { CiLogout } from "react-icons/ci";
+import englishFlag from '../assets/en.png';
+import frenchFlag from '../assets/fr.png';
 
 export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -173,12 +174,16 @@ export const Navbar = () => {
                 > CONTACT/PRO
                 </Link>
               </li>
+              
               <li>
-                <button onClick={() => changeLanguage('en')}>English</button>
+                <button onClick={() => changeLanguage('fr')}>
+                  <img src={frenchFlag} alt="Français" className='w-[25px] h-[15px] mr-3' />
+                </button>
+                <button onClick={() => changeLanguage('en')}>
+                  <img src={englishFlag} alt="English" className='w-[25px] h-[15px]' />
+                </button>
               </li>
-              <li>
-                <button onClick={() => changeLanguage('fr')}>Français</button>
-              </li>
+             
               <div className="mb-2 mt-2 border-b border-gray-300"></div>
               <li className="md:absolute md:top-2 md:right-10">
                   {currentUser &&

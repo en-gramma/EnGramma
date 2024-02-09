@@ -3,10 +3,12 @@ import axios from 'axios';
 import logo from '../assets/logo.png';
 import { RadioListFr } from './RadioListFr';
 import {Loader} from './Loader'; 
+import { useTranslation } from 'react-i18next';
 
 export const RadioList = () => {
   const [radios, setRadios] = useState([]);
   const [isLoading, setIsLoading] = useState(true); 
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIsLoading(true);
@@ -28,7 +30,7 @@ export const RadioList = () => {
         <div className="text-4xl  mb-4 text-white font-custom text-center md:mb-7 pt-9">RADIOS</div>
 
         <div className='flex justify-center text-xl '>
-          <p className='text-white my-4 '>Dans le monde :</p>
+          <p className='text-white my-4 '>{t('radio.world')}:</p>
         </div>
         {isLoading ? (
           <div className='flex justify-center items-center '>

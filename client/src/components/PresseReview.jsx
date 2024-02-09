@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import logo from '../assets/logo.png';
 import { Loader } from './Loader';
+import { useTranslation } from 'react-i18next';
 
 export const PressReview = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIsLoading(true);
@@ -25,7 +27,7 @@ export const PressReview = () => {
 <div className="relative pb-9 my-9">
   <>
     <img src={logo} alt="Logo En Gramma" className='md:h-full md:max-h-[500px] md:w-auto h-auto w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-2' />
-    <div className="text-4xl  mb-4 text-white font-custom text-center pt-9 mb-9">PRESSE</div>
+    <div className="text-4xl  mb-4 text-white font-custom text-center pt-9 mb-9">{t('press.press')}</div>
     {isLoading ? (
     <div className='flex justify-center items-center '>
     <Loader />

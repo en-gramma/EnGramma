@@ -3,5 +3,33 @@
   "home": {
     "name": "EN GRAMMA",
     "text": "<p><strong>EN GRAMMA</strong> (‘ène gramma’) est un trio <strong>Transe Rock</strong> formé en 2021 et basé à Rennes. Issu du grec ancien, son nom évoque la marque que la mémoire laisse en nous à travers le temps.<br><br> Le trio joue un mélange puissant de <strong>blues afro-dionysiaque et de rock acoustique</strong>, tout en chantant en <strong>trois langues (français, anglais et grec ancien)</strong>. <strong>Beau Brûlis</strong> est leur premier album. <br>Il s’agit d’une collection d’histoires, enracinées dans le mystère et racontées à travers des mélodies vocales chaleureuses et des rythmes tribaux<br>entraînants.<br><br><strong>EN GRAMMA</strong> est un groupe unique et musicalement éclectique, qui occupe l’espace entre le primitif et le moderne, l’acoustique et l’électrique.<br><br><strong>EN GRAMMA</strong> est formé par le chanteur <strong>Gautier Degand</strong>t qui a tourné à travers l’Europe avec son duo hard-folk <strong>BÂTON BLEU (Dixiefrog records/PIAS)</strong>, le guitariste afro/rock <strong>Oscar Philéas (MAMADOU KOITA)</strong>, et le percussionniste <strong>Pierre-Yves Dubois</strong>.</p>"
-  }
+  },
+
+  "contact": {
+    "name": "links",
+    "link": "Dossier de presse",
+    "linkTech": "Fiche technique",
+    "pro": "Documents Pro",
+    "button": "Envoyer",
+    "fullname": "Nom",
+    "object": "Objet"
+  },
+
+  "dates": {
+    "name": "hideshow",
+    "hide": "Afficher plus de dates",
+    "show": "Cacher les dates"
+    },
+    
+    "press": {
+      "name": "media",
+      "press": "Presse"
+  },
+
+  "radio": {
+    "name": "radio",
+    "world": "Dans le monde",
+    "france": "En France"
 }
+}
+

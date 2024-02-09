@@ -7,6 +7,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { CgMediaPodcast } from 'react-icons/cg';
 import { GrScheduleNew } from 'react-icons/gr';
 import zig from '../assets/zig.jpg';
+import { useTranslation } from 'react-i18next';
 
 export function Contact() {
  
@@ -14,6 +15,7 @@ export function Contact() {
   const [submissionStatusErr, setSubmissionStatusErr] = useState('');
   const [links, setLinks] = useState([]);
   const sitekey = process.env.REACT_APP_SITE_KEY;
+  const { t } = useTranslation();
 
   const initialFormData = {
     fullName: DOMPurify.sanitize(''),
@@ -131,7 +133,7 @@ const handleRecaptchaChange = (value) => {
             type="text"
             id="fullName"
             name="fullName"
-            placeholder='Nom'
+            placeholder={t('contact.fullname')}
             value={formData.fullName}
             onChange={handleChange}
             className="w-full border px-3 p-1"
@@ -153,7 +155,7 @@ const handleRecaptchaChange = (value) => {
             type="text"
             id="object"
             name="object"
-            placeholder='Objet'
+            placeholder={t('contact.object')}
             value={formData.object || ''}
             onChange={handleChange}
             className="w-full border px-3 p-1"/>
@@ -187,7 +189,7 @@ const handleRecaptchaChange = (value) => {
         <button
           type="submit"
           className="bg-orange2 text-white py-2 px-4 mb-4 mt-2 rounded  hover:bg-orange-800 w-full max-w-[300px] ">
-          Envoyer
+          {t('contact.button')}
         </button>
 
       </form>
@@ -197,18 +199,18 @@ const handleRecaptchaChange = (value) => {
         <div className="border rounded p-4 mb-4 text-white bg-slate-100 bg-opacity-10 md:ml-9 ml-0">
           <div className="flex items-center mb-2 justify-center">
             
-            <h2 className="text-2xl font-bold mb-2">Documents Pro</h2>
+            <h2 className="text-2xl font-bold mb-2">{t('contact.pro')}</h2>
           </div>
           {links.map((link, index) => (
      <React.Fragment key={index}>
      <div className=''>
        <div className='flex items-center mb-2 justify-center '>
-         <CgMediaPodcast className='text-orange2 '/>
-         <p><a href={link.dossier} className='ml-2 text-orange2 hover:text-orange-700 pb-3 underline font-semibold' target="_blank" rel="noopener noreferrer">Dossier de presse</a></p>
+         <CgMediaPodcast className='text-orange2 text-xl '/>
+         <p><a href={link.dossier} className='text-lg ml-2 text-orange2 hover:text-orange-700 pb-3 underline font-semibold' target="_blank" rel="noopener noreferrer">{t('contact.link')}</a></p>
        </div>
        <div className='flex items-center mb-4 justify-center'>
-         <GrScheduleNew className='text-orange2' />
-         <p><a href={link.fiche} className='ml-2 text-orange2 hover:text-orange-700 underline font-semibold' target="_blank" rel="noopener noreferrer">Fiche technique</a></p>
+         <GrScheduleNew className='text-orange2 text-xl' />
+         <p><a href={link.fiche} className='text-lg ml-2 text-orange2 hover:text-orange-700 underline font-semibold' target="_blank" rel="noopener noreferrer">{t('contact.linkTech')}</a></p>
        </div>
      </div>
      <img src={zig} alt="" className='shadow-lg rounded-md' />

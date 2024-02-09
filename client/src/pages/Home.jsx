@@ -18,7 +18,7 @@ export const Home = () => {
 
     // Fonction pour vérifier si la vue est en mode mobile
     const checkIsMobile = () => {
-      // Logique de détection du mode mobile ici
+      // Logique de détection du mode mobile 
       const mobileWidth = 768; 
       const isMobile = window.innerWidth < mobileWidth;
       setIsMobile(isMobile);
