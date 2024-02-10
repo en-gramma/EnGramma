@@ -82,14 +82,16 @@ export const deleteArticle = (req, res, next) => {
       }
   
       const q =
-        "INSERT INTO articles ( `image`, `text`, `name`, `country`, `header`) VALUES (?)";
+        "INSERT INTO articles ( `image`, `text`, `textEn`, `name`, `country`, `header`, `headerEn`) VALUES (?)";
   
       const values = [
         DOMPurify.sanitize(req.body.image),
         DOMPurify.sanitize(req.body.text),
+        DOMPurify.sanitize(req.body.textEn),
         DOMPurify.sanitize(req.body.name),
         DOMPurify.sanitize(req.body.country),
         DOMPurify.sanitize(req.body.header),
+        DOMPurify.sanitize(req.body.headerEn),
       ];
   
       db.query(q, [values], (err, data) => {

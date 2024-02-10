@@ -44,7 +44,7 @@ const showThreeDates = () => {
       <p className="absolute bottom-0 right-0 text-white px-3 py-1 text-xs">&copy; Antoine Chevillé</p>
     <div>
       <div className="absolute top-0 left-0 right-0 bottom-0 overflow-hidden flex flex-col items-center justify-center">
-      <h1 className={`font-custom text-white z-10 text-4xl mb-8  ${datesToShow >= 6 ? 'pt-[100px]' : ''}`}>DATES</h1>
+      <h1 className={`font-custom text-white z-10 text-4xl md:mb-[50px] mb-7 md:pt-0 pt-[100px] ${datesToShow >= 6 ? 'pt-[100px]' : ''}`}>DATES</h1>
 
         {loading ? (
                 <div className='flex justify-center items-center '>

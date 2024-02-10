@@ -95,7 +95,7 @@ export const Navbar = () => {
     <div className=" flex flex-wrap items-center justify-between mx-auto p-4 ">
           <a href="/" className="flex items-center">
 
-          <p className={`font-custom text-4xl text-Engramma  md:hidden lg:block md:absolute  ${isOnTop ? '' :'text-Engramma'}`} style={{ opacity }}>
+          <p className={`font-custom text-4xl text-Engramma  md:hidden  lg:block md:absolute  ${isOnTop ? '' :'text-Engramma'}`} style={{ opacity }}>
   EN GRAMMA
 </p>
           </a>

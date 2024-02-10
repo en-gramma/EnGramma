@@ -61,7 +61,7 @@ export const Home = () => {
     <div className="flex flex-col items-center justify-center sm:flex-row sm:flex-row-reverse">
   <div className='flex items-center justify-center  mb-9 flex-col sm:flex-row mx-2'>
     {isMobile ? (
-      <div className="relative w-full mt-4 sm:mt-0 mx-3">
+      <div className="relative w-full mt-4 sm:mt-0 mx-3 mb-7">
         <img src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[380px] shadow-lg " />
         <p className="absolute bottom-0 right-0 text-white  px-2 py-1 text-sm">&copy; Antoine Chevillé</p>
       </div>

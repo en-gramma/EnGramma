@@ -192,7 +192,7 @@ export const AddArticle = () => {
           <span className=''>Description en français </span>
           <img src={fr} alt="" className='w-[25px] h-[15px] align-middle ml-2' />
         </div>
-          <textarea className="border p-2 w-full " placeholder="80 à 100 mots max recommandé" name="text" value={formData.text} onChange={handleChange} />
+          <textarea className="border p-2 w-full " placeholder="80 à 100 mots max recommandé, ne pas mettre de guillemets" name="text" value={formData.text} onChange={handleChange} />
         
         <div className="mb-5 mt-2 border-b border-gray-300 "></div>
           <div className="mb-4 flex items-center">
@@ -204,7 +204,7 @@ export const AddArticle = () => {
           <span className=''>Description en anglais </span>
           <img src={en} alt="" className='w-[25px] h-[15px] align-middle ml-2' />    
         </div>
-          <textarea className="border p-2 w-full" placeholder="80 à 100 mots max recommandé" name="textEn" value={formData.textEn} onChange={handleChange} />
+          <textarea className="border p-2 w-full" placeholder="80 à 100 mots max recommandé, ne pas mettre de guillemets" name="textEn" value={formData.textEn} onChange={handleChange} />
         {setStatus === 'success' && <div className="text-green-500">L'article a été ajouté avec succès!</div>}
         {setStatus === 'error' && <div className="text-red-500">Erreur lors de l'ajout de l'article</div>}
         <button className="w-full bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>

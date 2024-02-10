@@ -49,7 +49,7 @@ export const Bio = () => {
   </h1>
       <div className="flex flex-col items-center justify-center sm:flex-row">
         <div className="relative  my-9 ">
-          <img src={bio.image} alt="EN GRAMMA" className="object-cover rounded-lg flex justify-center md:h-[400px] md:w-[780px] h-[200px] w-[395px] shadow-xl md:px-0 px-3" />
+        <img src={bio.image} alt="EN GRAMMA" className="object-cover rounded-lg flex justify-center md:h-[400px] md:w-[800px] h-[200px] w-[395px] shadow-xl md:px-0 md:px-1" />
           <p className="absolute bottom-0 right-0 text-white  px-3 py-1 text-xs">&copy; {bio.copyright}</p>
         </div>
       </div>

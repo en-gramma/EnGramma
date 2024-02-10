@@ -124,7 +124,7 @@ const handleRecaptchaChange = (value) => {
     <img src={logo2} alt="En Gramma logo" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-[600px]  opacity-3 hidden md:block" />
     
     <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center overflow-y-auto no-scrollbar">
-    <h2 className="text-3xl  mb-4 text-white font-custom text-center pt-[500px] md:pt-[100px]">CONTACT</h2>
+    <h2 className="text-3xl  mb-4 text-white font-custom text-center pt-[600px] md:pt-[100px]">CONTACT</h2>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:w-3/5 mx-auto mt-5 p-5">
       <div>
         <form onSubmit={handleSubmit}>
@@ -167,7 +167,7 @@ const handleRecaptchaChange = (value) => {
             placeholder='Message'
             value={formData.message}
             onChange={handleChange}
-            className="w-full border rounded py-5 px-3 p-1"
+            className="w-full border rounded py-5 px-3 p-1 h-[200px]"
             rows="4"
             required>
             </textarea>
