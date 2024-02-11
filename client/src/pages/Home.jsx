@@ -4,6 +4,7 @@ import logo from '../assets/logo.png';
 import { Social } from '../components/Social';
 import trioHome from '../assets/trio-home.jpg';
 import { Trans } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 
 export const Home = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -12,6 +13,20 @@ export const Home = () => {
     // backgroundAttachment: 'fixed',
   };
   const [scrollPosition, setScrollPosition] = useState(0);
+  const { i18n } = useTranslation();
+  const [key, setKey] = useState(Math.random());
+
+  useEffect(() => {
+    const handleLanguageChange = () => {
+
+      setKey(Math.random());
+    };
+    i18n.on('languageChanged', handleLanguageChange);
+    return () => {
+      i18n.off('languageChanged', handleLanguageChange);
+    };
+  }, [i18n]);
+
 
     // Fonction pour vérifier si la vue est en mode mobile
     const checkIsMobile = () => {
@@ -67,7 +82,7 @@ export const Home = () => {
       </div>
     ) : null}
 
-      <div className="max-w-[580px] sm:mr-4  text-white text-justify">
+      <div key={key} className="max-w-[580px] sm:mr-4  text-white text-justify">
       <Trans i18nKey="home.text" />
       </div>
   </div>

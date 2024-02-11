@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { IoIosRefresh } from 'react-icons/io';
+import { useTranslation } from 'react-i18next';
+import DOMPurify from 'isomorphic-dompurify';
 
 export function DeleteAlbum() {
   const [albums, setAlbums] = useState([]);
+  const { t, i18n } = useTranslation();
 
     async function fetchAlbums() {
       try {
@@ -59,41 +62,39 @@ export function DeleteAlbum() {
     </button>
     <div className='mb-9'></div>
 
-      {albums.slice().reverse().map((album) => (
-        <React.Fragment key={album.id}>
-              <div  className="mb-3 md:ml-3 text-white flex flex-col lg:flex-row bg-neutral-800 p-1 md:p-5 rounded shadow
-              ">
+    {albums.slice().reverse().map((album) => (
+              <div key={album.id} className="mb-[100px] flex flex-col lg:flex-row align-items-start bg-neutral-800 p-5 text-white rounded">
                 <div className="lg:mb-0 mb-4 ">
-                <div className='flex items-center mb-4'>
+                               <div className='flex items-center mb-4'>
                   <h1 className='text-xl font-bold uppercase  text-center lg:text-left mr-5'>{album.title}</h1>
                   <button onClick={() => deleteAlbum(album.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold  px-4 rounded mx-1 text-center animate-fade-up shadow-md">Supprimer</button>
                 </div>
                   <iframe
-                    title={`Bandcamp ${album.title}`}
+                    title={`Bandcamp ${t(album.title)}`}
                     style={{ border: 10, width: '350px', height: '470px' }}
                     className='mx-auto lg:mx-0 shadow-xl rounded-lg'
                     src={extractBandcampLink(album.bandcamp)}
                     seamless
                   >
-                    <a href={album.bandcamp}>{album.title} sur Bandcamp</a>
+                    <a href={album.bandcamp}>{t(album.title)} sur Bandcamp</a>
                   </iframe>
                 </div>
-                <div className='lg:flex lg:flex-col lg:items-center lg:ml-8'>
-                  <p className='text-sm mb-4 text-justify mx-4 bg-black bg-opacity-50 md:bg-transparent lg:text-left sm:w-[400px] md:w-[500px] lg:mt-[200px] animate-fade-left'>{album.description}</p>
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-4 md:mt-9">
+                <div className='lg:flex lg:flex-col lg:items-center lg:ml-8 mb-7'>
+                <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? album.descriptionEn : album.description).replace(/\n/g, '<br />')) }} 
+                className='text-lg text-justify p-3 mx-2 bg-black bg-opacity-50 md:bg-transparent lg:text-left sm:w-[400px] md:w-[600px] md:mt-[50px]  animate-fade-left'/>
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-4 ">
                     <a
                       href={album.albumLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-orange2 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-2 lg:mb-0 mx-3 text-center animate-fade-up shadow-md"
                     >
-                      Trouver l'album
+                      {t('music.button')}
                     </a>
-                    <a href="/media" className='text-orange2 underline mt-1 mx-3 text-center animate-fade-up animate-delay-500 '>voir les avis presse</a>
+                    <a href="/media" className='text-orange2 underline mt-1 mx-3 text-center animate-fade-up animate-delay-500 '>{t('music.press')}</a>
                   </div>
                 </div>
               </div>
-              </React.Fragment>
             ))}
       </>
   );
