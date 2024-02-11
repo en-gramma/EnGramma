@@ -36,10 +36,10 @@ export const PressReview = () => {
     </div>
   ) : (
 <div className="flex justify-center ">
-  <div className="grid md:grid-cols-3 gap-4">
+  <div className="grid md:grid-cols-3 gap-4" >
   {articles.map(article => (
-  <div key={article.id} className="p-4 flex flex-col items-center  mx-auto">
-    <img src={article.image} alt={article.name} className="w-auto h-[75px] object-cover mb-4 rounded" />
+  <div key={article.id} className="p-4 flex flex-col items-center mx-auto">
+  <img src={article.image} alt={article.name} className="w-auto h-[75px] object-cover mb-4 rounded" />
     <h2 className="mb-2"><span className='font-bold text-white text-lg'>{article.name}</span> <span className='italic text-white'>({article.country})</span></h2>
     {t(i18n.language === 'en' ? article.headerEn : article.header) ? (
       <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? article.headerEn : article.header).replace(/\n/g, '<br />')) }} 

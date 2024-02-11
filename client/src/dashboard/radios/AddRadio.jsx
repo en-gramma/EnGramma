@@ -4,12 +4,14 @@ import DOMPurify from 'isomorphic-dompurify';
 import { AddRadioFr } from './AddRadioFr';
 import fr from "../../assets/fr.png";
 import en from "../../assets/en.png";
+import { useTranslation } from 'react-i18next';
 
 export const AddRadio = () => {
   const [status, setStatus] = useState('');
   const [formStatus, setFormStatus] = useState(null);
   const [radios, setRadios] = useState([]);
   const formRef = useRef();
+  const { t, i18n } = useTranslation();
 
   const [formData, setFormData] = useState({
     description: DOMPurify.sanitize(''),
@@ -205,21 +207,23 @@ export const AddRadio = () => {
       <h2 className="text-lg font-bold  px-2 py-2 w-full mb-4">Effacer une radio internationale</h2>
         {formStatus === 'success' && <div className="text-green-500">La radio a été effacé avec succès!</div>}
         {formStatus === 'error' && <div className="text-red-500">Erreur lors de l'effacement de la radio</div>}
-        <div className="grid md:grid-cols-3 gap-4">
-        {radios.map(radio => (
-        <div key={radio.id} className="p-4 flex flex-col items-center">
-            <div className='bg-gray-100 border w-[250px] text-center px-4 rounded'>
-            <img src={radio.image} alt={radio.name} className="w-auto mx-auto h-[75px] object-cover mb-4 rounded" />
-            <div className="my-1 border-b border-gray-300 "></div>
-            <h2 className="mb-2"> <span className=' font-semibold'>{radio.country}</span></h2>
-
-            <p className='text-gray-700 '>{radio.description}</p>
-            </div>
-            <button onClick={() => deleteRadio(radio.id)} className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Effacer</button>
-            <div className="mb-5 mt-2 border-b border-gray-300 "></div>
-        </div>
-        ))}
-        </div>
+        <div className="grid md:grid-cols-3 gap-4 ">
+            {radios.map(radio => (
+              
+              <div key={radio.id} className="p-4 flex flex-col items-center ">
+                <button className="w-[300px] mb-2  bg-red-500 text-white p-2 rounded" onClick={() => deleteRadio(radio.id)}>Effacer</button>
+                <div className='bg-gray-100 border w-[300px] text-center px-4 rounded'>
+                  <img src={radio.image} alt={radio.name} className="w-auto mx-auto h-[75px] object-cover mb-4 rounded pt-1" />
+                  <div className="my-1 border-b border-gray-300 "></div>
+                  <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? radio.pays : radio.country).replace(/\n/g, '<br />')) }} 
+      className='font-semibold  mb-2'/>
+                  <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? radio.descriptionEn : radio.description).replace(/\n/g, '<br />')) }} 
+      className='text-gray-700'/>
+                </div>
+              </div>
+            ))}
+            
+          </div>
         <div className="mb-5 mt-2 border-b border-gray-300 "></div>
         <AddRadioFr />
     </div>

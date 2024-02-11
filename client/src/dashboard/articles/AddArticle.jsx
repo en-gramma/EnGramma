@@ -3,12 +3,15 @@ import axios from 'axios';
 import DOMPurify from 'isomorphic-dompurify';
 import fr from "../../assets/fr.png";
 import en from "../../assets/en.png";
+import { MdOutlineFormatQuote } from 'react-icons/md';
+import { useTranslation } from 'react-i18next';
 
 export const AddArticle = () => {
   const [status, setStatus] = useState('');
   const [formStatus, setFormStatus] = useState(null);
   const [articles, setArticles] = useState([]);
   const formRef = useRef();
+  const { t, i18n } = useTranslation();
 
   const [formData, setFormData] = useState({
     text: DOMPurify.sanitize(''),
@@ -216,16 +219,26 @@ export const AddArticle = () => {
         {formStatus === 'success' && <div className="text-green-500">L'article a été effacé avec succès!</div>}
         {formStatus === 'error' && <div className="text-red-500">Erreur lors de l'effacement de l'article</div>}
         <div className="grid md:grid-cols-3 gap-4">
-        {articles.map(article => (
-          
-        <div key={article.id} className="p-4 flex flex-col items-center">
-                      <button onClick={() => deleteArticle(article.id)} className="mb-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Effacer</button>
-            <img src={article.image} alt={article.name} className="w-auto h-[75px] object-cover mb-4 rounded" />
-            <h2 className="mb-2"><span className='text-md font-bold '>{article.name}</span> <span className='italic'>({article.country})</span></h2>
-            <p className='text-gray-700 font-semibold'>{article.header}</p>
-            <p className="text-gray-700 text-center">{article.text}</p>
-        </div>
-        ))}
+
+    {articles.map(article => (
+      <div key={article.id} className="p-4 flex flex-col items-center  mx-auto">
+        <button onClick={() => deleteArticle(article.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold  px-4 rounded mb-2 text-center animate-fade-up shadow-md">Supprimer</button>
+        <img src={article.image} alt={article.name} className="w-auto h-[75px] object-cover mb-4 rounded" />
+      <h2 className="mb-2"><span className='font-bold  text-lg '>{article.name}</span> <span className='italic'>({article.country})</span></h2>
+      {t(i18n.language === 'en' ? article.headerEn : article.header) ? (
+        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? article.headerEn : article.header).replace(/\n/g, '<br />')) }} 
+        className=' text-center font-semibold mb-2'/>
+      ) : (
+        <div style={{ height: '1em' }} className='mb-2' /> 
+      )}
+      <div className='flex items-center justify-center text-center'>
+        <MdOutlineFormatQuote className='text-2xl text-orange2 ml-2 transform scale-x-[-1] mr-3' />
+        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? article.textEn : article.text).replace(/\n/g, '<br />')) }} 
+        className='text-center'/>
+        <MdOutlineFormatQuote className='text-2xl text-orange2 ml-2  ml-3' />
+      </div>
+    </div>
+    ))}
         </div>
     </div>
   );

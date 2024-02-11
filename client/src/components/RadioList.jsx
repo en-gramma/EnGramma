@@ -50,7 +50,7 @@ export const RadioList = () => {
       className='text-gray-700'/>
                 </div>
               </div>
-            ))}t
+            ))}
           </div>
         )}
         <RadioListFr />

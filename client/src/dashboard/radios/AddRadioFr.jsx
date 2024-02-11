@@ -150,10 +150,10 @@ export const AddRadioFr = () => {
         <div className="grid md:grid-cols-3 gap-4">
         {radios.map(radio => (
         <div key={radio.id} className="p-4 flex flex-col items-center">
+          <button onClick={() => deleteRadio(radio.id)} className="mt-4 mb-2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Effacer</button>
             <div className=' w-[250px] text-center px-4 rounded'>
             <img src={radio.image} alt={radio.name} className="w-auto mx-auto h-[75px] object-cover mb-4 rounded" />
             </div>
-            <button onClick={() => deleteRadio(radio.id)} className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Effacer</button>
             <div className="mb-5 mt-2 border-b border-gray-300 "></div>
         </div>
         ))}
