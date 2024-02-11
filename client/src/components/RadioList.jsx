@@ -4,11 +4,12 @@ import logo from '../assets/logo.png';
 import { RadioListFr } from './RadioListFr';
 import {Loader} from './Loader'; 
 import { useTranslation } from 'react-i18next';
+import DOMPurify from 'dompurify';
 
 export const RadioList = () => {
   const [radios, setRadios] = useState([]);
   const [isLoading, setIsLoading] = useState(true); 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     setIsLoading(true);
@@ -43,11 +44,13 @@ export const RadioList = () => {
                 <div className='bg-gray-100 border w-[300px] text-center px-4 rounded'>
                   <img src={radio.image} alt={radio.name} className="w-auto mx-auto h-[75px] object-cover mb-4 rounded pt-1" />
                   <div className="my-1 border-b border-gray-300 "></div>
-                  <h2 className="mb-2"> <span className=' font-semibold'>{radio.country}</span></h2>
-                  <p className='text-gray-700 '>{radio.description}</p>
+                  <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? radio.pays : radio.country).replace(/\n/g, '<br />')) }} 
+      className='font-semibold  mb-2'/>
+                  <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? radio.descriptionEn : radio.description).replace(/\n/g, '<br />')) }} 
+      className='text-gray-700'/>
                 </div>
               </div>
-            ))}
+            ))}t
           </div>
         )}
         <RadioListFr />

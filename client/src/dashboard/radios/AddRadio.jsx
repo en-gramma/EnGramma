@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import DOMPurify from 'isomorphic-dompurify';
 import { AddRadioFr } from './AddRadioFr';
+import fr from "../../assets/fr.png";
+import en from "../../assets/en.png";
 
 export const AddRadio = () => {
   const [status, setStatus] = useState('');
@@ -12,6 +14,8 @@ export const AddRadio = () => {
   const [formData, setFormData] = useState({
     description: DOMPurify.sanitize(''),
     country: DOMPurify.sanitize(''),
+    pays: DOMPurify.sanitize(''),
+    descriptionEn: DOMPurify.sanitize(''),
     file: null,
   });
 
@@ -53,9 +57,16 @@ export const AddRadio = () => {
 
     // Regex pour la validation
     const frenchTextRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
+    const descriptionRegex = /^[\w\W\s]*$/;
 
     // Validation
-    if (!frenchTextRegex.test(formData.description) || !frenchTextRegex.test(formData.country)) {
+    if (!frenchTextRegex.test(formData.pays) || !frenchTextRegex.test(formData.country)) {
+      alert('Erreur : Les champs contiennent des caractères non valides');
+      return;
+    }
+
+    if (!descriptionRegex.test(formData.description) || !descriptionRegex.test(formData.descriptionEn))
+    {
       alert('Erreur : Les champs contiennent des caractères non valides');
       return;
     }
@@ -91,6 +102,8 @@ export const AddRadio = () => {
       setFormData({
         description: '',
         country: '',
+        pays: '',
+        descriptionEn: '',
         file: null,
       })
     }
@@ -152,14 +165,36 @@ export const AddRadio = () => {
         </div>
 
         <div className="mb-4">
-            <input required className="border p-2 w-full" placeholder="Nom de la radio" name="name" value={formData.name} onChange={handleChange} />
+        <div className='flex items-center'>
+        <h2 className="text-lg py-3 mr-2" style={{ lineHeight: '1.5' }}>Radios en français</h2>
+        <img src={fr} alt="" className='w-[25px] h-[15px] align-middle' />
+      </div>
         </div>
         <div className="mb-4">
-            <input required className="border p-2 w-full" placeholder="Pays" name="country" value={formData.country} onChange={handleChange} />
+          <span>Pays</span>
+            <input required className="border p-2 w-full" placeholder="" name="country" value={formData.country} onChange={handleChange} />
         </div>
         <div className="mb-4">
-            <input className="border p-2 w-full" placeholder="Brève description de la radio" name="description" value={formData.description} onChange={handleChange} />
+          <span>Infos complémentaires</span>
+            <input className="border p-2 w-full" placeholder="" name="description" value={formData.description} onChange={handleChange} />
         </div>
+        <div className="mb-5 mt-2 border-b border-gray-300 "></div>
+
+        <div className="mb-4">
+        <div className='flex items-center'>
+        <h2 className="text-lg py-3 mr-2" style={{ lineHeight: '1.5' }}>Radios en anglais</h2>
+        <img src={en} alt="" className='w-[25px] h-[15px] align-middle' />
+      </div>
+        </div>
+        <div className="mb-4">
+          <span>Pays</span>
+            <input required className="border p-2 w-full" placeholder="" name="pays" value={formData.pays} onChange={handleChange} />
+        </div>
+        <div className="mb-4">
+          <span>Infos complémentaires</span>
+            <input className="border p-2 w-full" placeholder="" name="descriptionEn" value={formData.descriptionEn} onChange={handleChange} />
+        </div>
+
         {status === 'success' && <div className="text-green-500">La radio a été ajouté avec succès!</div>}
         {status === 'error' && <div className="text-red-500">Erreur lors de l'ajout de la radio</div>}
         <button className="w-full bg-blue-500 text-white p-2 rounded" type="submit">Ajouter</button>

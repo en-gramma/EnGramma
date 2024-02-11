@@ -83,20 +83,26 @@ export const deleteRadio = (req, res, next) => {
 
     // Regex pour la validation
     const frenchTextRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
+    const descriptionRegex = /^[\w\W\s]*$/;
 
     // Validation
-    if (!frenchTextRegex.test(req.body.description) || !frenchTextRegex.test(req.body.country)) {
+    if (!frenchTextRegex.test(req.body.pays) || !frenchTextRegex.test(req.body.country)) {
       return res.status(400).json('Erreur : La description ou le pays contient des caractères non valides' );
+    }
+
+    if (!descriptionRegex.test(req.body.description) || !descriptionRegex.test(req.body.descriptionEn)) {
+      return res.status(400).json('Erreur : La description contient des caractères non valides');
     }
   
       const q =
-        "INSERT INTO radios ( `image`, `description`, `country`, `name`) VALUES (?)";
+        "INSERT INTO radios ( `image`, `description`, `country`, `pays`, `descriptionEn` ) VALUES (?)";
   
       const values = [
         DOMPurify.sanitize(req.body.image),
         DOMPurify.sanitize(req.body.description),
         DOMPurify.sanitize(req.body.country),
-        DOMPurify.sanitize(req.body.name),
+        DOMPurify.sanitize(req.body.pays),
+        DOMPurify.sanitize(req.body.descriptionEn),
        
       ];
   
@@ -131,7 +137,6 @@ export const updateRadio =  (req, res, next) => {
         DOMPurify.sanitize(req.body.image),
         DOMPurify.sanitize(req.body.description),
         DOMPurify.sanitize(req.body.country),
-        DOMPurify.sanitize(req.body.name),
         req.params.id
       ];
   

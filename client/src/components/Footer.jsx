@@ -16,7 +16,8 @@ export const Footer = () => {
               {/* Logo */}
               <img src={logo} alt="Your Logo" className="h-[75px]  ml-2 mb-4" />
               {/* Copyright */}
-              <p>&copy; En Gramma</p>
+              <p>&copy; En Gramma réalisé par 
+                <a href="mailto:kiato.dv@gmail.com"> Kiato</a></p>
             </div>
 
             {/* Center Section */}
