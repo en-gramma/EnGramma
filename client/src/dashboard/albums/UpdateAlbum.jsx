@@ -8,6 +8,7 @@ import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
 import { useTranslation } from 'react-i18next';
+import logo from '../../assets/logo.png';
 
 export const UpdateAlbum = () => {
   const [status, setStatus] = useState('');
@@ -171,47 +172,49 @@ export const UpdateAlbum = () => {
 
         <h2 className="text-2xl text-center font-bold  px-2 py-2 w-full">Aperçu</h2>
         {editingId ? (
-  albums.slice().reverse().map((album) => (
-    album.id === editingId ? (
-            <div key={album.id} className=" flex flex-col lg:flex-row align-items-start bg-neutral-800  md:p-5 text-white rounded">
-              <div className="lg:mb-0 mb-4 ">
-                <div className='flex items-center mb-4'>
-                  <h1 className='text-xl font-bold uppercase  text-center lg:text-left mr-5'>{album.title}</h1>
-                </div>
-                <iframe
-                  title={`Bandcamp ${t(album.title)}`}
-                  style={{ border: 10, width: '350px', height: '470px' }}
-                  className='mx-auto lg:mx-0 shadow-xl rounded-lg'
-                  src={extractBandcampLink(album.bandcamp)}
-                  seamless
-                >
-                  <a href={album.bandcamp}>{t(album.title)} sur Bandcamp</a>
-                </iframe>
+          albums.slice().reverse().map((album) => (
+            album.id === editingId ? (
+                    <div key={album.id} className=" flex flex-col lg:flex-row align-items-start bg-neutral-800  md:p-5 text-white rounded">
+                      <div className="lg:mb-0 mb-4 ">
+                        <div className='flex items-center mb-4'>
+                          <h1 className='text-xl font-bold uppercase  text-center lg:text-left mr-5'>{album.title}</h1>
+                        </div>
+                        <iframe
+                          title={`Bandcamp ${t(album.title)}`}
+                          style={{ border: 10, width: '350px', height: '470px' }}
+                          className='mx-auto lg:mx-0 shadow-xl rounded-lg'
+                          src={extractBandcampLink(album.bandcamp)}
+                          seamless
+                        >
+                          <a href={album.bandcamp}>{t(album.title)} sur Bandcamp</a>
+                        </iframe>
+                      </div>
+                      <div className='lg:flex lg:flex-col lg:items-center lg:ml-8 mb-7'>
+                        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? album.descriptionEn : album.description).replace(/\n/g, '<br />')) }} 
+                        className='text-lg text-justify p-3 mx-2 bg-black bg-opacity-50 md:bg-transparent lg:text-left sm:w-[400px] md:w-[600px] md:mt-[50px]  animate-fade-left'/>
+                        <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-4 ">
+                          <a
+                            href={album.albumLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-orange2 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded lg:mb-0 mx-3 text-center animate-fade-up shadow-md"
+                          >
+                            {t('music.button')}
+                          </a>
+                          <a href="/media" className='text-orange2 underline mt-1 mx-3 text-center animate-fade-up animate-delay-500 '>{t('music.press')}</a>
+                        </div>
+                      </div>
+                    </div>
+              ) : null
+              ))
+            ) : (
+              
+              <div className="skeleton flex flex-col items-center justify-center bg-neutral-800  md:p-5 text-white rounded">
+                <img src={logo} alt="Engramma Logo" className='h-[100px] my-5' />
+                <p className='text-white font semibold text-lg'>Veuillez sélectionner un album à éditer pour voir l'aperçu</p>
+                <div className="skeleton-box flex flex-col items-center ml-8 mb-5"></div>
               </div>
-              <div className='lg:flex lg:flex-col lg:items-center lg:ml-8 mb-7'>
-                <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? album.descriptionEn : album.description).replace(/\n/g, '<br />')) }} 
-                className='text-lg text-justify p-3 mx-2 bg-black bg-opacity-50 md:bg-transparent lg:text-left sm:w-[400px] md:w-[600px] md:mt-[50px]  animate-fade-left'/>
-                <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-4 ">
-                  <a
-                    href={album.albumLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-orange2 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded lg:mb-0 mx-3 text-center animate-fade-up shadow-md"
-                  >
-                    {t('music.button')}
-                  </a>
-                  <a href="/media" className='text-orange2 underline mt-1 mx-3 text-center animate-fade-up animate-delay-500 '>{t('music.press')}</a>
-                </div>
-              </div>
-            </div>
-       ) : null
-       ))
-     ) : (
-       <div className="skeleton flex flex-col lg:flex-row align-items-start bg-neutral-800  md:p-5 text-white rounded">
-         <div className="skeleton-box lg:mb-0 mb-4 "></div>
-         <div className="skeleton-box lg:flex lg:flex-col lg:items-center lg:ml-8 mb-7"></div>
-       </div>
-     )}
+            )}
 
     <div className="mb-5 mt-5 border-b border-gray-300 "></div>
       <h2 className="text-lg font-bold  px-2 py-2 w-full">Editer un album</h2>
@@ -231,21 +234,21 @@ export const UpdateAlbum = () => {
             <input className="border p-2 w-full font-custom" placeholder="Titre de l'article" name="title" value={formData.title} onChange={handleChange} />
         </div>
         <div className="mb-4 border border-gray-300">
-      <Editor
-        key={status}
-        editorState={editorState}
-        toolbarClassName="toolbarClassName"
-        wrapperClassName="wrapperClassName"
-        editorClassName="editorClassName"
-        onEditorStateChange={onEditorStateChange}
-        toolbar={{
-          options: ['inline'],
-          inline: {
-            inDropdown: false,
-            options: ['bold', 'italic', 'underline']
-          },
-        }}
-      />
+          <Editor
+            key={status}
+            editorState={editorState}
+            toolbarClassName="toolbarClassName"
+            wrapperClassName="wrapperClassName"
+            editorClassName="editorClassName"
+            onEditorStateChange={onEditorStateChange}
+            toolbar={{
+              options: ['inline'],
+              inline: {
+                inDropdown: false,
+                options: ['bold', 'italic', 'underline']
+              },
+            }}
+          />
         </div>
 
         <div className='flex items-center mt-[75px] mb-3'>

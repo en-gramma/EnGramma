@@ -155,6 +155,41 @@ export const AddArticle = () => {
     fetchArticles();
   }, []);
 
+  const Article = ({ article }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const text = t(i18n.language === 'en' ? article.textEn : article.text);
+    const truncatedText = text.split(' ').length > 20 ? text.split(' ').slice(0, 25).join(' ') + '...' : text; 
+  
+    return (
+      <div key={article.id} className="p-4 flex flex-col items-center  mx-auto">
+        <button onClick={() => deleteArticle(article.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold  px-4 rounded mb-2 text-center animate-fade-up shadow-md">Supprimer</button>
+          <img src={article.image} alt={article.name} className="w-auto h-[75px] object-cover mb-4 rounded" />
+            <h2 className="mb-2"><span className='font-bold  text-lg'>{article.name}</span><span className='italic '>({article.country})</span></h2>
+            {t(i18n.language === 'en' ? article.headerEn : article.header) ? (
+              <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? article.headerEn : article.header).replace(/\n/g, '<br />')) }} 
+              className='text-center font-semibold mb-2'/>
+            ) : (
+              <div style={{ height: '1em' }} className='mb-2' /> 
+            )}
+        <div className='flex items-center text-center'>
+          <div style={{ height: '50px', display: 'flex', alignItems: 'center' }}>
+            <MdOutlineFormatQuote className='text-2xl text-orange2 ml-2 scale-x-[-1] mr-3' />
+          </div>
+          <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize((isExpanded ? text : truncatedText).replace(/\n/g, '<br />')) }} 
+          className='text-center'/>
+          <div style={{ height: '50px', display: 'flex', alignItems: 'center' }}>
+            <MdOutlineFormatQuote className='text-2xl text-orange2 ml-2  ml-3' />
+          </div>
+        </div>
+        {text.split(' ').length > 30 && (
+          <button onClick={() => setIsExpanded(!isExpanded)} className="underline text-orange2">
+            {isExpanded ? 'Voir moins' : 'Voir plus'}
+          </button>
+        )}
+      </div>
+    );
+  };
+
   return (
     <div className="w-full shadow-md rounded-md p-1 md:p-5 bg-white md:m-4">
       <h2 className="text-xl font-bold  px-2 py-2 w-full">Editeur presse</h2>
@@ -189,7 +224,7 @@ export const AddArticle = () => {
            <span className=''>En-tête en français</span>
             <img src={fr} alt="" className='w-[25px] h-[15px] align-middle ml-2' />   
         </div>
-          <input className="border p-2 w-full" placeholder="Optionnel Exemple:'Album du mois'" name="header" value={formData.header} onChange={handleChange} />
+          <input className="border p-2 w-full" placeholder="Exemple:'Album du mois' (Optionel)" name="header" value={formData.header} onChange={handleChange} />
         
         <div className="mb-4 flex items-center mt-2">
           <span className=''>Description en français </span>
@@ -220,25 +255,7 @@ export const AddArticle = () => {
         {formStatus === 'error' && <div className="text-red-500">Erreur lors de l'effacement de l'article</div>}
         <div className="grid md:grid-cols-3 gap-4">
 
-    {articles.map(article => (
-      <div key={article.id} className="p-4 flex flex-col items-center  mx-auto">
-        <button onClick={() => deleteArticle(article.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold  px-4 rounded mb-2 text-center animate-fade-up shadow-md">Supprimer</button>
-        <img src={article.image} alt={article.name} className="w-auto h-[75px] object-cover mb-4 rounded" />
-      <h2 className="mb-2"><span className='font-bold  text-lg '>{article.name}</span> <span className='italic'>({article.country})</span></h2>
-      {t(i18n.language === 'en' ? article.headerEn : article.header) ? (
-        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? article.headerEn : article.header).replace(/\n/g, '<br />')) }} 
-        className=' text-center font-semibold mb-2'/>
-      ) : (
-        <div style={{ height: '1em' }} className='mb-2' /> 
-      )}
-      <div className='flex items-center justify-center text-center'>
-        <MdOutlineFormatQuote className='text-2xl text-orange2 ml-2 transform scale-x-[-1] mr-3' />
-        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? article.textEn : article.text).replace(/\n/g, '<br />')) }} 
-        className='text-center'/>
-        <MdOutlineFormatQuote className='text-2xl text-orange2 ml-2  ml-3' />
-      </div>
-    </div>
-    ))}
+        {articles.map(article => <Article key={article.id} article={article} />)}
         </div>
     </div>
   );
