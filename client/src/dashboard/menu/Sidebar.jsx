@@ -46,10 +46,16 @@ export const Sidebar = ({ onSelectMenuItem }) => {
       <div className=" mt-2 border-b border-gray-300"></div>
       <ul>
       <div className='bg-gray-100 p-1 font-semibold shadow mb-2'>Musique</div>
-        <li className=" mb-4 cursor-pointer hover:font-semibold" onClick={() => handleMenuItemClick ('ajouter-album')}>
+        <li className=" mb-2 cursor-pointer hover:font-semibold" onClick={() => handleMenuItemClick ('ajouter-album')}>
           <div className="flex items-center">
             <BiAlbum className="mr-2" />
-            Editeur d'album
+            Ajouter/supprimer un album
+          </div>
+        </li>
+        <li className=" mb-4 cursor-pointer hover:font-semibold" onClick={() => handleMenuItemClick ('update-album')}>
+          <div className="flex items-center">
+            <BiAlbum className="mr-2" />
+            Modifier un album
           </div>
         </li>
         <div className=" border-b border-gray-300"></div>

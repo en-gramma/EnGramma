@@ -81,6 +81,7 @@ export const RegisterModal = ({ isOpen, onClose, onRegister }) => {
 
     } catch (err) {
       if (err) {
+        alert('Erreur lors de la soumission du formulaire. Veuillez réessayer.');
         setStatus('Une erreur est survenue. Veuillez réessayer.');
       }
     }

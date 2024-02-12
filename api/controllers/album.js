@@ -91,3 +91,49 @@ export const addAlbum= (req, res, next) => {
     });
   });
 };
+
+export const updateAlbum = (req, res, next) => {
+  const token = req.cookies.access_token;
+  if (!token) return res.status(401).json("Pas de token trouvé.");
+
+  jwt.verify(token, process.env.JWT_SECRET, (err) => {
+    if (err) {
+      next(err);
+      return;
+    }
+
+    const frenchTitleRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
+    const descriptionRegex = /^[\w\W\s]*$/;
+  
+    // Validation
+    if (!frenchTitleRegex.test(req.body.title)) {
+      return res.status(400).json({ error: 'Erreur : Le titre contient des caractères non valides' });
+    }
+    if (!descriptionRegex.test(req.body.description)) {
+      return res.status(400).json({ error: 'Erreur : La description contient des caractères non valides.' });
+    }
+    if (!descriptionRegex.test(req.body.descriptionEn)) {
+      return res.status(400).json({ error: 'Erreur : La description en anglais contient des caractères non valides.' });
+    }
+
+    const q =
+      "UPDATE albums SET `title` = ?, `bandcamp` = ?, `description` = ?, `descriptionEn` = ?, `albumLink` = ? WHERE `id` = ?";
+
+    const values = [
+      DOMPurify.sanitize(req.body.title),
+      req.body.bandcamp,
+      DOMPurify.sanitize(req.body.description),
+      DOMPurify.sanitize(req.body.descriptionEn),
+      DOMPurify.sanitize(req.body.albumLink, { ADD_TAGS: ["a"], ADD_ATTR: ["href"] }),
+      req.params.id,
+    ];
+
+    db.query(q, values, (err, data) => {
+      if (err) {
+       console.log(err);
+        return;
+      }
+      return res.json("L'album a été mis à jour avec succès.");
+    });
+  });
+};

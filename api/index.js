@@ -38,7 +38,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
 // validation du captcha
 app.post('/api/recaptcha', async (req, res) => {
   const { response } = req.body;

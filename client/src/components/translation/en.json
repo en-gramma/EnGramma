@@ -43,6 +43,6 @@
       "music": {
         "name": "music",
         "button": "Find the album",
-        "press": "Press review"
+        "press": "Press reviews"
       }
   }
