@@ -63,7 +63,7 @@ export function DeleteAlbum() {
     <div className='mb-9'></div>
 
     {albums.slice().reverse().map((album) => (
-              <div key={album.id} className=" flex flex-col lg:flex-row align-items-start bg-neutral-800 p-5 text-white rounded">
+              <div key={album.id} className=" flex flex-col lg:flex-row align-items-start bg-neutral-800 md:p-5 py-3 text-white rounded">
                 <div className="lg:mb-0 mb-4 ">
                                <div className='flex items-center mb-4'>
                   <h1 className='text-xl font-bold uppercase  text-center lg:text-left mr-5'>{album.title}</h1>

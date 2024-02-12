@@ -175,8 +175,14 @@ export const AddArticle = () => {
           <div style={{ height: '50px', display: 'flex', alignItems: 'center' }}>
             <MdOutlineFormatQuote className='text-2xl text-orange2 ml-2 scale-x-[-1] mr-3' />
           </div>
-          <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize((isExpanded ? text : truncatedText).replace(/\n/g, '<br />')) }} 
-          className='text-center'/>
+          <div className='text-left'>
+            {(isExpanded ? text : truncatedText).split('\n').map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+          </div>
           <div style={{ height: '50px', display: 'flex', alignItems: 'center' }}>
             <MdOutlineFormatQuote className='text-2xl text-orange2 ml-2  ml-3' />
           </div>
