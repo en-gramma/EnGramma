@@ -158,12 +158,12 @@ export const AddArticle = () => {
   const Article = ({ article }) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const text = t(i18n.language === 'en' ? article.textEn : article.text);
-    const truncatedText = text.split(' ').length > 20 ? text.split(' ').slice(0, 25).join(' ') + '...' : text; 
+    const truncatedText = text.split(' ').length > 25 ? text.split(' ').slice(0, 25).join(' ') + '...' : text; 
   
     return (
       <div key={article.id} className="p-4 flex flex-col items-center  mx-auto">
-        <button onClick={() => deleteArticle(article.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold  px-4 rounded mb-2 text-center animate-fade-up shadow-md">Supprimer</button>
-          <img src={article.image} alt={article.name} className="w-auto h-[75px] object-cover mb-4 rounded" />
+        <button onClick={() => deleteArticle(article.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold px-1   py-2 rounded mb-2 text-center animate-fade-up shadow-md">Supprimer</button>
+          <img src={article.image} alt={article.name} className="w-auto h-[75px] w-[75px] object-contains mb-4 rounded rounded-full" />
             <h2 className="mb-2"><span className='font-bold  text-lg'>{article.name}</span><span className='italic '>({article.country})</span></h2>
             {t(i18n.language === 'en' ? article.headerEn : article.header) ? (
               <div className='text-center font-semibold mb-2'>
@@ -181,7 +181,7 @@ export const AddArticle = () => {
           <div style={{ height: '50px', display: 'flex', alignItems: 'center' }}>
             <MdOutlineFormatQuote className='text-2xl text-orange2 ml-2 scale-x-[-1] mr-3' />
           </div>
-          <div className='text-left'>
+          <div className='text-center'>
             {(isExpanded ? text : truncatedText).split('\n').map((line, index) => (
               <React.Fragment key={index}>
                 {line}
@@ -212,7 +212,7 @@ export const AddArticle = () => {
       <div className="p-4">
         <div className="mb-4">
             <label htmlFor="file" className="block mb-2">Logo du média</label>
-            <p className='italic text-md mb-2'>Idéalement de taille 100x100px et au format .png transparent</p>
+            <p className='italic text-md mb-2'>Idéalement de taille 100x100px, rond et au format .png</p>
             <input
             required
             type="file"

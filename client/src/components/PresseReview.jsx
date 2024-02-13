@@ -29,8 +29,8 @@ export const PressReview = () => {
     const truncatedText = text.split(' ').length > 20 ? text.split(' ').slice(0, 22).join(' ') + '...' : text; 
   
     return (
-      <div key={article.id} className={`p-4 flex flex-col items-center text-white mx-[50px] mb-4 ${articles.length === 1 ? 'justify-center' : ''}`}>
-        <img src={article.image} alt={article.name} className="w-auto h-[75px] object-cover mb-4 rounded" />
+      <div key={article.id} className={`p-4 flex flex-col items-center text-white md:mx-[50px] mb-4 ${articles.length === 1 ? 'justify-center' : ''}`}>
+        <img src={article.image} alt={article.name} className="w-auto h-[75px] w-[75px] object-contains mb-4 rounded-full" />
         <h2 className="mb-2"><span className='font-bold text-white text-lg'>{article.name}</span> <span className='italic text-white'>({article.country})</span></h2>
         {t(i18n.language === 'en' ? article.headerEn : article.header) && (
           <div className='text-center font-bold mb-2'>

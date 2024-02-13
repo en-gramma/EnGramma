@@ -5,10 +5,16 @@ import { register, login, logout, getUsers, deleteUser, checkLoggin, getUser, up
 // import du controller
 const router = express.Router();
 
+//configuration des limites de requêtes
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, 
     max: 100 
   });
+
+  const checkLogginLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, 
+    max: 200 
+});
 
 // routes pour les utilisateurs
 router.post("/register", limiter, register);
@@ -17,7 +23,7 @@ router.post("/logout", limiter, logout);
 router.get("/", limiter, getUsers);
 router.delete("/:id", limiter, deleteUser);
 router.delete("/deleteImage/:id", limiter, deleteImage);
-router.get("/checkLoggin", limiter, checkLoggin);
+router.get("/checkLoggin", checkLogginLimiter, checkLoggin);
 router.get("/users", limiter, getUsers);
 router.get("/:id", limiter, getUser); 
 router.put("/:id", limiter, updateUser);

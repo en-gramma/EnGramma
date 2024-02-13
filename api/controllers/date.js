@@ -61,16 +61,17 @@ export const addDate= (req, res, next) => {
       const wordRegex = /^[\w\W\s]*$/;
     
       if (!dayRegex.test(req.body.day) || !wordRegex.test(req.body.month) || 
-          !wordRegex.test(req.body.place) || !wordRegex.test(req.body.city)) {
+          !wordRegex.test(req.body.place) || !wordRegex.test(req.body.city)|| !wordRegex.test(req.body.monthEn)) {
         return res.status(400).json("Les données entrées sont invalides.");
       }
   
       const q =
-        "INSERT INTO dates (`day`, `month`, `place`, `city`) VALUES (?)";
+        "INSERT INTO dates (`day`, `month`, `place`, `city`, `monthEn`) VALUES (?)";
   
       const values = [
         DOMPurify.sanitize(req.body.day),
         DOMPurify.sanitize(req.body.month),
+        DOMPurify.sanitize(req.body.monthEn),
         DOMPurify.sanitize(req.body.place),
         DOMPurify.sanitize(req.body.city)
       ];

@@ -6,6 +6,7 @@ export const AddDate = () => {
   const [formData, setFormData] = useState({
     day: DOMPurify.sanitize (''),
     month: DOMPurify.sanitize (''),
+    monthEn: DOMPurify.sanitize (''),
     place: DOMPurify.sanitize (''),
     city: DOMPurify.sanitize (''),
   });
@@ -21,9 +22,9 @@ export const AddDate = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const { day, month, place, city } = formData;
-
+  
     // Input validation
     const dayRegex = /^(3[01]|[12][0-9]|0?[1-9])$/;
     const wordRegex = /^[\w\W\s]*$/;
@@ -33,13 +34,22 @@ export const AddDate = () => {
       alert('Caractère non valide dans un des champs');
       return;
     }
-
+  
     try {
       const apiUrl = process.env.REACT_APP_API_URL;
       await axios.post(`${apiUrl}/api/dates`, formData, 
       { withCredentials: true });
       setStatusMessage('success');
       fetchDates(); 
+  
+      // Clear form fields
+      setFormData({
+        day: DOMPurify.sanitize (''),
+        month: DOMPurify.sanitize (''),
+        monthEn: DOMPurify.sanitize (''),
+        place: DOMPurify.sanitize (''),
+        city: DOMPurify.sanitize (''),
+      });
     } catch (error) {
       setStatusMessage('error');
     }
@@ -50,7 +60,7 @@ export const AddDate = () => {
       try {
         const apiUrl = process.env.REACT_APP_API_URL;
         await axios.delete(`${apiUrl}/api/dates/${id}`, { withCredentials: true });
-        fetchDates(); // Refresh the dates after deleting one
+        fetchDates(); 
       } catch (error) {
         console.error('Error deleting date:', error);
       }
@@ -78,6 +88,7 @@ export const AddDate = () => {
       <form onSubmit={handleSubmit} className="">
         <input type="text" name="day" placeholder="Jour (numérique)" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
         <input type="text" name="month" placeholder="Mois (alphabétique)" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
+        <input type="text" name="monthEn" placeholder="Mois (en anglais)" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
         <input type="text" name="place" placeholder="Lieu" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
         <input type="text" name="city" placeholder="Ville" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
         <button type="submit" className="mb-4 p-2 bg-blue-500 text-white rounded">Ajouter une date</button>
@@ -93,6 +104,7 @@ export const AddDate = () => {
             <tr className='text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400'>
             <th className="px-4 py-2">Jour</th>
             <th className="px-4 py-2">Mois</th>
+            <th className="px-4 py-2">Mois (en anglais)</th>
             <th className="px-4 py-2">Lieu</th>
             <th className="px-4 py-2">Ville</th>
             <th className="px-4 py-2">Action</th>
@@ -103,6 +115,7 @@ export const AddDate = () => {
             <tr key={date.id}>
                 <td className="border px-4 py-2">{date.day}</td>
                 <td className="border px-4 py-2">{date.month}</td>
+                <td className="border px-4 py-2">{date.monthEn}</td>
                 <td className="border px-4 py-2">{date.place}</td>
                 <td className="border px-4 py-2">{date.city}</td>
                 <td className="border px-4 py-2">
