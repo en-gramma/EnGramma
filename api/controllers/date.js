@@ -58,7 +58,7 @@ export const addDate= (req, res, next) => {
       }
 
       const dayRegex = /^(3[01]|[12][0-9]|0?[1-9])$/;
-      const wordRegex = /^[a-zA-Z\u00C0-\u017F\s]+$/;
+      const wordRegex = /^[\w\W\s]*$/;
     
       if (!dayRegex.test(req.body.day) || !wordRegex.test(req.body.month) || 
           !wordRegex.test(req.body.place) || !wordRegex.test(req.body.city)) {

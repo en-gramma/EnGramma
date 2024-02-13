@@ -26,7 +26,7 @@ export const AddDate = () => {
 
     // Input validation
     const dayRegex = /^(3[01]|[12][0-9]|0?[1-9])$/;
-    const wordRegex = /^[a-zA-Z\u00C0-\u017F\s]+$/;
+    const wordRegex = /^[\w\W\s]*$/;
   
     if (!dayRegex.test(day) || !wordRegex.test(month) || 
         !wordRegex.test(place) || !wordRegex.test(city)) {

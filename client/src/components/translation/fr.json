@@ -12,7 +12,8 @@
     "pro": "Documents Pro",
     "button": "Envoyer",
     "fullname": "Nom",
-    "object": "Objet"
+    "object": "Objet",
+    "recaptcha": "fr"
   },
 
   "dates": {

@@ -9,13 +9,14 @@ import { GrScheduleNew } from 'react-icons/gr';
 import zig from '../assets/zig.jpg';
 import { useTranslation } from 'react-i18next';
 
+
 export function Contact() {
  
   const [submissionStatus, setSubmissionStatus] = useState('');
   const [submissionStatusErr, setSubmissionStatusErr] = useState('');
   const [links, setLinks] = useState([]);
   const sitekey = process.env.REACT_APP_SITE_KEY;
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const initialFormData = {
     fullName: DOMPurify.sanitize(''),
@@ -184,6 +185,7 @@ const handleRecaptchaChange = (value) => {
         <ReCAPTCHA
         sitekey={sitekey}
         onChange={handleRecaptchaChange}
+        hl={i18n.language}
       />
 
         <button

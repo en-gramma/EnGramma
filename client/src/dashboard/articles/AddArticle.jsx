@@ -166,8 +166,14 @@ export const AddArticle = () => {
           <img src={article.image} alt={article.name} className="w-auto h-[75px] object-cover mb-4 rounded" />
             <h2 className="mb-2"><span className='font-bold  text-lg'>{article.name}</span><span className='italic '>({article.country})</span></h2>
             {t(i18n.language === 'en' ? article.headerEn : article.header) ? (
-              <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? article.headerEn : article.header).replace(/\n/g, '<br />')) }} 
-              className='text-center font-semibold mb-2'/>
+              <div className='text-center font-semibold mb-2'>
+                {t(i18n.language === 'en' ? article.headerEn : article.header).split('\n').map((text, index) => (
+                  <React.Fragment key={index}>
+                    {text}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </div>
             ) : (
               <div style={{ height: '1em' }} className='mb-2' /> 
             )}

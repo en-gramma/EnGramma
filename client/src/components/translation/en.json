@@ -12,7 +12,8 @@
         "pro": "Professional Documents",
         "button": "Send",
         "fullname": "Name",
-        "object": "Object"
+        "object": "Object",
+        "recaptcha": "en"
       },
 
     "dates": {

@@ -50,7 +50,7 @@ module.exports = {
       'sm': '768px',
       // => @media (min-width: 640px) { ... }
 
-      'md': '900px',
+      'md': '975px',
       // => @media (min-width: 768px) { ... }
 
       'lg': '1240px',

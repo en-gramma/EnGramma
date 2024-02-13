@@ -55,7 +55,7 @@ const ImageGallery = () => {
         <Loader />
       </div>
     ) : (
-      <div className="overflow-auto scrollbar scrollbar-thumb-gray-400 scrollbar-track-gray-900 scrollbar-thin scrollbar-corner-20 max-h-[100vh]">
+      <div className="overflow-auto scrollbar scrollbar-thumb-gray-400 scrollbar-track-transparent scrollbar-md scrollbar-corner-20 max-h-[100vh]">
         <div id="my-gallery" className="grid md:grid-cols-3 md:gap-4 grid-cols-1 mx-2 gap-2 md:mx-[200px]">
         {images.sort((a, b) => b.height + a.height).map((image, index) => (
             <div key={image.id} className="relative">
