@@ -17,15 +17,8 @@ export const Home = () => {
   const [key, setKey] = useState(Math.random());
 
   useEffect(() => {
-    const handleLanguageChange = () => {
-
-      setKey(Math.random());
-    };
-    i18n.on('languageChanged', handleLanguageChange);
-    return () => {
-      i18n.off('languageChanged', handleLanguageChange);
-    };
-  }, [i18n]);
+    setKey(Math.random());
+  }, [i18n.language]);
 
 
     // Fonction pour vérifier si la vue est en mode mobile
@@ -73,7 +66,7 @@ export const Home = () => {
         <img src={logo} className="h-[70px] pb-3" alt="logo en gramma" />
       <div className="flex-grow border-t border-white"></div>
     </div>
-    <div className="flex flex-col items-center justify-center sm:flex-row sm:flex-row-reverse">
+    <div className="flex flex-col items-center justify-center  sm:flex-row-reverse">
   <div className='flex items-center justify-center  mb-9 flex-col sm:flex-row mx-2'>
     {isMobile ? (
       <div className="relative w-full mt-4 sm:mt-0 mx-3 mb-7">

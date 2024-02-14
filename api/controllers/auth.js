@@ -11,7 +11,7 @@ export const checkLoggin = (req, res) => {
   const token = req.cookies.access_token;
 
   if (!token) {
-    return res.status(401).json("Vous n'êtes pas connecté.");
+    return res.status(200).json({ loggedIn: false });
   }
 
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {

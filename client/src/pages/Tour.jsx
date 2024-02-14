@@ -63,14 +63,14 @@ const showThreeDates = () => {
               <div className="text-column text-left mb-2 md:mb-0 w-1/2 mx-2">
                   <p className="text-white mb-4 md:mb-4 animate-fade-right">
                   <span className='text-3xl font-semibold mr-3 text-Engramma'>{day}</span> 
-                  <span className='text-2xl font-semibold'>
+                  <span className='text-2xl '>
                     {i18n.language === 'en' ? date.monthEn.toUpperCase() : date.month.substring(0, 4).toUpperCase()}
                   </span>
                 </p>
               </div>
               <div className="text-column md:flex md:flex-row  md:items-center  md:justify-between mb-2 md:mb-0  w-full">
-                <p className="text-white   text-2xl md:mb-4"><span className=''>{`${date.place}`}</span></p>
-                <p className="text-white  text-2xl mb-4 md:mb-4 animate-fade-left font-semibold"><span className=''>{`${date.city}`}</span></p>
+                <p className="text-white   text-2xl md:mb-4 font-semibold"><span className=''>{`${date.place}`}</span></p>
+                <p className="text-white  text-2xl mb-4 md:mb-4 animate-fade-left "><span className=''>{`${date.city}`}</span></p>
               </div>
             </div>
           </div>

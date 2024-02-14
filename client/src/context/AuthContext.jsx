@@ -15,9 +15,12 @@ export const AuthContextProvider = ({ children }) => {
         const res = await axios.get(`${apiUrl}/api/auth/checkLoggin`, {
           withCredentials: true,
         });
-        setCurrentUser(res.data);
+        if (res.data.loggedIn === false) {
+          setCurrentUser(null);
+        } else {
+          setCurrentUser(res.data);
+        }
       } catch (err) {
-        setCurrentUser(null);
         console.log(err);
       } finally {
         setIsLoading(false);
