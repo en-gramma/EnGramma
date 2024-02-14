@@ -236,7 +236,7 @@ export const AddArticle = () => {
            <span className=''>En-tête en français</span>
             <img src={fr} alt="" className='w-[25px] h-[15px] align-middle ml-2' />   
         </div>
-          <input className="border p-2 w-full" placeholder="Exemple:'Album du mois' (Optionel)" name="header" value={formData.header} onChange={handleChange} />
+          <input className="border p-2 w-full" placeholder="Exemple:'Album du mois' (Optionnel)" name="header" value={formData.header} onChange={handleChange} />
         
         <div className="mb-4 flex items-center mt-2">
           <span className=''>Description en français </span>

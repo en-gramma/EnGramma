@@ -10,6 +10,7 @@ import {Music} from './pages/Music';
 import {Media} from './pages/Media';
 import {Bio} from './pages/Bio';
 import {Tour} from './pages/Tour';
+import {Privacy} from './pages/Privacy';
 import {ResetPasswordPage }from './pages/ResetPasswordPage';
 import { ForgotPassword } from './pages/ForgotPassword';
 import { Unauthorized } from './pages/Unauthorized';
@@ -35,6 +36,7 @@ function App() {
                 <Route element={<Bio/>} path="/bio"/>
                 <Route element={<Tour/>} path="/tour"/>
                 <Route element={<Contact/>} path="/contact"/>
+                <Route element={<Privacy/>} path="/Privacy"/>
                 <Route element={<Unauthorized/>} path="/unauthorized"/>
               </Routes>
             </div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom' // Import Link
 import spaceImage from '../assets/spaceimage.jpg';
 import logo from '../assets/logo.png';
 import { Social } from '../components/Social';
@@ -32,8 +33,9 @@ export const Footer = () => {
             </div>
 
             {/* Right Section */}
-            <div className="text-right">
-              {/* Empty for spacing */}
+            <div className="right-7 bottom-5 absolute">
+              {/* Privacy Policy Link */}
+              <Link to="/privacy" className="underline text-orange2">Politique de confidentialité</Link>
             </div>
           </div>
         </footer>
