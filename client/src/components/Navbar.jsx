@@ -86,7 +86,7 @@ export const Navbar = () => {
     return (
 <nav
   className={`${
-    isOnTop && !isMobile ? 'bg-transparent text-xl' : 'bg-stone-900 opacity-95 text-xl z-30'
+    isOnTop && !isMobile ? 'bg-transparent text-lg' : 'bg-stone-900 opacity-95 text-lg z-30'
   } text-white border-gray-200 w-full z-20 fixed transition-all duration-300`}
   style={{
     backgroundColor: location.pathname === '/dashboard' ? '#2c2c2c' : ''

@@ -50,14 +50,14 @@ const VideoPlayer = () => {
                         <Loader />
                     </div>
                 ) : (
-                    <div className={`${videos.length > 2 ? "overflow-auto" : ""} scrollbar scrollbar-thumb-gray-400 scrollbar-track-transparent scrollbar-thin scrollbar-corner-20 max-h-[500px]`}>
+                    <div className={`${videos.length > 2 ? "overflow-auto" : ""}  scrollbar-thumb-gray-400 scrollbar-track-transparent scrollbar-thin scrollbar-corner-20 max-h-[500px]`}>
                 <div id="my-gallery" className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                     {videos.map((video) => {
                     const videoUrl = extractVideo(video.link);
                     return (
                         <div key={video.id} className="aspect-w-16 aspect-h-9 overflow-hidden m-2 mb-6">
                         <iframe
-                            className=' md:w-[625px] md:h-[350px] w-[400px] h-[225px] rounded-lg'
+                            className=' md:w-[560px] md:h-[315px] w-[400px] h-[225px] rounded-lg'
                             src={videoUrl}
                             title="YouTube video player"
                             frameBorder="0"

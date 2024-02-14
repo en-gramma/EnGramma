@@ -29,10 +29,10 @@ export const PressReview = () => {
     const truncatedText = text.split(' ').length > 20 ? text.split(' ').slice(0, 22).join(' ') + '...' : text; 
   
     return (
-      <div className="flex justify-center mx-auto">
-      <div key={article.id} className="p-4 flex flex-col items-center text-white md:mx-[50px] mb-4">
-          <img src={article.image} alt={article.name} className="w-auto h-[75px] w-[75px] object-contains mb-4 rounded-full" />
-          <h2 className="mb-2"><span className='font-bold text-white text-lg'>{article.name}</span> <span className='italic text-white'>({article.country})</span></h2>
+      <div className="flex justify-center mx-auto text-md">
+      <div key={article.id} className="p-4 flex flex-col items-center text-white md: mb-4">
+          <img src={article.image} alt={article.name} className=" h-[75px] w-[75px] object-contains mb-4 rounded-full" />
+          <h2 className="mb-2"><span className='font-bold text-white text-md'>{article.name}</span> <span className='italic text-white'>({article.country})</span></h2>
           {t(i18n.language === 'en' ? article.headerEn : article.header) && (
             <div className='text-center font-bold mb-2'>
               {t(i18n.language === 'en' ? article.headerEn : article.header).split('\n').map((text, index) => (
@@ -45,9 +45,9 @@ export const PressReview = () => {
           )}
           <div className='flex items-center text-center'>
             <div className='flex h-[50px]'>
-              <MdOutlineFormatQuote className='text-2xl text-orange2 ml-2 scale-x-[-1] mr-3 ' />
+              <MdOutlineFormatQuote className='text-xl text-orange2 opacity-50 scale-x-[-1] mr-2 ' />
             </div>
-            <div className={text.split(' ').length > 20 ? 'text-left text-justify' : 'text-center'}>
+            <div className={text.split(' ').length > 20 ? ' text-justify' : 'text-center'}>
               {(isExpanded ? text : truncatedText).split('\n').map((line, index) => (
                 <React.Fragment key={index}>
                   {line}
@@ -56,7 +56,7 @@ export const PressReview = () => {
               ))}
             </div>
             <div className='flex h-[50px] align-items-center'>
-              <MdOutlineFormatQuote className='text-2xl text-orange2 ml-2  ml-3  '/>
+              <MdOutlineFormatQuote className='text-xl text-orange2 ml-2 opacity-50'/>
             </div>
           </div>
           {text.split(' ').length > 30 && (
@@ -73,7 +73,7 @@ export const PressReview = () => {
     <div className="relative pb-9 my-9">
       <>
         <img src={logo} alt="Logo En Gramma" className='md:h-full md:max-h-[500px] md:w-auto h-auto w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-2' />
-        <div className="text-4xl  mb-4 text-white font-custom text-center pt-9 mb-9">{t('press.press')}</div>
+        <div className="text-4xl  mb-4 text-white font-custom text-center pt-9 ">{t('press.press')}</div>
         {isLoading ? (
           <div className='flex justify-center items-center '>
             <Loader />
