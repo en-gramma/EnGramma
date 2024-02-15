@@ -75,7 +75,7 @@ export const Home = () => {
       </div>
     ) : null}
 
-      <div key={key} className="max-w-[580px] sm:mr-4  text-white text-justify">
+      <div key={key} className="max-w-[580px] sm:mr-4  text-white text-justify text-md">
       <Trans i18nKey="home.text" />
       </div>
   </div>

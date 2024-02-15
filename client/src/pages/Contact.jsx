@@ -168,7 +168,7 @@ const handleRecaptchaChange = (value) => {
             placeholder='Message'
             value={formData.message}
             onChange={handleChange}
-            className="w-full border rounded py-5 px-3 p-1 h-[200px]"
+            className="w-full border rounded py-5 px-3 p-1 h-[150px]"
             rows="4"
             required>
             </textarea>
@@ -182,15 +182,17 @@ const handleRecaptchaChange = (value) => {
         )}
 
         {/* intégration Recaptcha + site key */}
+        <div className='flex justify-center w-full mb-1 md:justify-start'>
         <ReCAPTCHA
         sitekey={sitekey}
         onChange={handleRecaptchaChange}
         hl={i18n.language}
+        className=''
       />
-
+      </div>
         <button
           type="submit"
-          className="bg-orange2 text-white py-2 px-4 mb-4 mt-2 rounded  hover:bg-orange-800 w-full max-w-[300px] ">
+          className="bg-orange2 text-white py-2 px-4 mb-4 mt-2 rounded  hover:bg-orange-800 w-full md:max-w-[300px] ">
           {t('contact.button')}
         </button>
 

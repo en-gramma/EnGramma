@@ -50,7 +50,7 @@ export const Music = () => {
             {albums.slice().reverse().map((album) => (
               <div key={album.id} className="mb-[100px] flex flex-col lg:flex-row align-items-start">
                 <div className="lg:mb-0 mb-4 ">
-                  <h1 className='text-3xl font-bold uppercase mb-4 text-center lg:text-left'>{t(album.title)}</h1>
+                  <h1 className='text-2xl font-bold uppercase mb-4 text-center lg:text-left'>{t(album.title)}</h1>
                   <iframe
                     title={`Bandcamp ${t(album.title)}`}
                     style={{ border: 10, width: '350px', height: '470px' }}
