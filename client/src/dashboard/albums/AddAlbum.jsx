@@ -12,21 +12,32 @@ import en from "../../assets/en.png";
 export const AddAlbum = () => {
   const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
   const [editorStateEn, setEditorStateEn] = useState(() => EditorState.createEmpty());
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      description: draftToHtml(convertToRaw(editorState.getCurrentContent()))
-    }));
-  }, [editorState]);
+    setIsMounted(true);
+    return () => setIsMounted(false);
+  }, []);
 
-  useEffect(() => {
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      descriptionEn: draftToHtml(convertToRaw(editorStateEn.getCurrentContent()))
-    }));
-  }, [editorStateEn]);
+  const onEditorStateChange = (editorState) => {
+    setEditorState(editorState);
+    if (isMounted) {
+      setFormData({
+        ...formData,
+        description: draftToHtml(convertToRaw(editorState.getCurrentContent()))
+      });
+    }
+  };
 
+  const onEditorStateChangeEn = (editorStateEn) => {
+    setEditorStateEn(editorStateEn);
+    if (isMounted) {
+      setFormData({
+        ...formData,
+        descriptionEn: draftToHtml(convertToRaw(editorStateEn.getCurrentContent()))
+      });
+    }
+  };
   const [formData, setFormData] = useState({
     title: DOMPurify.sanitize(''),
     description: DOMPurify.sanitize(''),
