@@ -8,7 +8,7 @@ export const PrivateRoute = ({ roles }) => {
   // If the user is not logged in, store the current route in sessionStorage
   if (!currentUser) {
     sessionStorage.setItem('redirectPath', window.location.pathname);
-    return <Navigate to="/login" />;
+    return <Navigate to="/admin476" />;
   }
 
   // Check if the user has the required role

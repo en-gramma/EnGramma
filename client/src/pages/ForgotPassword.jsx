@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Logo from '../logo.svg';
+import Logo from '../assets/logo.png';
 import DOMPurify from 'isomorphic-dompurify';
 
 export const ForgotPassword = () => {
@@ -35,7 +35,7 @@ export const ForgotPassword = () => {
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img className="mx-auto h-10 w-auto" src={Logo} alt="Your Company" />
-        <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+        <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-white">
           Réinitialisation du mot de passe
         </h2>
       </div>
@@ -43,7 +43,7 @@ export const ForgotPassword = () => {
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+            <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
               Adresse e-mail
             </label>
             <div className="mt-2">
@@ -63,7 +63,7 @@ export const ForgotPassword = () => {
           <div>
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-red-700 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700"
+              className="flex w-full justify-center rounded-md bg-orange2 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700"
             >
               Envoyer
             </button>

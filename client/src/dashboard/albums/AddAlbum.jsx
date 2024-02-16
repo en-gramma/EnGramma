@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DOMPurify from 'dompurify';
 import { DeleteAlbum } from './DeleteAlbum';
@@ -13,21 +13,20 @@ export const AddAlbum = () => {
   const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
   const [editorStateEn, setEditorStateEn] = useState(() => EditorState.createEmpty());
 
-  const onEditorStateChange = (editorState) => {
-    setEditorState(editorState);
-    setFormData({
-      ...formData,
+  useEffect(() => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
       description: draftToHtml(convertToRaw(editorState.getCurrentContent()))
-    });
-  };
+    }));
+  }, [editorState]);
 
-  const onEditorStateChangeEn = (editorStateEn) => {
-    setEditorStateEn(editorStateEn);
-    setFormData({
-      ...formData,
+  useEffect(() => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
       descriptionEn: draftToHtml(convertToRaw(editorStateEn.getCurrentContent()))
-    });
-  };
+    }));
+  }, [editorStateEn]);
+
   const [formData, setFormData] = useState({
     title: DOMPurify.sanitize(''),
     description: DOMPurify.sanitize(''),

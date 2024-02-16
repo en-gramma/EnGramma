@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import {Home} from './pages/Home'
-import {Login} from './pages/Login'
+import {Login} from './pages/Admin476'
 import {Contact} from './pages/Contact'
 import {PrivateRoute} from './components/PrivateRoute'
 import { Dashboard } from './pages/Dashboard';
@@ -28,7 +28,7 @@ function App() {
                   <Route  element={<Dashboard/>} path="/dashboard"/>
                 </Route>
                 <Route element={<Home />} path="/" exact/>
-                <Route element={<Login />} path="/login"/>
+                <Route element={<Login />} path="/Admin476"/>
                 <Route element={<ResetPasswordPage />} path="/reset-password"/>
                 <Route element={<ForgotPassword />} path="/forgot-password"/>
                 <Route element={<Music/>} path="/music"/>

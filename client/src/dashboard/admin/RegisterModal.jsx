@@ -77,12 +77,15 @@ export const RegisterModal = ({ isOpen, onClose, onRegister }) => {
       alert('Le formulaire a été soumis avec succès.');
       setStatus('success');
       setConfirmPassword('');
-      onRegister(formData);
+      if (typeof onRegister === 'function') {
+        onRegister(formData);
+      }
 
     } catch (err) {
       if (err) {
         alert('Erreur lors de la soumission du formulaire. Veuillez réessayer.');
         setStatus('Une erreur est survenue. Veuillez réessayer.');
+        console.error('Erreur lors de la soumission du formulaire', err);
       }
     }
   };

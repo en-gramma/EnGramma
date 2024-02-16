@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useLocation, Link } from 'react-router-dom';
-import Logo from '../logo.svg'
+import Logo from '../assets/logo.png'
 import DOMPurify from 'isomorphic-dompurify';
 
 export const ResetPasswordPage = () => {
@@ -56,14 +56,15 @@ export const ResetPasswordPage = () => {
     <div className="flex flex-col items-center justify-center h-screen">
     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
       <img className="mx-auto h-10 w-auto" src={Logo} alt="Your Company" />
-        <h1 className="text-2xl font-bold mb-6 text-center">Réinitialisation du mot de passe </h1>
+        <h1 className="text-2xl font-bold mb-6 text-center text-white">Réinitialisation du mot de passe </h1>
         {success ? (
           <div className='text-center'>
             <p className="text-green-600 mb-4 text-lg border border-green-800 py-5 px-4  rounded-md">{success}</p>
-            <Link to="/login" className="text-blue-500 font-semibold underline ">Se connecter</Link>
+            <Link to="/admin476" className="text-blue-500 font-semibold underline ">Se connecter</Link>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
+            <span className='text-white text-sm'> Doit contenir au moins au moins 8 caractères dont, une lettre, un chiffre et un caractère spécial @, $, !, %, *, ?, &</span>
             <input
               type="password"
               value={password}
@@ -81,7 +82,7 @@ export const ResetPasswordPage = () => {
               className="w-full border border-gray-300 rounded px-3 py-2"
             />
             {error && <p className="text-red-500">{error}</p>}
-            <button type="submit" className="w-full bg-blue-500 text-white rounded py-2">Réinitialiser le mot de passe</button>
+            <button type="submit" className="w-full bg-orange2 text-white rounded py-2">Réinitialiser le mot de passe</button>
           </form>
         )}
       </div>

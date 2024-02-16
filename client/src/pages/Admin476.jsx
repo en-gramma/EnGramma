@@ -91,7 +91,7 @@ export const Login = () => {
 
           <div>
             <button onClick={handleSubmit} type="submit"
-             className="flex w-full justify-center rounded-md bg-red-700 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700">Se connecter</button>
+             className="flex w-full justify-center rounded-md bg-orange2 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ">Se connecter</button>
               {err && <p className='text-red-700'>{err}</p>}  
           </div>
           <div>

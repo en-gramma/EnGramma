@@ -57,7 +57,7 @@ const ImageGallery = () => {
     ) : (
 <div className="overflow-auto  scrollbar-thumb-gray-400 scrollbar-track-transparent scrollbar-thin scrollbar-corner-20 max-h-[100vh]  md:mx-[200px]">
   <div id="my-gallery" className="grid md:grid-cols-3 md:gap-4 grid-cols-1 gap-2 w-full ">
-    {images.sort((a, b) => b.height + a.height).map((image, index) => (
+    {images.reverse().map((image, index) => (
       <div key={image.id} className="relative w-full">
         <a href={image.image} data-pswp-width={image.width} data-pswp-height={image.height}>
           <img src={image.image} alt={image.title} className="w-full h-full object-cover rounded-lg cursor-pointer" />
