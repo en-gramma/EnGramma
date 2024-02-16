@@ -233,6 +233,7 @@ export const AddBioArticle = () => {
             inDropdown: false,
             options: ['bold', 'italic', 'underline']
           },
+ 
         }}
       />
  
