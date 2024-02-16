@@ -31,6 +31,11 @@ body {
   src: url('../Engramma.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Coco';
+  src: url('../Cocogoose-Pro-Ultralight.ttf') format('truetype');
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

@@ -47,7 +47,7 @@ export const addVideo= (req, res, next) => {
       return;
     }
 
-  const frenchTextRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
+  const frenchTextRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -!"?]+$/;
   if (!frenchTextRegex.test(req.body.title)) {
       return res.status(400).json("Le titre n'est pas valide.");
   }

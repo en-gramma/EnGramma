@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     fontFamily: {
       'custom': ['Engramma', 'sans-serif'],
+      'coco': ['Coco', 'sans-serif'],
     },
     extend: {
       textShadow: {
@@ -71,6 +72,18 @@ module.exports = {
     require('tailwindcss-animated'),
     require('tailwindcss-textshadow'),
     require('tailwind-scrollbar')({ nocompatible: true }),
+    function({ addBase }) {
+      addBase({
+        '.scrollbar-custom': {
+          '::-webkit-scrollbar-thumb': {
+            backgroundColor: 'rgba(64, 64, 64, 0.5)', // change this to your desired color and opacity
+          },
+          '::-webkit-scrollbar-track': {
+            backgroundColor: 'rgba(255, 255, 255, 0.5)', // change this to your desired color and opacity
+          },
+        },
+      });
+    },
   ],
   
 }

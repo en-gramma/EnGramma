@@ -50,7 +50,7 @@ export const AddVideo = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const frenchTextRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
+    const frenchTextRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -!"?]+$/;
       if (!frenchTextRegex.test(title)) {
         alert('Erreur : Le champs titre contien des caractères non valides');
         return;

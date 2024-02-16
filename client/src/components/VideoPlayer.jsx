@@ -52,7 +52,7 @@ const VideoPlayer = () => {
                 ) : (
                     <div className={`${videos.length > 2 ? "overflow-auto" : ""}  scrollbar-thumb-gray-400 scrollbar-track-transparent scrollbar-thin scrollbar-corner-20 max-h-[500px]`}>
                 <div id="my-gallery" className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                    {videos.map((video) => {
+                {videos.slice().reverse().map((video) => {
                     const videoUrl = extractVideo(video.link);
                     return (
                         <div key={video.id} className="aspect-w-16 aspect-h-9 overflow-hidden m-2 mb-6">
