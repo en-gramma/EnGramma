@@ -67,9 +67,9 @@ export const RadioListFr = () => {
             Voir plus
           </button>
         )}
-      {!isMobile && radiosFr.length > 4 && (
+      {!isMobile && (
         <>
-          <button onClick={scrollLeft} className='text-neutral-500 text-4xl ml-5'><SlArrowLeft/></button>
+          {radiosFr.length > 4 && <button onClick={scrollLeft} className='text-neutral-500 text-4xl ml-5'><SlArrowLeft/></button>}
           <div ref={scrollContainerRef} className={`z-20 flex overflow-x-auto scrollbar-thumb-neutral-800 scrollbar-track-transparent scrollbar-thin scrollbar-corner-none`}>
             {[...radiosFr].reverse().map(radio => (
               <div key={radio.id} style={{ flex: "0 0 auto", width: "25%" }} className="p-4 flex flex-col items-center ">
@@ -79,7 +79,7 @@ export const RadioListFr = () => {
               </div>
             ))}
           </div>
-          <button onClick={scrollRight} className='text-neutral-500 text-4xl mr-5'><SlArrowRight /></button>
+          {radiosFr.length > 4 && <button onClick={scrollRight} className='text-neutral-500 text-4xl mr-5'><SlArrowRight /></button>}
         </>
         )}
       </div>
