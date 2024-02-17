@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import {Loader} from '../components/Loader';
 
 export const AuthContext = createContext();
 
@@ -63,7 +64,7 @@ export const AuthContextProvider = ({ children }) => {
 
   // Wait for the initial authentication check to complete before rendering the children
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div><Loader /></div>;
   }
 
   return (

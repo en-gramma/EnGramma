@@ -17,7 +17,7 @@ import { Unauthorized } from './pages/Unauthorized';
 import { Footer } from './components/Footer';
 import { useEffect, useState } from 'react';
 import initializeI18n from '../src/components/translation/i18next';
-
+import {Loader} from './components/Loader';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -28,7 +28,7 @@ function App() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; 
+    return <div><Loader /></div>; 
   }
 
   return (
