@@ -13,7 +13,7 @@ export const Footer = () => {
           <div className="absolute inset-0" ></div>
           <div className="relative flex items-center justify-between px-4 h-[150px]">
             <div className="space-x-4 hidden my-2 md:flex flex-col items-center">
-              <img src={logo} alt="Your Logo" className="h-[75px]  ml-2 mb-4" />
+              <img src={logo} alt="En Gramma" className="h-[75px]  ml-2 mb-4" />
               <p>&copy; En Gramma réalisé par 
                 <a href="mailto:kiato.dv@gmail.com"> Kiato</a></p>
             </div>

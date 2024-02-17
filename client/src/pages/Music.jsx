@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import scene from '../assets/scene.jpg';
+import scene from '../assets/scene.webp';
 import axios from 'axios';
 import {Loader} from '../components/Loader';
 import { useTranslation } from 'react-i18next';
@@ -51,6 +51,7 @@ export const Music = () => {
                 <div className="lg:mb-0 mb-4 ">
                   <h1 className='text-2xl font-bold uppercase mb-4 text-center lg:text-left font-coco'>{t(album.title)}</h1>
                   <iframe
+                    loading="lazy"
                     title={`Bandcamp ${t(album.title)}`}
                     style={{ border: 10, width: '350px', height: '470px' }}
                     className='mx-auto lg:mx-0 shadow-xl rounded-lg'
