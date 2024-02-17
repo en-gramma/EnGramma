@@ -15,9 +15,22 @@ import {ResetPasswordPage }from './pages/ResetPasswordPage';
 import { ForgotPassword } from './pages/ForgotPassword';
 import { Unauthorized } from './pages/Unauthorized';
 import { Footer } from './components/Footer';
+import { useEffect, useState } from 'react';
+import initializeI18n from '../src/components/translation/i18next';
 
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Wait for the i18n instance to initialize
+    initializeI18n.then(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>; 
+  }
+
   return (
       <Router>
         <div className='flex flex-col h-screen'>

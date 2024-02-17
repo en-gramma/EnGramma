@@ -9,14 +9,17 @@ export const Tour = () => {
   const [loading, setLoading] = useState(true);
   const [datesToShow, setDatesToShow] = useState(3);
   const { t, i18n } = useTranslation();
+  const [showCopyright, setShowCopyright] = useState(true); 
 
-const loadMoreDates = () => {
-  setDatesToShow(prev => prev + 3);
-};
+  const loadMoreDates = () => {
+    setDatesToShow(prev => prev + 3);
+    setShowCopyright(false); 
+  };
 
-const showThreeDates = () => {
-  setDatesToShow(3);
-};
+  const showThreeDates = () => {
+    setDatesToShow(3);
+    setShowCopyright(true); 
+  };
 
   useEffect(() => {
     // récupération des albums
@@ -41,7 +44,7 @@ const showThreeDates = () => {
     <div className="h-screen relative">
       <img src={scene2} alt="Music Background" className="object-cover w-full h-full" />
       <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}></div>
-      <p className="absolute bottom-0 right-0 text-white px-3 py-1 text-xs">&copy; Antoine Chevillé</p>
+      {showCopyright && <p className="absolute bottom-0 right-0 text-white px-3 py-1 text-xs z-0">&copy; Antoine Chevillé</p>}
     <div>
       <div className="absolute top-0 left-0 right-0 bottom-0 overflow-hidden flex flex-col items-center justify-center">
       <h1 className={`font-custom text-white z-10 text-4xl md:mb-[50px] mb-7 md:pt-0 pt-[100px] ${datesToShow >= 6 ? 'pt-[100px]' : ''}`}>DATES</h1>
@@ -69,8 +72,8 @@ const showThreeDates = () => {
                 </p>
               </div>
               <div className="text-column md:flex md:flex-row  md:items-center  md:justify-between mb-2 md:mb-0  w-full">
-                <p className="text-Engramma   text-xl md:mb-4 font-semibold"><span className=''>{`${date.place}`}</span></p>
-                <p className="text-white  text-2xl mb-4 md:mb-4 animate-fade-left "><span className=''>{`${date.city}`}</span></p>
+                <p className="text-Engramma  md:text-xl text-lg md:mb-4 font-semibold"><span className=''>{`${date.place}`}</span></p>
+                <p className="text-white  md:text-2xl text-xl mb-4 md:mb-4 animate-fade-left "><span className=''>{`${date.city}`}</span></p>
               </div>
             </div>
           </div>

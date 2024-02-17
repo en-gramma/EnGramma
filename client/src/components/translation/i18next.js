@@ -6,7 +6,8 @@ import i18n from "i18next";
 
 // Récupération des données de la base de données
 const apiUrl = process.env.REACT_APP_API_URL;
-axios.get(`${apiUrl}/api/bios`)
+
+const initializeI18n = axios.get(`${apiUrl}/api/bios`)
   .then(response => {
     const dbTranslationsFr = response.data.reduce((translations, row) => {
       translations[row.title] = row.text;
@@ -17,12 +18,11 @@ axios.get(`${apiUrl}/api/bios`)
     const dbTranslationsEn = response.data.reduce((translations, row) => {
       translations[row.title] = row.textEn;
       translations[row.title + 'Title'] = row.titleEn;
-       //  row.title comme clé et row.textEn comme valeur
       return translations;
     }, {});
 
-    // Initialiser i18next avec les données de la base de données
-    i18n
+    // Initialize i18next with the database data
+    return i18n
       .use(initReactI18next)
       .init({
         resources: {
@@ -39,3 +39,5 @@ axios.get(`${apiUrl}/api/bios`)
   .catch(error => {
     console.error(error);
   });
+
+export default initializeI18n;
