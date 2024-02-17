@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaFacebook, FaInstagram, FaBandcamp, FaYoutube, FaDeezer, FaSpotify } from 'react-icons/fa';
 
-export const Social = () => {
+const Social = () => {
   return (
     <div className="flex items-center ">
       <a href="https://www.facebook.com/engrammaofficial/" target="_blank" rel="noopener noreferrer">
@@ -25,3 +25,5 @@ export const Social = () => {
     </div>
   )
 }
+
+export default Social;

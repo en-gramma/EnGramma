@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, Suspense} from 'react'
 import spaceImage from '../assets/spaceimage.jpg';
 import logo from '../assets/logo.png';
-import { Social } from '../components/Social';
 import trioHome from '../assets/trio-home.webp';
 import { Trans } from 'react-i18next'
 import { useTranslation } from 'react-i18next';
@@ -15,6 +14,7 @@ export const Home = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const { i18n } = useTranslation();
   const [key, setKey] = useState(Math.random());
+  const Social = React.lazy(() => import('../components/Social'));
 
   useEffect(() => {
     setKey(Math.random());
@@ -58,7 +58,9 @@ export const Home = () => {
 </h1>
       </div>
       <div className='mt-auto z-20 animate-pulse animate-duration-1000 animate-once'>
-        <Social />
+      <Suspense fallback={<div>Loading...</div>}>
+  <Social />
+</Suspense>
         </div>
     </div>
     <div className="relative flex py-3 items-center p-5 pt-10">

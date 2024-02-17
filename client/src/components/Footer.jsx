@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom' // Import Link
 import spaceImage from '../assets/spaceimage.jpg';
 import logo from '../assets/logo.png';
-import { Social } from '../components/Social';
+import Social from '../components/Social';
 
 export const Footer = () => {
   return (
