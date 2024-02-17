@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import spaceimage from '../assets/spaceimage.jpg';
-import {Loader} from './Loader'; // Assuming Loader is in the same directory
+import {Loader} from './Loader'; 
 import 'photoswipe/style.css';
 
 const VideoPlayer = () => {
     const [videos, setVideos] = useState([]);
-    const [isLoading, setIsLoading] = useState(true); // Added isLoading state
+    const [isLoading, setIsLoading] = useState(true); 
     const divStyle = {
         backgroundImage: `url(${spaceimage})`,
     };
@@ -14,7 +14,6 @@ const VideoPlayer = () => {
     useEffect(() => {
       
         const fetchVideos = async () => {
-           // Set loading state to true before fetching
           try {
             setIsLoading(true);
             const apiUrl = process.env.REACT_APP_API_URL;
@@ -24,7 +23,6 @@ const VideoPlayer = () => {
           } catch (err) {
             console.error(err);
           }
-           // Set loading state to false after fetching
         };
     
         fetchVideos();
@@ -55,7 +53,7 @@ const VideoPlayer = () => {
                 {videos.slice().reverse().map((video) => {
                     const videoUrl = extractVideo(video.link);
                     return (
-                        <div key={video.id} className="aspect-w-16 aspect-h-9 overflow-hidden m-2 mb-6">
+                        <div key={video.id} className="aspect-w-16 aspect-h-9 overflow-hidden mx-0 mb-6">
                         <iframe
                             className=' md:w-[560px] md:h-[315px] w-[350px] h-[225px] rounded-lg'
                             src={videoUrl}
