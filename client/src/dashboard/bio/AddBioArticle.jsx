@@ -50,6 +50,7 @@ export const AddBioArticle = () => {
   };
 
   const handlePastedTextFr = (text, html, editorState) => {
+    text = text.replace(/\n/g, ' ');
     const selection = editorState.getSelection();
     const contentState = editorState.getCurrentContent();
     const ncs = Modifier.replaceText(contentState, selection, text);
@@ -59,6 +60,7 @@ export const AddBioArticle = () => {
   };
   
   const handlePastedTextEn = (text, html, editorStateEn) => {
+    text = text.replace(/\n/g, ' ');
     const selection = editorStateEn.getSelection();
     const contentState = editorStateEn.getCurrentContent();
     const ncs = Modifier.replaceText(contentState, selection, text);
