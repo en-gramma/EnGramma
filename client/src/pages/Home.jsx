@@ -50,14 +50,14 @@ export const Home = () => {
 
   return (
     <>
-    <div style={divStyle} className="p-5 bg-no-repeat bg-center bg-cover h-[90vh] md:h-screen shadow-xl flex bg-black bg-opacity-40 justify-center items-center">
+    <div style={divStyle} className="p-5 bg-no-repeat bg-center bg-cover h-screen shadow-xl flex bg-black bg-opacity-40 justify-center items-center">
 
       <div className="absolute inset-0 flex flex-col justify-center items-center ">
       <h1 className="text-5xl md:text-7xl" style={{ opacity }}>
         <span className="font-custom text-Engramma dropshadow-xl animate-fade animate-delay-[1000ms] ">EN GRAMMA</span>
       </h1>
       </div>
-      <div className='mt-auto z-20 animate-pulse animate-duration-1000 animate-once'>
+      <div className='absolute bottom-24 md:mt-auto z-20 animate-pulse animate-duration-1000 animate-once'>
       <Suspense fallback={<div>Chargement...</div>}>
       <Social />
     </Suspense>

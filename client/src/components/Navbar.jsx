@@ -92,7 +92,7 @@ export const Navbar = () => {
     backgroundColor: location.pathname === '/dashboard' ? '#2c2c2c' : ''
   }}
 >
-    <div className=" flex flex-wrap items-center justify-between mx-auto p-4 ">
+    <div className=" flex flex-wrap items-center justify-between mx-auto md:p-4 p-2">
           <a href="/" className="flex items-center">
 
           <p className={`font-custom text-2xl text-Engramma  md:hidden  lg:block md:absolute  ${isOnTop ? '' :'text-Engramma'}`} style={{ opacity }}>
