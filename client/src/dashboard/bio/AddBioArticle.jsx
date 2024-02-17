@@ -254,7 +254,7 @@ export const AddBioArticle = () => {
           <div key={bio.id} className="p-3 flex flex-col items-center bg-neutral-800 rounded shadow-lg border border-gray-300">
             <h2 className="mb-2"><span className='text-md font-bold text-white font-custom'>{bio.title}</span></h2>
             <img src={bio.image} alt={bio.title} className="w-[350px] h-[150px] object-cover mb-4 rounded " />
-            <div dangerouslySetInnerHTML={{ __html: bio.text.length > 200 ? bio.text.substring(0, 200) + '...' : bio.text }} className='text-justify text-white mb-5' />
+            
             <button onClick={() => deleteBio(bio.id)} className="mt-auto  bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 w-full  ">Effacer</button>
         </div>
         ))}
