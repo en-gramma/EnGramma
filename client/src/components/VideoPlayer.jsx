@@ -55,7 +55,7 @@ const VideoPlayer = () => {
                     return (
                         <div key={video.id} className="aspect-w-16 aspect-h-9 overflow-hidden mx-0 mb-6">
                         <iframe
-                            className=' md:w-[560px] md:h-[315px] w-[350px] h-[225px] rounded-lg'
+                            className=' md:w-[560px] md:h-[315px] w-[340px] h-[225px]'
                             src={videoUrl}
                             title="YouTube video player"
                             frameBorder="0"

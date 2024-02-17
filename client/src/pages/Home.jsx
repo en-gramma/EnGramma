@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import spaceImage from '../assets/spaceimage.jpg';
 import logo from '../assets/logo.png';
 import { Social } from '../components/Social';
-import trioHome from '../assets/trio-home.jpg';
+import trioHome from '../assets/trio-home.webp';
 import { Trans } from 'react-i18next'
 import { useTranslation } from 'react-i18next';
 
@@ -54,7 +54,7 @@ export const Home = () => {
 
       <div className="absolute inset-0 flex flex-col justify-center items-center ">
       <h1 className="text-5xl md:text-7xl" style={{ opacity }}>
-  <span className="font-custom text-Engramma dropshadow-xl animate-fade-up animate-duration-[2500ms] ">EN GRAMMA</span>
+  <span className="font-custom text-Engramma dropshadow-xl  ">EN GRAMMA</span>
 </h1>
       </div>
       <div className='mt-auto z-20 animate-pulse animate-duration-1000 animate-once'>
@@ -70,7 +70,7 @@ export const Home = () => {
   <div className='flex items-center justify-center  mb-9 flex-col sm:flex-row mx-2'>
     {isMobile ? (
       <div className="relative w-full mt-4 sm:mt-0 mx-3 mb-7">
-        <img src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[380px] shadow-lg " />
+        <img loading="lazy" src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[380px] shadow-lg " />
         <p className="absolute bottom-0 right-0 text-white  px-2 py-1 text-sm">&copy; Antoine Chevillé</p>
       </div>
     ) : null}
@@ -82,7 +82,7 @@ export const Home = () => {
 
   {!isMobile ? (
     <div className="relative mt-4 sm:mt-0 mx-3 mb-9">
-      <img src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[27rem] shadow-lg " />
+      <img  loading="lazy" src={trioHome} alt="EN GRAMMA" className="object-cover w-full rounded h-auto max-h-[27rem] shadow-lg " />
       <p className="absolute bottom-0 right-0 text-white  px-2 py-1 text-sm">&copy; Antoine Chevillé</p>
     </div>
   ) : null}

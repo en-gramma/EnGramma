@@ -38,6 +38,11 @@ app.use((req, res, next) => {
   next();
 });
 
+const oneYearInSeconds = 31536000;
+app.use(express.static('public', {
+    maxAge: oneYearInSeconds
+}));
+
 // validation du captcha
 app.post('/api/recaptcha', async (req, res) => {
   const { response } = req.body;

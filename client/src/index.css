@@ -29,11 +29,13 @@ body {
 @font-face {
   font-family: 'Engramma';
   src: url('../Engramma.ttf') format('truetype');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Coco';
   src: url('../Cocogoose-Pro-Ultralight.ttf') format('truetype');
+  font-display: swap;
 }
 
 code {
