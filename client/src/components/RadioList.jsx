@@ -64,7 +64,7 @@ export const RadioList = () => {
         {isMobile && [...radios].reverse().slice(0, displayedRadios).map(radio => (
           <div key={radio.id} style={{ flex: "0 0 auto", width: "100%" }} className="p-4 flex flex-col items-center ">
             <div className='bg-gray-100 border w-[300px] text-center px-4 rounded'>
-              <img src={radio.image} alt={radio.name} className="w-auto mx-auto h-[75px] object-cover mb-4 rounded pt-1" />
+            <img src={radio.image.replace('http://', 'https://')} alt={radio.name} className="w-auto mx-auto h-[75px] object-cover mb-4 rounded pt-1" />
               <div className="my-1 border-b border-gray-300 "></div>
               <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? radio.pays : radio.country).replace(/\n/g, '<br />')) }} 
   className='font-semibold  mb-2'/>
@@ -85,7 +85,7 @@ export const RadioList = () => {
             {[...radios].reverse().map(radio => (
                 <div key={radio.id} style={{ flex: "0 0 auto", width: "33.33%" }} className="p-4 flex flex-col items-center ">
                   <div className='bg-gray-100 border w-[300px] text-center px-4 rounded'>
-                    <img src={radio.image} alt={radio.name} className="w-auto mx-auto h-[75px] object-cover mb-4 rounded pt-1" />
+                  <img src={radio.image.replace('http://', 'https://')} alt={radio.name} className="w-auto mx-auto h-[75px] object-cover mb-4 rounded pt-1" />
                     <div className="my-1 border-b border-gray-300 "></div>
                     <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? radio.pays : radio.country).replace(/\n/g, '<br />')) }} 
       className='font-semibold  mb-2'/>

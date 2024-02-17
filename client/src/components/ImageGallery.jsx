@@ -59,8 +59,8 @@ const ImageGallery = () => {
   <div id="my-gallery" className="grid md:grid-cols-3 md:gap-4 grid-cols-1 gap-2 w-full ">
     {images.reverse().map((image, index) => (
       <div key={image.id} className="relative w-full">
-        <a href={image.image} data-pswp-width={image.width} data-pswp-height={image.height}>
-          <img src={image.image} alt={image.title} className="w-full h-full object-cover rounded-lg cursor-pointer" />
+        <a href={image.image.replace('http://', 'https://')} data-pswp-width={image.width} data-pswp-height={image.height}>
+          <img src={image.image.replace('http://', 'https://')} alt={image.title} className="w-full h-full object-cover rounded-lg cursor-pointer" /> 
         </a>
         <p className="absolute bottom-0 right-0 text-gray-300 px-2 py-1 text-xxs bg-black bg-opacity-10">&copy; {image.author}</p>
       </div>

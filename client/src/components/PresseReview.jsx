@@ -56,7 +56,7 @@ export const PressReview = () => {
     return (
       <div className="flex justify-center mx-auto text-md">
       <div key={article.id} className="p-4 flex flex-col items-center text-white md: mb-4">
-          <img src={article.image} alt={article.name} className=" h-[75px] w-[75px] object-contains mb-4 rounded-full" />
+      <img src={article.image.replace('http://', 'https://')} alt={article.name} className=" h-[75px] w-[75px] object-contains mb-4 rounded-full" />
           <h2 className="mb-2"><span className='font-bold text-white text-md'>{article.name}</span> <span className='italic text-white'>({article.country})</span></h2>
           {t(i18n.language === 'en' ? article.headerEn : article.header) && (
             <div className='text-center font-bold mb-2'>
