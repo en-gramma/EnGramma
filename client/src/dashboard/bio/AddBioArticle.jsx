@@ -3,7 +3,7 @@ import axios from 'axios';
 import DOMPurify from 'isomorphic-dompurify';
 import fr from "../../assets/fr.png";
 import en from "../../assets/en.png";
-import { EditorState, convertToRaw } from 'draft-js';
+import { EditorState, convertToRaw, Modifier } from 'draft-js';
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
@@ -47,6 +47,24 @@ export const AddBioArticle = () => {
     setFormData({
       ...formData,
       [name]: type === 'file' ? files[0] : value,});
+  };
+
+  const handlePastedTextFr = (text, html, editorState) => {
+    const selection = editorState.getSelection();
+    const contentState = editorState.getCurrentContent();
+    const ncs = Modifier.replaceText(contentState, selection, text);
+    const es = EditorState.push(editorState, ncs, 'insert-characters');
+    setEditorState(es);
+    return 'handled';
+  };
+  
+  const handlePastedTextEn = (text, html, editorStateEn) => {
+    const selection = editorStateEn.getSelection();
+    const contentState = editorStateEn.getCurrentContent();
+    const ncs = Modifier.replaceText(contentState, selection, text);
+    const es = EditorState.push(editorStateEn, ncs, 'insert-characters');
+    setEditorStateEn(es);
+    return 'handled';
   };
 
   const uploadImage = async (file) => {
@@ -197,6 +215,7 @@ export const AddBioArticle = () => {
         <div className="mb-4 border border-gray-300">
       <Editor
         editorState={editorState}
+        handlePastedText={handlePastedTextFr}
         toolbarClassName="toolbarClassName"
         wrapperClassName="wrapperClassName"
         editorClassName="editorClassName"
@@ -223,6 +242,7 @@ export const AddBioArticle = () => {
 
       <Editor
         editorState={editorStateEn}
+        handlePastedText={handlePastedTextEn}
         toolbarClassName="toolbarClassName"
         wrapperClassName="wrapperClassName"
         editorClassName="editorClassName"
