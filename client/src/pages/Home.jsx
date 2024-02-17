@@ -54,13 +54,13 @@ export const Home = () => {
 
       <div className="absolute inset-0 flex flex-col justify-center items-center ">
       <h1 className="text-5xl md:text-7xl" style={{ opacity }}>
-  <span className="font-custom text-Engramma dropshadow-xl  ">EN GRAMMA</span>
-</h1>
+        <span className="font-custom text-Engramma dropshadow-xl  ">EN GRAMMA</span>
+      </h1>
       </div>
       <div className='mt-auto z-20 animate-pulse animate-duration-1000 animate-once'>
-      <Suspense fallback={<div>Loading...</div>}>
-  <Social />
-</Suspense>
+      <Suspense fallback={<div>Chargement...</div>}>
+      <Social />
+    </Suspense>
         </div>
     </div>
     <div className="relative flex py-3 items-center p-5 pt-10">
