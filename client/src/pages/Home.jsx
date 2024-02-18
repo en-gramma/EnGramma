@@ -57,7 +57,7 @@ export const Home = () => {
         <span className="font-custom text-Engramma dropshadow-xl animate-fade animate-delay-[1000ms] ">EN GRAMMA</span>
       </h1>
       </div>
-      <div className='absolute bottom-12 md:mt-auto z-20 animate-pulse animate-duration-800 animate-once'>
+      <div className='absolute bottom-12 md:mt-auto z-20 animate-pulse animate-duration-500 animate-once'>
       <Suspense fallback={<div>Chargement...</div>}>
       <Social />
     </Suspense>
