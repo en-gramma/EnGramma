@@ -9,47 +9,57 @@ export const AddDate = () => {
     monthEn: DOMPurify.sanitize (''),
     place: DOMPurify.sanitize (''),
     city: DOMPurify.sanitize (''),
+    year: DOMPurify.sanitize ('')
   });
   const [statusMessage, setStatusMessage] = useState('');
   const [dates, setDates] = useState([]);
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    const { day, month, place, city } = formData;
+    const sanitzedFormData = {
+      day: DOMPurify.sanitize(formData.day),
+      month: DOMPurify.sanitize(formData.month),
+      monthEn: DOMPurify.sanitize(formData.monthEn),
+      place: DOMPurify.sanitize(formData.place),
+      city: DOMPurify.sanitize(formData.city),
+      year: DOMPurify.sanitize(formData.year)
+    };
   
     // Input validation
-    const dayRegex = /^(3[01]|[12][0-9]|0?[1-9])$/;
+    const dayRegex = /^\d+$/;
     const wordRegex = /^[\w\W\s]*$/;
   
-    if (!dayRegex.test(day) || !wordRegex.test(month) || 
-        !wordRegex.test(place) || !wordRegex.test(city)) {
+    if (!dayRegex.test(sanitzedFormData.day) || !wordRegex.test(sanitzedFormData.month) || 
+        !wordRegex.test(sanitzedFormData.place) || !wordRegex.test(sanitzedFormData.city)
+        || !wordRegex.test(sanitzedFormData.monthEn) || !dayRegex.test(sanitzedFormData.year)) {
       alert('Caractère non valide dans un des champs');
       return;
     }
   
     try {
       const apiUrl = process.env.REACT_APP_API_URL;
-      await axios.post(`${apiUrl}/api/dates`, formData, 
+      await axios.post(`${apiUrl}/api/dates`, sanitzedFormData,
       { withCredentials: true });
-      setStatusMessage('success');
-      fetchDates(); 
-  
-      // Clear form fields
       setFormData({
         day: DOMPurify.sanitize (''),
         month: DOMPurify.sanitize (''),
         monthEn: DOMPurify.sanitize (''),
         place: DOMPurify.sanitize (''),
         city: DOMPurify.sanitize (''),
+        year: DOMPurify.sanitize ('')
       });
+      setStatusMessage('success');
+      fetchDates(); 
+  
     } catch (error) {
       setStatusMessage('error');
     }
@@ -80,17 +90,20 @@ export const AddDate = () => {
   useEffect(() => {
     fetchDates();
   }, []);
+
   return (
     <div className="w-full shadow-md rounded-md p-1 md:p-5 bg-white md:m-4">
       <h2 className="text-xl font-bold  px-2 py-2 w-full">Editeur de date</h2>
       <div className="mb-5 mt-2 border-b border-gray-300"></div>
       <h2 className="text-lg font-bold mb-4  px-2 py-2 w-full">Ajouter une nouvelle date</h2>
       <form onSubmit={handleSubmit} className="">
-        <input type="text" name="day" placeholder="Jour (numérique)" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
-        <input type="text" name="month" placeholder="Mois (alphabétique)" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
-        <input type="text" name="monthEn" placeholder="Mois (en anglais)" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
-        <input type="text" name="place" placeholder="Lieu" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
-        <input type="text" name="city" placeholder="Ville" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
+        <input required value={formData.day}  type="text" name="day" placeholder="Jour (numérique)" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
+        <input required value={formData.month} type="text" name="month" placeholder="Mois (alphabétique)" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
+        <input required value={formData.monthEn} type="text" name="monthEn" placeholder="Mois (en anglais)" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
+        <input required value={formData.year} type="text" name="year" placeholder="Année" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
+        <input required value={formData.place} type="text" name="place" placeholder="Lieu" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
+        <input required value={formData.city} type="text" name="city" placeholder="Ville" onChange={handleChange} className="mb-4 rounded mr-1 p-2 border border-gray-400" />
+
         <button type="submit" className="mb-4 p-2 bg-blue-500 text-white rounded">Ajouter une date</button>
       </form>
         {statusMessage === 'success' && <div className="text-green-500">La date a été ajoutée avec succès!</div>}
@@ -113,6 +126,7 @@ export const AddDate = () => {
         <tbody>
             {dates.slice().reverse().map((date) => (
             <tr key={date.id}>
+                <td className="border px-4 py-2">{date.year}</td>
                 <td className="border px-4 py-2">{date.day}</td>
                 <td className="border px-4 py-2">{date.month}</td>
                 <td className="border px-4 py-2">{date.monthEn}</td>

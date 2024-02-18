@@ -62,7 +62,7 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
-  // Wait for the initial authentication check to complete before rendering the children
+  
   if (isLoading) {
     return <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center overflow-auto "><Loader /></div>;
   }

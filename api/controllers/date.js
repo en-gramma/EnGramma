@@ -57,23 +57,25 @@ export const addDate= (req, res, next) => {
         return;
       }
 
-      const dayRegex = /^(3[01]|[12][0-9]|0?[1-9])$/;
+      const dayRegex = /^\d+$/;
       const wordRegex = /^[\w\W\s]*$/;
     
       if (!dayRegex.test(req.body.day) || !wordRegex.test(req.body.month) || 
-          !wordRegex.test(req.body.place) || !wordRegex.test(req.body.city)|| !wordRegex.test(req.body.monthEn)) {
+          !wordRegex.test(req.body.place) || !wordRegex.test(req.body.city)|| !wordRegex.test(req.body.monthEn)
+          || !dayRegex.test(req.body.year)) {
         return res.status(400).json("Les données entrées sont invalides.");
       }
   
       const q =
-        "INSERT INTO dates (`day`, `month`, `place`, `city`, `monthEn`) VALUES (?)";
+        "INSERT INTO dates (`day`, `month`, `place`, `city`, `monthEn`, `year`) VALUES (?)";
   
       const values = [
         DOMPurify.sanitize(req.body.day),
         DOMPurify.sanitize(req.body.month),
         DOMPurify.sanitize(req.body.monthEn),
         DOMPurify.sanitize(req.body.place),
-        DOMPurify.sanitize(req.body.city)
+        DOMPurify.sanitize(req.body.city),
+        DOMPurify.sanitize(req.body.year)
       ];
   
       db.query(q, [values], (err, data) => {
