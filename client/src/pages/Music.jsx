@@ -69,7 +69,7 @@ export const Music = () => {
                       href={album.albumLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-orange2 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-2 lg:mb-0 mx-3 text-center animate-fade-up shadow-md"
+                      className="bg-orange2 hover:bg-orange-700 text-white text-shadow font-bold py-2 px-4 rounded mb-2 lg:mb-0 mx-3 text-center animate-fade-up shadow-md"
                     >
                       {t('music.button')}
                     </a>

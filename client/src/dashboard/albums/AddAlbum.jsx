@@ -38,6 +38,7 @@ export const AddAlbum = () => {
       });
     }
   };
+  
   const [formData, setFormData] = useState({
     title: DOMPurify.sanitize(''),
     description: DOMPurify.sanitize(''),
@@ -87,12 +88,10 @@ export const AddAlbum = () => {
 
     try {
       const apiUrl = process.env.REACT_APP_API_URL;
-      const response = await axios.post(`${apiUrl}/api/albums`, sanitizedData, {
+       await axios.post(`${apiUrl}/api/albums`, sanitizedData, {
         withCredentials: true,
       });
-
-      console.log(response.data); // Vous pouvez traiter la réponse comme nécessaire
-
+    
       // Réinitialiser le formulaire après avoir ajouté l'album avec succès
       setFormData({
         title: DOMPurify.sanitize(''),

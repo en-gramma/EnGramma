@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import spaceimage from '../assets/spaceimage.webp';
 import logo2 from '../assets/logo.png';
-import logo3 from '../assets/logotrans-min.png';
+import logo3 from '../assets/logotrans-min.webp';
 import DOMPurify from 'isomorphic-dompurify';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { CgMediaPodcast } from 'react-icons/cg';
@@ -192,7 +192,7 @@ const handleRecaptchaChange = (value) => {
       </div>
         <button
           type="submit"
-          className="bg-orange2 text-white py-2 px-4 mb-4 mt-2 rounded  hover:bg-orange-800 w-full md:max-w-[300px] ">
+          className="bg-orange2 text-white text-shadow font-semibold py-2 px-4 mb-4 mt-2 rounded  hover:bg-orange-800 w-full md:max-w-[300px] ">
           {t('contact.button')}
         </button>
 
