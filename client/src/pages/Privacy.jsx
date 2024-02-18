@@ -1,5 +1,5 @@
 import React from 'react'
-import spaceimage from '../assets/spaceimage.jpg';
+import spaceimage from '../assets/spaceimage.webp';
 
 export const Privacy = () => {
   return (

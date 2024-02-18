@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
-import spaceimage from '../assets/spaceimage.jpg';
+import spaceimage from '../assets/spaceimage.webp';
 import {Loader }from './Loader';
 import 'photoswipe/style.css';
 

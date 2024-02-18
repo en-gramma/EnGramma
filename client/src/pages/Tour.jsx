@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import scene2 from '../assets/scene2.jpg';
+import scene2 from '../assets/scene2.webp';
 import axios from 'axios';
 import { Loader } from '../components/Loader';
 import { useTranslation } from 'react-i18next';

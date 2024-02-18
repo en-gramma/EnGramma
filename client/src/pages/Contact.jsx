@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import spaceimage from '../assets/spaceimage.jpg';
+import spaceimage from '../assets/spaceimage.webp';
 import logo2 from '../assets/logo.png';
 import logo3 from '../assets/logotrans-min.png';
 import DOMPurify from 'isomorphic-dompurify';

@@ -1,5 +1,5 @@
 import React, {useState, useEffect, Suspense} from 'react'
-import spaceImage from '../assets/spaceimage.jpg';
+import spaceImage from '../assets/spaceimage.webp';
 import logo from '../assets/logo.png';
 import trioHome from '../assets/trio-home.webp';
 import { Trans } from 'react-i18next'

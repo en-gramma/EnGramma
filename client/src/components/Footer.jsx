@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom' // Import Link
-import spaceImage from '../assets/spaceimage.jpg';
+import spaceImage from '../assets/spaceimage.webp';
 import logo from '../assets/logo.png';
 import Social from '../components/Social';
 
