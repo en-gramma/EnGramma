@@ -21,7 +21,7 @@ export const Footer = () => {
 
             <div className=" absolute inset-0 flex flex-col items-center justify-center">
               <p className="font-custom dropshadow-xl text-2xl mt-2">CONTACT</p>
-              <p className='text-orange2 my-4'>univergram.asso@gmail.com</p>
+              <p className='text-orange2 my-3'>univergram.asso@gmail.com</p>
                 <Social />
                 <div className='flex items-center'>
                 <p className='text-xs md:hidden mt-2'>&copy; En Gramma</p>
