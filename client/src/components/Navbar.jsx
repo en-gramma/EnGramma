@@ -185,7 +185,7 @@ export const Navbar = () => {
                 </button>
               </li>
              
-              <div className="mb-2 mt-2 border-b border-gray-300"></div>
+              <li className="mb-2 mt-2 border-b border-gray-300"></li>
               <li className="md:absolute md:top-2 md:right-10">
                   {currentUser &&
                 <div className="flex items-center cursor-pointer" onClick={toggleMenu}>

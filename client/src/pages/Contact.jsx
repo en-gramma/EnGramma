@@ -216,7 +216,7 @@ const handleRecaptchaChange = (value) => {
                 <GrScheduleNew className='text-orange2 text-xl' />
                 <p><a href={link.fiche} className='text-lg ml-2 text-orange2 hover:text-orange-700 underline font-semibold' target="_blank" rel="noopener noreferrer">{t('contact.linkTech')}</a></p>
               </div>
-              <img src={logo3} alt="En Gramma" className='opacity-70 h-[150px] mx-auto' />
+              <img src={logo3} alt="En Gramma" className='opacity-70 h-[150px] w-auto mx-auto' />
             </div>
 
           </React.Fragment>

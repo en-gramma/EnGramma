@@ -74,7 +74,7 @@ export const RadioListFr = () => {
             {[...radiosFr].reverse().map(radio => (
               <div key={radio.id} style={{ flex: "0 0 auto", width: "25%" }} className="p-4 flex flex-col items-center ">
                 <div className='w-[300px] text-center'>
-                <img src={radio.image.replace('http://', 'https://')} alt={radio.description} className="w-auto mx-auto h-[75px] object-cover mb-4 rounded pt-1" />
+                <img src={radio.image.replace('http://', 'https://')} alt='Logo Radio' className="w-auto mx-auto h-[75px] object-cover mb-4 rounded pt-1" />
                 </div>
               </div>
             ))}

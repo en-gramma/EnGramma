@@ -52,11 +52,20 @@ app.post('/api/recaptcha', async (req, res) => {
 
   try {
     const captchaResponse = await fetch(url, { method: 'POST' });
+
+    if (!captchaResponse.ok) {
+      throw new Error('Failed to validate reCAPTCHA');
+    }
+
     const data = await captchaResponse.json();
 
     res.json(data);
   } catch (error) {
-    res.status(500).json({ error: 'An error occurred' });
+    if (error.message === 'Failed to validate reCAPTCHA') {
+      res.status(401).json({ error: 'Failed to validate reCAPTCHA' });
+    } else {
+      res.status(500).json({ error: 'An error occurred' });
+    }
   }
 });
 
