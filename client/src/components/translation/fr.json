@@ -24,7 +24,10 @@
     
     "press": {
       "name": "media",
-      "press": "PRESSE"
+      "press": "PRESSE",
+      "Vplus": "Voir plus",
+      "VplusM": "Voir plus d'avis",
+      "VplusR": "Voir plus de radios"
   },
 
   "radio": {

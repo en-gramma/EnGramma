@@ -73,7 +73,7 @@ export const Music = () => {
                     >
                       {t('music.button')}
                     </a>
-                    <a href="/media" className='text-orange2 underline mt-1 mx-3 text-center animate-fade-up animate-delay-500 '>{t('music.press')}</a>
+                    <a href="/media" className='text-orange2 text-lg font-semibold underline mt-1 mx-3 text-center animate-fade-up animate-delay-500 '>{t('music.press')}</a>
                   </div>
                 </div>
               </div>
