@@ -67,9 +67,9 @@ export const Tour = () => {
               <span className='text-2xl text-white font-semibold'>{date.year}</span>
             </div>
           )}
-          <div className="mb-4 border-b border-white flex  items-start md:items-center md:justify-between w-full sm:w-[700px] last:mb-0 last:border-0  ">
+          <div className="mb-4 border-b border-white flex  items-start md:items-center md:justify-between w-full sm:w-[800px] last:mb-0 last:border-0  ">
             <div className="flex flex-row  w-full text-center mx-4 md:mx-0">
-              <div className="text-column text-left mb-2 md:mb-0 w-1/2 mx-2">
+              <div className="text-column text-left mb-2 md:mb-0 w-1/3 mx-2">
                   <p className="text-white mb-4 md:mb-4 animate-fade-right">
                   <span className='text-2xl font-semibold mr-3 text-Engramma'>{day}</span> 
                   <span className='text-xl '>
@@ -77,10 +77,10 @@ export const Tour = () => {
                   </span>
                 </p>
               </div>
-              <div className="text-column md:flex md:flex-row  md:items-center  md:justify-between mb-2 md:mb-0  w-full">
-                <p className="text-Engramma  md:text-xl text-lg md:mb-4 font-semibold "><span className=''>{`${date.place}`}</span></p>
-                <p className="text-white  md:text-2xl text-xl mb-4 md:mb-4 animate-fade-left "><span className=''>{`${date.city}`}</span></p>
-              </div>
+              <div className="text-column md:flex md:flex-row  md:items-start  md:justify-between mb-2 md:mb-0  w-full">
+  <p className="text-Engramma  md:text-xl text-lg md:mb-4 font-semibold "><span className=''>{`${date.place}`}</span></p>
+  <p className="text-white  md:text-2xl text-xl mb-4 md:mb-4 animate-fade-left "><span className=''>{`${date.city}`}</span></p>
+</div>
             </div>
           </div>
               </React.Fragment>
