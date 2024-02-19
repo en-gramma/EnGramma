@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DOMPurify from 'dompurify';
 import { DeleteAlbum } from './DeleteAlbum';
-import { EditorState, convertToRaw } from 'draft-js';
+import { EditorState, convertToRaw, Modifier } from 'draft-js';
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
@@ -37,6 +37,26 @@ export const AddAlbum = () => {
         descriptionEn: draftToHtml(convertToRaw(editorStateEn.getCurrentContent()))
       });
     }
+  };
+
+  const handlePastedTextFr = (text, html, editorState) => {
+    text = text.replace(/\n/g, ' ');
+    const selection = editorState.getSelection();
+    const contentState = editorState.getCurrentContent();
+    const ncs = Modifier.replaceText(contentState, selection, text);
+    const es = EditorState.push(editorState, ncs, 'insert-characters');
+    setEditorState(es);
+    return 'handled';
+  };
+  
+  const handlePastedTextEn = (text, html, editorStateEn) => {
+    text = text.replace(/\n/g, ' ');
+    const selection = editorStateEn.getSelection();
+    const contentState = editorStateEn.getCurrentContent();
+    const ncs = Modifier.replaceText(contentState, selection, text);
+    const es = EditorState.push(editorStateEn, ncs, 'insert-characters');
+    setEditorStateEn(es);
+    return 'handled';
   };
   
   const [formData, setFormData] = useState({
@@ -131,6 +151,7 @@ export const AddAlbum = () => {
           <div className="mb-4 border border-gray-300">
             <Editor
               editorState={editorState}
+              handlePastedText={handlePastedTextFr}
               toolbarClassName="toolbarClassName"
               wrapperClassName="wrapperClassName"
               editorClassName="editorClassName"
@@ -152,6 +173,7 @@ export const AddAlbum = () => {
         <div className="mb-4 border border-gray-300">
             <Editor
               editorState={editorStateEn}
+              handlePastedText={handlePastedTextEn}
               toolbarClassName="toolbarClassName"
               wrapperClassName="wrapperClassName"
               editorClassName="editorClassName"

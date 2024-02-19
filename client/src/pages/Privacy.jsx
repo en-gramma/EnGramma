@@ -3,9 +3,8 @@ import spaceimage from '../assets/spaceimage.webp';
 
 export const Privacy = () => {
   return (
-    <div className="h-screen relative overflow-hidden ">
-    <img src={spaceimage} alt="Music Background" className="object-cover w-full h-full bg-black bg-opacity-40 z-0 absolute" />
-    <div class="max-w-2xl mx-auto py-8 px-4 text-white pt-[100px] z-10 relative overflow-y-auto h-screen no-scrollbar">
+    <div className="relative" style={{backgroundImage: `url(${spaceimage})`, backgroundSize: 'contain'}}>
+      <div class="max-w-2xl mx-auto py-8 px-4 text-white pt-[100px] z-10 relative overflow-y-auto no-scrollbar">
     <h1 class="text-3xl font-bold mb-4">Politique de confidentialité <span className='font-custom'>EN GRAMMA</span></h1>
     <p class="mb-4">La confidentialité et la sécurité des données de nos utilisateurs sont des priorités absolues pour nous. Cette politique de confidentialité explique notre engagement à protéger vos informations lorsque vous utilisez notre site web.</p>
 
