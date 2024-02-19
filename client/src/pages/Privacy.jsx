@@ -15,6 +15,12 @@ export const Privacy = () => {
     <h2 class="text-xl font-bold mb-2">2. Aucune collecte de données personnelles à des fins commerciales :</h2>
     <p class="mb-4">Nous vous assurons que nous ne collectons aucune donnée à des fins commerciales. Vos informations personnelles ne sont pas vendues, échangées, ni louées à des tiers. Nous ne recueillons aucune donnée, sous quelque forme que ce soit, auprès de nos visiteurs, en dehors de celles nécessaires au bon fonctionnement du site.</p>
 
+    <h2 class="text-xl font-bold mb-2">3. YouTube :</h2>
+    <p class="mb-4">Nous utilisons YouTube pour héberger des vidéos. YouTube peut collecter des données sur votre interaction avec ces vidéos. Nous vous recommandons de consulter la politique de confidentialité de YouTube pour plus d'informations.</p>
+
+    <h2 class="text-xl font-bold mb-2">4. Bandcamp :</h2>
+    <p class="mb-4">Nous utilisons Bandcamp pour héberger de la musique. Bandcamp peut collecter des données sur votre interaction avec cette musique. Nous vous recommandons de consulter la politique de confidentialité de Bandcamp pour plus d'informations.</p>
+
     <p class="mb-4">En utilisant notre site, vous consentez à notre politique de confidentialité. Si vous avez des questions ou des préoccupations concernant cette politique, veuillez nous contacter à l'adresse <span class="font-semibold text-orange2">univergram.asso@gmail.com</span>.</p>
 
     <p class="mb-4">Date d'entrée en vigueur : <span class="font-semibold">14/02/2024</span></p>
