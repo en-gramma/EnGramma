@@ -115,6 +115,7 @@ export const AddDate = () => {
         <table className="table-auto w-full">
         <thead>
             <tr className='text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400'>
+            <th className="px-4 py-2">Année</th>
             <th className="px-4 py-2">Jour</th>
             <th className="px-4 py-2">Mois</th>
             <th className="px-4 py-2">Mois (en anglais)</th>
