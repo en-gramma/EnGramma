@@ -86,7 +86,7 @@ export const PressReview = () => {
           </div>
           {text.split(' ').length > 30 && (
             <button onClick={() => setIsExpanded(!isExpanded)} className="underline text-orange2 text-lg font-semibold">
-              {isExpanded ? t('Voir moins') : t('press.Vplus')}
+              {isExpanded ? t('press.Vless') : t('press.Vplus')}
             </button>
           )}
         </div>
