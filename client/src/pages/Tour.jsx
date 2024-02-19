@@ -73,7 +73,7 @@ export const Tour = () => {
                   <p className="text-white mb-4 md:mb-4 animate-fade-right">
                   <span className='text-2xl font-semibold mr-3 text-Engramma'>{day}</span> 
                   <span className='text-xl '>
-                    {i18n.language === 'en' ? date.monthEn.toUpperCase() : date.month.substring(0, 4).toUpperCase()}
+                  {i18n.language === 'en' ? date.monthEn.toUpperCase() : date.month.toUpperCase()}
                   </span>
                 </p>
               </div>
