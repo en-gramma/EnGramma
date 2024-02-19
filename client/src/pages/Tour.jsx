@@ -67,24 +67,22 @@ export const Tour = () => {
               <span className='text-2xl text-white font-semibold'>{date.year}</span>
             </div>
           )}
-        <div className="mb-4 border-b border-white flex items-start md:items-center md:justify-between w-full sm:w-[800px] last:mb-0 last:border-0">
-          <div className="flex flex-row w-full text-center mx-4 md:mx-0">
-            <div className="text-column text-left mb-2 md:mb-0 flex-1 mx-2">
-              <p className="text-white mb-4 md:mb-4 animate-fade-right">
-                <span className='text-2xl font-semibold mr-3 text-Engramma'>{day}</span> 
-                <span className='text-xl '>
+          <div className="mb-4 border-b border-white flex  items-start md:items-center md:justify-between w-full sm:w-[800px] last:mb-0 last:border-0  ">
+            <div className="flex flex-row  w-full text-center mx-4 md:mx-0">
+              <div className="text-column text-left mb-2 md:mb-0 w-1/3 mx-2">
+                  <p className="text-white mb-4 md:mb-4 animate-fade-right">
+                  <span className='text-2xl font-semibold mr-3 text-Engramma'>{day}</span> 
+                  <span className='text-xl '>
                   {i18n.language === 'en' ? date.monthEn.toUpperCase() : date.month.toUpperCase()}
-                </span>
-              </p>
+                  </span>
+                </p>
+              </div>
+              <div className="text-column md:flex md:flex-rowtext-center md:items-center md:justify-between mb-2 md:mb-0  w-full">
+              <p className="text-Engramma  md:text-xl text-lg md:mb-4 font-semibold "><span className=''>{`${date.place}`}</span></p>
+              <p className="text-white  md:text-2xl text-xl mb-4 md:mb-4 animate-fade-left "><span className=''>{`${date.city}`}</span></p>
             </div>
-            <div className="text-column text-Engramma md:text-xl text-lg md:mb-4 font-semibold flex-2">
-              <span className=''>{`${date.place}`}</span>
-            </div>
-            <div className="text-column text-white md:text-2xl text-xl mb-4 md:mb-4 animate-fade-left flex-1 text-right">
-              <span className=''>{`${date.city}`}</span>
             </div>
           </div>
-        </div>
               </React.Fragment>
         );
       })}
