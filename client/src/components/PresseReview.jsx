@@ -85,7 +85,7 @@ export const PressReview = () => {
             </div>
           </div>
           {text.split(' ').length > 30 && (
-            <button onClick={() => setIsExpanded(!isExpanded)} className="underline text-orange2 ">
+            <button onClick={() => setIsExpanded(!isExpanded)} className="underline text-orange2 text-lg font-semibold">
               {isExpanded ? 'Voir moins' : 'Voir plus'}
             </button>
           )}
@@ -111,8 +111,8 @@ export const PressReview = () => {
               </div>
             ))}
             {isMobile && displayedArticles < articles.length && (
-              <button onClick={loadMoreArticles} className="underline text-orange2 ">
-                Voir plus
+              <button onClick={loadMoreArticles} className="underline text-orange2 text-lg font-semibold">
+                Voir plus d'avis
               </button>
             )}
             {!isMobile && (

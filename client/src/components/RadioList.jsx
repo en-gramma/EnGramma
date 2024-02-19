@@ -74,8 +74,8 @@ export const RadioList = () => {
           </div>
         ))}
         {isMobile && displayedRadios < radios.length && (
-          <button onClick={loadMoreRadios} className="underline text-orange2 ">
-            Voir plus
+          <button onClick={loadMoreRadios} className="underline text-orange2 text-lg font-semibold">
+            Voir plus de radios
           </button>
         )}
         {!isMobile && (
