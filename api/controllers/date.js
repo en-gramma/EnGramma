@@ -69,14 +69,14 @@ export const addDate= (req, res, next) => {
       const q =
         "INSERT INTO dates (`day`, `month`, `place`, `city`, `monthEn`, `year`) VALUES (?)";
   
-      const values = [
-        DOMPurify.sanitize(req.body.day),
-        DOMPurify.sanitize(req.body.month),
-        DOMPurify.sanitize(req.body.monthEn),
-        DOMPurify.sanitize(req.body.place),
-        DOMPurify.sanitize(req.body.city),
-        DOMPurify.sanitize(req.body.year)
-      ];
+        const values = [
+          DOMPurify.sanitize(req.body.day),
+          DOMPurify.sanitize(req.body.month),
+          DOMPurify.sanitize(req.body.place),
+          DOMPurify.sanitize(req.body.city),
+          DOMPurify.sanitize(req.body.monthEn),
+          DOMPurify.sanitize(req.body.year)
+        ];
   
       db.query(q, [values], (err, data) => {
         if (err) {
