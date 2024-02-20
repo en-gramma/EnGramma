@@ -10,6 +10,7 @@ import { GrArticle } from "react-icons/gr";
 import { CiYoutube } from "react-icons/ci";
 import { BsCalendar2Date } from "react-icons/bs";
 import { CiLink } from "react-icons/ci";
+import { IoHomeOutline } from "react-icons/io5";
 
 export const Sidebar = ({ onSelectMenuItem }) => {
 
@@ -47,6 +48,14 @@ export const Sidebar = ({ onSelectMenuItem }) => {
         )}
       <div className=" mt-2 border-b border-gray-300"></div>
       <ul>
+      <div className='bg-gray-100 p-1 font-semibold shadow mb-2'>Accueil</div>
+      <li className={`mb-2 cursor-pointer ${selectedMenu === 'update-home' ? 'text-orange2' : 'hover:text-orange2'}`} onClick={() => handleMenuItemClick ('update-home')}>
+          <div className="flex items-center">
+            <IoHomeOutline className="mr-2" />
+            Modifier la page d'accueil
+          </div>
+        </li>
+        <div className=" border-b border-gray-300"></div>
       <div className='bg-gray-100 p-1 font-semibold shadow mb-2'>Musique</div>
       <li className={`mb-2 cursor-pointer ${selectedMenu === 'ajouter-album' ? 'text-orange2' : 'hover:text-orange2'}`} onClick={() => handleMenuItemClick ('ajouter-album')}>
           <div className="flex items-center">

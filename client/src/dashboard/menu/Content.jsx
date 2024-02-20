@@ -13,6 +13,7 @@ import { AddRadio } from '../radios/AddRadio';
 import { AddBioArticle } from '../bio/AddBioArticle';
 import { UpdateBioArticle } from '../bio/UpdateBioArticle';
 import { UpdateAlbum } from '../albums/UpdateAlbum';
+import { UpdateHome } from '../home/UpdateHome';
 
 export const Content = ({ selectedMenuItem }) => {
   //espace réservé au contenu du dashboard
@@ -46,6 +47,8 @@ export const Content = ({ selectedMenuItem }) => {
         return <div><UpdateBioArticle/></div>;
       case 'update-album':
         return <div><UpdateAlbum/></div>;
+      case 'update-home':
+        return <div><UpdateHome/></div>;
       default:
         return <div><UserSettings /></div>;
     }

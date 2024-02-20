@@ -2,8 +2,10 @@ import React, {useState, useEffect, Suspense} from 'react'
 import spaceImage from '../assets/spaceimage.webp';
 import logo from '../assets/logo.png';
 import trioHome from '../assets/trio-home.webp';
-import { Trans } from 'react-i18next'
 import { useTranslation } from 'react-i18next';
+
+import axios from 'axios';
+import DOMPurify from 'isomorphic-dompurify';
 
 export const Home = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -15,6 +17,8 @@ export const Home = () => {
   const { i18n } = useTranslation();
   const [key, setKey] = useState(Math.random());
   const Social = React.lazy(() => import('../components/Social'));
+  const [homes, setHomes] = useState([]);
+
 
   useEffect(() => {
     setKey(Math.random());
@@ -48,6 +52,17 @@ export const Home = () => {
     }, []);
     const opacity = Math.max(1 - scrollPosition / 200, 0);
 
+    useEffect(() => {
+      const apiUrl = process.env.REACT_APP_API_URL;
+      axios.get(`${apiUrl}/api/homes`)
+        .then(response => {
+          setHomes(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching articles:', error);
+        });
+    }, []);
+
   return (
     <>
     <div style={divStyle} className="p-5 bg-no-repeat bg-center bg-cover h-screen shadow-xl flex bg-black bg-opacity-40 justify-center items-center">
@@ -68,7 +83,8 @@ export const Home = () => {
         <img src={logo} className="h-[70px] pb-3" alt="logo en gramma" />
       <div className="flex-grow border-t border-white"></div>
     </div>
-    <div className="flex flex-col items-center justify-center  sm:flex-row-reverse">
+    <div className="flex flex-col items-center justify-center  sm:flex-row">
+
   <div className='flex items-center justify-center  mb-9 flex-col sm:flex-row mx-2'>
     {isMobile ? (
       <div className="relative w-full mt-4 sm:mt-0 mx-3 mb-7">
@@ -77,10 +93,11 @@ export const Home = () => {
       </div>
     ) : null}
 
-      <div key={key} className="max-w-[580px] sm:mr-4  text-white text-justify text-md">
-      <Trans i18nKey="home.text" />
-      </div>
-  </div>
+      {homes.map((home, index) => (
+                  <div key={key} className="max-w-[580px] sm:mr-4  text-white text-justify text-md">
+                <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize((i18n.language === 'en' ? home.textEn : home.text).replace(/\n/g, '<br />')) }} className=' mb-2'/>
+                </div>
+                ))}
 
   {!isMobile ? (
     <div className="relative mt-4 sm:mt-0 mx-3 mb-9">
@@ -89,8 +106,9 @@ export const Home = () => {
     </div>
   ) : null}
 </div>
+</div>
 
 
     </>
-  );
+);
 };
