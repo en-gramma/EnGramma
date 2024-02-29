@@ -3,9 +3,9 @@ import spaceImage from '../assets/spaceimage.webp';
 import logo from '../assets/logo.png';
 import trioHome from '../assets/trio-home.webp';
 import { useTranslation } from 'react-i18next';
-
 import axios from 'axios';
 import DOMPurify from 'isomorphic-dompurify';
+import parse from 'html-react-parser';
 
 export const Home = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -94,8 +94,11 @@ export const Home = () => {
     ) : null}
 
       {homes.map((home, index) => (
+        // utilisation de parse pour afficher le texte en html
                   <div key={key} className="max-w-[580px] sm:mr-4  text-white text-justify text-md">
-                <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize((i18n.language === 'en' ? home.textEn : home.text).replace(/\n/g, '<br />')) }} className=' mb-2'/>
+                    <div className='mb-2'>
+                    {parse(DOMPurify.sanitize((i18n.language === 'en' ? home.textEn : home.text).replace(/<\/p>/g, '</p><br/>')))}
+                    </div>
                 </div>
                 ))}
 
