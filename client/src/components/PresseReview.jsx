@@ -19,6 +19,7 @@ export const PressReview = () => {
     setDisplayedArticles(prevCount => prevCount + 3);
   };
 
+  //mise en place scroll horizontal
   const scrollContainerRef = useRef(null);
 
   const scrollLeft = () => {
@@ -35,6 +36,7 @@ export const PressReview = () => {
     });
   };
 
+  // Récupération des articles
   useEffect(() => {
     setIsLoading(true);
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -53,6 +55,7 @@ export const PressReview = () => {
     const text = t(i18n.language === 'en' ? article.textEn : article.text);
     const truncatedText = text.split(' ').length > 20 ? text.split(' ').slice(0, 22).join(' ') + '...' : text; 
   
+    // creation de la carte pour chaque article
     return (
       <div className="flex justify-center mx-auto text-md">
       <div key={article.id} className="p-4 flex flex-col items-center text-white md: mb-4">

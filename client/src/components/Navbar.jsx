@@ -24,6 +24,7 @@ export const Navbar = () => {
       i18n.changeLanguage(lng);
     };
 
+    // Récupération de l'utilisateur 
     useEffect(() => {
       const fetchUsers = async () => {
         try {
@@ -65,7 +66,7 @@ export const Navbar = () => {
       };
     }, []);
 
-    //mediaquerie
+    //media querie
     const isMobile = useWindowWidth() < 965; 
     
     useEffect(() => {
@@ -84,14 +85,14 @@ export const Navbar = () => {
     }, []);
     const opacity = location.pathname === '/' ? Math.min(scrollPosition / 200, 1) : 1;
     return (
-<nav
-  className={`${
-    isOnTop && !isMobile ? 'bg-transparent text-lg' : 'bg-stone-900 opacity-95 text-lg z-30'
-  } text-white border-gray-200 w-full z-20 fixed transition-all duration-300`}
-  style={{
-    backgroundColor: location.pathname === '/dashboard' ? '#2c2c2c' : ''
-  }}
->
+    <nav
+      className={`${
+        isOnTop && !isMobile ? 'bg-transparent text-lg' : 'bg-stone-900 opacity-95 text-lg z-30'
+      } text-white border-gray-200 w-full z-20 fixed transition-all duration-300`}
+      style={{
+        backgroundColor: location.pathname === '/dashboard' ? '#2c2c2c' : ''
+      }}
+    >
     <div className=" flex flex-wrap items-center justify-between mx-auto md:p-4 p-2">
           <a href="/" className="flex items-center">
 
@@ -185,13 +186,15 @@ export const Navbar = () => {
                 </button>
               </li>
              
+             {/* section utilisateur */}
               <li className="mb-2 mt-2 border-b border-gray-300"></li>
               <li className="md:absolute md:top-2 md:right-10">
+
                   {currentUser &&
                 <div className="flex items-center cursor-pointer" onClick={toggleMenu}>
                   {users.map(user => (
                     <img
-                      key={user.id} // assuming `id` is a unique property of `user`
+                      key={user.id} 
                       className="w-[37px] h-[37px] rounded-full mr-2"
                       src={user?.img ? user.img.replace('http://', 'https://') : DefaultUserImage}
                       alt="User avatar"

@@ -7,6 +7,9 @@ import { useTranslation } from 'react-i18next';
 import DOMPurify from 'dompurify';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'; 
 import { useMediaQuery } from 'react-responsive';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import remarkBreaks from 'remark-breaks';
 
 export const RadioList = () => {
   const [radios, setRadios] = useState([]);
@@ -20,6 +23,7 @@ export const RadioList = () => {
     setDisplayedRadios(prevCount => prevCount + 3);
   };
 
+  //mise en place scroll horizontal
   const scrollLeft = () => {
     scrollContainerRef.current.scrollTo({
       left: scrollContainerRef.current.scrollLeft - 800,
@@ -66,12 +70,18 @@ export const RadioList = () => {
             <div className='bg-gray-100 border w-[300px] text-center px-4 rounded'>
             <img src={radio.image.replace('http://', 'https://')} alt={radio.description} className="w-auto mx-auto h-[75px] object-cover mb-4 rounded pt-1" />
               <div className="my-1 border-b border-gray-300 "></div>
-              <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? radio.pays : radio.country).replace(/\n/g, '<br />')) }} 
-  className='font-semibold  mb-2'/>
-              <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? radio.descriptionEn : radio.description).replace(/\n/g, '<br />')) }} 
-  className='text-gray-700'/>
-            </div>
+              <div className='font-semibold mb-2'>
+                <ReactMarkdown plugins={[remarkGfm, remarkBreaks]}>
+                  {DOMPurify.sanitize(t(i18n.language === 'en' ? radio.pays : radio.country))}
+                </ReactMarkdown>
+              </div>
+              <div className='text-gray-700'>
+                <ReactMarkdown plugins={[remarkGfm, remarkBreaks]}>
+                  {DOMPurify.sanitize(t(i18n.language === 'en' ? radio.descriptionEn : radio.description))}
+                </ReactMarkdown>
+              </div>
           </div>
+        </div>
         ))}
         {isMobile && displayedRadios < radios.length && (
           <button onClick={loadMoreRadios} className="underline text-orange2 text-lg font-semibold">
@@ -87,10 +97,16 @@ export const RadioList = () => {
                   <div className='bg-gray-100 border w-[300px] text-center px-4 rounded'>
                   <img src={radio.image.replace('http://', 'https://')} alt={radio.description} className="w-auto mx-auto h-[75px] object-cover mb-4 rounded pt-1" />
                     <div className="my-1 border-b border-gray-300 "></div>
-                    <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? radio.pays : radio.country).replace(/\n/g, '<br />')) }} 
-      className='font-semibold  mb-2'/>
-                    <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? radio.descriptionEn : radio.description).replace(/\n/g, '<br />')) }} 
-      className='text-gray-700'/>
+                    <div className='font-semibold mb-2'>
+                    <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
+                      {DOMPurify.sanitize(t(i18n.language === 'en' ? radio.pays : radio.country))}
+                    </ReactMarkdown>
+                  </div>
+                  <div className='text-gray-700'>
+                    <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
+                      {DOMPurify.sanitize(t(i18n.language === 'en' ? radio.descriptionEn : radio.description))}
+                    </ReactMarkdown>
+                  </div>
                   </div>
                 </div>
               ))}
