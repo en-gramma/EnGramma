@@ -7,9 +7,7 @@ import { useTranslation } from 'react-i18next';
 import DOMPurify from 'dompurify';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'; 
 import { useMediaQuery } from 'react-responsive';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import remarkBreaks from 'remark-breaks';
+
 
 export const RadioList = () => {
   const [radios, setRadios] = useState([]);
@@ -71,14 +69,10 @@ export const RadioList = () => {
             <img src={radio.image.replace('http://', 'https://')} alt={radio.description} className="w-auto mx-auto h-[75px] object-cover mb-4 rounded pt-1" />
               <div className="my-1 border-b border-gray-300 "></div>
               <div className='font-semibold mb-2'>
-                <ReactMarkdown plugins={[remarkGfm, remarkBreaks]}>
                   {DOMPurify.sanitize(t(i18n.language === 'en' ? radio.pays : radio.country))}
-                </ReactMarkdown>
               </div>
               <div className='text-gray-700'>
-                <ReactMarkdown plugins={[remarkGfm, remarkBreaks]}>
                   {DOMPurify.sanitize(t(i18n.language === 'en' ? radio.descriptionEn : radio.description))}
-                </ReactMarkdown>
               </div>
           </div>
         </div>
@@ -98,14 +92,10 @@ export const RadioList = () => {
                   <img src={radio.image.replace('http://', 'https://')} alt={radio.description} className="w-auto mx-auto h-[75px] object-cover mb-4 rounded pt-1" />
                     <div className="my-1 border-b border-gray-300 "></div>
                     <div className='font-semibold mb-2'>
-                    <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
                       {DOMPurify.sanitize(t(i18n.language === 'en' ? radio.pays : radio.country))}
-                    </ReactMarkdown>
                   </div>
                   <div className='text-gray-700'>
-                    <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
                       {DOMPurify.sanitize(t(i18n.language === 'en' ? radio.descriptionEn : radio.description))}
-                    </ReactMarkdown>
                   </div>
                   </div>
                 </div>
