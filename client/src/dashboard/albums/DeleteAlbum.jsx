@@ -3,6 +3,7 @@ import axios from 'axios';
 import { IoIosRefresh } from 'react-icons/io';
 import { useTranslation } from 'react-i18next';
 import DOMPurify from 'isomorphic-dompurify';
+import parse from 'html-react-parser';
 
 export function DeleteAlbum() {
   const [albums, setAlbums] = useState([]);
@@ -80,8 +81,9 @@ export function DeleteAlbum() {
                   </iframe>
                 </div>
                 <div className='lg:flex lg:flex-col lg:items-center lg:ml-8 mb-7'>
-                <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? album.descriptionEn : album.description).replace(/\n/g, '<br />')) }} 
-                className='text-lg text-justify p-3 mx-2 bg-black bg-opacity-50 md:bg-transparent lg:text-left sm:w-[400px] md:w-[600px] md:mt-[50px]  animate-fade-left'/>
+                <div className='text-md text-justify p-3 mx-2 bg-black bg-opacity-50 md:bg-transparent lg:text-left sm:w-[400px] md:w-[600px] md:mt-[50px] animate-fade-left'>
+                  {parse(DOMPurify.sanitize(t(i18n.language === 'en' ? album.descriptionEn : album.description).replace(/\n/g, '<br />')))}
+                </div>
                   <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-4 ">
                     <a
                       href={album.albumLink}

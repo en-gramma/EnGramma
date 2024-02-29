@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Loader } from '../components/Loader';
 import DOMPurify from 'isomorphic-dompurify';
 import { useTranslation } from 'react-i18next';
+import parse from 'html-react-parser';
 
 export const Bio = () => {
 
@@ -54,7 +55,7 @@ export const Bio = () => {
         </div>
         <div className='max-w-[800px] mx-auto'>
           <div className="text-md text-white text-justify  mb-9 animate-fade-right">
-            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(bio.title).replace(/\n/g, '<br />')) }} />
+            {parse(DOMPurify.sanitize(t(bio.title).replace(/\n/g, '<br />')))}
           </div>
         </div>
       </div>

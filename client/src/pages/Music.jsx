@@ -5,6 +5,7 @@ import {Loader} from '../components/Loader';
 import { useTranslation } from 'react-i18next';
 import DOMPurify from 'isomorphic-dompurify';
 import '../index.css';
+import parse from 'html-react-parser';
 
 export const Music = () => {
   const [albums, setAlbums] = useState([]);
@@ -62,8 +63,9 @@ export const Music = () => {
                   </iframe>
                 </div>
                 <div className='lg:flex lg:flex-col lg:items-center lg:ml-8 mb-7'>
-                <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? album.descriptionEn : album.description).replace(/\n/g, '<br />')) }} 
-                className='text-md text-justify p-3 mx-2 bg-black bg-opacity-50 md:bg-transparent lg:text-left sm:w-[400px] md:w-[600px] md:mt-[50px]  animate-fade-left'/>
+                <div className='text-md text-justify p-3 mx-2 bg-black bg-opacity-50 md:bg-transparent lg:text-left sm:w-[400px] md:w-[600px] md:mt-[50px] animate-fade-left'>
+                  {parse(DOMPurify.sanitize(t(i18n.language === 'en' ? album.descriptionEn : album.description).replace(/\n/g, '<br />')))}
+                </div>
                   <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-4 ">
                     <a
                       href={album.albumLink}

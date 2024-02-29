@@ -215,10 +215,12 @@ export const AddRadio = () => {
                 <div className='bg-gray-100 border w-[300px] text-center px-4 rounded'>
                   <img src={radio.image} alt={radio.name} className="w-auto mx-auto h-[75px] object-cover mb-4 rounded pt-1" />
                   <div className="my-1 border-b border-gray-300 "></div>
-                  <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? radio.pays : radio.country).replace(/\n/g, '<br />')) }} 
-      className='font-semibold  mb-2'/>
-                  <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(i18n.language === 'en' ? radio.descriptionEn : radio.description).replace(/\n/g, '<br />')) }} 
-      className='text-gray-700'/>
+                  <div className='font-semibold mb-2'>
+                  {DOMPurify.sanitize(t(i18n.language === 'en' ? radio.pays : radio.country).replace(/\n/g, '<br />'))}
+                </div>
+                <div className='text-gray-700'>
+                  {DOMPurify.sanitize(t(i18n.language === 'en' ? radio.descriptionEn : radio.description).replace(/\n/g, '<br />'))}
+                </div>
                 </div>
               </div>
             ))}
