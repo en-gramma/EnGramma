@@ -227,7 +227,7 @@ export const UpdateAlbum = () => {
 
         <div className="mb-4">
           <span className='mb-2'>Lien bandcamp</span>
-            <input className="border p-2 w-full" placeholder="Lien bandcamp" name="copyright" value={formData.bandcamp} onChange={handleChange} />
+            <input className="border p-2 w-full" placeholder="Lien bandcamp" name="bandcamp" value={formData.bandcamp} onChange={handleChange} />
         </div>
 
         <div className="mb-4">

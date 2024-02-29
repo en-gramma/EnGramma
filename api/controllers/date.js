@@ -46,7 +46,7 @@ export const deleteDate = (req, res, next) => {
     });
 };
 
-// ajouter un album
+// ajouter une date
 export const addDate= (req, res, next) => {
     const token = req.cookies.access_token;
     if (!token) return res.status(401).json("Pas de token trouvé.");
@@ -57,6 +57,7 @@ export const addDate= (req, res, next) => {
         return;
       }
 
+      // Validation des données 
       const dayRegex = /^\d+$/;
       const wordRegex = /^[\w\W\s]*$/;
     

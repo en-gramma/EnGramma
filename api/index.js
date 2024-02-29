@@ -72,8 +72,8 @@ app.post('/api/recaptcha', async (req, res) => {
 
 // activation de cookie-parser
 app.use(cookieParser());
-// utilisation des routes
 
+// utilisation des routes
 app.use("/api/auth",authRoutes);
 app.use("/api/passwordrecovery",passRecRoutes)
 app.use("/api/albums", albumRoutes);

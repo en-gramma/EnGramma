@@ -6,7 +6,7 @@ import {v2 as cloudinary} from 'cloudinary'
 
 dotenv.config();
  
-//récupération des voitures
+//récupération des articles
 export const getArticles=  (req, res, next) => {
     const q = 'SELECT * FROM articles';
     db.query(q, (err, result) => {
@@ -25,7 +25,7 @@ cloudinary.config({
   secure : true
 });
 
-//effacer une voiture par son id avec comparaison du token
+//effacer un article par son id avec comparaison du token
 export const deleteArticle = (req, res, next) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Vous devez être connecté pour supprimer un article.");
@@ -70,7 +70,7 @@ export const deleteArticle = (req, res, next) => {
   });
 };
  
-// ajouter une voiture
+// ajouter un article
   export const addArticle= (req, res, next) => {
     const token = req.cookies.access_token;
     if (!token) return res.status(401).json("Pas de token trouvé.");
@@ -110,7 +110,7 @@ export const deleteArticle = (req, res, next) => {
     });
   };
 
-// modifier une voiture
+// modifier un article
 export const updateArticle =  (req, res, next) => {
        const token = req.cookies.access_token;
     if (!token) return res.status(401).json("Pas de token trouvé.");
@@ -118,7 +118,7 @@ export const updateArticle =  (req, res, next) => {
     jwt.verify(token, process.env.JWT_SECRET, (err) => {
       if (err) return res.status(403).json("Le token n'est pas valide.");
 
-          // Regex pour la validation
+    // Regex pour la validation
     const frenchTextRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
 
     // Validation

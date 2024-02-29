@@ -36,7 +36,7 @@ export const checkLoggin = (req, res) => {
   });
 };
 
-//enregister un nouvelle employé
+//enregister un nouvel utilisateur
 export const register = async (req, res, next) => { 
     // validation du password, 8 caractères et un chiffre au minimum, on utilise Dompurify pour echapper toutes balises ou scripts malveillants
     const password = DOMPurify.sanitize(req.body.password); 
@@ -166,6 +166,7 @@ export const getUsers =  (req, res, next) => {
     });
 };
 
+//récupération d'un utilisateur par son id
  export const getUser =  (req, res, next) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Vous devez être connecté pour supprimer un utilisteur.");
@@ -245,6 +246,7 @@ export const deleteUser = (req, res, next) => {
   });
 };
 
+// mise à jour du profil
 export const updateUser = (req, res, next) => {
   const token = req.cookies.access_token;
   if (!token) {
@@ -277,7 +279,7 @@ export const updateUser = (req, res, next) => {
   });
 };
 
-
+//effacer un image cloudinary de l utilisateur
 export const deleteImage = (req, res, next) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Vous devez être connecté pour supprimer une image.");
@@ -311,7 +313,7 @@ export const deleteImage = (req, res, next) => {
       cloudinary.uploader.destroy(imagePublicId)
         .then(result => {
           console.log(result);
-          // Update the user record in the database to remove the image information
+          
           const updateQuery = 'UPDATE users SET img = NULL WHERE id = ?';
           db.query(updateQuery, [userId], (err) => {
             if (err) {

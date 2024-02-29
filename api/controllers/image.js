@@ -14,7 +14,7 @@ cloudinary.config({
     secure : true
   });
 
-  //récupération des voitures
+//récupération des images
 export const getImages=  (req, res, next) => {
     const q = 'SELECT * FROM images';
     db.query(q, (err, result) => {
@@ -24,7 +24,7 @@ export const getImages=  (req, res, next) => {
     });
 };
 
-//effacer une voiture par son id avec comparaison du token
+//effacer une image par son id avec comparaison du token
 export const deleteImage = (req, res, next) => {
     const token = req.cookies.access_token;
     if (!token) return res.status(401).json("Vous devez être connecté pour supprimer une voiture.");
@@ -69,7 +69,7 @@ export const deleteImage = (req, res, next) => {
     });
   };
 
-// ajouter une voiture
+// ajouter une image
 export const addImage = (req, res, next) => {
     const token = req.cookies.access_token;
     if (!token) return res.status(401).json("Pas de token trouvé.");

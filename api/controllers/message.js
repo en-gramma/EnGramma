@@ -4,18 +4,18 @@ export const sendMessage = async (req, res) => {
   const { fullName, email, message, object } = req.body;
   const user = process.env.EMAIL_USER;
 
-  // create reusable transporter object using the default SMTP transport
+  // Configuration du transporteur
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
     auth: {
-      user: process.env.EMAIL_USER, // generated ethereal user
-      pass: process.env.EMAIL_KEY, // generated ethereal password
+      user: process.env.EMAIL_USER, 
+      pass: process.env.EMAIL_KEY, 
     },
   });
 
-  // send mail with defined transport object
+  // Mise en page du message
   const info = await transporter.sendMail({
     from: user, 
     replyTo: email,

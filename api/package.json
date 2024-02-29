@@ -41,7 +41,8 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "uuid": "^9.0.1",
-    "vercel": "^32.5.0"
+    "vercel": "^32.5.0",
+    "xss": "^1.0.14"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.3"

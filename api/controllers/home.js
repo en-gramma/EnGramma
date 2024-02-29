@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-//récupération des albums
+//récupération du texte de la page d'accueil
 export const getHomes =  (req, res, next) => {
     const q = 'SELECT * FROM homes';
     db.query(q, (err, result) => {
@@ -16,6 +16,7 @@ export const getHomes =  (req, res, next) => {
     });
 };
 
+// mise à jour du texte de la page d'accueil
 export const updateHome =  (req, res, next) => {
     const token = req.cookies.access_token;
  if (!token) return res.status(401).json("Pas de token trouvé.");

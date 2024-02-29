@@ -52,7 +52,7 @@ export const addVideo= (req, res, next) => {
       return res.status(400).json("Le titre n'est pas valide.");
   }
 
-  // Sanitize the link and title
+  // Validation des données
   req.body.link = DOMPurify.sanitize(req.body.link, { ADD_TAGS: ["iframe"], ADD_ATTR: ['allowfullscreen', 'scrolling'] });
   req.body.title = DOMPurify.sanitize(req.body.title);
 

@@ -6,7 +6,7 @@ import {v2 as cloudinary} from 'cloudinary'
 
 dotenv.config();
 
-//récupération des albums
+//récupération des bios
 export const getBios =  (req, res, next) => {
     const q = 'SELECT * FROM bios';
     db.query(q, (err, result) => {
@@ -16,7 +16,7 @@ export const getBios =  (req, res, next) => {
     });
 };
 
-// récupération d'un album par son id
+// récupération d'un bio par son id
 export const getBio =  (req, res, next) => {
     const q = 'SELECT * FROM bios WHERE id = ?';
     db.query (q, [req.params.id], (err, result) => {
@@ -33,7 +33,7 @@ cloudinary.config({
   secure : true
 });
 
-//effacer un album par son id avec comparaison du token
+//effacer un bio par son id avec comparaison du token
 export const deleteBio = (req, res, next) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Vous devez être connecté pour supprimer un texte bio.");
@@ -78,7 +78,7 @@ export const deleteBio = (req, res, next) => {
   });
 };
 
-// ajouter un album
+// ajouter un texte bio
 export const addBio= (req, res, next) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Pas de token trouvé.");
@@ -123,6 +123,7 @@ export const addBio= (req, res, next) => {
   });
 };
 
+// modifier un texte bio
   export const updateBio =  (req, res, next) => {
     const token = req.cookies.access_token;
  if (!token) return res.status(401).json("Pas de token trouvé.");

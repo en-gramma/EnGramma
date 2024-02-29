@@ -91,12 +91,10 @@ export const deleteRadiofr = (req, res, next) => {
   
       db.query(q, [values], (err, data) => {
         if (err) {
-          console.error(err); // Log the error to the console
-          if (process.env.NODE_ENV === 'development') {
-            // In development mode, send the error details to the client
+          console.error(err); 
+          if (process.env.NODE_ENV === 'development') {     
             return res.status(500).json(err);
           } else {
-            // In production mode, send a generic error message
             return res.status(500).json("Une erreur s'est produite lors de l'ajout de l'article.");
           }
         }

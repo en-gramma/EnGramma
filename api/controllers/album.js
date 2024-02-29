@@ -2,6 +2,7 @@ import {db} from '../db.js';
 import jwt from 'jsonwebtoken';
 import DOMPurify from 'isomorphic-dompurify'
 import dotenv from 'dotenv';
+import xss from 'xss';
 
 dotenv.config();
 
@@ -60,7 +61,7 @@ export const addAlbum= (req, res, next) => {
     const frenchTitleRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
     const descriptionRegex = /^[\w\W\s]*$/;
   
-    // Validation
+    // Validation regex
     if (!frenchTitleRegex.test(req.body.title)) {
       return res.status(400).json({ error: 'Erreur : Le titre contient des caractères non valides' });
     }
@@ -73,10 +74,28 @@ export const addAlbum= (req, res, next) => {
 
     const q =
       "INSERT INTO albums (`title`, `bandcamp`, `description`, `descriptionEn`, `albumLink`) VALUES (?)";
+      
+      //Création d'une whitelist Bandcamp pour les iframes
+      let options = {
+        whiteList: {
+          iframe: ['src', 'style'],
+          a: ['href']
+        },
+        onIgnoreTagAttr: function (tag, name, value, isWhiteAttr) {
+          if (tag === 'iframe' && name === 'src') {
+            if (!value.startsWith('https://') || !value.includes('.bandcamp.com')) {
+              return '';
+            }
+          }
+          if (name === 'style') {
+            return `${name}="${xss.escapeAttrValue(value)}"`;
+          }
+        }
+      };
 
     const values = [
       DOMPurify.sanitize(req.body.title),
-      req.body.bandcamp,
+      xss(req.body.bandcamp, options),
       DOMPurify.sanitize(req.body.description),
       DOMPurify.sanitize(req.body.descriptionEn),
       DOMPurify.sanitize(req.body.albumLink, { ADD_TAGS: ["a"], ADD_ATTR: ["href"] }),
@@ -92,6 +111,7 @@ export const addAlbum= (req, res, next) => {
   });
 };
 
+//mise à jour d'un album
 export const updateAlbum = (req, res, next) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Pas de token trouvé.");
@@ -105,7 +125,7 @@ export const updateAlbum = (req, res, next) => {
     const frenchTitleRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]+$/;
     const descriptionRegex = /^[\w\W\s]*$/;
   
-    // Validation
+    // Validation regex
     if (!frenchTitleRegex.test(req.body.title)) {
       return res.status(400).json({ error: 'Erreur : Le titre contient des caractères non valides' });
     }
@@ -119,9 +139,27 @@ export const updateAlbum = (req, res, next) => {
     const q =
       "UPDATE albums SET `title` = ?, `bandcamp` = ?, `description` = ?, `descriptionEn` = ?, `albumLink` = ? WHERE `id` = ?";
 
+      //Création d'une whitelist Bandcamp pour les iframes
+      let options = {
+        whiteList: {
+          iframe: ['src', 'style'],
+          a: ['href']
+        },
+        onIgnoreTagAttr: function (tag, name, value, isWhiteAttr) {
+          if (tag === 'iframe' && name === 'src') {
+            if (!value.startsWith('https://') || !value.includes('.bandcamp.com')) {
+              return '';
+            }
+          }
+          if (name === 'style') {
+            return `${name}="${xss.escapeAttrValue(value)}"`;
+          }
+        }
+      };
+
     const values = [
       DOMPurify.sanitize(req.body.title),
-      req.body.bandcamp,
+      xss(req.body.bandcamp, options),
       DOMPurify.sanitize(req.body.description),
       DOMPurify.sanitize(req.body.descriptionEn),
       DOMPurify.sanitize(req.body.albumLink, { ADD_TAGS: ["a"], ADD_ATTR: ["href"] }),
