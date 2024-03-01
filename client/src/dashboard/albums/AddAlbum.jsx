@@ -8,17 +8,40 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
 import fr from "../../assets/fr.png";
 import en from "../../assets/en.png";
+import xss from 'xss';
 
 export const AddAlbum = () => {
   const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
   const [editorStateEn, setEditorStateEn] = useState(() => EditorState.createEmpty());
   const [isMounted, setIsMounted] = useState(false);
 
+  //config xss
+  const options = {
+    whiteList: {
+      iframe: ['src', 'style'],
+      a: ['href']
+    },
+    onTag: function(tag, html, options) {
+      if (tag === 'iframe') {
+        const srcMatch = html.match(/src="([^"]*)"/i);
+        if (srcMatch && srcMatch[1] && !srcMatch[1].includes('https://bandcamp.com')) {
+          return '';
+        }
+      }
+    },
+    onIgnoreTagAttr: function (tag, name, value, isWhiteAttr) {
+      if (name === 'style') {
+        return `${name}="${xss.escapeAttrValue(value)}"`;
+      }
+    }
+  };
+
   useEffect(() => {
     setIsMounted(true);
     return () => setIsMounted(false);
   }, []);
 
+  // Gestion de l'éditeur de texte
   const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
     if (isMounted) {
@@ -39,6 +62,7 @@ export const AddAlbum = () => {
     }
   };
 
+  // Gestion du collage de texte
   const handlePastedTextFr = (text, html, editorState) => {
     text = text.replace(/\n/g, ' ');
     const selection = editorState.getSelection();
@@ -65,7 +89,14 @@ export const AddAlbum = () => {
     descriptionEn: DOMPurify.sanitize(''),
     bandcamp: '',
     albumLink: DOMPurify.sanitize('', { ADD_TAGS: ["a"], ADD_ATTR: ["href"] }),
-  });
+});
+
+useEffect(() => {
+    setFormData(prevState => ({
+        ...prevState,
+        bandcamp: xss(prevState.bandcamp, options),
+    }));
+}, []);
 
   const [formStatus, setFormStatus] = useState(null);
 
@@ -85,7 +116,7 @@ export const AddAlbum = () => {
       title: DOMPurify.sanitize(formData.title),
       description: DOMPurify.sanitize(formData.description),
       descriptionEn: DOMPurify.sanitize(formData.descriptionEn),
-      bandcamp: formData.bandcamp,
+      bandcamp: xss(formData.bandcamp, options),
       albumLink: DOMPurify.sanitize(formData.albumLink, { ADD_TAGS: ["a"], ADD_ATTR: ["href"] }),
     };
     
@@ -117,7 +148,7 @@ export const AddAlbum = () => {
         title: DOMPurify.sanitize(''),
         description: DOMPurify.sanitize(''),
         descriptionEn: DOMPurify.sanitize(''),
-        bandcamp: '',
+        bandcamp: xss('', options),
         albumLink: DOMPurify.sanitize('', { ADD_TAGS: ["a"], ADD_ATTR: ["href"] }),
       });
 
