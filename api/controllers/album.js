@@ -75,23 +75,26 @@ export const addAlbum= (req, res, next) => {
     const q =
       "INSERT INTO albums (`title`, `bandcamp`, `description`, `descriptionEn`, `albumLink`) VALUES (?)";
       
-      //Création d'une whitelist Bandcamp pour les iframes
-      let options = {
-        whiteList: {
-          iframe: ['src', 'style'],
-          a: ['href']
-        },
-        onIgnoreTagAttr: function (tag, name, value, isWhiteAttr) {
-          if (tag === 'iframe' && name === 'src') {
-            if (!value.startsWith('https://') || !value.includes('.bandcamp.com')) {
-              return '';
-            }
-          }
-          if (name === 'style') {
-            return `${name}="${xss.escapeAttrValue(value)}"`;
+    //Création d'une whitelist Bandcamp pour les iframes
+    const options = {
+      whiteList: {
+        iframe: ['src', 'style'],
+        a: ['href']
+      },
+      onTag: function(tag, html, options) {
+        if (tag === 'iframe') {
+          const srcMatch = html.match(/src="([^"]*)"/i);
+          if (srcMatch && srcMatch[1] && !srcMatch[1].includes('https://bandcamp.com')) {
+            return '';
           }
         }
-      };
+      },
+      onIgnoreTagAttr: function (tag, name, value, isWhiteAttr) {
+        if (name === 'style') {
+          return `${name}="${xss.escapeAttrValue(value)}"`;
+        }
+      }
+    };
 
     const values = [
       DOMPurify.sanitize(req.body.title),
