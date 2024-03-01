@@ -9,6 +9,7 @@ export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  //verifie si l'utilisateur est connecté
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
@@ -31,6 +32,7 @@ export const AuthContextProvider = ({ children }) => {
     checkAuthStatus();
   }, []);
 
+  //connexion
   const login = async (inputs) => {
     try {
       const apiUrl = process.env.REACT_APP_API_URL;
@@ -48,14 +50,13 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
+  //deconnexion
   const logout = async () => {
     try {
       const apiUrl = process.env.REACT_APP_API_URL;
-  
       await axios.post(`${apiUrl}/api/auth/logout`, {}, {
         withCredentials: true
       });
-  
       setCurrentUser(null);
     } catch (err) {
       console.log(err);

@@ -28,6 +28,7 @@ const VideoPlayer = () => {
         fetchVideos();
     }, []);
     
+    //extraction de l'url de la vidéo
     const extractVideo = (iframeHtml) => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(iframeHtml, 'text/html');

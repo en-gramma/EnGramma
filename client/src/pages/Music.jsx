@@ -12,6 +12,7 @@ export const Music = () => {
   const [loading, setLoading] = useState(true);
   const { t,i18n } = useTranslation();
 
+  //fetch albums
   useEffect(() => {
     async function fetchAlbums() {
       try {
@@ -28,6 +29,7 @@ export const Music = () => {
     fetchAlbums();
   }, []);
 
+  //extraction du lien bandcamp
   const extractBandcampLink = (iframeHtml) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(iframeHtml, 'text/html');

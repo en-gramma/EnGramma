@@ -20,10 +20,18 @@ export const Privacy = () => {
     <h2 class="text-xl font-bold mb-2">4. Bandcamp :</h2>
     <p class="mb-4">Nous utilisons Bandcamp pour héberger de la musique. Bandcamp peut collecter des données sur votre interaction avec cette musique. Nous vous recommandons de consulter la politique de confidentialité de Bandcamp pour plus d'informations.</p>
 
+    <h2 class="text-xl font-bold mb-2">5. reCAPTCHA :</h2>
+    <p class="mb-4">Nous utilisons le service reCAPTCHA de Google pour protéger notre site contre les spams et les abus. reCAPTCHA peut utiliser des cookies pour fonctionner correctement. Ces cookies peuvent collecter des informations sur votre interaction avec le service reCAPTCHA. Nous vous recommandons de consulter la politique de confidentialité de Google pour plus d'informations.</p>
+
+    <h2 class="text-xl font-bold mb-2">6. Cloudinary :</h2>
+    <p class="mb-4">Nous utilisons Cloudinary pour héberger et gérer les images de notre site. Cloudinary peut utiliser des cookies pour suivre et améliorer l'utilisation de son service. Ces cookies peuvent collecter des informations sur votre interaction avec les images hébergées par Cloudinary. Nous vous recommandons de consulter la politique de confidentialité de Cloudinary pour plus d'informations.</p>
+
     <p class="mb-4">En utilisant notre site, vous consentez à notre politique de confidentialité. Si vous avez des questions ou des préoccupations concernant cette politique, veuillez nous contacter à l'adresse <span class="font-semibold text-orange2">univergram.asso@gmail.com</span>.</p>
 
     <p class="mb-4">Date d'entrée en vigueur : <span class="font-semibold">14/02/2024</span></p>
-</div>
+
+
+    </div>
     </div>
   )
 }

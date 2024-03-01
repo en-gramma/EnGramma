@@ -12,6 +12,7 @@ export const Bio = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { t} = useTranslation();
 
+  //fetch textes bios
   useEffect(() => {
     setIsLoading(true);
     const apiUrl = process.env.REACT_APP_API_URL;

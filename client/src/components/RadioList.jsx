@@ -36,6 +36,7 @@ export const RadioList = () => {
     });
   };
 
+  //fetch radios
   useEffect(() => {
     setIsLoading(true);
     const apiUrl = process.env.REACT_APP_API_URL;
