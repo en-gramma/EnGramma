@@ -98,6 +98,7 @@ export const AddRadio = () => {
       }
     };
 
+  // réinitialisation du formulaire
   useEffect(() => {
     if(status === 'success') {
       formRef.current.reset();

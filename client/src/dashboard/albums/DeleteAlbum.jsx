@@ -8,7 +8,8 @@ import parse from 'html-react-parser';
 export function DeleteAlbum() {
   const [albums, setAlbums] = useState([]);
   const { t, i18n } = useTranslation();
-
+  
+  //fetch albums
     async function fetchAlbums() {
       try {
         const apiUrl = process.env.REACT_APP_API_URL;
@@ -23,6 +24,7 @@ export function DeleteAlbum() {
     fetchAlbums();
   }, []);
 
+  //Effacer un album
   const deleteAlbum= async (albumId) => {
     const confirmDelete = window.confirm('Êtes-vous sûr de vouloir supprimer cet album ?');
     if (confirmDelete) {
@@ -38,6 +40,7 @@ export function DeleteAlbum() {
     }
   };
 
+  //Extraire le lien Bandcamp
   const extractBandcampLink = (iframeHtml) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(iframeHtml, 'text/html');

@@ -10,8 +10,9 @@ export const UserSettings = () => {
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [isUpdateModalOpen, setUpdateModalOpen] = useState(false);
 
+  //Ouvrir le modal de mise à jour
   const openUpdateModal = (userId) => {
-    setSelectedUserId(userId); // Set the selected user ID
+    setSelectedUserId(userId); 
     setUpdateModalOpen(true);
   };
   
@@ -35,7 +36,7 @@ export const UserSettings = () => {
     }
   };
 
-
+// récupérer l'utilisateur connecté
   useEffect(() => {
     const fetchUsers = async () => {
       try {

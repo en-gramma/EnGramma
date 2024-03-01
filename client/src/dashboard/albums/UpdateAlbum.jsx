@@ -20,6 +20,7 @@ export const UpdateAlbum = () => {
   const [editingId, setEditingId] = useState(null);
   const { t, i18n } = useTranslation();
 
+  // Gestion de l'éditeur de texte
   const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
     setFormData({
@@ -70,6 +71,7 @@ export const UpdateAlbum = () => {
     });
   };
 
+  // Gestion du collage de texte
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
     setFormData({
@@ -77,6 +79,7 @@ export const UpdateAlbum = () => {
       [name]: type === 'file' ? files[0] : value,});
   };
 
+  // Soumission du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -143,6 +146,7 @@ export const UpdateAlbum = () => {
     fetchAlbums();
   }, []);
 
+  // extraire le lien Bandcamp
   const extractBandcampLink = (iframeHtml) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(iframeHtml, 'text/html');

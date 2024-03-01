@@ -4,11 +4,12 @@ import DOMPurify from 'dompurify';
 
 export const AddVideo = () => {
   const [link, setLink] = useState('');
-  const [title, setTitle] = useState(''); // Ajouter un état pour le titre
+  const [title, setTitle] = useState(''); 
 
   const [videos, setVideos] = useState([]);
   const [formStatus, setFormStatus] = useState(null);
 
+  // Récupérer les vidéos
   const fetchVideos = async () => {
     try {
       const apiUrl = process.env.REACT_APP_API_URL;
@@ -23,6 +24,7 @@ export const AddVideo = () => {
     fetchVideos();
   }, []);
 
+  // Supprimer une vidéo
   const handleDelete = async (id) => {
     try {
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -36,6 +38,7 @@ export const AddVideo = () => {
     }
   };
 
+  // Extraire le lien de la vidéo
   const extractVideo = (iframeHtml) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(iframeHtml, 'text/html');
@@ -47,6 +50,7 @@ export const AddVideo = () => {
     return null;
   }
 
+  // Ajouter une vidéo
   const handleSubmit = async (event) => {
     event.preventDefault();
 
