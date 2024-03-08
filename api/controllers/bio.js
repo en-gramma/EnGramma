@@ -131,6 +131,18 @@ export const addBio= (req, res, next) => {
  jwt.verify(token, process.env.JWT_SECRET, (err) => {
    if (err) return res.status(403).json("Le token n'est pas valide.");
 
+   const frenchTitleRegex = /^[a-zA-Z0-9àâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ' -]*$/;
+   const descriptionRegex = /^[\w\W\s]*$/;
+ 
+   // Validation
+   if (!frenchTitleRegex.test(req.body.title || req.body.titleEn)) {
+     return res.status(400).json({ error: 'Erreur : Le titre contient des caractères non valides' });
+   }
+
+   if (!descriptionRegex.test(req.body.text || req.body.textEn)) {
+     return res.status(400).json({ error: 'Erreur : La description contient des caractères non valides.' });
+   }
+
    const q = 
    "UPDATE bios SET `title`=?, `text`=?, `titleEn`=?, `copyright`=?, `textEn`=?  WHERE `id`=?";
 

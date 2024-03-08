@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import DOMPurify from 'dompurify';
 import { DeleteAlbum } from './DeleteAlbum';
@@ -16,7 +16,7 @@ export const AddAlbum = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   //config xss
-  const options = {
+  const options = useMemo(() => ({
     whiteList: {
       iframe: ['src', 'style'],
       a: ['href']
@@ -34,7 +34,7 @@ export const AddAlbum = () => {
         return `${name}="${xss.escapeAttrValue(value)}"`;
       }
     }
-  };
+  }), []);
 
   useEffect(() => {
     setIsMounted(true);
@@ -96,7 +96,7 @@ useEffect(() => {
         ...prevState,
         bandcamp: xss(prevState.bandcamp, options),
     }));
-}, []);
+}, [options]);
 
   const [formStatus, setFormStatus] = useState(null);
 
