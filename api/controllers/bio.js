@@ -94,11 +94,11 @@ export const addBio= (req, res, next) => {
   
     // Validation
     if (!frenchTitleRegex.test(req.body.title || req.body.titleEn)) {
-      return res.status(400).json({ error: 'Erreur : Le titre contient des caractères non valides' });
+      return res.status(400).json({ error: 'La demande contient des données non valides.' });
     }
 
     if (!descriptionRegex.test(req.body.text || req.body.textEn)) {
-      return res.status(400).json({ error: 'Erreur : La description contient des caractères non valides.' });
+      return res.status(400).json({ error: 'La demande contient des données non valides.' });
     }
 
     const q =
@@ -124,7 +124,7 @@ export const addBio= (req, res, next) => {
 };
 
 // modifier un texte bio
-  export const updateBio =  (req, res, next) => {
+ export const updateBio =  (req, res, next) => {
     const token = req.cookies.access_token;
  if (!token) return res.status(401).json("Pas de token trouvé.");
 
@@ -136,11 +136,11 @@ export const addBio= (req, res, next) => {
  
    // Validation
    if (!frenchTitleRegex.test(req.body.title || req.body.titleEn)) {
-     return res.status(400).json({ error: 'Erreur : Le titre contient des caractères non valides' });
+     return res.status(400).json({ error: 'La demande contient des données non valides.' });
    }
 
    if (!descriptionRegex.test(req.body.text || req.body.textEn)) {
-     return res.status(400).json({ error: 'Erreur : La description contient des caractères non valides.' });
+     return res.status(400).json({ error: 'La demande contient des données non valides.' });
    }
 
    const q = 
