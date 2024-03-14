@@ -1,5 +1,5 @@
 # EnGramma
- 01/updated smtp 06
+ 01/updated smtp 07
 
 Trello : https://trello.com/b/nfVv59SI/en-gramma
 
