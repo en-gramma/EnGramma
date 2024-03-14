@@ -1,5 +1,5 @@
 # https://www.robotstxt.org/robotstxt.html
 
-Sitemap: https://www.en-gramma/sitemap.xml
+Sitemap: https://www.en-gramma.com/sitemap.xml
 User-agent: *
 Disallow:
