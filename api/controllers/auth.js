@@ -38,6 +38,12 @@ export const checkLoggin = (req, res) => {
 
 //enregister un nouvel utilisateur
 export const register = async (req, res, next) => { 
+  const token = req.cookies.access_token;
+  if (!token) return res.status(401).json("Vous devez être connecté.");
+
+  jwt.verify(token, process.env.JWT_SECRET, (err) => {
+    if (err) return res.status(403).json("Vous n'êtes pas autorisé.");
+
     // validation du password, 8 caractères et un chiffre au minimum, on utilise Dompurify pour echapper toutes balises ou scripts malveillants
     const password = DOMPurify.sanitize(req.body.password); 
 
@@ -77,6 +83,7 @@ export const register = async (req, res, next) => {
             return res.status(200).json("L'utilisateur a bien été créé"); 
         });
     });
+  });
 };
 
 //formulaire de connexion
